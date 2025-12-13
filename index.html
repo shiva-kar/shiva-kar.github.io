@@ -61,7 +61,6 @@
         /* Particle Background Animation */
         .bg-grid {
             background-size: 40px 40px;
-            /* Increased opacity from 0.05 to 0.07 for better visibility */
             background-image: linear-gradient(to right, rgba(100, 255, 218, 0.07) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(100, 255, 218, 0.07) 1px, transparent 1px);
         }
@@ -85,10 +84,9 @@
         }
     </style>
 </head>
-<!-- Removed bg-brand-dark from body to prevent z-index layering issues -->
 <body class="text-brand-text font-sans selection:bg-brand-accent selection:text-brand-dark overflow-x-hidden">
 
-    <!-- Background Decoration: Added bg-brand-dark here to ensure pattern sits ON TOP of color -->
+    <!-- Background Decoration -->
     <div class="fixed inset-0 bg-brand-dark bg-grid z-[-1] pointer-events-none"></div>
 
     <!-- Navigation -->
@@ -132,7 +130,7 @@
             <h1 class="text-5xl md:text-7xl font-bold text-brand-heading mb-4">Shiva Kar.</h1>
             <h2 class="text-4xl md:text-6xl font-bold text-brand-text/80 mb-6">I build logic for the web.</h2>
             <p class="max-w-xl text-lg mb-10 leading-relaxed">
-                I am a BCA Student at <span class="text-brand-accent">Amity University Online</span> specializing in backend logic, structured programming, and algorithmic problem solving. I focus on building efficient, scalable code using <span class="text-brand-accent">C & C++</span>.
+                I am a BCA Student at <span class="text-brand-accent">Amity University Online</span> specializing in backend logic, structured programming, and algorithmic problem solving. I am driven by a passion for <span class="text-brand-accent">Computer Architecture & C/C++</span>.
             </p>
             
             <div class="flex gap-4">
@@ -159,25 +157,35 @@
         <div class="grid md:grid-cols-3 gap-12">
             <div class="md:col-span-2 text-lg leading-relaxed" data-aos="fade-up">
                 <p class="mb-4">
-                    Hello! My name is Shiva and I enjoy understanding how computers think. My interest in software development started back in high school when I wrote my first <span class="text-brand-accent">C++ program</span>—it taught me that logic can create magic.
+                    Disciplined and motivated <strong>Bachelor of Computer Applications (BCA)</strong> student. I possess a strong foundational knowledge of programming logic and computer architecture from my academic background in Computer Science (12th Grade) and current university curriculum.
                 </p>
                 <p class="mb-4">
-                    Fast-forward to today, I am currently pursuing my <strong>Bachelor of Computer Applications (BCA)</strong> at Amity University. I am strictly focused on mastering the fundamentals: <span class="text-brand-accent">Data Structures, Algorithms, and Memory Management</span>.
+                    I specialize in <span class="text-brand-accent">C and C++ syntax</span> with a sharp focus on backend logic and structured programming. My goal is to leverage my academic excellence and "can-do" attitude in a practical, real-world software engineering environment.
                 </p>
-                <p class="mb-6">
-                    Here are a few technologies I've been working with recently:
+                <p class="mb-6 font-bold text-brand-heading">
+                    Core Technical Competencies:
                 </p>
                 <ul class="grid grid-cols-2 gap-2 font-mono text-sm" id="skills-list">
                     <!-- Skills injected via JS for Scalability -->
                 </ul>
             </div>
             
-            <div class="relative group" data-aos="fade-left">
-                <div class="absolute inset-0 border-2 border-brand-accent rounded translate-x-4 translate-y-4 transition-transform group-hover:translate-x-2 group-hover:translate-y-2"></div>
-                <!-- Placeholder for Avatar - Can be replaced via JS with GitHub Avatar -->
-                <div class="relative rounded overflow-hidden bg-brand-light aspect-square flex items-center justify-center">
-                     <i class="fa-solid fa-user-graduate text-6xl text-brand-accent/50"></i>
-                     <img id="profile-img" src="" alt="" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500">
+            <div class="space-y-6" data-aos="fade-left">
+                <!-- Profile Image Area -->
+                <div class="relative group">
+                    <div class="absolute inset-0 border-2 border-brand-accent rounded translate-x-4 translate-y-4 transition-transform group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                    <div class="relative rounded overflow-hidden bg-brand-light aspect-square flex items-center justify-center">
+                         <i class="fa-solid fa-user-graduate text-6xl text-brand-accent/50"></i>
+                         <img id="profile-img" src="" alt="" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500">
+                    </div>
+                </div>
+
+                <!-- Languages Box -->
+                <div class="glass-card p-4 rounded text-sm">
+                    <h4 class="text-brand-accent font-mono mb-2">Spoken Languages</h4>
+                    <div class="flex flex-wrap gap-2" id="spoken-languages">
+                        <!-- Injected via JS -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -200,7 +208,7 @@
     <section id="projects" class="py-24 px-6 max-w-6xl mx-auto">
         <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
             <span class="text-2xl font-mono text-brand-accent">03.</span>
-            <h2 class="text-3xl font-bold text-brand-heading">Some Things I've Built</h2>
+            <h2 class="text-3xl font-bold text-brand-heading">Academic Projects</h2>
             <div class="h-[1px] bg-brand-text/30 flex-grow max-w-xs"></div>
         </div>
 
@@ -209,17 +217,31 @@
         </div>
     </section>
 
+    <!-- Soft Skills Section (The Juice) -->
+    <section class="py-24 px-6 max-w-5xl mx-auto">
+         <div class="text-center mb-10" data-aos="fade-up">
+            <h2 class="text-3xl font-bold text-brand-heading mb-4">Why Work With Me?</h2>
+            <p class="max-w-2xl mx-auto">Beyond code, I bring discipline and clarity to the table.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="soft-skills-container">
+            <!-- Injected via JS -->
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-24 px-6 max-w-3xl mx-auto text-center">
         <p class="font-mono text-brand-accent mb-4" data-aos="fade-down">04. What's Next?</p>
         <h2 class="text-5xl font-bold text-brand-heading mb-6" data-aos="fade-up">Get In Touch</h2>
         <p class="text-lg mb-10 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-            I am currently looking for an internship or entry-level opportunity to apply my skills in C/C++ and backend development. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            I am currently open to internships and entry-level positions where I can apply my skills in <span class="text-brand-accent">Data Structures & C/C++</span>.
         </p>
         
         <div class="flex justify-center gap-6 mb-12">
             <a href="mailto:sksmarttech48@gmail.com" class="px-8 py-4 border border-brand-accent text-brand-accent rounded hover:bg-brand-accent/10 transition-all font-mono">
                 Say Hello
+            </a>
+            <a href="https://www.linkedin.com/in/shiva-kar/" target="_blank" class="px-8 py-4 border border-brand-text/50 text-brand-text rounded hover:border-brand-accent hover:text-brand-accent transition-all font-mono">
+                LinkedIn
             </a>
         </div>
 
@@ -227,11 +249,17 @@
         <div class="grid md:grid-cols-2 gap-4 text-left font-mono text-sm">
             <div class="glass-card p-4 rounded flex items-center gap-4">
                 <i class="fa-solid fa-location-dot text-brand-accent"></i>
-                <span>Hojai, Assam – 782435</span>
+                <div>
+                    <span class="block text-xs text-brand-text/50">Address</span>
+                    <span>House no 13, Thakurbari Road,<br>Krishna Nagar, Hojai, Assam – 782435</span>
+                </div>
             </div>
             <div class="glass-card p-4 rounded flex items-center gap-4">
                 <i class="fa-solid fa-phone text-brand-accent"></i>
-                <span>+91 9101488645</span>
+                <div>
+                     <span class="block text-xs text-brand-text/50">Phone</span>
+                    <span>+91 9101488645</span>
+                </div>
             </div>
         </div>
     </section>
@@ -240,11 +268,11 @@
     <footer class="py-8 text-center text-sm font-mono text-brand-text/50 hover:text-brand-accent transition-colors">
         <div class="flex justify-center gap-6 mb-4 text-xl">
             <a href="https://github.com/shiva-kar" target="_blank" class="hover:-translate-y-1 transition-transform"><i class="fa-brands fa-github"></i></a>
-            <a href="https://linkedin.com/in/shiva-kar" target="_blank" class="hover:-translate-y-1 transition-transform"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/shiva-kar/" target="_blank" class="hover:-translate-y-1 transition-transform"><i class="fa-brands fa-linkedin"></i></a>
             <a href="mailto:sksmarttech48@gmail.com" class="hover:-translate-y-1 transition-transform"><i class="fa-solid fa-envelope"></i></a>
         </div>
         <p>Designed & Built by Shiva Kar</p>
-        <p class="text-xs mt-2">v1.0.0 | Scalable Architecture</p>
+        <p class="text-xs mt-2">v1.1.0 | Professional Edition</p>
     </footer>
 
     <!-- Scripts -->
@@ -253,59 +281,96 @@
         // --- 1. INITIALIZATION ---
         AOS.init({ once: true, offset: 50 });
 
-        // --- 2. SCALABLE DATA STORE (EDIT THIS TO UPDATE WEBSITE) ---
-        // By using this JSON structure, you don't need to dig into HTML to change content.
+        // --- 2. SCALABLE DATA STORE (UPDATED WITH ALL INFO) ---
         const portfolioData = {
-            githubUsername: "shiva-kar", // If you create this user, the API will work
+            githubUsername: "shiva-kar",
+            
+            // Expanded Technical Skills
             skills: [
-                "C Language (Intermediate)", "C++ (OOP)", "Data Structures", 
-                "Algorithms", "VS Code", "Problem Solving", "Logic Building"
+                "C (Intermediate)", "C++ (OOP Concepts)", 
+                "Data Structures (Arrays/Strings)", "Algorithms & Flowcharts",
+                "Binary/Hex Systems", "Logic Gates",
+                "VS Code", "Dev-C++"
             ],
+
+            // New Soft Skills Section
+            softSkills: [
+                "Analytical Thinking",
+                "Self-Motivation",
+                "Logical Troubleshooting",
+                "Digital Literacy"
+            ],
+
+            // Spoken Languages
+            languages: ["English", "Hindi", "Bengali", "Assamese"],
+
+            // Education (Updated Details)
             education: [
                 {
                     title: "Bachelor of Computer Applications (BCA)",
                     place: "Amity University Online",
-                    date: "2025 - Present",
-                    desc: "Focusing on core Computer Science fundamentals, Digital Electronics, and structured programming."
+                    date: "2025 – 2028 (Expected)",
+                    desc: "<strong>Current Status:</strong> Semester 1<br><strong>Key Coursework:</strong> Problem Solving using C, Computer Fundamentals, Digital Electronics.<br><strong>Approach:</strong> Successfully managing a rigorous online curriculum requiring high self-discipline."
                 },
                 {
-                    title: "Higher Secondary (Class XII)",
-                    place: "Deshabandhu Bidyapith HS School",
+                    title: "Higher Secondary Education (Class XII)",
+                    place: "Deshabandhu Bidyapith HS School, Hojai",
                     date: "Completed 2025",
-                    desc: "Science Stream (PCM & Computer Science). Built foundation in C++ and Mathematics."
+                    desc: "<strong>Stream:</strong> Science (Computer Science & Mathematics)<br><strong>Key Subjects:</strong> C++ Programming, Introductory Data Structures, Mathematics."
                 }
             ],
+
+            // Projects (Updated Descriptions)
             projects: [
                 {
-                    title: "Grade Calculator",
-                    tech: ["C Language", "Logic", "CLI"],
-                    desc: "An automated grading system that calculates student averages using conditional logic and arithmetic operators.",
+                    title: "Logic Building (C Language)",
+                    tech: ["C Language", "Math Logic"],
+                    desc: "Developed various C programs to solve mathematical problems (including Prime numbers, Factorials, and Fibonacci series) to strengthen algorithmic thinking.",
                     link: "#" 
                 },
                 {
-                    title: "Pattern Generator",
-                    tech: ["C Language", "Nested Loops"],
-                    desc: "A logic-heavy console application that generates complex visual patterns (pyramids, diamonds) based on user input.",
+                    title: "Pattern Generation System",
+                    tech: ["Nested Loops", "Control Flow"],
+                    desc: "Created nested-loop programs to generate dynamic visual patterns, demonstrating mastery of control flow and loop structures.",
                     link: "#"
                 },
                 {
-                    title: "Student Record System",
-                    tech: ["C++", "File Handling", "Structures"],
-                    desc: "Designed a system to store and retrieve student data using file handling and struct implementations.",
+                    title: "Data Structure Implementation",
+                    tech: ["Arrays 1D/2D", "Strings"],
+                    desc: "Applied theoretical knowledge to write robust programs handling Arrays (1D & 2D) and complex String manipulation logic.",
                     link: "#"
                 }
             ]
         };
 
-        // --- 3. RENDERING FUNCTIONS (SCALABILITY ENGINE) ---
+        // --- 3. RENDERING FUNCTIONS ---
 
-        // Render Skills
+        // Render Technical Skills
         const skillsContainer = document.getElementById('skills-list');
         portfolioData.skills.forEach(skill => {
             const li = document.createElement('li');
             li.className = "flex items-center gap-2";
             li.innerHTML = `<span class="text-brand-accent">▹</span> ${skill}`;
             skillsContainer.appendChild(li);
+        });
+
+        // Render Spoken Languages
+        const langContainer = document.getElementById('spoken-languages');
+        portfolioData.languages.forEach(lang => {
+            const span = document.createElement('span');
+            span.className = "px-2 py-1 bg-brand-dark border border-brand-accent/20 rounded text-xs text-brand-text";
+            span.textContent = lang;
+            langContainer.appendChild(span);
+        });
+
+        // Render Soft Skills
+        const softContainer = document.getElementById('soft-skills-container');
+        portfolioData.softSkills.forEach(skill => {
+            const div = document.createElement('div');
+            div.className = "glass-card p-4 rounded text-center hover:border-brand-accent transition-colors";
+            div.setAttribute("data-aos", "fade-up");
+            div.innerHTML = `<i class="fa-solid fa-check text-brand-accent mb-2"></i><h3 class="font-bold text-sm text-brand-heading">${skill}</h3>`;
+            softContainer.appendChild(div);
         });
 
         // Render Timeline
@@ -318,7 +383,7 @@
                 <div class="absolute left-[-5px] top-2 w-3 h-3 rounded-full bg-brand-accent"></div>
                 <h3 class="text-xl font-bold text-brand-heading">${item.title}</h3>
                 <div class="font-mono text-sm text-brand-accent mb-2">${item.place} | ${item.date}</div>
-                <p class="max-w-lg">${item.desc}</p>
+                <p class="max-w-xl text-sm leading-relaxed">${item.desc}</p>
             `;
             timelineContainer.appendChild(div);
         });
@@ -330,8 +395,7 @@
             div.className = "glass-card p-6 rounded hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full";
             div.setAttribute("data-aos", "fade-up");
             
-            // Generate tech tags
-            const tags = project.tech.map(t => `<span class="mr-3">${t}</span>`).join('');
+            const tags = project.tech.map(t => `<span class="mr-3 text-brand-accent/80">${t}</span>`).join('');
             
             div.innerHTML = `
                 <div class="flex justify-between items-center mb-6">
@@ -339,27 +403,24 @@
                     <a href="${project.link}" class="hover:text-brand-accent transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-xl"></i></a>
                 </div>
                 <h3 class="text-xl font-bold text-brand-heading mb-3 group-hover:text-brand-accent">${project.title}</h3>
-                <p class="mb-6 flex-grow text-sm">${project.desc}</p>
-                <div class="font-mono text-xs text-brand-text/60 mt-auto">
+                <p class="mb-6 flex-grow text-sm text-brand-text/90">${project.desc}</p>
+                <div class="font-mono text-xs mt-auto">
                     ${tags}
                 </div>
             `;
             projectsContainer.appendChild(div);
         });
 
-        // --- 4. API INTEGRATION (GITHUB) ---
+        // --- 4. API INTEGRATION ---
         async function fetchGitHubStats() {
             const statsElement = document.getElementById('github-text');
             const imgElement = document.getElementById('profile-img');
             
             try {
-                // Public API call to GitHub
                 const response = await fetch(`https://api.github.com/users/${portfolioData.githubUsername}`);
-                
                 if (response.ok) {
                     const data = await response.json();
                     statsElement.innerHTML = `${data.public_repos} Repositories | ${data.followers} Followers`;
-                    
                     if(data.avatar_url) {
                         imgElement.src = data.avatar_url;
                         imgElement.classList.remove('opacity-0');
@@ -368,12 +429,10 @@
                     statsElement.innerHTML = "GitHub: Coming Soon";
                 }
             } catch (error) {
-                console.log("GitHub API Error (Expected if user doesn't exist yet):", error);
+                console.log("GitHub API Error:", error);
                 statsElement.innerHTML = "GitHub Profile Setup In Progress";
             }
         }
-
-        // Call API
         fetchGitHubStats();
 
         // --- 5. UI INTERACTION ---
@@ -382,18 +441,15 @@
             menu.classList.toggle('hidden');
         }
 
-        // Navbar Hide/Show on scroll
         let lastScroll = 0;
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
             const navbar = document.getElementById('navbar');
-            
             if (currentScroll <= 0) {
                 navbar.classList.remove('shadow-xl');
             } else {
                 navbar.classList.add('shadow-xl');
             }
-            
             lastScroll = currentScroll;
         });
 
