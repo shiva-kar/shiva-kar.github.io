@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shiva Kar | Software Developer Portfolio</title>
-    <meta name="description" content="Portfolio of Shiva Kar, an aspiring Software Developer and BCA Student specializing in C/C++ and Backend Logic.">
+    <meta name="description" content="Portfolio of Shiva Kar, an aspiring Software Developer and BCA Student specializing in C/C++, TypeScript, Next.js, and Modern Web Development.">
     
     <!-- Tailwind CSS (Professional Styling Framework) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -82,6 +82,12 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
+
+        /* Featured Project Highlight */
+        .featured-project {
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.1) 0%, rgba(17, 34, 64, 0.9) 100%);
+            border: 2px solid rgba(100, 255, 218, 0.3);
+        }
     </style>
 </head>
 <body class="text-brand-text font-sans selection:bg-brand-accent selection:text-brand-dark overflow-x-hidden">
@@ -130,11 +136,11 @@
             <h1 class="text-5xl md:text-7xl font-bold text-brand-heading mb-4">Shiva Kar.</h1>
             <h2 class="text-4xl md:text-6xl font-bold text-brand-text/80 mb-6">I build logic for the web.</h2>
             <p class="max-w-xl text-lg mb-10 leading-relaxed">
-                I am a BCA Student at <span class="text-brand-accent">Amity University Online</span> specializing in backend logic, structured programming, and algorithmic problem solving. I am driven by a passion for <span class="text-brand-accent">Computer Architecture & C/C++</span>.
+                I am a BCA Student at <span class="text-brand-accent">Amity University Online</span> specializing in backend logic, modern web development with <span class="text-brand-accent">Next.js & TypeScript</span>, and algorithmic problem solving. I am dedicated to writing clean, efficient, and scalable code.
             </p>
             
             <div class="flex gap-4">
-                <a href="#contact" class="px-8 py-4 border border-brand-accent text-brand-accent rounded hover:bg-brand-accent/10 transition-all font-mono">
+                <a href="#projects" class="px-8 py-4 border border-brand-accent text-brand-accent rounded hover:bg-brand-accent/10 transition-all font-mono">
                     Check out my work!
                 </a>
                 <!-- API Placeholder: GitHub Stats -->
@@ -157,10 +163,10 @@
         <div class="grid md:grid-cols-3 gap-12">
             <div class="md:col-span-2 text-lg leading-relaxed" data-aos="fade-up">
                 <p class="mb-4">
-                    Disciplined and motivated <strong>Bachelor of Computer Applications (BCA)</strong> student. I possess a strong foundational knowledge of programming logic and computer architecture from my academic background in Computer Science (12th Grade) and current university curriculum.
+                    Disciplined and motivated <strong>Bachelor of Computer Applications (BCA)</strong> student. I possess a strong foundational knowledge of programming logic and computer architecture, complemented by hands-on experience in modern web development.
                 </p>
                 <p class="mb-4">
-                    I specialize in <span class="text-brand-accent">C and C++ syntax</span> with a sharp focus on backend logic and structured programming. My goal is to leverage my academic excellence and "can-do" attitude in a practical, real-world software engineering environment.
+                    I specialize in <span class="text-brand-accent">C/C++, TypeScript, Next.js, and Tailwind CSS</span> with expertise in both backend logic and frontend development. My goal is to leverage my academic excellence and project experience into a professional role in software development.
                 </p>
                 <p class="mb-6 font-bold text-brand-heading">
                     Core Technical Competencies:
@@ -208,10 +214,39 @@
     <section id="projects" class="py-24 px-6 max-w-6xl mx-auto">
         <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
             <span class="text-2xl font-mono text-brand-accent">03.</span>
-            <h2 class="text-3xl font-bold text-brand-heading">Academic Projects</h2>
+            <h2 class="text-3xl font-bold text-brand-heading">Featured Projects</h2>
             <div class="h-[1px] bg-brand-text/30 flex-grow max-w-xs"></div>
         </div>
 
+        <!-- Featured Project: Resume Builder -->
+        <div class="featured-project p-8 rounded-lg mb-12" data-aos="fade-up">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1 bg-brand-accent/20 text-brand-accent text-xs font-mono rounded-full">⭐ Featured Project</span>
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-mono rounded-full">SaaS Application</span>
+            </div>
+            <h3 class="text-2xl font-bold text-brand-heading mb-4">Resume Builder Application</h3>
+            <p class="text-brand-text mb-6 leading-relaxed">
+                A professional SaaS-level resume builder with <strong>real-time PDF preview</strong>, <strong>drag-and-drop sections</strong>, and <strong>multiple templates</strong>. Built with modern web technologies to demonstrate full-stack development capabilities.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="px-3 py-1 bg-brand-dark border border-brand-accent/30 rounded text-xs font-mono text-brand-accent">Next.js 14</span>
+                <span class="px-3 py-1 bg-brand-dark border border-brand-accent/30 rounded text-xs font-mono text-brand-accent">TypeScript</span>
+                <span class="px-3 py-1 bg-brand-dark border border-brand-accent/30 rounded text-xs font-mono text-brand-accent">Tailwind CSS</span>
+                <span class="px-3 py-1 bg-brand-dark border border-brand-accent/30 rounded text-xs font-mono text-brand-accent">React Hooks</span>
+                <span class="px-3 py-1 bg-brand-dark border border-brand-accent/30 rounded text-xs font-mono text-brand-accent">State Management</span>
+                <span class="px-3 py-1 bg-brand-dark border border-brand-accent/30 rounded text-xs font-mono text-brand-accent">PDF Generation</span>
+            </div>
+            <div class="flex gap-4">
+                <a href="https://github.com/shiva-kar/resume-builder" target="_blank" class="flex items-center gap-2 px-4 py-2 border border-brand-accent text-brand-accent rounded hover:bg-brand-accent/10 transition-colors font-mono text-sm">
+                    <i class="fa-brands fa-github"></i> View Code
+                </a>
+                <a href="https://github.com/shiva-kar/resume-builder" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-brand-accent text-brand-dark rounded hover:bg-brand-accent/80 transition-colors font-mono text-sm font-bold">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                </a>
+            </div>
+        </div>
+
+        <h3 class="text-xl font-bold text-brand-heading mb-6">Other Academic Projects</h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-container">
             <!-- Projects injected via JS for Scalability -->
         </div>
@@ -233,7 +268,7 @@
         <p class="font-mono text-brand-accent mb-4" data-aos="fade-down">04. What's Next?</p>
         <h2 class="text-5xl font-bold text-brand-heading mb-6" data-aos="fade-up">Get In Touch</h2>
         <p class="text-lg mb-10 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-            I am currently open to internships and entry-level positions where I can apply my skills in <span class="text-brand-accent">Data Structures & C/C++</span>.
+            I am currently open to internships and entry-level positions where I can apply my skills in <span class="text-brand-accent">Full-Stack Development, TypeScript & Modern Web Technologies</span>.
         </p>
         
         <div class="flex justify-center gap-6 mb-12">
@@ -272,7 +307,7 @@
             <a href="mailto:sksmarttech48@gmail.com" class="hover:-translate-y-1 transition-transform"><i class="fa-solid fa-envelope"></i></a>
         </div>
         <p>Designed & Built by Shiva Kar</p>
-        <p class="text-xs mt-2">v1.1.0 | Professional Edition</p>
+        <p class="text-xs mt-2">v1.2.0 | Professional Edition</p>
     </footer>
 
     <!-- Scripts -->
@@ -285,12 +320,20 @@
         const portfolioData = {
             githubUsername: "shiva-kar",
             
-            // Expanded Technical Skills
+            // Expanded Technical Skills (Including Resume Builder Skills)
             skills: [
-                "C (Intermediate)", "C++ (OOP Concepts)", 
+                // Core Programming
+                "C (Intermediate)", "C++ (OOP Concepts)",
+                // Modern Web Development (NEW from Resume Builder)
+                "TypeScript", "Next.js 14",
+                "React & React Hooks", "Tailwind CSS",
+                // Data & Logic
                 "Data Structures (Arrays/Strings)", "Algorithms & Flowcharts",
-                "Binary/Hex Systems", "Logic Gates",
-                "VS Code", "Dev-C++"
+                // Tools & Platforms
+                "Git & GitHub", "VS Code",
+                // Concepts
+                "State Management", "Responsive Design",
+                "Component Architecture", "PDF Generation"
             ],
 
             // New Soft Skills Section
@@ -298,7 +341,9 @@
                 "Analytical Thinking",
                 "Self-Motivation",
                 "Logical Troubleshooting",
-                "Digital Literacy"
+                "Digital Literacy",
+                "Project Management",
+                "Clean Code Practices"
             ],
 
             // Spoken Languages
@@ -310,7 +355,7 @@
                     title: "Bachelor of Computer Applications (BCA)",
                     place: "Amity University Online",
                     date: "2025 – 2028 (Expected)",
-                    desc: "<strong>Current Status:</strong> Semester 1<br><strong>Key Coursework:</strong> Problem Solving using C, Computer Fundamentals, Digital Electronics.<br><strong>Approach:</strong> Successfully managing a rigorous online curriculum requiring high self-discipline."
+                    desc: "<strong>Current Status:</strong> Semester 1<br><strong>Key Coursework:</strong> Problem Solving using C, Computer Fundamentals, Digital Electronics.<br><strong>Approach:</strong> Self-directed learning with a focus on understanding core concepts before advancing to complex frameworks."
                 },
                 {
                     title: "Higher Secondary Education (Class XII)",
@@ -320,7 +365,7 @@
                 }
             ],
 
-            // Projects (Updated Descriptions)
+            // Projects (Updated with Other Projects - Resume Builder is featured separately)
             projects: [
                 {
                     title: "Logic Building (C Language)",
