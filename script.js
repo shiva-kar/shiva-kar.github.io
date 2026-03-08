@@ -1,7 +1,6 @@
 // ===== Active nav link on scroll =====
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
-
 const NAV_HEIGHT_OFFSET = 80;
 
 function setActiveLink() {
@@ -37,25 +36,10 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll(
-  '.skill-category, .project-card, .stat-card, .contact-link-item'
+  '.skill-category, .project-card, .stat-card, .contact-link-item, .exp-card, .edu-card, .cert-card'
 ).forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   observer.observe(el);
 });
-
-// ===== Contact form (static demo) =====
-function handleFormSubmit(e) {
-  e.preventDefault();
-  const btn = document.getElementById('submitBtn');
-  btn.textContent = 'Sent! ✓';
-  btn.style.background = 'var(--accent2)';
-  btn.disabled = true;
-  setTimeout(() => {
-    btn.textContent = 'Send Message';
-    btn.style.background = '';
-    btn.disabled = false;
-    e.target.reset();
-  }, 3000);
-}
