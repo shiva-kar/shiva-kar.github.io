@@ -138,9 +138,12 @@ function buildCertifications(certs) {
 function buildContact(contact) {
   const list = document.getElementById('contact-links');
   const items = [
-    { icon: 'fa-solid fa-envelope', label: contact.email,     href: `mailto:${contact.email}` },
-    { icon: 'fa-brands fa-github',  label: 'github.com/shiva-kar', href: contact.github },
-    { icon: 'fa-brands fa-linkedin',label: 'linkedin.com/in/shiva-kar', href: contact.linkedin },
+    { icon: 'fa-solid fa-envelope',  label: contact.email,                   href: `mailto:${contact.email}` },
+    { icon: 'fa-brands fa-github',   label: 'github.com/shiva-kar',          href: contact.github },
+    { icon: 'fa-brands fa-linkedin', label: 'linkedin.com/in/shiva-kar',     href: contact.linkedin },
+    { icon: 'fa-brands fa-x-twitter',label: 'x.com/sk_shivakar',             href: contact.twitter },
+    { icon: 'fa-brands fa-instagram',label: 'instagram.com/sk_shivakar',     href: contact.instagram },
+    { icon: 'fa-brands fa-facebook', label: 'facebook.com/SHIVAxKAR',        href: contact.facebook },
   ];
   items.forEach(item => {
     const a = document.createElement('a');
@@ -199,7 +202,6 @@ loadData().then(data => {
   buildHero(data);
   buildAbout(data);
   buildSkills(data.skills);
-  buildExperience(data.experience);
   buildEducation(data.education);
   buildProjects(data.projects);
   buildCertifications(data.certifications);
