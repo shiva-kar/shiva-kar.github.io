@@ -5,125 +5,125 @@
 // ============================================================
 
 const DATA = {
-  "name": "Shiva Kar",
-  "tagline": "C Programmer & Systems Engineer in the Making",
-  "location": "Hojai, Assam, India",
-  "bio": "BCA student at Amity University Online, specializing in Software Engineering. Building toward a Backend SDE role at a top tech company. My focus is on deep technical fundamentals — not frameworks or hype. I follow a structured engineering path: C → C++ (DSA) → Java + Spring Boot → Python → Backend Engineer → Distributed Systems → Cloud → MAANG.",
-  "contact": {
-    "email": "sksmarttech48+protfolio@gmail.com",
-    "github": "https://github.com/shiva-kar",
-    "linkedin": "https://www.linkedin.com/in/shiva-kar/",
-    "twitter": "https://x.com/sk_shivakar",
-    "instagram": "https://instagram.com/sk_shivakar",
-    "facebook": "https://facebook.com/SHIVAxKAR"
-  },
-  "nav": [
-    { "label": "About",          "href": "#about" },
-    { "label": "Skills",         "href": "#skills" },
-    { "label": "Education",      "href": "#education" },
-    { "label": "Projects",       "href": "#projects" },
-    { "label": "Certifications", "href": "#certifications" },
-    { "label": "Contact",        "href": "#contact" }
-  ],
-  "stats": [
-    { "value": "C",    "label": "Primary Language" },
-    { "value": "BCA",  "label": "Degree Program"   },
-    { "value": "8.36", "label": "Sem I SGPA"        },
-    { "value": "3",    "label": "Active Projects"   }
-  ],
-  "skills": [
-    {
-      "icon": "⚙️",
-      "category": "Systems Programming",
-      "tags": ["C", "Pointers", "Memory Management", "File I/O", "Bit Manipulation"]
-    },
-    {
-      "icon": "🖥️",
-      "category": "Operating Systems",
-      "tags": ["Linux / Unix", "Processes", "System Calls", "Signals", "Shell"]
-    },
-    {
-      "icon": "📐",
-      "category": "Data Structures & Algorithms",
-      "tags": ["Arrays", "Linked Lists", "Sorting", "Recursion", "Problem Solving"]
-    },
-    {
-      "icon": "🛠️",
-      "category": "Dev Tools",
-      "tags": ["Git", "GCC", "Command-line", "Debugging"]
-    },
-    {
-      "icon": "🧩",
-      "category": "Concepts",
-      "tags": ["Object-Oriented Programming", "Process Management", "Version Control", "OS Internals"]
-    },
-    {
-      "icon": "🚀",
-      "category": "In Progress",
-      "tags": ["C++ (DSA)", "Java", "Spring Boot", "SQL"]
-    }
-  ],
-  "education": [
-    {
-      "degree": "Bachelor of Computer Applications (BCA) — Software Engineering",
-      "school": "Amity University Online · Noida, India",
-      "date": "Jul 2025 – Nov 2028",
-      "note": "SGPA: 8.36 (Sem I)"
-    },
-    {
-      "degree": "Higher Secondary (Class XII) — Science (PCM & CS)",
-      "school": "Deshabandhu Bidyapeeth HS School · Hojai",
-      "date": "Jul 2022 – Mar 2025",
-      "note": "Grade: 68% · Coursework: C++ (Fundamentals), SQL (Basics)"
-    },
-    {
-      "degree": "Secondary Education (Class X)",
-      "school": "Rabindra Bidyalaya High School · Hojai",
-      "date": "Jan 2017 – Mar 2022",
-      "note": "Grade: 80%"
-    }
-  ],
-  "projects": [
-    {
-      "icon": "🗃️",
-      "title": "Custom Garbage Collector",
-      "status": "In Progress",
-      "desc": "Building a garbage collector in C to understand manual memory management, heap internals, and object tracking. Covers mark-and-sweep algorithm, root tracing, and allocation metadata.",
-      "tags": ["C", "Memory Management", "Heap Internals"],
-      "github": "https://github.com/shiva-kar/garbage-collector",
-      "demo": ""
-    },
-    {
-      "icon": "🐚",
-      "title": "Unix-like Shell",
-      "status": "In Progress",
-      "desc": "Building a minimal Unix shell in C with command parsing, execution via fork/exec, and process management. Covers system calls, file descriptors, signal handling, and piping fundamentals.",
-      "tags": ["C", "System Calls", "Process Management"],
-      "github": "https://github.com/shiva-kar/unix-like-shell",
-      "demo": ""
-    },
-    {
-      "icon": "🌿",
-      "title": "Git Implementation",
-      "status": "In Progress",
-      "desc": "Building a simplified Git clone in C to understand content-addressable storage, blob and tree objects, and commit history. Covers file I/O, hashing, and version control internals from scratch.",
-      "tags": ["C", "File I/O", "Hashing"],
-      "github": "https://github.com/shiva-kar/git-implementation",
-      "demo": ""
-    }
-  ],
-  "certifications": [
-    { "name": "Learn C — Skill Path",             "issuer": "Codecademy"                        },
-    { "name": "Computer Science Curriculum",       "issuer": "OSSU (Open Source Society University)" },
-    { "name": "Programming in C and C++ with AI", "issuer": "Internshala Trainings"              }
-  ],
-  "languages": ["English (Professional)", "Hindi (Full Professional)", "Bengali (Native)"],
-  "interests": [
-    "Backend engineering and distributed systems architecture",
-    "Systems programming, memory management, and OS internals",
-    "Algorithms, debugging, and low-level performance optimization",
-    "Cloud and platform infrastructure engineering"
-  ]
+		"name": "Shiva Kar",
+		"tagline": "Systems Programmer & Future Backend SDE",
+		"location": "Hojai, Assam, India",
+		"bio": "BCA student at Amity University Online, building a rigorous foundation in systems programming and transitioning into enterprise Backend Engineering. My focus is on deep technical fundamentals — not frameworks or hype. I follow a structured engineering path: C (Systems) → Java (DSA & Spring Boot Backend) → Python (Scripting) → Backend SDE → Distributed Systems → MAANG.",
+		"contact": {
+			"email": "sksmarttech48+protfolio@gmail.com",
+			"github": "https://github.com/shiva-kar",
+			"linkedin": "https://www.linkedin.com/in/shiva-kar/",
+			"twitter": "https://x.com/sk_shivakar",
+			"instagram": "https://instagram.com/sk_shivakar",
+			"facebook": "https://facebook.com/SHIVAxKAR"
+		},
+		"nav": [
+			{ "label": "About",          "href": "#about" },
+			{ "label": "Skills",         "href": "#skills" },
+			{ "label": "Education",      "href": "#education" },
+			{ "label": "Projects",       "href": "#projects" },
+			{ "label": "Certifications", "href": "#certifications" },
+			{ "label": "Contact",        "href": "#contact" }
+		],
+		"stats": [
+			{ "value": "C",    "label": "Primary Language" },
+			{ "value": "BCA",  "label": "Degree Program"   },
+			{ "value": "8.36", "label": "Sem I SGPA"       },
+			{ "value": "1",    "label": "Active Project"   }
+		],
+		"skills": [
+			{
+				"icon": "⚙️",
+				"category": "Systems Programming",
+				"tags": ["C", "Pointers", "Memory Management", "File I/O", "Bit Manipulation"]
+			},
+			{
+				"icon": "🖥️",
+				"category": "Operating Systems",
+				"tags": ["Linux / Unix", "Processes", "System Calls", "Signals", "Shell"]
+			},
+			{
+				"icon": "📐",
+				"category": "Data Structures & Algorithms",
+				"tags": ["Arrays", "Linked Lists", "Sorting", "Recursion", "Problem Solving"]
+			},
+			{
+				"icon": "🛠️",
+				"category": "Dev Tools",
+				"tags": ["Git", "GCC", "Command-line", "Debugging"]
+			},
+			{
+				"icon": "🧩",
+				"category": "Concepts",
+				"tags": ["Object-Oriented Programming", "Process Management", "Version Control", "OS Internals"]
+			},
+			{
+				"icon": "🚀",
+				"category": "Upcoming (Stage 2)",
+				"tags": ["Java", "Spring Boot", "PostgreSQL", "Docker"]
+			}
+		],
+		"education": [
+			{
+				"degree": "Bachelor of Computer Applications (BCA)",
+				"school": "Amity University Online · Noida, India",
+				"date": "Jul 2025 – Nov 2028",
+				"note": "SGPA: 8.36 (Sem I)"
+			},
+			{
+				"degree": "Higher Secondary (Class XII) — Science (PCM & CS)",
+				"school": "Deshabandhu Bidyapeeth HS School · Hojai",
+				"date": "Jul 2022 – Mar 2025",
+				"note": "Grade: 68% · Coursework: C++ (Fundamentals), SQL (Basics)"
+			},
+			{
+				"degree": "Secondary Education (Class X)",
+				"school": "Rabindra Bidyalaya High School · Hojai",
+				"date": "Jan 2017 – Mar 2022",
+				"note": "Grade: 80%"
+			}
+		],
+		"projects": [
+			{
+				"icon": "🐚",
+				"title": "Unix-like Shell",
+				"status": "Active Development",
+				"desc": "Building a minimal Unix shell in C with command parsing, execution via fork/exec, and process management. Covers system calls, file descriptors, signal handling, and piping fundamentals.",
+				"tags": ["C", "System Calls", "Process Management"],
+				"github": "https://github.com/shiva-kar/unix-like-shell",
+				"demo": ""
+			},
+			{
+				"icon": "🌐",
+				"title": "Custom HTTP Server",
+				"status": "Upcoming",
+				"desc": "Implementing a basic web server using raw POSIX sockets to serve static files. Bridging the gap between operating systems and backend web infrastructure.",
+				"tags": ["C", "Networking", "Sockets"],
+				"github": "https://github.com/shiva-kar/Custom-HTTP-Server-in-C",
+				"demo": ""
+			},
+			{
+				"icon": "🌿",
+				"title": "Git Implementation (Core)",
+				"status": "Upcoming",
+				"desc": "Building a simplified Git clone in C to understand content-addressable storage, blob and tree objects, and commit history. Covers file I/O, hashing, and version control internals from scratch.",
+				"tags": ["C", "File I/O", "Hashing"],
+				"github": "https://github.com/shiva-kar/git-implementation",
+				"demo": ""
+			}
+		],
+		"certifications": [
+			{ "name": "CS50x: Introduction to Computer Science", "issuer": "HarvardX" },
+			{ "name": "CS50p: Programming with Python", "issuer": "HarvardX" },
+			{ "name": "CS50 SQL: Databases with SQL", "issuer": "HarvardX" }
+		],
+		"languages": ["English (Professional)", "Hindi (Full Professional)", "Bengali (Native)"],
+		"interests": [
+			"Backend engineering and distributed systems architecture",
+			"Systems programming, memory management, and OS internals",
+			"Algorithms, debugging, and low-level performance optimization",
+			"Cloud and platform infrastructure engineering"
+		]
 };
 
 function buildNav(nav) {
