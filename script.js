@@ -86,6 +86,37 @@ const DATA = {
   ]
 };
 
+function initTheme() {
+  const toggleBtn = document.getElementById('theme-toggle');
+  const icon = toggleBtn.querySelector('i');
+  
+  // Check local storage or system preference
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+  let currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+  
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      icon.className = 'fa-solid fa-sun';
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      icon.className = 'fa-solid fa-moon';
+    }
+    localStorage.setItem('theme', theme);
+  }
+
+  // Initial apply
+  applyTheme(currentTheme);
+
+  // Toggle on click
+  toggleBtn.addEventListener('click', () => {
+    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(currentTheme);
+  });
+}
+
 function buildNav(nav) {
   const ul = document.getElementById('nav-links');
   nav.forEach(item => {
@@ -167,13 +198,16 @@ function buildProjects(projects) {
     div.className = 'project-card';
     div.innerHTML = `
       <div class="project-header">
-        <h3 class="project-name">
-          <a href="${p.github}" target="_blank" rel="noopener">${p.title}</a>
-        </h3>
+        <h3 class="project-name">${p.title}</h3>
         <span class="project-status">${p.status}</span>
       </div>
       <p class="project-desc">${p.desc}</p>
-      <div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      <div class="project-footer">
+        <div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        <a href="${p.github}" target="_blank" rel="noopener" class="project-link-btn" title="View Source on GitHub">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+      </div>
     `;
     grid.appendChild(div);
   });
@@ -228,6 +262,7 @@ function initScrollSpy() {
 }
 
 function init(data) {
+  initTheme();
   buildNav(data.nav);
   buildHero(data);
   buildAbout(data);
