@@ -287,7 +287,7 @@ section:last-of-type {
   gap: 1.5rem;
 }
 
-.skill-category {
+.skill-tree-category {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -295,28 +295,25 @@ section:last-of-type {
   transition: background-color var(--transition), border-color var(--transition);
 }
 
-.skill-cat-name {
+.tree-root {
   font-weight: 600;
   font-size: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: var(--text);
 }
 
-.skill-tags {
+.tree-item {
+  font-family: var(--mono);
+  color: var(--text-muted);
+  font-size: 0.85rem;
   display: flex;
-  flex-wrap: wrap;
   gap: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
-.tag {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  border: 1px solid var(--tag-border);
-  color: var(--text);
-  background: var(--tag-bg);
+.tree-branch {
+  color: var(--border);
+  user-select: none;
 }
 
 /* ===== Projects ===== */
@@ -439,6 +436,38 @@ section:last-of-type {
   font-family: var(--mono);
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+.edu-coursework {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+
+.edu-coursework strong {
+  color: var(--text);
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+.coursework-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.coursework-list li {
+  color: var(--text-muted);
+}
+
+.coursework-list li::after {
+  content: "•";
+  margin-left: 0.5rem;
+  color: var(--border);
+}
+
+.coursework-list li:last-child::after {
+  content: "";
 }
 
 /* ===== Certifications ===== */

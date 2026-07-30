@@ -2,14 +2,11 @@ const DATA = {
   "name": "Shiva Kar",
   "tagline": "BCA Student",
   "location": "Hojai, Assam, India",
-  "bio": "BCA student currently learning C, Java, and backend development through personal projects. My current goal is to build a strong foundation in computer science and backend systems.",
+  "bio": "Second-year BCA student at Amity University Online (expected Jan 2028). I am building a foundation in software engineering with a focus on backend systems. Currently learning C for low-level fundamentals and Java/Spring Boot for backend development. As a hobby, I make games in Godot and Unity using GDScript and C#.",
   "contact": {
     "email": "sksmarttech48+protfolio@gmail.com",
     "github": "https://github.com/shiva-kar",
-    "linkedin": "https://www.linkedin.com/in/shiva-kar/",
-    "twitter": "https://x.com/sk_shivakar",
-    "instagram": "https://instagram.com/sk_shivakar",
-    "facebook": "https://facebook.com/SHIVAxKAR"
+    "linkedin": "https://www.linkedin.com/in/shiva-kar/"
   },
   "nav": [
     { "label": "About", "href": "#about" },
@@ -18,56 +15,58 @@ const DATA = {
     { "label": "Projects", "href": "#projects" },
     { "label": "Education", "href": "#education" }
   ],
-  "focus": {
-    "learning": ["Java", "Spring Boot", "SQL", "DSA"],
-    "building": ["Unix Shell (C)", "Backend API (Spring Boot)"],
-    "next": ["Redis", "Docker", "Kafka"]
-  },
+  "focus": [
+    "Java & Spring Boot",
+    "Data Structures & Algorithms (Java)",
+    "Systems Programming in C",
+    "Linux & Git",
+    "SQL & PostgreSQL"
+  ],
   "skills": [
     {
-      "category": "Languages",
-      "tags": ["C", "Java", "Python"]
+      "name": "C",
+      "evidence": ["Unix Shell", "HTTP Server"]
     },
     {
-      "category": "Backend",
-      "tags": ["Spring Boot (Learning)"]
+      "name": "Java",
+      "evidence": ["Student Management API"]
     },
     {
-      "category": "Database",
-      "tags": ["SQL", "PostgreSQL"]
+      "name": "SQL",
+      "evidence": ["PostgreSQL Integration"]
     },
     {
-      "category": "Tools",
-      "tags": ["Git", "Linux", "VS Code", "IntelliJ"]
-    },
-    {
-      "category": "Learning",
-      "tags": ["Docker", "Redis"]
-    },
-    {
-      "category": "Concepts",
-      "tags": ["OOP", "DSA", "Operating Systems", "Computer Networks"]
+      "name": "Linux",
+      "evidence": ["Shell Programming", "Process Management"]
     }
   ],
   "education": [
     {
       "degree": "BCA",
       "school": "Amity University Online",
-      "date": "Expected 2028"
+      "date": "Expected 2028",
+      "coursework": [
+        "Data Structures & Algorithms",
+        "Operating Systems",
+        "Database Management Systems",
+        "Computer Networks",
+        "Object-Oriented Programming",
+        "Software Engineering"
+      ]
     }
   ],
   "projects": [
     {
       "title": "Unix Shell",
       "status": "In Progress",
-      "desc": "A small Unix shell written in C supporting process creation, piping, redirection and basic built-in commands.",
+      "desc": "Building a POSIX-style shell to understand process creation, command parsing, file descriptors, pipes, and Unix system calls.",
       "tags": ["C", "Linux API"],
       "github": "https://github.com/shiva-kar/unix-like-shell"
     },
     {
       "title": "Custom HTTP Server",
       "status": "In Progress",
-      "desc": "A basic web server using raw POSIX sockets to serve static files.",
+      "desc": "Building an HTTP/1.1 server from scratch using TCP sockets to understand networking, request parsing, and concurrent connection handling.",
       "tags": ["C", "Sockets", "Networking"],
       "github": "https://github.com/shiva-kar/Custom-HTTP-Server-in-C"
     },
@@ -77,6 +76,13 @@ const DATA = {
       "desc": "A simplified Git clone in C to understand content-addressable storage, blob and tree objects.",
       "tags": ["C", "File I/O"],
       "github": "https://github.com/shiva-kar/git-implementation"
+    },
+    {
+      "title": "RESTful Student Management API",
+      "status": "Planned",
+      "desc": "A Spring Boot backend exposing CRUD operations, JWT-based authentication, and PostgreSQL persistence. Designed to demonstrate REST API design, database integration, and backend architecture.",
+      "tags": ["Java", "Spring Boot", "PostgreSQL"],
+      "github": ""
     }
   ],
   "certifications": [
@@ -142,34 +148,31 @@ function buildAbout(data) {
 
 function buildFocus(focus) {
   const grid = document.getElementById('focus-grid');
-  
-  const sections = [
-    { title: "Learning", items: focus.learning },
-    { title: "Currently Building", items: focus.building },
-    { title: "Next", items: focus.next }
-  ];
-
-  sections.forEach(sec => {
-    const div = document.createElement('div');
-    div.className = 'focus-column';
-    div.innerHTML = `
-      <h3 class="focus-title">${sec.title}</h3>
-      <ul class="focus-list">
-        ${sec.items.map(item => `<li>${item}</li>`).join('')}
-      </ul>
-    `;
-    grid.appendChild(div);
-  });
+  // Since focus is now a simple array, we render it as a single list
+  const div = document.createElement('div');
+  div.className = 'focus-column';
+  div.innerHTML = `
+    <ul class="focus-list">
+      ${focus.map(item => `<li>${item}</li>`).join('')}
+    </ul>
+  `;
+  grid.appendChild(div);
 }
 
 function buildSkills(skills) {
   const grid = document.getElementById('skills-grid');
   skills.forEach(s => {
     const div = document.createElement('div');
-    div.className = 'skill-category';
+    div.className = 'skill-tree-category';
+    
+    // Create the tree structure text
+    const evidenceHtml = s.evidence.map(ev => {
+      return `<div class="tree-item"><span class="tree-branch">├──</span> ${ev}</div>`;
+    }).join('');
+
     div.innerHTML = `
-      <div class="skill-cat-name">${s.category}</div>
-      <div class="skill-tags">${s.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      <div class="tree-root">${s.name}</div>
+      ${evidenceHtml}
     `;
     grid.appendChild(div);
   });
@@ -180,10 +183,24 @@ function buildEducation(education) {
   education.forEach(e => {
     const div = document.createElement('div');
     div.className = 'edu-card';
+    
+    let courseworkHtml = '';
+    if (e.coursework && e.coursework.length > 0) {
+      courseworkHtml = `
+        <div class="edu-coursework">
+          <strong>Relevant Coursework:</strong>
+          <ul class="coursework-list">
+            ${e.coursework.map(c => `<li>${c}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
     div.innerHTML = `
       <div class="edu-left">
         <h3 class="edu-degree">${e.degree}</h3>
         <p class="edu-school">${e.school}</p>
+        ${courseworkHtml}
       </div>
       <span class="edu-date">${e.date}</span>
     `;
@@ -196,17 +213,28 @@ function buildProjects(projects) {
   projects.forEach(p => {
     const div = document.createElement('div');
     div.className = 'project-card';
+    
+    // Conditionally render the GitHub button
+    const githubBtn = p.github 
+      ? `<a href="${p.github}" target="_blank" rel="noopener" class="project-link-btn" title="View Source on GitHub">
+           <i class="fa-brands fa-github"></i> GitHub
+         </a>`
+      : '';
+      
+    // Handle the title link based on whether there's a github link
+    const titleHtml = p.github 
+      ? `<a href="${p.github}" target="_blank" rel="noopener">${p.title}</a>`
+      : p.title;
+
     div.innerHTML = `
       <div class="project-header">
-        <h3 class="project-name">${p.title}</h3>
+        <h3 class="project-name">${titleHtml}</h3>
         <span class="project-status">${p.status}</span>
       </div>
       <p class="project-desc">${p.desc}</p>
       <div class="project-footer">
         <div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-        <a href="${p.github}" target="_blank" rel="noopener" class="project-link-btn" title="View Source on GitHub">
-          <i class="fa-brands fa-github"></i> GitHub
-        </a>
+        ${githubBtn}
       </div>
     `;
     grid.appendChild(div);
@@ -228,11 +256,11 @@ function buildCertifications(certs) {
 
 function buildContact(contact) {
   const list = document.getElementById('contact-links');
-  const items = [
-    { icon: 'fa-solid fa-envelope',   label: contact.email,                  href: `mailto:${contact.email}` },
-    { icon: 'fa-brands fa-github',    label: 'github.com/shiva-kar',         href: contact.github },
-    { icon: 'fa-brands fa-linkedin',  label: 'linkedin.com/in/shiva-kar',    href: contact.linkedin }
-  ];
+  const items = [];
+  if (contact.email) items.push({ icon: 'fa-solid fa-envelope', label: contact.email, href: `mailto:${contact.email}` });
+  if (contact.github) items.push({ icon: 'fa-brands fa-github', label: contact.github.replace('https://', ''), href: contact.github });
+  if (contact.linkedin) items.push({ icon: 'fa-brands fa-linkedin', label: contact.linkedin.replace('https://www.', '').replace(/\/$/, ''), href: contact.linkedin });
+  
   items.forEach(item => {
     const a = document.createElement('a');
     a.className = 'contact-link-item';
