@@ -1,104 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Shiva Kar — BCA student, backend development learner." />
-  <meta name="author" content="Shiva Kar" />
-  <title>Shiva Kar — Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬛</text></svg>" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A personal homepage for Shiva Kar: backend development, systems programming, games, and side projects.">
+    <meta name="author" content="Shiva Kar">
+    <title>Shiva Kar — Home</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23242923'/><text x='50' y='67' font-family='Arial,sans-serif' font-weight='800' font-size='48' text-anchor='middle' fill='%23fffefa'>SK<tspan fill='%2339745a'>.</tspan></text></svg>">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="styles.css" rel="stylesheet">
+    <script src="script.js" defer></script>
 </head>
-<body>
-
-  <nav id="navbar">
-    <div class="nav-inner">
-      <span class="nav-logo">shiva-kar</span>
-      <ul class="nav-links" id="nav-links"></ul>
-      <div class="nav-actions">
-        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
-          <i class="fa-solid fa-moon"></i>
-        </button>
-        <a href="Shiva_Kar_Resume.pdf" target="_blank" class="btn btn-outline" style="font-size:0.82rem;padding:0.4rem 1rem;">Resume</a>
-      </div>
-    </div>
-  </nav>
-
-  <section id="hero">
-    <div class="container">
-      <div class="hero-content">
-        <p class="hero-greeting" id="hero-location"></p>
-        <h1 class="hero-name" id="hero-name"></h1>
-        <p class="hero-tagline" id="hero-tagline"></p>
-        <p class="hero-desc" id="hero-bio"></p>
-        <div class="hero-btns">
-          <a href="#projects" class="btn btn-primary">Projects</a>
-          <a href="#contact" class="btn btn-outline">Contact</a>
+<body data-page="home">
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Shiva Kar homepage"><span id="brand-text" data-editable="meta.brand">SK</span><span>.</span></a>
+            <div class="header-right">
+                <nav class="site-nav" aria-label="Main navigation">
+                    <a class="active" href="index.html" aria-current="page">Home</a>
+                    <a href="interests.html">Interests</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="about.html">About</a>
+                </nav>
+                <div class="header-tools" aria-label="Interactive tools">
+                    <button type="button" class="tool-btn" id="open-terminal-btn" title="Open interactive SXSHELL terminal (Ctrl+K)">
+                        <span class="mono-icon">&gt;_</span> <span>Shell</span>
+                    </button>
+                    <button type="button" class="tool-btn" id="open-studio-btn" title="Interactive Site Editor (Ctrl+E)">
+                        <span class="mono-icon">✎</span> <span>Edit</span>
+                    </button>
+                    <button type="button" class="tool-btn" id="theme-toggle-btn" aria-label="Toggle color theme" title="Switch light/dark theme">
+                        <span id="theme-icon">☾</span>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title">About</h2>
-      <div class="about-text" id="about-text"></div>
-    </div>
-  </section>
+    <main class="container page-content">
+        <section class="hero" aria-labelledby="intro-title">
+            <p class="eyebrow">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span id="hero-eyebrow" data-editable="meta.eyebrow">BCA student · Assam, India</span>
+            </p>
+            <h1 id="intro-title">
+                <span id="hero-headline-prefix" data-editable="home.headlinePrefix">Hey, I’m Shiva.</span><br>
+                <span class="accent-text" id="hero-headline-accent" data-editable="home.headlineAccent">Curious about how things work.</span>
+            </h1>
+            <p class="intro" id="hero-intro" data-editable="home.intro">I study computer applications and spend a lot of my free time building things with code. Lately, that means Java backend development, C, and learning what happens under the hood.</p>
+            <div class="hero-actions">
+                <a class="btn btn-dark" id="hero-primary-cta" href="projects.html">See what I’m building</a>
+                <a class="btn btn-outline-dark" id="hero-resume-cta" href="Shiva_Kar_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume PDF <span aria-hidden="true">↗</span></a>
+                <a class="text-link" id="hero-secondary-cta" href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">Find me on GitHub <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="note">
+                <span class="note-mark" aria-hidden="true">✳</span>
+                <p id="hero-note" data-editable="home.note">My favourite kind of learning is building something, hitting a bug, and figuring out <em>why</em>.</p>
+            </div>
+        </section>
 
-  <section id="focus">
-    <div class="container">
-      <h2 class="section-title">Current Focus</h2>
-      <div class="focus-grid" id="focus-grid"></div>
-    </div>
-  </section>
+        <section class="section-block" aria-labelledby="interests-title">
+            <div class="section-heading">
+                <p class="section-kicker" id="home-cards-kicker" data-editable="home.cardsKicker">A FEW THINGS I LIKE</p>
+                <h2 id="interests-title" data-editable="home.cardsTitle">Curiosity, in a few directions</h2>
+            </div>
+            <div class="row g-3" id="home-cards-grid">
+                <div class="col-md-4">
+                    <article class="card interest-card h-100">
+                        <div class="card-body">
+                            <span class="card-number" data-editable="home.cards.0.number">01 / BUILD</span>
+                            <h3 class="card-title" data-editable="home.cards.0.title">Backend things</h3>
+                            <p class="card-text" data-editable="home.cards.0.text">Java, APIs, databases, and learning to build software that behaves well beyond the happy path.</p>
+                            <a href="interests.html#backend" class="card-link">More on this ↗</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4">
+                    <article class="card interest-card h-100">
+                        <div class="card-body">
+                            <span class="card-number" data-editable="home.cards.1.number">02 / UNPACK</span>
+                            <h3 class="card-title" data-editable="home.cards.1.title">Under the hood</h3>
+                            <p class="card-text" data-editable="home.cards.1.text">C, processes, memory, file descriptors, and the details that make computers work.</p>
+                            <a href="interests.html#systems" class="card-link">More on this ↗</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4">
+                    <article class="card interest-card h-100">
+                        <div class="card-body">
+                            <span class="card-number" data-editable="home.cards.2.number">03 / PLAY</span>
+                            <h3 class="card-title" data-editable="home.cards.2.title">Game development</h3>
+                            <p class="card-text" data-editable="home.cards.2.text">Making small game ideas in Godot and Unity, and experimenting with how they feel to play.</p>
+                            <a href="interests.html#gamedev" class="card-link">More on this ↗</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-  <section id="skills">
-    <div class="container">
-      <h2 class="section-title">Skills</h2>
-      <div class="skills-grid" id="skills-grid"></div>
-    </div>
-  </section>
-  
-  <section id="projects">
-    <div class="container">
-      <h2 class="section-title">Projects</h2>
-      <div class="projects-grid" id="projects-grid"></div>
-    </div>
-  </section>
+        <section class="fun-fact" aria-labelledby="fact-title">
+            <div>
+                <div class="fun-fact-header">
+                    <p class="section-kicker">A SMALL SIDE NOTE</p>
+                    <span class="fact-counter" id="fact-counter">01 / 07</span>
+                </div>
+                <h2 id="fact-title">One more thing…</h2>
+                <p id="fact-text" aria-live="polite">I built a Unix-like shell (SXSHELL) in C to understand more about the terminal I use every day.</p>
+            </div>
+            <div class="fact-actions">
+                <button id="fact-button" class="btn btn-outline-dark" type="button">Another fact ↻</button>
+            </div>
+        </section>
+    </main>
 
-  <section id="education">
-    <div class="container">
-      <h2 class="section-title">Education</h2>
-      <div class="edu-list" id="edu-list"></div>
-    </div>
-  </section>
-
-  <section id="certifications">
-    <div class="container">
-      <h2 class="section-title">Certifications</h2>
-      <div class="cert-list" id="cert-list"></div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Contact</h2>
-      <div class="contact-inner">
-        <div class="contact-text">
-          <div class="contact-links" id="contact-links"></div>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>Made by Shiva, with HTML, CSS, JavaScript, and a little curiosity.</p>
+            <div class="footer-links">
+                <a href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/shiva-kar" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="Shiva_Kar_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                <a href="about.html">About</a>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <p>Built by <a href="https://github.com/shiva-kar">Shiva Kar</a></p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

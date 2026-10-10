@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A little more about Shiva Kar, a BCA student interested in software engineering, Java backend systems, and C.">
+    <meta name="author" content="Shiva Kar">
+    <title>Shiva Kar — About</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23242923'/><text x='50' y='67' font-family='Arial,sans-serif' font-weight='800' font-size='48' text-anchor='middle' fill='%23fffefa'>SK<tspan fill='%2339745a'>.</tspan></text></svg>">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="styles.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body data-page="about">
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Shiva Kar homepage"><span id="brand-text" data-editable="meta.brand">SK</span><span>.</span></a>
+            <div class="header-right">
+                <nav class="site-nav" aria-label="Main navigation">
+                    <a href="index.html">Home</a>
+                    <a href="interests.html">Interests</a>
+                    <a href="projects.html">Projects</a>
+                    <a class="active" href="about.html" aria-current="page">About</a>
+                </nav>
+                <div class="header-tools" aria-label="Interactive tools">
+                    <button type="button" class="tool-btn" id="open-terminal-btn" title="Open interactive SXSHELL terminal (Ctrl+K)">
+                        <span class="mono-icon">&gt;_</span> <span>Shell</span>
+                    </button>
+                    <button type="button" class="tool-btn" id="open-studio-btn" title="Interactive Site Editor (Ctrl+E)">
+                        <span class="mono-icon">✎</span> <span>Edit</span>
+                    </button>
+                    <button type="button" class="tool-btn" id="theme-toggle-btn" aria-label="Toggle color theme" title="Switch light/dark theme">
+                        <span id="theme-icon">☾</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container page-content inner-page">
+        <section class="page-intro">
+            <p class="eyebrow" id="about-eyebrow" data-editable="about.eyebrow">A LITTLE CONTEXT</p>
+            <h1><span id="about-title" data-editable="about.title">Learning by making things</span><span class="accent-text">.</span></h1>
+            <p class="intro" id="about-intro" data-editable="about.intro">I’m Shiva, a Bachelor of Computer Applications student at Amity University Online. This page is a small introduction, along with my academic background and current focus.</p>
+        </section>
+
+        <section class="section-block about-layout" aria-labelledby="approach-title">
+            <div>
+                <p class="section-kicker" data-editable="about.approachKicker">HOW I LIKE TO LEARN</p>
+                <h2 id="approach-title" data-editable="about.approachTitle">Build first. Understand deeply.</h2>
+            </div>
+            <div class="about-copy" id="about-paragraphs">
+                <p data-editable="about.approachParagraphs.0">I enjoy projects that force me to look beyond the surface. Building SXSHELL made me think carefully about parsing input, launching processes, handling file descriptors, and dealing with errors.</p>
+                <p data-editable="about.approachParagraphs.1">My current professional direction is Java backend development. Alongside it, systems programming helps me strengthen my understanding of what software depends on underneath.</p>
+                <p data-editable="about.approachParagraphs.2">I also make games as a creative outlet. Switching between backend code, low-level systems work, and game development gives me different ways to solve problems.</p>
+            </div>
+        </section>
+
+        <section class="section-block" aria-labelledby="currently-title">
+            <div class="section-heading">
+                <p class="section-kicker" data-editable="about.currentlyKicker">RIGHT NOW</p>
+                <h2 id="currently-title" data-editable="about.currentlyTitle">What I’m spending time on</h2>
+            </div>
+            <ul class="list-group simple-list" id="about-currently-list">
+                <li class="list-group-item"><strong>Java backend:</strong> strengthening Java, SQL, and Spring Boot fundamentals.</li>
+                <li class="list-group-item"><strong>Systems programming:</strong> building with C and exploring POSIX interfaces, memory, and networking.</li>
+                <li class="list-group-item"><strong>Data structures &amp; algorithms:</strong> practicing problem-solving and algorithmic thinking in C++ and Java.</li>
+                <li class="list-group-item"><strong>Learning in public:</strong> keeping projects, experiments, and source code available on GitHub.</li>
+            </ul>
+        </section>
+
+        <section class="section-block" aria-labelledby="background-title">
+            <div class="section-heading-row">
+                <div>
+                    <p class="section-kicker">BACKGROUND &amp; CREDENTIALS</p>
+                    <h2 id="background-title">Education &amp; certifications</h2>
+                </div>
+                <div class="about-tabs" role="tablist" aria-label="Background tabs">
+                    <button type="button" class="about-tab-btn active" data-tab="edu-pane" role="tab" aria-selected="true">Education</button>
+                    <button type="button" class="about-tab-btn" data-tab="cert-pane" role="tab" aria-selected="false">Certifications</button>
+                    <button type="button" class="about-tab-btn" data-tab="contact-pane" role="tab" aria-selected="false">Direct Contact</button>
+                </div>
+            </div>
+
+            <div class="about-tab-pane active" id="edu-pane" role="tabpanel">
+                <div id="about-edu-list">
+                    <div class="edu-item">
+                        <div class="edu-top">
+                            <h3 class="edu-degree">Bachelor of Computer Applications (BCA) — Software Engineering</h3>
+                            <span class="edu-date">2025 – 2028 (Expected)</span>
+                        </div>
+                        <p class="edu-school">Amity University Online · SGPA: 8.36 (Sem I)</p>
+                        <div class="edu-coursework">
+                            <span>Data Structures &amp; Algorithms</span>
+                            <span>Operating Systems</span>
+                            <span>Database Management Systems</span>
+                            <span>Computer Networks</span>
+                            <span>Object-Oriented Programming</span>
+                            <span>Software Engineering</span>
+                        </div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-top">
+                            <h3 class="edu-degree">Higher Secondary (Class XII) — Science (PCM &amp; CS)</h3>
+                            <span class="edu-date">Completed 2025</span>
+                        </div>
+                        <p class="edu-school">Deshabandhu Bidyapeeth HS School (Assam)</p>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-top">
+                            <h3 class="edu-degree">Secondary (Class X)</h3>
+                            <span class="edu-date">Completed 2022</span>
+                        </div>
+                        <p class="edu-school">Rabindra Bidyalaya High School, Hojai</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-tab-pane" id="cert-pane" role="tabpanel">
+                <div class="cert-grid" id="about-cert-list">
+                    <div class="cert-box">
+                        <h3>CS50x: Introduction to Computer Science</h3>
+                        <p>HarvardX</p>
+                    </div>
+                    <div class="cert-box">
+                        <h3>CS50 SQL: Databases with SQL</h3>
+                        <p>HarvardX</p>
+                    </div>
+                    <div class="cert-box">
+                        <h3>Learn C — Skill Path</h3>
+                        <p>Codecademy</p>
+                    </div>
+                    <div class="cert-box">
+                        <h3>Programming in C and C++</h3>
+                        <p>Internshala</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-tab-pane" id="contact-pane" role="tabpanel">
+                <div class="edu-item">
+                    <div class="edu-top">
+                        <h3 class="edu-degree">Reach out directly</h3>
+                        <span class="edu-date">Hojai, Assam, India</span>
+                    </div>
+                    <p class="edu-school">Open to software engineering internships, backend/systems discussions, and collaborative projects.</p>
+                    <div class="cta-links mt-3">
+                        <button type="button" class="btn btn-dark" id="copy-email-btn" data-email="sksmarttech48+protfolio@gmail.com">Copy Email Address</button>
+                        <a class="btn btn-outline-dark" href="mailto:sksmarttech48+protfolio@gmail.com">Send Email ↗</a>
+                        <a class="btn btn-outline-dark" href="Shiva_Kar_Resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume PDF ↗</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="simple-cta">
+            <h2>Say hello or browse the code.</h2>
+            <p>I’m easiest to find through my public profiles.</p>
+            <div class="cta-links">
+                <a class="btn btn-dark" href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                <a class="btn btn-outline-dark" href="https://linkedin.com/in/shiva-kar" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                <a class="btn btn-outline-dark" href="Shiva_Kar_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume PDF ↗</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>Made by Shiva, with HTML, CSS, JavaScript, and a little curiosity.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="interests.html">Interests</a>
+                <a href="projects.html">Projects</a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

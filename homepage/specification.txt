@@ -1,0 +1,37 @@
+CS50 Homepage — Specification
+
+HTML pages
+- index.html: Home page with introduction, interest cards, project links, and an interactive fact button.
+- interests.html: Details on backend development, systems programming, and game development.
+- projects.html: Project descriptions and links to the source repositories.
+- about.html: A short personal introduction and current learning focus.
+- Every page has the same navigation links to all four local pages.
+
+10 HTML tags used (excluding <html>, <head>, <body>, and <title>)
+1. <header> — contains the site brand and primary navigation.
+2. <nav> — links between Home, Interests, Projects, and About.
+3. <main> — wraps the main content of each page.
+4. <section> — groups related content into clear sections.
+5. <article> — contains standalone interest and project cards.
+6. <h1> — provides the main heading on each page.
+7. <h2> — labels major sections.
+8. <p> — presents introductions and descriptive text.
+9. <a> — links pages, projects, and public profiles.
+10. <footer> — contains secondary navigation and site attribution.
+
+CSS properties used
+- color — sets text and link colors.
+- background — sets the page, card, and note backgrounds.
+- margin — controls spacing around sections and text.
+- padding — controls spacing inside cards and content blocks.
+- font-family — sets a readable system font stack.
+- border — separates cards, sections, and navigation areas.
+- display — creates flex and grid layouts.
+- line-height — improves text readability.
+- grid-template-columns — makes card and detail layouts responsive.
+
+JavaScript
+The script adds an interactive “Another fact” button on the home page that cycles through short facts; it checks that the button exists before attaching the event listener so it can safely be included on all pages.
+
+Bootstrap
+Bootstrap 5.3.8 is included through its CDN; the site uses its responsive container/grid system, cards, buttons, badges, and list-group component, while styles.css provides the custom visual design and mobile adjustments.

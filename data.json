@@ -1,93 +1,306 @@
 {
-  "name": "Shiva Kar",
-  "tagline": "BCA Student",
-  "location": "Hojai, Assam, India",
-  "bio": "Second-year BCA student at Amity University Online (expected Jan 2028). I am building a foundation in software engineering with a focus on backend systems. Currently learning C for low-level fundamentals and Java/Spring Boot for backend development. As a hobby, I make games in Godot and Unity using GDScript and C#.",
+  "meta": {
+    "brand": "SK",
+    "name": "Shiva Kar",
+    "eyebrow": "BCA student · Assam, India",
+    "location": "Hojai, Assam, India",
+    "accentColor": "#39745a",
+    "resumeUrl": "Shiva_Kar_Resume.pdf"
+  },
   "contact": {
     "email": "sksmarttech48+protfolio@gmail.com",
     "github": "https://github.com/shiva-kar",
-    "linkedin": "https://www.linkedin.com/in/shiva-kar/"
+    "linkedin": "https://linkedin.com/in/shiva-kar",
+    "twitter": "https://x.com/sk_shivakar",
+    "portfolio": "https://shivakar.me"
   },
-  "nav": [
-    { "label": "About", "href": "#about" },
-    { "label": "Focus", "href": "#focus" },
-    { "label": "Skills", "href": "#skills" },
-    { "label": "Projects", "href": "#projects" },
-    { "label": "Education", "href": "#education" }
+  "home": {
+    "headlinePrefix": "Hey, I’m Shiva.",
+    "headlineAccent": "Curious about how things work.",
+    "intro": "I study computer applications and spend a lot of my free time building things with code. Lately, that means Java backend development, C, and learning what happens under the hood.",
+    "primaryCta": {
+      "label": "See what I’m building",
+      "href": "projects.html"
+    },
+    "secondaryCta": {
+      "label": "Find me on GitHub",
+      "href": "https://github.com/shiva-kar"
+    },
+    "note": "My favourite kind of learning is building something, hitting a bug, and figuring out why.",
+    "cardsKicker": "A FEW THINGS I LIKE",
+    "cardsTitle": "Curiosity, in a few directions",
+    "cards": [
+      {
+        "number": "01 / BUILD",
+        "title": "Backend things",
+        "text": "Java, APIs, databases, and learning to build software that behaves well beyond the happy path.",
+        "linkText": "More on this ↗",
+        "href": "interests.html#backend"
+      },
+      {
+        "number": "02 / UNPACK",
+        "title": "Under the hood",
+        "text": "C, processes, memory, file descriptors, and the details that make computers work.",
+        "linkText": "More on this ↗",
+        "href": "interests.html#systems"
+      },
+      {
+        "number": "03 / PLAY",
+        "title": "Game development",
+        "text": "Making small game ideas in Godot and Unity, and experimenting with how they feel to play.",
+        "linkText": "More on this ↗",
+        "href": "interests.html#gamedev"
+      }
+    ]
+  },
+  "facts": [
+    "I built a Unix-like shell (SXSHELL) in C to understand more about the terminal I use every day.",
+    "I enjoy game development and experimenting with gameplay ideas in Godot and Unity.",
+    "I’m fascinated by the connection between high-level backend engineering and low-level systems programming.",
+    "A good debugging session with GDB or Valgrind teaches me more than a dozen pages of notes.",
+    "I like projects that make me ask what the operating system is doing behind the scenes.",
+    "I’m currently building a custom HTTP/1.1 server using raw TCP sockets in C.",
+    "Switching between Java Spring Boot, C systems code, and game engines gives me fresh perspectives on software design."
   ],
-  "focus": [
-    "Java & Spring Boot",
-    "Data Structures & Algorithms (Java)",
-    "Systems Programming in C",
-    "Linux & Git",
-    "SQL & PostgreSQL"
-  ],
-  "skills": [
-    {
-      "name": "C",
-      "evidence": ["Unix Shell", "HTTP Server"]
-    },
-    {
-      "name": "Java",
-      "evidence": ["Student Management API"]
-    },
-    {
-      "name": "SQL",
-      "evidence": ["PostgreSQL Integration"]
-    },
-    {
-      "name": "Linux",
-      "evidence": ["Shell Programming", "Process Management"]
-    }
-  ],
-  "education": [
-    {
-      "degree": "BCA",
-      "school": "Amity University Online",
-      "date": "Expected 2028",
-      "coursework": [
-        "Data Structures & Algorithms",
-        "Operating Systems",
-        "Database Management Systems",
-        "Computer Networks",
-        "Object-Oriented Programming",
-        "Software Engineering"
-      ]
-    }
-  ],
-  "projects": [
-    {
-      "title": "Unix Shell",
-      "status": "In Progress",
-      "desc": "Building a POSIX-style shell to understand process creation, command parsing, file descriptors, pipes, and Unix system calls.",
-      "tags": ["C", "Linux API"],
-      "github": "https://github.com/shiva-kar/unix-like-shell"
-    },
-    {
-      "title": "Custom HTTP Server",
-      "status": "In Progress",
-      "desc": "Building an HTTP/1.1 server from scratch using TCP sockets to understand networking, request parsing, and concurrent connection handling.",
-      "tags": ["C", "Sockets", "Networking"],
-      "github": "https://github.com/shiva-kar/Custom-HTTP-Server-in-C"
-    },
-    {
-      "title": "Git Implementation",
-      "status": "In Progress",
-      "desc": "A simplified Git clone in C to understand content-addressable storage, blob and tree objects.",
-      "tags": ["C", "File I/O"],
-      "github": "https://github.com/shiva-kar/git-implementation"
-    },
-    {
-      "title": "RESTful Student Management API",
-      "status": "Planned",
-      "desc": "A Spring Boot backend exposing CRUD operations, JWT-based authentication, and PostgreSQL persistence. Designed to demonstrate REST API design, database integration, and backend architecture.",
-      "tags": ["Java", "Spring Boot", "PostgreSQL"],
-      "github": ""
-    }
-  ],
-  "certifications": [
-    { "name": "CS50x: Introduction to Computer Science", "issuer": "HarvardX" },
-    { "name": "CS50p: Programming with Python", "issuer": "HarvardX" },
-    { "name": "CS50 SQL: Databases with SQL", "issuer": "HarvardX" }
-  ]
+  "interests": {
+    "eyebrow": "WHAT KEEPS ME CURIOUS",
+    "title": "Things I like learning about",
+    "intro": "I like understanding how a thing works, not just learning how to use it. These are the areas I keep coming back to.",
+    "items": [
+      {
+        "id": "backend",
+        "number": "01",
+        "kicker": "BUILDING APPLICATIONS",
+        "title": "Java backend development",
+        "description": "I’m learning how backend applications are structured, how APIs communicate, and how data moves reliably between an application and a database. My current direction is Core Java, SQL, and Spring Boot.",
+        "Highlight": "Focusing on clean REST API design, relational data modeling, authentication, and writing maintainable server-side logic.",
+        "skills": ["Java", "REST APIs", "SQL", "Spring Boot", "PostgreSQL", "Docker"]
+      },
+      {
+        "id": "systems",
+        "number": "02",
+        "kicker": "UNDER THE HOOD",
+        "title": "Systems programming",
+        "description": "Writing a shell in C made operating-system concepts feel much more concrete. I enjoy exploring process creation, file descriptors, pipes, memory management, system calls, and what actually happens when a command runs.",
+        "Highlight": "Building tools from scratch—like a POSIX shell, an HTTP server, and a mark-and-sweep garbage collector—to demystify OS internals.",
+        "skills": ["C", "POSIX", "Linux", "Networking", "Memory Management", "CMake", "Git"]
+      },
+      {
+        "id": "gamedev",
+        "number": "03",
+        "kicker": "EXPERIMENTING AND PLAYING",
+        "title": "Game development",
+        "description": "I also enjoy building games and exploring how code, visuals, sound, and player feedback come together. I’ve worked with Godot for 2D projects and Unity for 3D experiments.",
+        "Highlight": "Game loops, state machines, physics tuning, and rapid prototyping for pure creative fun.",
+        "skills": ["Godot", "Unity", "Blender", "Game Loops", "2D / 3D"]
+      }
+    ],
+    "skillEvidence": [
+      {
+        "name": "C & Systems Internals",
+        "evidence": ["SXSHELL (Unix Shell)", "Custom HTTP Server", "Mark-and-Sweep Garbage Collector", "Git Clone in C"]
+      },
+      {
+        "name": "Java & Spring Boot",
+        "evidence": ["Object-Oriented Design", "E-commerce Backend", "Expense Tracker REST API", "URL Shortener"]
+      },
+      {
+        "name": "SQL & Databases",
+        "evidence": ["HarvardX CS50 SQL", "PostgreSQL Schema Design", "Query Optimization"]
+      },
+      {
+        "name": "Linux & Developer Tooling",
+        "evidence": ["POSIX APIs & Signals", "CMake & Make", "Git Internals", "Docker Containers"]
+      }
+    ]
+  },
+  "projects": {
+    "eyebrow": "LEARNING BY BUILDING",
+    "title": "Projects and experiments",
+    "intro": "I learn best by making things, testing them, and figuring out the parts I don’t understand yet. Here are the projects and experiments from that process.",
+    "items": [
+      {
+        "index": "PROJECT 01",
+        "title": "SXSHELL",
+        "badge": "C · POSIX · CMake",
+        "category": "systems",
+        "status": "Built",
+        "featured": true,
+        "description": "A Unix-like shell written from scratch in C. It supports built-in commands, PATH-based command lookup, quoting and escaping, I/O redirection, multi-command pipelines, persistent history, and shell variable expansion.",
+        "learning": "Built to understand process management, file descriptors, and the system calls behind terminal commands.",
+        "underTheHood": [
+          "Uses fork(), execvp(), waitpid(), pipe(), and dup2() for process execution and multi-stage pipelines",
+          "Custom tokenizer handling single/double quotes, backslash escaping, and environment variable expansion",
+          "Persistent command history and signal handling (SIGINT) so Ctrl+C interrupts child processes without killing the shell"
+        ],
+        "repoUrl": "https://github.com/shiva-kar/SXSHELL-unix-like-shell",
+        "buttonStyle": "dark"
+      },
+      {
+        "index": "PROJECT 02",
+        "title": "Custom HTTP Server",
+        "badge": "C · Raw sockets · HTTP",
+        "category": "systems",
+        "status": "In Progress",
+        "featured": true,
+        "description": "A lightweight HTTP/1.1 server in C, currently in progress, focused on using raw TCP sockets and learning how requests are received, parsed, and answered.",
+        "learning": "The goal is to learn more about networking fundamentals by implementing the request-response flow directly.",
+        "underTheHood": [
+          "POSIX socket lifecycle: socket(), bind(), listen(), accept(), recv(), and send()",
+          "Zero-dependency HTTP request line, header parser, and status-code response builder",
+          "Static file serving with MIME type detection and concurrent client connection handling"
+        ],
+        "repoUrl": "https://github.com/shiva-kar/Custom-HTTP-Server-in-C",
+        "buttonStyle": "outline"
+      },
+      {
+        "index": "PROJECT 03",
+        "title": "Custom Garbage Collector",
+        "badge": "C · Memory · Mark & Sweep",
+        "category": "systems",
+        "status": "In Progress",
+        "featured": true,
+        "description": "A custom garbage collector in C built to understand manual memory management, heap allocation internals, and automatic object reachability tracking.",
+        "learning": "Explores mark-and-sweep collection, root pointer tracing, and allocation metadata at the pointer level.",
+        "underTheHood": [
+          "Tracks dynamically allocated objects via an intrusive metadata header and allocation list",
+          "Mark phase traverses reachable object graphs from registered stack/root pointers",
+          "Sweep phase reclaims unmarked heap blocks and prevents memory leaks"
+        ],
+        "repoUrl": "https://github.com/shiva-kar/garbage-collector",
+        "buttonStyle": "outline"
+      },
+      {
+        "index": "PROJECT 04",
+        "title": "Git Implementation in C",
+        "badge": "C · Hashing · File I/O",
+        "category": "systems",
+        "status": "In Progress",
+        "featured": true,
+        "description": "A simplified Git clone written in C to understand content-addressable storage, blob and tree objects, and commit history DAGs.",
+        "learning": "Covers binary file I/O, cryptographic hashing, compression, and version control internals from scratch.",
+        "underTheHood": [
+          "Implements object hashing and content-addressable storage inside .git/objects",
+          "Reads and writes blob, tree, and commit objects with header framing",
+          "Demystifies how Git snapshots file trees rather than storing simple line diffs"
+        ],
+        "repoUrl": "https://github.com/shiva-kar/git-implementation",
+        "buttonStyle": "outline"
+      },
+      {
+        "index": "PROJECT 05",
+        "title": "E-commerce Backend API",
+        "badge": "Java · Spring Boot · PostgreSQL",
+        "category": "backend",
+        "status": "Planned",
+        "featured": false,
+        "description": "A complete e-commerce REST backend built with Spring Boot, featuring product catalog management, order workflows, JWT authentication, and pagination.",
+        "learning": "Focused on enterprise backend architecture, relational database modeling, and clean service-layer separation.",
+        "underTheHood": [
+          "Layered Spring Boot architecture (Controller → Service → Repository) with Spring Data JPA",
+          "Stateless JWT authentication, role-based access control, and request validation",
+          "PostgreSQL schema with indexed queries and paginated product endpoints"
+        ],
+        "repoUrl": "",
+        "buttonStyle": "outline"
+      },
+      {
+        "index": "PROJECT 06",
+        "title": "Expense Tracker API",
+        "badge": "Java · Spring Security · Docker",
+        "category": "backend",
+        "status": "Planned",
+        "featured": false,
+        "description": "A secure REST API for personal expense tracking, demonstrating robust CRUD operations, category analytics, Spring Security integration, and Docker containerization.",
+        "learning": "Built to practice API security beyond the happy path, error handling, and containerized deployment.",
+        "underTheHood": [
+          "Spring Security filter chain with BCrypt password hashing and user-scoped data isolation",
+          "Normalized SQL schema for transactions, recurring budgets, and monthly aggregations",
+          "Docker Compose setup bundling the Spring Boot service and PostgreSQL database"
+        ],
+        "repoUrl": "",
+        "buttonStyle": "outline"
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "A LITTLE CONTEXT",
+    "title": "Learning by making things",
+    "intro": "I’m Shiva, a Bachelor of Computer Applications student at Amity University Online. This page is a small introduction, along with my academic background and current focus.",
+    "approachKicker": "HOW I LIKE TO LEARN",
+    "approachTitle": "Build first. Understand deeply.",
+    "approachParagraphs": [
+      "I enjoy projects that force me to look beyond the surface. Building SXSHELL made me think carefully about parsing input, launching processes, handling file descriptors, and dealing with errors.",
+      "My current professional direction is Java backend development. Alongside it, systems programming helps me strengthen my understanding of what software depends on underneath.",
+      "I also make games as a creative outlet. Switching between backend code, low-level systems work, and game development gives me different ways to solve problems."
+    ],
+    "currentlyKicker": "RIGHT NOW",
+    "currentlyTitle": "What I’m spending time on",
+    "currentlyItems": [
+      {
+        "label": "Java backend",
+        "text": "strengthening Java, SQL, and Spring Boot fundamentals."
+      },
+      {
+        "label": "Systems programming",
+        "text": "building with C and exploring POSIX interfaces, memory, and networking."
+      },
+      {
+        "label": "Data structures & algorithms",
+        "text": "practicing problem-solving and algorithmic thinking in C++ and Java."
+      },
+      {
+        "label": "Learning in public",
+        "text": "keeping projects, experiments, and source code available on GitHub."
+      }
+    ],
+    "education": [
+      {
+        "degree": "Bachelor of Computer Applications (BCA) — Software Engineering",
+        "school": "Amity University Online",
+        "date": "2025 – 2028 (Expected)",
+        "detail": "SGPA: 8.36 (Sem I)",
+        "coursework": [
+          "Data Structures & Algorithms",
+          "Operating Systems",
+          "Database Management Systems",
+          "Computer Networks",
+          "Object-Oriented Programming",
+          "Software Engineering"
+        ]
+      },
+      {
+        "degree": "Higher Secondary (Class XII) — Science (PCM & CS)",
+        "school": "Deshabandhu Bidyapeeth HS School (SEBA/AHSEC, Assam)",
+        "date": "Completed 2025",
+        "detail": "Physics, Chemistry, Mathematics & Computer Science",
+        "coursework": []
+      },
+      {
+        "degree": "Secondary (Class X)",
+        "school": "Rabindra Bidyalaya High School, Hojai",
+        "date": "Completed 2022",
+        "detail": "Board of Secondary Education, Assam",
+        "coursework": []
+      }
+    ],
+    "certifications": [
+      {
+        "name": "CS50x: Introduction to Computer Science",
+        "issuer": "HarvardX"
+      },
+      {
+        "name": "CS50 SQL: Databases with SQL",
+        "issuer": "HarvardX"
+      },
+      {
+        "name": "Learn C — Skill Path",
+        "issuer": "Codecademy"
+      },
+      {
+        "name": "Programming in C and C++",
+        "issuer": "Internshala"
+      }
+    ]
+  }
 }
