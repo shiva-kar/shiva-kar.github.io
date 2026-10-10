@@ -1243,16 +1243,17 @@ function injectTerminalModal() {
   const setTerminalOpen = (open) => {
     backdrop.classList.toggle("open", open);
     if (openBtn) openBtn.setAttribute("aria-expanded", String(open));
-    if (open) setTimeout(() => input.focus(), 50);
+    if (open) setTimeout(() => input?.focus(), 50);
   };
 
-  document.getElementById("term-close-btn").addEventListener("click", () => setTerminalOpen(false));
-  document.getElementById("term-close-dot").addEventListener("click", () => setTerminalOpen(false));
+  document.getElementById("term-close-btn")?.addEventListener("click", () => setTerminalOpen(false));
+  document.getElementById("term-close-dot")?.addEventListener("click", () => setTerminalOpen(false));
   backdrop.addEventListener("click", (e) => {
     if (e.target === backdrop) setTerminalOpen(false);
   });
 
   function printLine(text, isCommand = false) {
+    if (!output) return;
     const div = document.createElement("div");
     div.className = "term-line";
     if (isCommand) {
@@ -1351,23 +1352,25 @@ function injectTerminalModal() {
         openOwnerEditFlow();
         break;
       case "clear":
-        output.innerHTML = "";
+        if (output) output.innerHTML = "";
         break;
       default:
         printLine(`sxshell: command not found: ${cmd}. Type 'help' for available commands.`);
     }
   }
 
-  form.addEventListener("submit", (e) => {
+  form?.addEventListener("submit", (e) => {
     e.preventDefault();
-    runCommand(input.value);
-    input.value = "";
+    if (input) {
+      runCommand(input.value);
+      input.value = "";
+    }
   });
 
   backdrop.querySelectorAll(".term-cmd-chip").forEach((chip) => {
     chip.addEventListener("click", () => {
       runCommand(chip.getAttribute("data-cmd"));
-      input.focus();
+      input?.focus();
     });
   });
 
@@ -1417,8 +1420,8 @@ function injectAuthAndStudioModals() {
       if (openBtn) openBtn.setAttribute("aria-expanded", "false");
     };
 
-    document.getElementById("close-auth-modal-btn").addEventListener("click", closeAuthModal);
-    document.getElementById("owner-auth-cancel-btn").addEventListener("click", closeAuthModal);
+    document.getElementById("close-auth-modal-btn")?.addEventListener("click", closeAuthModal);
+    document.getElementById("owner-auth-cancel-btn")?.addEventListener("click", closeAuthModal);
     authBackdrop.addEventListener("click", (e) => {
       if (e.target === authBackdrop) closeAuthModal();
     });
@@ -1428,26 +1431,34 @@ function injectAuthAndStudioModals() {
     const errorEl = document.getElementById("auth-error-msg");
     const submitBtn = document.getElementById("owner-auth-submit-btn");
 
-    authForm.addEventListener("submit", async (e) => {
+    authForm?.addEventListener("submit", async (e) => {
       e.preventDefault();
-      errorEl.classList.remove("visible");
-      errorEl.textContent = "";
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Verifying with GitHub...";
+      if (errorEl) {
+        errorEl.classList.remove("visible");
+        errorEl.textContent = "";
+      }
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Verifying with GitHub...";
+      }
 
       try {
-        const session = await verifyOwnerGitHubToken(tokenInput.value);
+        const session = await verifyOwnerGitHubToken(tokenInput?.value);
         setOwnerSession(session);
-        tokenInput.value = "";
+        if (tokenInput) tokenInput.value = "";
         closeAuthModal();
         openStudioDrawer();
         showToast(`Authenticated as @${session.login}`);
       } catch (err) {
-        errorEl.textContent = err.message || "Authentication failed.";
-        errorEl.classList.add("visible");
+        if (errorEl) {
+          errorEl.textContent = err.message || "Authentication failed.";
+          errorEl.classList.add("visible");
+        }
       } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Verify & Unlock Editor";
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Verify & Unlock Editor";
+        }
       }
     });
   }
@@ -1497,9 +1508,9 @@ function injectAuthAndStudioModals() {
       if (openBtn) openBtn.setAttribute("aria-expanded", "false");
     };
 
-    document.getElementById("close-studio-btn").addEventListener("click", closeDrawer);
+    document.getElementById("close-studio-btn")?.addEventListener("click", closeDrawer);
 
-    document.getElementById("studio-signout-btn").addEventListener("click", () => {
+    document.getElementById("studio-signout-btn")?.addEventListener("click", () => {
       setOwnerSession(null);
       enableInlineEditing(false);
       const inlineToggle = document.getElementById("inline-edit-toggle");
@@ -1509,7 +1520,7 @@ function injectAuthAndStudioModals() {
     });
 
     const inlineToggle = document.getElementById("inline-edit-toggle");
-    inlineToggle.addEventListener("change", (e) => {
+    inlineToggle?.addEventListener("change", (e) => {
       if (!isOwnerAuthenticated()) {
         e.target.checked = false;
         closeDrawer();
@@ -1542,7 +1553,7 @@ function injectAuthAndStudioModals() {
     };
 
     const publishBtn = document.getElementById("studio-publish-btn");
-    publishBtn.addEventListener("click", async () => {
+    publishBtn?.addEventListener("click", async () => {
       setStatusBanner("", "");
       const validationErr = validateSiteData(siteData);
       if (validationErr) {
@@ -1563,7 +1574,7 @@ function injectAuthAndStudioModals() {
       }
     });
 
-    document.getElementById("studio-download-btn").addEventListener("click", () => {
+    document.getElementById("studio-download-btn")?.addEventListener("click", () => {
       const validationErr = validateSiteData(siteData);
       if (validationErr) {
         setStatusBanner(validationErr, "error");
@@ -1580,7 +1591,7 @@ function injectAuthAndStudioModals() {
       showToast("Downloaded updated data.json!");
     });
 
-    document.getElementById("studio-reset-btn").addEventListener("click", () => {
+    document.getElementById("studio-reset-btn")?.addEventListener("click", () => {
       localStorage.removeItem(STORAGE_KEY);
       siteData = cloneData(DEFAULT_DATA);
       setStatusBanner("Restored default portfolio data.", "success");
