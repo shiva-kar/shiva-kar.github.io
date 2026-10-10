@@ -7,9 +7,19 @@
     <meta name="author" content="Shiva Kar">
     <title>Shiva Kar — Home</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23242923'/><text x='50' y='67' font-family='Arial,sans-serif' font-weight='800' font-size='48' text-anchor='middle' fill='%23fffefa'>SK<tspan fill='%2339745a'>.</tspan></text></svg>">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("sk_site_theme") || localStorage.getItem("theme");
+                var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+                var theme = saved ? saved : (prefersDark ? "dark" : "light");
+                if (theme === "dark") document.documentElement.setAttribute("data-theme", "dark");
+            } catch (e) {}
+        })();
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link href="styles.css" rel="stylesheet">
-    <script src="script.js" defer></script>
+    <link href="styles.css?v=2.2.0" rel="stylesheet">
+    <script src="script.js?v=2.2.0" defer></script>
 </head>
 <body data-page="home">
     <header class="site-header">
@@ -23,14 +33,14 @@
                     <a href="about.html">About</a>
                 </nav>
                 <div class="header-tools" aria-label="Interactive tools">
-                    <button type="button" class="tool-btn" id="open-terminal-btn" title="Open interactive SXSHELL terminal (Ctrl+K)">
-                        <span class="mono-icon">&gt;_</span> <span>Shell</span>
+                    <button type="button" class="tool-btn" id="open-terminal-btn" aria-haspopup="dialog" aria-expanded="false" title="Open interactive SXSHELL terminal (Ctrl+K)">
+                        <span class="mono-icon" aria-hidden="true">&gt;_</span> <span>Shell</span>
                     </button>
-                    <button type="button" class="tool-btn" id="open-studio-btn" title="Interactive Site Editor (Ctrl+E)">
-                        <span class="mono-icon">✎</span> <span>Edit</span>
+                    <button type="button" class="tool-btn" id="open-studio-btn" aria-haspopup="dialog" aria-expanded="false" title="Owner Portfolio Editor (Ctrl+E)">
+                        <span class="mono-icon" aria-hidden="true">✎</span> <span>Edit</span>
                     </button>
-                    <button type="button" class="tool-btn" id="theme-toggle-btn" aria-label="Toggle color theme" title="Switch light/dark theme">
-                        <span id="theme-icon">☾</span>
+                    <button type="button" class="tool-btn" id="theme-toggle-btn" aria-label="Toggle color theme" aria-pressed="false" title="Switch light/dark theme">
+                        <span id="theme-icon" aria-hidden="true">☾</span>
                     </button>
                 </div>
             </div>
@@ -118,7 +128,7 @@
             <p>Made by Shiva, with HTML, CSS, JavaScript, and a little curiosity.</p>
             <div class="footer-links">
                 <a href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://linkedin.com/in/shiva-kar" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/shiva-kar/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="Shiva_Kar_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
                 <a href="about.html">About</a>
             </div>

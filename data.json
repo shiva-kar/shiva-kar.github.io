@@ -5,12 +5,13 @@
     "eyebrow": "BCA student · Assam, India",
     "location": "Hojai, Assam, India",
     "accentColor": "#39745a",
-    "resumeUrl": "Shiva_Kar_Resume.pdf"
+    "resumeUrl": "Shiva_Kar_Resume.pdf",
+    "githubRepo": "shiva-kar/shiva-kar.github.io"
   },
   "contact": {
     "email": "sksmarttech48+protfolio@gmail.com",
     "github": "https://github.com/shiva-kar",
-    "linkedin": "https://linkedin.com/in/shiva-kar",
+    "linkedin": "https://www.linkedin.com/in/shiva-kar/",
     "twitter": "https://x.com/sk_shivakar",
     "portfolio": "https://shivakar.me"
   },
@@ -287,19 +288,27 @@
     "certifications": [
       {
         "name": "CS50x: Introduction to Computer Science",
-        "issuer": "HarvardX"
+        "issuer": "HarvardX",
+        "status": "Completed",
+        "url": ""
       },
       {
         "name": "CS50 SQL: Databases with SQL",
-        "issuer": "HarvardX"
+        "issuer": "HarvardX",
+        "status": "Completed",
+        "url": ""
       },
       {
         "name": "Learn C — Skill Path",
-        "issuer": "Codecademy"
+        "issuer": "Codecademy",
+        "status": "Completed",
+        "url": ""
       },
       {
         "name": "Programming in C and C++",
-        "issuer": "Internshala"
+        "issuer": "Internshala",
+        "status": "Completed",
+        "url": ""
       }
     ]
   }

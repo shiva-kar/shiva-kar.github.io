@@ -7,9 +7,19 @@
     <meta name="author" content="Shiva Kar">
     <title>Shiva Kar — Interests</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23242923'/><text x='50' y='67' font-family='Arial,sans-serif' font-weight='800' font-size='48' text-anchor='middle' fill='%23fffefa'>SK<tspan fill='%2339745a'>.</tspan></text></svg>">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("sk_site_theme") || localStorage.getItem("theme");
+                var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+                var theme = saved ? saved : (prefersDark ? "dark" : "light");
+                if (theme === "dark") document.documentElement.setAttribute("data-theme", "dark");
+            } catch (e) {}
+        })();
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link href="styles.css" rel="stylesheet">
-    <script src="script.js" defer></script>
+    <link href="styles.css?v=2.2.0" rel="stylesheet">
+    <script src="script.js?v=2.2.0" defer></script>
 </head>
 <body data-page="interests">
     <header class="site-header">
@@ -23,14 +33,14 @@
                     <a href="about.html">About</a>
                 </nav>
                 <div class="header-tools" aria-label="Interactive tools">
-                    <button type="button" class="tool-btn" id="open-terminal-btn" title="Open interactive SXSHELL terminal (Ctrl+K)">
-                        <span class="mono-icon">&gt;_</span> <span>Shell</span>
+                    <button type="button" class="tool-btn" id="open-terminal-btn" aria-haspopup="dialog" aria-expanded="false" title="Open interactive SXSHELL terminal (Ctrl+K)">
+                        <span class="mono-icon" aria-hidden="true">&gt;_</span> <span>Shell</span>
                     </button>
-                    <button type="button" class="tool-btn" id="open-studio-btn" title="Interactive Site Editor (Ctrl+E)">
-                        <span class="mono-icon">✎</span> <span>Edit</span>
+                    <button type="button" class="tool-btn" id="open-studio-btn" aria-haspopup="dialog" aria-expanded="false" title="Owner Portfolio Editor (Ctrl+E)">
+                        <span class="mono-icon" aria-hidden="true">✎</span> <span>Edit</span>
                     </button>
-                    <button type="button" class="tool-btn" id="theme-toggle-btn" aria-label="Toggle color theme" title="Switch light/dark theme">
-                        <span id="theme-icon">☾</span>
+                    <button type="button" class="tool-btn" id="theme-toggle-btn" aria-label="Toggle color theme" aria-pressed="false" title="Switch light/dark theme">
+                        <span id="theme-icon" aria-hidden="true">☾</span>
                     </button>
                 </div>
             </div>
@@ -53,13 +63,14 @@
                     <p data-editable="interests.items.0.description">I’m learning how backend applications are structured, how APIs communicate, and how data moves reliably between an application and a database. My current direction is Core Java, SQL, and Spring Boot.</p>
                     <p class="interest-highlight" data-editable="interests.items.0.Highlight">Focusing on clean REST API design, relational data modeling, authentication, and writing maintainable server-side logic.</p>
                     <div class="skill-list" aria-label="Related topics">
-                        <span class="badge rounded-pill text-bg-light interactive-badge" data-skill="Java">Java</span>
-                        <span class="badge rounded-pill text-bg-light interactive-badge" data-skill="REST APIs">REST APIs</span>
-                        <span class="badge rounded-pill text-bg-light interactive-badge" data-skill="SQL">SQL</span>
-                        <span class="badge rounded-pill text-bg-light interactive-badge" data-skill="Spring Boot">Spring Boot</span>
-                        <span class="badge rounded-pill text-bg-light interactive-badge" data-skill="PostgreSQL">PostgreSQL</span>
-                        <span class="badge rounded-pill text-bg-light interactive-badge" data-skill="Docker">Docker</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="Java">Java</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="REST APIs">REST APIs</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="SQL">SQL</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="Spring Boot">Spring Boot</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="PostgreSQL">PostgreSQL</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="Docker">Docker</span>
                     </div>
+                    <div class="skill-note-panel" aria-live="polite"></div>
                 </div>
             </section>
 
@@ -71,13 +82,15 @@
                     <p data-editable="interests.items.1.description">Writing a shell in C made operating-system concepts feel much more concrete. I enjoy exploring process creation, file descriptors, pipes, memory management, system calls, and what actually happens when a command runs.</p>
                     <p class="interest-highlight" data-editable="interests.items.1.Highlight">Building tools from scratch—like a POSIX shell, an HTTP server, and a mark-and-sweep garbage collector—to demystify OS internals.</p>
                     <div class="skill-list" aria-label="Related topics">
-                        <span class="badge rounded-pill text-bg-light interactive-badge" data-skill="C">C</span>
-                        <span class="badge rounded-pill text-bg-light interactive-badge" data-skill="POSIX">POSIX</span>
-                        <span class="badge rounded-pill text-bg-light interactive-badge" data-skill="Linux">Linux</span>
-                        <span class="badge rounded-pill text-bg-light interactive-badge" data-skill="Networking">Networking</span>
-                        <span class="badge rounded-pill text-bg-light interactive-badge" data-skill="Memory Management">Memory Management</span>
-                        <span class="badge rounded-pill text-bg-light interactive-badge" data-skill="CMake">CMake</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="C">C</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="POSIX">POSIX</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="Linux">Linux</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="Networking">Networking</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="Memory Management">Memory Management</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="CMake">CMake</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="Git">Git</span>
                     </div>
+                    <div class="skill-note-panel" aria-live="polite"></div>
                 </div>
             </section>
 
@@ -89,10 +102,11 @@
                     <p data-editable="interests.items.2.description">I also enjoy building games and exploring how code, visuals, sound, and player feedback come together. I’ve worked with Godot for 2D projects and Unity for 3D experiments.</p>
                     <p class="interest-highlight" data-editable="interests.items.2.Highlight">Game loops, state machines, physics tuning, and rapid prototyping for pure creative fun.</p>
                     <div class="skill-list" aria-label="Related tools">
-                        <span class="badge rounded-pill text-bg-light interactive-badge" data-skill="Godot">Godot</span>
-                        <span class="badge rounded-pill text-bg-light interactive-badge" data-skill="Unity">Unity</span>
-                        <span class="badge rounded-pill text-bg-light interactive-badge" data-skill="Blender">Blender</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="Godot">Godot</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="Unity">Unity</span>
+                        <span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" data-skill="Blender">Blender</span>
                     </div>
+                    <div class="skill-note-panel" aria-live="polite"></div>
                 </div>
             </section>
         </div>
@@ -107,14 +121,15 @@
                     <div class="evidence-root">C &amp; Systems Internals</div>
                     <div class="evidence-item"><span class="evidence-branch">├──</span> SXSHELL (Unix Shell)</div>
                     <div class="evidence-item"><span class="evidence-branch">├──</span> Custom HTTP Server</div>
-                    <div class="evidence-item"><span class="evidence-branch">├──</span> Garbage Collector</div>
+                    <div class="evidence-item"><span class="evidence-branch">├──</span> Mark-and-Sweep Garbage Collector</div>
                     <div class="evidence-item"><span class="evidence-branch">└──</span> Git Clone in C</div>
                 </div>
                 <div class="evidence-card">
                     <div class="evidence-root">Java &amp; Spring Boot</div>
                     <div class="evidence-item"><span class="evidence-branch">├──</span> Object-Oriented Design</div>
                     <div class="evidence-item"><span class="evidence-branch">├──</span> E-commerce Backend</div>
-                    <div class="evidence-item"><span class="evidence-branch">└──</span> Expense Tracker REST API</div>
+                    <div class="evidence-item"><span class="evidence-branch">├──</span> Expense Tracker REST API</div>
+                    <div class="evidence-item"><span class="evidence-branch">└──</span> URL Shortener</div>
                 </div>
                 <div class="evidence-card">
                     <div class="evidence-root">SQL &amp; Databases</div>
@@ -123,10 +138,11 @@
                     <div class="evidence-item"><span class="evidence-branch">└──</span> Query Optimization</div>
                 </div>
                 <div class="evidence-card">
-                    <div class="evidence-root">Linux &amp; Tooling</div>
+                    <div class="evidence-root">Linux &amp; Developer Tooling</div>
                     <div class="evidence-item"><span class="evidence-branch">├──</span> POSIX APIs &amp; Signals</div>
-                    <div class="evidence-item"><span class="evidence-branch">├──</span> CMake &amp; GDB</div>
-                    <div class="evidence-item"><span class="evidence-branch">└──</span> Git &amp; Docker</div>
+                    <div class="evidence-item"><span class="evidence-branch">├──</span> CMake &amp; Make</div>
+                    <div class="evidence-item"><span class="evidence-branch">├──</span> Git Internals</div>
+                    <div class="evidence-item"><span class="evidence-branch">└──</span> Docker Containers</div>
                 </div>
             </div>
         </section>
@@ -145,6 +161,7 @@
                 <a href="index.html">Home</a>
                 <a href="projects.html">Projects</a>
                 <a href="about.html">About</a>
+                <a href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
         </div>
     </footer>

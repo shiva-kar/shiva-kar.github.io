@@ -7,9 +7,19 @@
     <meta name="author" content="Shiva Kar">
     <title>Shiva Kar — About</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23242923'/><text x='50' y='67' font-family='Arial,sans-serif' font-weight='800' font-size='48' text-anchor='middle' fill='%23fffefa'>SK<tspan fill='%2339745a'>.</tspan></text></svg>">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("sk_site_theme") || localStorage.getItem("theme");
+                var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+                var theme = saved ? saved : (prefersDark ? "dark" : "light");
+                if (theme === "dark") document.documentElement.setAttribute("data-theme", "dark");
+            } catch (e) {}
+        })();
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link href="styles.css" rel="stylesheet">
-    <script src="script.js" defer></script>
+    <link href="styles.css?v=2.2.0" rel="stylesheet">
+    <script src="script.js?v=2.2.0" defer></script>
 </head>
 <body data-page="about">
     <header class="site-header">
@@ -23,14 +33,14 @@
                     <a class="active" href="about.html" aria-current="page">About</a>
                 </nav>
                 <div class="header-tools" aria-label="Interactive tools">
-                    <button type="button" class="tool-btn" id="open-terminal-btn" title="Open interactive SXSHELL terminal (Ctrl+K)">
-                        <span class="mono-icon">&gt;_</span> <span>Shell</span>
+                    <button type="button" class="tool-btn" id="open-terminal-btn" aria-haspopup="dialog" aria-expanded="false" title="Open interactive SXSHELL terminal (Ctrl+K)">
+                        <span class="mono-icon" aria-hidden="true">&gt;_</span> <span>Shell</span>
                     </button>
-                    <button type="button" class="tool-btn" id="open-studio-btn" title="Interactive Site Editor (Ctrl+E)">
-                        <span class="mono-icon">✎</span> <span>Edit</span>
+                    <button type="button" class="tool-btn" id="open-studio-btn" aria-haspopup="dialog" aria-expanded="false" title="Owner Portfolio Editor (Ctrl+E)">
+                        <span class="mono-icon" aria-hidden="true">✎</span> <span>Edit</span>
                     </button>
-                    <button type="button" class="tool-btn" id="theme-toggle-btn" aria-label="Toggle color theme" title="Switch light/dark theme">
-                        <span id="theme-icon">☾</span>
+                    <button type="button" class="tool-btn" id="theme-toggle-btn" aria-label="Toggle color theme" aria-pressed="false" title="Switch light/dark theme">
+                        <span id="theme-icon" aria-hidden="true">☾</span>
                     </button>
                 </div>
             </div>
@@ -69,20 +79,20 @@
             </ul>
         </section>
 
-        <section class="section-block" aria-labelledby="background-title">
+        <section class="section-block" id="background-section" aria-labelledby="background-title">
             <div class="section-heading-row">
                 <div>
                     <p class="section-kicker">BACKGROUND &amp; CREDENTIALS</p>
-                    <h2 id="background-title">Education &amp; certifications</h2>
+                    <h2 id="background-title">Education, certifications &amp; contact</h2>
                 </div>
-                <div class="about-tabs" role="tablist" aria-label="Background tabs">
-                    <button type="button" class="about-tab-btn active" data-tab="edu-pane" role="tab" aria-selected="true">Education</button>
-                    <button type="button" class="about-tab-btn" data-tab="cert-pane" role="tab" aria-selected="false">Certifications</button>
-                    <button type="button" class="about-tab-btn" data-tab="contact-pane" role="tab" aria-selected="false">Direct Contact</button>
+                <div class="about-tabs" role="tablist" aria-label="Background and contact tabs">
+                    <button type="button" class="about-tab-btn active" id="tab-btn-edu" data-tab="edu-pane" data-hash="education" role="tab" aria-controls="edu-pane" aria-selected="true">Education</button>
+                    <button type="button" class="about-tab-btn" id="tab-btn-cert" data-tab="cert-pane" data-hash="certifications" role="tab" aria-controls="cert-pane" aria-selected="false">Certifications</button>
+                    <button type="button" class="about-tab-btn" id="tab-btn-contact" data-tab="contact-pane" data-hash="contact" role="tab" aria-controls="contact-pane" aria-selected="false">Direct Contact</button>
                 </div>
             </div>
 
-            <div class="about-tab-pane active" id="edu-pane" role="tabpanel">
+            <div class="about-tab-pane active" id="edu-pane" role="tabpanel" aria-labelledby="tab-btn-edu">
                 <div id="about-edu-list">
                     <div class="edu-item">
                         <div class="edu-top">
@@ -104,49 +114,67 @@
                             <h3 class="edu-degree">Higher Secondary (Class XII) — Science (PCM &amp; CS)</h3>
                             <span class="edu-date">Completed 2025</span>
                         </div>
-                        <p class="edu-school">Deshabandhu Bidyapeeth HS School (Assam)</p>
+                        <p class="edu-school">Deshabandhu Bidyapeeth HS School (SEBA/AHSEC, Assam) · Physics, Chemistry, Mathematics &amp; Computer Science</p>
                     </div>
                     <div class="edu-item">
                         <div class="edu-top">
                             <h3 class="edu-degree">Secondary (Class X)</h3>
                             <span class="edu-date">Completed 2022</span>
                         </div>
-                        <p class="edu-school">Rabindra Bidyalaya High School, Hojai</p>
+                        <p class="edu-school">Rabindra Bidyalaya High School, Hojai · Board of Secondary Education, Assam</p>
                     </div>
                 </div>
             </div>
 
-            <div class="about-tab-pane" id="cert-pane" role="tabpanel">
+            <div class="about-tab-pane" id="cert-pane" role="tabpanel" aria-labelledby="tab-btn-cert">
                 <div class="cert-grid" id="about-cert-list">
                     <div class="cert-box">
                         <h3>CS50x: Introduction to Computer Science</h3>
-                        <p>HarvardX</p>
+                        <p class="cert-issuer">HarvardX</p>
+                        <div class="cert-meta">
+                            <span>Completed</span>
+                        </div>
                     </div>
                     <div class="cert-box">
                         <h3>CS50 SQL: Databases with SQL</h3>
-                        <p>HarvardX</p>
+                        <p class="cert-issuer">HarvardX</p>
+                        <div class="cert-meta">
+                            <span>Completed</span>
+                        </div>
                     </div>
                     <div class="cert-box">
                         <h3>Learn C — Skill Path</h3>
-                        <p>Codecademy</p>
+                        <p class="cert-issuer">Codecademy</p>
+                        <div class="cert-meta">
+                            <span>Completed</span>
+                        </div>
                     </div>
                     <div class="cert-box">
                         <h3>Programming in C and C++</h3>
-                        <p>Internshala</p>
+                        <p class="cert-issuer">Internshala</p>
+                        <div class="cert-meta">
+                            <span>Completed</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="about-tab-pane" id="contact-pane" role="tabpanel">
+            <div class="about-tab-pane" id="contact-pane" role="tabpanel" aria-labelledby="tab-btn-contact">
                 <div class="edu-item">
                     <div class="edu-top">
                         <h3 class="edu-degree">Reach out directly</h3>
                         <span class="edu-date">Hojai, Assam, India</span>
                     </div>
                     <p class="edu-school">Open to software engineering internships, backend/systems discussions, and collaborative projects.</p>
-                    <div class="cta-links mt-3">
-                        <button type="button" class="btn btn-dark" id="copy-email-btn" data-email="sksmarttech48+protfolio@gmail.com">Copy Email Address</button>
-                        <a class="btn btn-outline-dark" href="mailto:sksmarttech48+protfolio@gmail.com">Send Email ↗</a>
+                    <p style="font-family:var(--font-mono);font-size:0.84rem;margin-bottom:14px;">
+                        Email: <a href="mailto:sksmarttech48+protfolio@gmail.com" id="direct-email-link" style="color:var(--accent);font-weight:700;">sksmarttech48+protfolio@gmail.com</a>
+                    </p>
+                    <div class="cta-links">
+                        <a class="btn btn-dark" id="send-email-btn" href="mailto:sksmarttech48+protfolio@gmail.com">Send Email ↗</a>
+                        <button type="button" class="btn btn-outline-dark" id="copy-email-btn" data-email="sksmarttech48+protfolio@gmail.com">Copy Email Address</button>
+                        <a class="btn btn-outline-dark" href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                        <a class="btn btn-outline-dark" href="https://www.linkedin.com/in/shiva-kar/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                        <a class="btn btn-outline-dark" href="https://x.com/sk_shivakar" target="_blank" rel="noopener noreferrer">X (Twitter) ↗</a>
                         <a class="btn btn-outline-dark" href="Shiva_Kar_Resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume PDF ↗</a>
                     </div>
                 </div>
@@ -155,10 +183,11 @@
 
         <section class="simple-cta">
             <h2>Say hello or browse the code.</h2>
-            <p>I’m easiest to find through my public profiles.</p>
+            <p>I’m easiest to find through my public profiles or direct email.</p>
             <div class="cta-links">
                 <a class="btn btn-dark" href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-                <a class="btn btn-outline-dark" href="https://linkedin.com/in/shiva-kar" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                <a class="btn btn-outline-dark" href="https://www.linkedin.com/in/shiva-kar/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                <a class="btn btn-outline-dark" href="mailto:sksmarttech48+protfolio@gmail.com">Email Me ↗</a>
                 <a class="btn btn-outline-dark" href="Shiva_Kar_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume PDF ↗</a>
             </div>
         </section>
@@ -171,6 +200,7 @@
                 <a href="index.html">Home</a>
                 <a href="interests.html">Interests</a>
                 <a href="projects.html">Projects</a>
+                <a href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
         </div>
     </footer>

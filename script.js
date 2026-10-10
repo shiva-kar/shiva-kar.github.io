@@ -1,5 +1,8 @@
 const STORAGE_KEY = "sk_site_data_v2";
 const THEME_KEY = "sk_site_theme";
+const AUTH_SESSION_KEY = "sk_owner_gh_session";
+const EXPECTED_OWNER = "shiva-kar";
+const EXPECTED_REPO = "shiva-kar/shiva-kar.github.io";
 
 const DEFAULT_DATA = {
   "meta": {
@@ -8,12 +11,13 @@ const DEFAULT_DATA = {
     "eyebrow": "BCA student · Assam, India",
     "location": "Hojai, Assam, India",
     "accentColor": "#39745a",
-    "resumeUrl": "Shiva_Kar_Resume.pdf"
+    "resumeUrl": "Shiva_Kar_Resume.pdf",
+    "githubRepo": "shiva-kar/shiva-kar.github.io"
   },
   "contact": {
     "email": "sksmarttech48+protfolio@gmail.com",
     "github": "https://github.com/shiva-kar",
-    "linkedin": "https://linkedin.com/in/shiva-kar",
+    "linkedin": "https://www.linkedin.com/in/shiva-kar/",
     "twitter": "https://x.com/sk_shivakar",
     "portfolio": "https://shivakar.me"
   },
@@ -290,19 +294,27 @@ const DEFAULT_DATA = {
     "certifications": [
       {
         "name": "CS50x: Introduction to Computer Science",
-        "issuer": "HarvardX"
+        "issuer": "HarvardX",
+        "status": "Completed",
+        "url": ""
       },
       {
         "name": "CS50 SQL: Databases with SQL",
-        "issuer": "HarvardX"
+        "issuer": "HarvardX",
+        "status": "Completed",
+        "url": ""
       },
       {
         "name": "Learn C — Skill Path",
-        "issuer": "Codecademy"
+        "issuer": "Codecademy",
+        "status": "Completed",
+        "url": ""
       },
       {
         "name": "Programming in C and C++",
-        "issuer": "Internshala"
+        "issuer": "Internshala",
+        "status": "Completed",
+        "url": ""
       }
     ]
   }
@@ -324,19 +336,22 @@ const SKILL_NOTES = {
   "Git": "Version control for all public projects + building a Git clone in C to understand .git/objects.",
   "Godot": "Building 2D games, node-based scenes, and responsive player mechanics.",
   "Unity": "Experimenting with 3D gameplay systems and C# scripting.",
-  "Blender": "Creating low-poly 3D assets and props for game experiments."
+  "Blender": "Creating low-poly 3D assets and props for game experiments.",
+  "Game Loops": "Implementing frame-independent update/render loops and responsive input handling.",
+  "2D / 3D": "Prototyping 2D gameplay in Godot and 3D mechanics in Unity."
 };
 
-let siteData = structuredClone(DEFAULT_DATA);
+function cloneData(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+let siteData = cloneData(DEFAULT_DATA);
 let currentFactIndex = 0;
 let activeProjectFilter = "all";
+let projectSearchQuery = "";
 let activeStudioTab = "general";
 
 /* ===== Helper: Deep Get & Set by Dot Path ===== */
-function getByPath(obj, path) {
-  return path.split(".").reduce((acc, part) => (acc && acc[part] !== undefined ? acc[part] : undefined), obj);
-}
-
 function setByPath(obj, path, value) {
   const parts = path.split(".");
   const last = parts.pop();
@@ -355,6 +370,15 @@ function escapeHtml(str) {
     .replace(/"/g, "&quot;");
 }
 
+function utf8ToBase64(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = "";
+  for (let i = 0; i < bytes.byteLength; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binary);
+}
+
 /* ===== Toast Notification ===== */
 let toastTimeout = null;
 function showToast(message) {
@@ -363,40 +387,63 @@ function showToast(message) {
     toast = document.createElement("div");
     toast.id = "site-toast";
     toast.className = "site-toast";
+    toast.setAttribute("role", "status");
+    toast.setAttribute("aria-live", "polite");
     document.body.appendChild(toast);
   }
   toast.textContent = message;
   toast.classList.add("show");
   clearTimeout(toastTimeout);
-  toastTimeout = setTimeout(() => toast.classList.remove("show"), 2600);
+  toastTimeout = setTimeout(() => toast.classList.remove("show"), 2800);
 }
 
 /* ===== Theme & Accent Management ===== */
-function initTheme() {
-  const savedTheme = localStorage.getItem(THEME_KEY);
-  const currentTheme = savedTheme || "light";
-  applyTheme(currentTheme);
-
-  const toggleBtn = document.getElementById("theme-toggle-btn");
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", () => {
-      const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      applyTheme(next);
-      showToast(next === "dark" ? "Dark theme enabled" : "Warm light theme enabled");
-    });
-  }
+function getInitialTheme() {
+  try {
+    const saved = localStorage.getItem(THEME_KEY) || localStorage.getItem("theme");
+    if (saved === "dark" || saved === "light") return saved;
+  } catch (_) {}
+  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  return prefersDark ? "dark" : "light";
 }
 
 function applyTheme(theme) {
+  const isDark = theme === "dark";
   const icon = document.getElementById("theme-icon");
-  if (theme === "dark") {
+  const toggleBtn = document.getElementById("theme-toggle-btn") || document.getElementById("theme-toggle");
+
+  if (isDark) {
     document.documentElement.setAttribute("data-theme", "dark");
     if (icon) icon.textContent = "☀";
   } else {
     document.documentElement.removeAttribute("data-theme");
     if (icon) icon.textContent = "☾";
   }
-  localStorage.setItem(THEME_KEY, theme);
+
+  if (toggleBtn) {
+    toggleBtn.setAttribute("aria-pressed", String(isDark));
+    toggleBtn.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+    toggleBtn.setAttribute("title", isDark ? "Switch to light theme" : "Switch to dark theme");
+  }
+
+  try {
+    localStorage.setItem(THEME_KEY, isDark ? "dark" : "light");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  } catch (_) {}
+}
+
+function initTheme() {
+  applyTheme(getInitialTheme());
+
+  const toggleBtn = document.getElementById("theme-toggle-btn") || document.getElementById("theme-toggle");
+  if (toggleBtn && !toggleBtn.dataset.bound) {
+    toggleBtn.dataset.bound = "true";
+    toggleBtn.addEventListener("click", () => {
+      const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(next);
+      showToast(next === "dark" ? "Dark theme enabled" : "Light theme enabled");
+    });
+  }
 }
 
 function applyAccentColor(color) {
@@ -408,13 +455,160 @@ function applyAccentColor(color) {
   );
 }
 
-/* ===== Save & Reset State ===== */
-function saveSiteData(notify = false) {
+/* ===== Owner Authentication & Session Management ===== */
+function getOwnerSession() {
+  try {
+    const raw = sessionStorage.getItem(AUTH_SESSION_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (parsed && parsed.authenticated && parsed.login && parsed.token) {
+      return parsed;
+    }
+  } catch (_) {}
+  return null;
+}
+
+function setOwnerSession(session) {
+  try {
+    if (!session) {
+      sessionStorage.removeItem(AUTH_SESSION_KEY);
+    } else {
+      sessionStorage.setItem(AUTH_SESSION_KEY, JSON.stringify(session));
+    }
+  } catch (_) {}
+}
+
+function isOwnerAuthenticated() {
+  return Boolean(getOwnerSession());
+}
+
+async function verifyOwnerGitHubToken(token) {
+  const cleanToken = String(token || "").trim();
+  if (!cleanToken) {
+    throw new Error("Please enter a GitHub Personal Access Token.");
+  }
+
+  const headers = {
+    "Accept": "application/vnd.github+json",
+    "Authorization": `Bearer ${cleanToken}`,
+    "X-GitHub-Api-Version": "2022-11-28"
+  };
+
+  const userRes = await fetch("https://api.github.com/user", { headers });
+  if (!userRes.ok) {
+    throw new Error("Invalid GitHub token (authentication failed with HTTP " + userRes.status + ").");
+  }
+  const user = await userRes.json();
+
+  const repoName = siteData.meta?.githubRepo || EXPECTED_REPO;
+  const repoRes = await fetch(`https://api.github.com/repos/${repoName}`, { headers });
+  if (!repoRes.ok) {
+    throw new Error(`Could not verify access to repository ${repoName}.`);
+  }
+  const repo = await repoRes.json();
+
+  const isOwnerUser = String(user.login || "").toLowerCase() === EXPECTED_OWNER.toLowerCase();
+  const canPush = Boolean(repo.permissions && (repo.permissions.push || repo.permissions.admin));
+
+  if (!isOwnerUser || !canPush) {
+    throw new Error(`Unauthorized: account @${user.login || "unknown"} does not have owner write permission for ${repoName}.`);
+  }
+
+  return {
+    authenticated: true,
+    login: user.login,
+    repo: repoName,
+    token: cleanToken
+  };
+}
+
+function validateSiteData(data) {
+  if (!data || typeof data !== "object") {
+    return "Invalid site data structure.";
+  }
+  if (!data.home?.headlinePrefix?.trim() || !data.home?.intro?.trim()) {
+    return "Home page headline and intro cannot be empty.";
+  }
+  if (!Array.isArray(data.facts) || data.facts.length === 0 || data.facts.some((f) => !String(f).trim())) {
+    return "At least one non-empty fun fact is required.";
+  }
+  if (!Array.isArray(data.projects?.items) || data.projects.items.length === 0) {
+    return "At least one project is required.";
+  }
+  for (let i = 0; i < data.projects.items.length; i++) {
+    const p = data.projects.items[i];
+    if (!p.title?.trim()) return `Project #${i + 1} is missing a title.`;
+    if (!p.description?.trim()) return `Project "${p.title}" is missing a description.`;
+    if (!p.badge?.trim()) return `Project "${p.title}" is missing a technology badge.`;
+    if (p.repoUrl && !/^https?:\/\/.+/i.test(p.repoUrl.trim())) {
+      return `Project "${p.title}" has an invalid repository URL (must start with http:// or https://).`;
+    }
+  }
+  if (data.contact?.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.contact.email.trim())) {
+    return "Contact email address format is invalid.";
+  }
+  return null;
+}
+
+async function publishSiteDataToGitHub() {
+  const session = getOwnerSession();
+  if (!session || !session.token) {
+    throw new Error("Unauthorized: You must sign in as the repository owner before publishing.");
+  }
+
+  const validationError = validateSiteData(siteData);
+  if (validationError) {
+    throw new Error(validationError);
+  }
+
+  const repoName = session.repo || siteData.meta?.githubRepo || EXPECTED_REPO;
+  const apiUrl = `https://api.github.com/repos/${repoName}/contents/data.json`;
+  const headers = {
+    "Accept": "application/vnd.github+json",
+    "Authorization": `Bearer ${session.token}`,
+    "Content-Type": "application/json",
+    "X-GitHub-Api-Version": "2022-11-28"
+  };
+
+  const getRes = await fetch(apiUrl, { headers, cache: "no-store" });
+  if (!getRes.ok) {
+    throw new Error(`Failed to fetch current data.json metadata from GitHub (HTTP ${getRes.status}).`);
+  }
+  const fileMeta = await getRes.json();
+
+  const formattedJson = JSON.stringify(siteData, null, 2) + "\n";
+  const putRes = await fetch(apiUrl, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify({
+      message: "chore(content): update portfolio data.json via owner editor",
+      content: utf8ToBase64(formattedJson),
+      sha: fileMeta.sha,
+      branch: "main"
+    })
+  });
+
+  if (!putRes.ok) {
+    let errDetail = `HTTP ${putRes.status}`;
+    try {
+      const errJson = await putRes.json();
+      if (errJson.message) errDetail = errJson.message;
+    } catch (_) {}
+    throw new Error(`GitHub publish failed: ${errDetail}`);
+  }
+
+  const result = await putRes.json();
+  saveSiteDataDraft(false);
+  return result.commit?.sha ? result.commit.sha.slice(0, 7) : "latest";
+}
+
+function saveSiteDataDraft(notify = false) {
+  if (!isOwnerAuthenticated()) return;
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
-    if (notify) showToast("Saved changes to browser!");
+    if (notify) showToast("Draft saved in browser.");
   } catch (e) {
-    console.error("Failed to save site data", e);
+    console.error("Failed to save draft", e);
   }
 }
 
@@ -466,6 +660,11 @@ function renderHomePage() {
   initFunFactWidget();
 }
 
+function getActiveFacts() {
+  const list = Array.isArray(siteData.facts) && siteData.facts.length > 0 ? siteData.facts : DEFAULT_DATA.facts;
+  return list.filter((f) => String(f || "").trim().length > 0);
+}
+
 function initFunFactWidget() {
   const factText = document.getElementById("fact-text");
   const factButton = document.getElementById("fact-button");
@@ -473,9 +672,10 @@ function initFunFactWidget() {
 
   if (!factText || !factButton) return;
 
-  const updateFactView = (animate = false) => {
-    const facts = siteData.facts?.length ? siteData.facts : DEFAULT_DATA.facts;
-    if (currentFactIndex >= facts.length) currentFactIndex = 0;
+  const renderFactAtIndex = (index, animate = false) => {
+    const facts = getActiveFacts();
+    if (facts.length === 0) return;
+    currentFactIndex = ((index % facts.length) + facts.length) % facts.length;
 
     if (factCounter) {
       const currentNum = String(currentFactIndex + 1).padStart(2, "0");
@@ -483,26 +683,43 @@ function initFunFactWidget() {
       factCounter.textContent = `${currentNum} / ${totalNum}`;
     }
 
+    const nextText = facts[currentFactIndex];
     if (!animate) {
-      factText.textContent = facts[currentFactIndex];
+      factText.textContent = nextText;
       return;
     }
 
     factText.classList.add("fact-switching");
-    setTimeout(() => {
-      factText.textContent = facts[currentFactIndex];
-      factText.classList.remove("fact-switching");
-    }, 150);
+    factText.textContent = nextText;
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        factText.classList.remove("fact-switching");
+      }, 90);
+    });
   };
 
-  updateFactView(false);
+  // Sync currentFactIndex with whatever text is currently displayed
+  const initialFacts = getActiveFacts();
+  const currentDisplayed = factText.textContent.trim();
+  const foundIdx = initialFacts.findIndex((f) => f.trim() === currentDisplayed);
+  currentFactIndex = foundIdx >= 0 ? foundIdx : 0;
+  renderFactAtIndex(currentFactIndex, false);
 
   if (!factButton.dataset.bound) {
     factButton.dataset.bound = "true";
     factButton.addEventListener("click", () => {
-      const facts = siteData.facts?.length ? siteData.facts : DEFAULT_DATA.facts;
-      currentFactIndex = (currentFactIndex + 1) % facts.length;
-      updateFactView(true);
+      const facts = getActiveFacts();
+      if (facts.length <= 1) {
+        renderFactAtIndex(0, false);
+        return;
+      }
+
+      // Advance to the next distinct fact, guaranteeing it never repeats the currently displayed fact
+      let nextIndex = (currentFactIndex + 1) % facts.length;
+      if (facts[nextIndex].trim() === factText.textContent.trim()) {
+        nextIndex = (nextIndex + 1) % facts.length;
+      }
+      renderFactAtIndex(nextIndex, true);
     });
   }
 }
@@ -537,22 +754,43 @@ function renderInterestsPage() {
               ${(item.skills || [])
                 .map(
                   (skill) =>
-                    `<span class="badge rounded-pill text-bg-light interactive-badge" data-skill="${escapeHtml(skill)}" title="Click to see how I use ${escapeHtml(skill)}">${escapeHtml(skill)}</span>`
+                    `<span class="badge rounded-pill text-bg-light interactive-badge" role="button" tabindex="0" aria-pressed="false" data-skill="${escapeHtml(skill)}" title="Click to see how I use ${escapeHtml(skill)}">${escapeHtml(skill)}</span>`
                 )
                 .join("")}
             </div>
+            <div class="skill-note-panel" aria-live="polite"></div>
           </div>
         </section>`
       )
       .join("");
 
+    const activateBadge = (badge) => {
+      const skill = badge.getAttribute("data-skill");
+      const section = badge.closest(".interest-detail");
+      const panel = section?.querySelector(".skill-note-panel");
+      const note = SKILL_NOTES[skill] || `${skill} — part of my ongoing hands-on learning and project stack.`;
+
+      listContainer.querySelectorAll(".interactive-badge").forEach((b) => {
+        b.classList.remove("active");
+        b.setAttribute("aria-pressed", "false");
+      });
+      badge.classList.add("active");
+      badge.setAttribute("aria-pressed", "true");
+
+      if (panel) {
+        panel.innerHTML = `<strong>${escapeHtml(skill)}:</strong> ${escapeHtml(note)}`;
+        panel.classList.add("visible");
+      }
+      showToast(`${skill}: ${note}`);
+    };
+
     listContainer.querySelectorAll(".interactive-badge").forEach((badge) => {
-      badge.addEventListener("click", () => {
-        const skill = badge.getAttribute("data-skill");
-        listContainer.querySelectorAll(".interactive-badge").forEach((b) => b.classList.remove("active"));
-        badge.classList.add("active");
-        const note = SKILL_NOTES[skill] || `${skill} — part of my ongoing hands-on learning and project stack.`;
-        showToast(`${skill}: ${note}`);
+      badge.addEventListener("click", () => activateBadge(badge));
+      badge.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          activateBadge(badge);
+        }
       });
     });
   }
@@ -575,12 +813,48 @@ function renderInterestsPage() {
   }
 }
 
+function matchesProjectFilter(item, filter, query) {
+  const category = String(item.category || "").toLowerCase().trim();
+  const status = String(item.status || "").toLowerCase().trim();
+
+  let categoryMatch = true;
+  if (filter === "systems") {
+    categoryMatch = category === "systems";
+  } else if (filter === "backend") {
+    categoryMatch = category === "backend";
+  } else if (filter === "active") {
+    categoryMatch = status !== "planned";
+  } else if (filter === "planned") {
+    categoryMatch = status === "planned";
+  }
+
+  if (!categoryMatch) return false;
+
+  const q = String(query || "").toLowerCase().trim();
+  if (!q) return true;
+
+  const haystack = [
+    item.title,
+    item.badge,
+    item.category,
+    item.status,
+    item.description,
+    item.learning,
+    ...(Array.isArray(item.underTheHood) ? item.underTheHood : [])
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  return haystack.includes(q);
+}
+
 function renderProjectsPage() {
   const eyebrow = document.getElementById("projects-eyebrow");
   const title = document.getElementById("projects-title");
   const intro = document.getElementById("projects-intro");
   const grid = document.getElementById("projects-grid-container");
   const countLabel = document.getElementById("project-count-label");
+  const searchInput = document.getElementById("project-search-input");
 
   if (eyebrow) eyebrow.textContent = siteData.projects.eyebrow;
   if (title) title.textContent = siteData.projects.title;
@@ -588,62 +862,88 @@ function renderProjectsPage() {
 
   if (!grid) return;
 
-  const allItems = siteData.projects.items || [];
+  const allItems = Array.isArray(siteData.projects.items) ? siteData.projects.items : [];
   const filtered = allItems
     .map((item, originalIndex) => ({ item, originalIndex }))
-    .filter(({ item }) => {
-      if (activeProjectFilter === "all") return true;
-      if (activeProjectFilter === "systems") return item.category === "systems";
-      if (activeProjectFilter === "backend") return item.category === "backend";
-      if (activeProjectFilter === "active") return item.status !== "Planned";
-      return true;
-    });
+    .filter(({ item }) => matchesProjectFilter(item, activeProjectFilter, projectSearchQuery));
 
   if (countLabel) {
-    countLabel.textContent = `Showing ${filtered.length} of ${allItems.length} project${allItems.length === 1 ? "" : "s"}`;
+    if (activeProjectFilter === "all" && !projectSearchQuery.trim()) {
+      countLabel.textContent = `Showing ${filtered.length} of ${allItems.length} project${allItems.length === 1 ? "" : "s"}`;
+    } else {
+      countLabel.textContent = `Showing ${filtered.length} of ${allItems.length} project${allItems.length === 1 ? "" : "s"}`;
+    }
   }
 
-  grid.innerHTML = filtered
-    .map(({ item, originalIndex }) => {
-      const isPlanned = item.status === "Planned";
-      const btnClass = item.buttonStyle === "dark" ? "btn-dark" : "btn-outline-dark";
-      const hoodList = Array.isArray(item.underTheHood) && item.underTheHood.length > 0
-        ? `
-          <button type="button" class="hood-toggle" aria-expanded="false"><span>+ Under the hood</span></button>
-          <div class="hood-panel">
-            <ul>
-              ${item.underTheHood.map((pt) => `<li>${escapeHtml(pt)}</li>`).join("")}
-            </ul>
-          </div>`
-        : "";
+  if (filtered.length === 0) {
+    grid.innerHTML = `
+      <div class="col-12">
+        <div class="project-empty-state">
+          <h3>No matching projects found</h3>
+          <p>No projects match the current filter${projectSearchQuery ? ` ("${escapeHtml(projectSearchQuery)}")` : ""}.</p>
+          <button type="button" class="btn btn-outline-dark" id="reset-project-filters-btn">Reset filters</button>
+        </div>
+      </div>
+    `;
+    const resetBtn = document.getElementById("reset-project-filters-btn");
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        activeProjectFilter = "all";
+        projectSearchQuery = "";
+        if (searchInput) searchInput.value = "";
+        document.querySelectorAll(".filter-pill").forEach((p) => {
+          const isAll = p.getAttribute("data-filter") === "all";
+          p.classList.toggle("active", isAll);
+          p.setAttribute("aria-selected", String(isAll));
+        });
+        renderProjectsPage();
+      });
+    }
+  } else {
+    grid.innerHTML = filtered
+      .map(({ item, originalIndex }) => {
+        const isPlanned = String(item.status || "").toLowerCase() === "planned";
+        const btnClass = item.buttonStyle === "dark" ? "btn-dark" : "btn-outline-dark";
+        const hoodList =
+          Array.isArray(item.underTheHood) && item.underTheHood.length > 0
+            ? `
+            <button type="button" class="hood-toggle" aria-expanded="false"><span>+ Under the hood</span></button>
+            <div class="hood-panel">
+              <ul>
+                ${item.underTheHood.map((pt) => `<li>${escapeHtml(pt)}</li>`).join("")}
+              </ul>
+            </div>`
+            : "";
 
-      const repoBtn = item.repoUrl
-        ? `<a class="btn ${btnClass}" href="${escapeHtml(item.repoUrl)}" target="_blank" rel="noopener noreferrer">View repository ↗</a>`
-        : `<span class="btn btn-outline-dark disabled" aria-disabled="true">Repository coming soon</span>`;
+        const repoAction =
+          item.repoUrl && item.repoUrl.trim()
+            ? `<a class="btn ${btnClass}" href="${escapeHtml(item.repoUrl)}" target="_blank" rel="noopener noreferrer">View repository ↗</a>`
+            : `<span class="planned-repo-tag">Planned — repository not yet public</span>`;
 
-      return `
-        <div class="col-lg-6 project-col">
-          <article class="card project-card h-100">
-            <div class="card-body d-flex flex-column">
-              <div class="project-card-top">
-                <span class="badge rounded-pill text-bg-light" data-editable="projects.items.${originalIndex}.badge">${escapeHtml(item.badge)}</span>
-                <div class="project-meta-right">
-                  <span class="status-pill ${isPlanned ? "status-planned" : ""}" data-editable="projects.items.${originalIndex}.status">${escapeHtml(item.status)}</span>
-                  <span class="project-index" data-editable="projects.items.${originalIndex}.index">${escapeHtml(item.index)}</span>
+        return `
+          <div class="col-lg-6 project-col" data-category="${escapeHtml(item.category)}" data-status="${escapeHtml(item.status)}">
+            <article class="card project-card h-100">
+              <div class="card-body d-flex flex-column">
+                <div class="project-card-top">
+                  <span class="badge rounded-pill text-bg-light" data-editable="projects.items.${originalIndex}.badge">${escapeHtml(item.badge)}</span>
+                  <div class="project-meta-right">
+                    <span class="status-pill ${isPlanned ? "status-planned" : ""}" data-editable="projects.items.${originalIndex}.status">${escapeHtml(item.status)}</span>
+                    <span class="project-index" data-editable="projects.items.${originalIndex}.index">${escapeHtml(item.index)}</span>
+                  </div>
+                </div>
+                <h2 class="card-title" data-editable="projects.items.${originalIndex}.title">${escapeHtml(item.title)}</h2>
+                <p class="card-text" data-editable="projects.items.${originalIndex}.description">${escapeHtml(item.description)}</p>
+                <p class="project-learning" data-editable="projects.items.${originalIndex}.learning">${escapeHtml(item.learning)}</p>
+                ${hoodList}
+                <div class="project-actions">
+                  ${repoAction}
                 </div>
               </div>
-              <h2 class="card-title" data-editable="projects.items.${originalIndex}.title">${escapeHtml(item.title)}</h2>
-              <p class="card-text" data-editable="projects.items.${originalIndex}.description">${escapeHtml(item.description)}</p>
-              <p class="project-learning" data-editable="projects.items.${originalIndex}.learning">${escapeHtml(item.learning)}</p>
-              ${hoodList}
-              <div class="project-actions">
-                ${repoBtn}
-              </div>
-            </div>
-          </article>
-        </div>`;
-    })
-    .join("");
+            </article>
+          </div>`;
+      })
+      .join("");
+  }
 
   // Bind Under-the-hood toggles
   grid.querySelectorAll(".hood-toggle").forEach((btn) => {
@@ -656,20 +956,66 @@ function renderProjectsPage() {
     });
   });
 
-  // Bind filter pills once
+  // Bind filter pills
   document.querySelectorAll(".filter-pill").forEach((pill) => {
     if (pill.dataset.bound) return;
     pill.dataset.bound = "true";
     pill.addEventListener("click", () => {
-      document.querySelectorAll(".filter-pill").forEach((p) => p.classList.remove("active"));
+      document.querySelectorAll(".filter-pill").forEach((p) => {
+        p.classList.remove("active");
+        p.setAttribute("aria-selected", "false");
+      });
       pill.classList.add("active");
+      pill.setAttribute("aria-selected", "true");
       activeProjectFilter = pill.getAttribute("data-filter") || "all";
       renderProjectsPage();
-      if (document.body.classList.contains("inline-edit-active")) {
+      if (document.body.classList.contains("inline-edit-active") && isOwnerAuthenticated()) {
         enableInlineEditing(true);
       }
     });
   });
+
+  // Bind search input
+  if (searchInput && !searchInput.dataset.bound) {
+    searchInput.dataset.bound = "true";
+    searchInput.addEventListener("input", () => {
+      projectSearchQuery = searchInput.value;
+      renderProjectsPage();
+    });
+  }
+}
+
+function activateAboutTab(tabPaneId, updateHash = false) {
+  const buttons = document.querySelectorAll(".about-tab-btn");
+  const panes = document.querySelectorAll(".about-tab-pane");
+  if (!buttons.length || !panes.length) return;
+
+  buttons.forEach((btn) => {
+    const isMatch = btn.getAttribute("data-tab") === tabPaneId;
+    btn.classList.toggle("active", isMatch);
+    btn.setAttribute("aria-selected", String(isMatch));
+    if (isMatch && updateHash) {
+      const hashName = btn.getAttribute("data-hash");
+      if (hashName && history.replaceState) {
+        history.replaceState(null, "", `#${hashName}`);
+      }
+    }
+  });
+
+  panes.forEach((pane) => {
+    pane.classList.toggle("active", pane.id === tabPaneId);
+  });
+}
+
+function syncAboutTabFromHash() {
+  const hash = (window.location.hash || "").replace(/^#/, "").toLowerCase();
+  if (hash === "certifications" || hash === "cert-pane") {
+    activateAboutTab("cert-pane", false);
+  } else if (hash === "contact" || hash === "direct-contact" || hash === "contact-pane") {
+    activateAboutTab("contact-pane", false);
+  } else if (hash === "education" || hash === "edu-pane") {
+    activateAboutTab("edu-pane", false);
+  }
 }
 
 function renderAboutPage() {
@@ -722,14 +1068,38 @@ function renderAboutPage() {
 
   if (certList && Array.isArray(siteData.about.certifications)) {
     certList.innerHTML = siteData.about.certifications
-      .map(
-        (cert, idx) => `
+      .map((cert, idx) => {
+        const hasUrl = cert.url && /^https?:\/\/.+/i.test(cert.url.trim());
+        const metaRight = hasUrl
+          ? `<a class="cert-link" href="${escapeHtml(cert.url.trim())}" target="_blank" rel="noopener noreferrer">Verify credential ↗</a>`
+          : `<span>${escapeHtml(cert.status || "Completed")}</span>`;
+        return `
         <div class="cert-box">
           <h3 data-editable="about.certifications.${idx}.name">${escapeHtml(cert.name)}</h3>
-          <p data-editable="about.certifications.${idx}.issuer">${escapeHtml(cert.issuer)}</p>
-        </div>`
-      )
+          <p class="cert-issuer" data-editable="about.certifications.${idx}.issuer">${escapeHtml(cert.issuer)}</p>
+          <div class="cert-meta">
+            ${metaRight}
+          </div>
+        </div>`;
+      })
       .join("");
+  }
+
+  // Update Direct Contact email links from siteData.contact.email
+  const emailAddr = siteData.contact?.email || DEFAULT_DATA.contact.email;
+  const directEmailLink = document.getElementById("direct-email-link");
+  const sendEmailBtn = document.getElementById("send-email-btn");
+  const copyBtn = document.getElementById("copy-email-btn");
+
+  if (directEmailLink) {
+    directEmailLink.href = `mailto:${emailAddr}`;
+    directEmailLink.textContent = emailAddr;
+  }
+  if (sendEmailBtn) {
+    sendEmailBtn.href = `mailto:${emailAddr}`;
+  }
+  if (copyBtn) {
+    copyBtn.setAttribute("data-email", emailAddr);
   }
 
   // Bind About Tabs
@@ -738,26 +1108,48 @@ function renderAboutPage() {
     btn.dataset.bound = "true";
     btn.addEventListener("click", () => {
       const targetId = btn.getAttribute("data-tab");
-      document.querySelectorAll(".about-tab-btn").forEach((b) => {
-        b.classList.remove("active");
-        b.setAttribute("aria-selected", "false");
-      });
-      document.querySelectorAll(".about-tab-pane").forEach((pane) => pane.classList.remove("active"));
-      btn.classList.add("active");
-      btn.setAttribute("aria-selected", "true");
-      const pane = document.getElementById(targetId);
-      if (pane) pane.classList.add("active");
+      activateAboutTab(targetId, true);
     });
   });
 
-  // Bind Copy Email Button
-  const copyBtn = document.getElementById("copy-email-btn");
+  syncAboutTabFromHash();
+  if (!window.__aboutHashBound) {
+    window.__aboutHashBound = true;
+    window.addEventListener("hashchange", syncAboutTabFromHash);
+  }
+
+  // Bind Copy Email Button with fallback
   if (copyBtn && !copyBtn.dataset.bound) {
     copyBtn.dataset.bound = "true";
-    copyBtn.addEventListener("click", () => {
-      const email = siteData.contact?.email || copyBtn.getAttribute("data-email");
-      navigator.clipboard?.writeText(email);
+    copyBtn.addEventListener("click", async () => {
+      const email = copyBtn.getAttribute("data-email") || siteData.contact?.email || DEFAULT_DATA.contact.email;
+      let copied = false;
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(email);
+          copied = true;
+        }
+      } catch (_) {}
+
+      if (!copied) {
+        const temp = document.createElement("textarea");
+        temp.value = email;
+        temp.style.position = "fixed";
+        temp.style.opacity = "0";
+        document.body.appendChild(temp);
+        temp.select();
+        try {
+          document.execCommand("copy");
+          copied = true;
+        } catch (_) {}
+        document.body.removeChild(temp);
+      }
+
+      copyBtn.textContent = "✓ Email Copied";
       showToast(`Copied ${email} to clipboard!`);
+      setTimeout(() => {
+        copyBtn.textContent = "Copy Email Address";
+      }, 2200);
     });
   }
 }
@@ -770,13 +1162,17 @@ function renderActivePage() {
   else if (page === "projects") renderProjectsPage();
   else if (page === "about") renderAboutPage();
 
-  if (document.body.classList.contains("inline-edit-active")) {
+  if (document.body.classList.contains("inline-edit-active") && isOwnerAuthenticated()) {
     enableInlineEditing(true);
   }
 }
 
-/* ===== Inline Click-to-Edit Mode ===== */
+/* ===== Inline Click-to-Edit Mode (Owner Only) ===== */
 function enableInlineEditing(enabled) {
+  if (enabled && !isOwnerAuthenticated()) {
+    openOwnerEditFlow();
+    return;
+  }
   document.body.classList.toggle("inline-edit-active", enabled);
   const editables = document.querySelectorAll("[data-editable]");
   editables.forEach((el) => {
@@ -786,10 +1182,11 @@ function enableInlineEditing(enabled) {
       if (!el.dataset.inlineBound) {
         el.dataset.inlineBound = "true";
         el.addEventListener("blur", () => {
+          if (!isOwnerAuthenticated()) return;
           const path = el.getAttribute("data-editable");
           if (path) {
             setByPath(siteData, path, el.textContent.trim());
-            saveSiteData(false);
+            saveSiteDataDraft(false);
             renderStudioBody();
           }
         });
@@ -826,7 +1223,7 @@ function injectTerminalModal() {
           <span class="term-cmd-chip" data-cmd="projects">projects</span>
           <span class="term-cmd-chip" data-cmd="skills">skills</span>
           <span class="term-cmd-chip" data-cmd="fact">fact</span>
-          <span class="term-cmd-chip" data-cmd="edit">edit</span>
+          <span class="term-cmd-chip" data-cmd="contact">contact</span>
           <span class="term-cmd-chip" data-cmd="theme">theme</span>
         </div>
       </div>
@@ -841,12 +1238,18 @@ function injectTerminalModal() {
   const output = document.getElementById("term-output");
   const input = document.getElementById("term-input");
   const form = document.getElementById("term-form");
+  const openBtn = document.getElementById("open-terminal-btn");
 
-  const closeTerminal = () => backdrop.classList.remove("open");
-  document.getElementById("term-close-btn").addEventListener("click", closeTerminal);
-  document.getElementById("term-close-dot").addEventListener("click", closeTerminal);
+  const setTerminalOpen = (open) => {
+    backdrop.classList.toggle("open", open);
+    if (openBtn) openBtn.setAttribute("aria-expanded", String(open));
+    if (open) setTimeout(() => input.focus(), 50);
+  };
+
+  document.getElementById("term-close-btn").addEventListener("click", () => setTerminalOpen(false));
+  document.getElementById("term-close-dot").addEventListener("click", () => setTerminalOpen(false));
   backdrop.addEventListener("click", (e) => {
-    if (e.target === backdrop) closeTerminal();
+    if (e.target === backdrop) setTerminalOpen(false);
   });
 
   function printLine(text, isCommand = false) {
@@ -879,7 +1282,7 @@ function injectTerminalModal() {
             "  fact            — Print a random fun fact\n" +
             "  contact         — Show email & GitHub/LinkedIn links\n" +
             "  theme           — Toggle light / dark theme\n" +
-            "  edit            — Open the Interactive Site Studio\n" +
+            "  edit            — Open Owner Portfolio Editor (requires owner sign-in)\n" +
             "  clear           — Clear terminal output"
         );
         break;
@@ -906,7 +1309,7 @@ function injectTerminalModal() {
           printLine(`Navigating to ${map[target]}...`);
           setTimeout(() => {
             window.location.href = map[target];
-          }, 250);
+          }, 200);
         } else {
           printLine(`cd: no such page '${args[0] || ""}'. Try: cd home | cd interests | cd projects | cd about`);
         }
@@ -927,7 +1330,7 @@ function injectTerminalModal() {
         );
         break;
       case "fact": {
-        const facts = siteData.facts || DEFAULT_DATA.facts;
+        const facts = getActiveFacts();
         const pick = facts[Math.floor(Math.random() * facts.length)];
         printLine(`✳ ${pick}`);
         break;
@@ -944,8 +1347,8 @@ function injectTerminalModal() {
         break;
       }
       case "edit":
-        closeTerminal();
-        openStudioDrawer();
+        setTerminalOpen(false);
+        openOwnerEditFlow();
         break;
       case "clear":
         output.innerHTML = "";
@@ -968,114 +1371,268 @@ function injectTerminalModal() {
     });
   });
 
-  const openBtn = document.getElementById("open-terminal-btn");
-  if (openBtn) {
+  if (openBtn && !openBtn.dataset.bound) {
+    openBtn.dataset.bound = "true";
     openBtn.addEventListener("click", () => {
-      backdrop.classList.add("open");
-      setTimeout(() => input.focus(), 60);
+      const isOpen = backdrop.classList.contains("open");
+      setTerminalOpen(!isOpen);
     });
   }
 }
 
-/* ===== Interactive Site Studio / Live Editor Drawer ===== */
-function injectStudioDrawer() {
-  if (document.getElementById("studio-drawer")) return;
-
-  const drawer = document.createElement("aside");
-  drawer.id = "studio-drawer";
-  drawer.className = "studio-drawer";
-  drawer.setAttribute("aria-label", "Interactive Site Editor");
-  drawer.innerHTML = `
-    <div class="studio-header">
-      <h3><span style="color:var(--accent)">✎</span> Interactive Site Studio</h3>
-      <button type="button" class="tool-btn" id="close-studio-btn">Close ✕</button>
-    </div>
-    <div class="studio-mode-bar">
-      <div>
-        <strong>Click-to-Edit on Page</strong>
-        <div style="font-size:0.72rem;color:var(--muted);">Click any outlined text on the page to edit directly</div>
+/* ===== Owner Authentication Modal & Owner Editor Drawer ===== */
+function injectAuthAndStudioModals() {
+  if (!document.getElementById("owner-auth-modal")) {
+    const authBackdrop = document.createElement("div");
+    authBackdrop.id = "owner-auth-modal";
+    authBackdrop.className = "auth-modal-backdrop";
+    authBackdrop.innerHTML = `
+      <div class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+        <div class="auth-modal-header">
+          <h3 id="auth-modal-title"><span style="color:var(--accent);">🔒</span> Owner Sign-In</h3>
+          <button type="button" class="tool-btn" id="close-auth-modal-btn">Close ✕</button>
+        </div>
+        <p class="auth-modal-desc">
+          Editing this portfolio is restricted to the site owner (<strong>@${EXPECTED_OWNER}</strong>).
+          Enter a GitHub Fine-Grained Personal Access Token with <code>Contents: Read &amp; Write</code> permission for <code>${EXPECTED_REPO}</code> to unlock editing and publish changes directly to GitHub.
+        </p>
+        <div class="auth-error-msg" id="auth-error-msg" role="alert"></div>
+        <form id="owner-auth-form">
+          <div class="studio-field">
+            <label for="owner-gh-token-input">GitHub Personal Access Token</label>
+            <input type="password" id="owner-gh-token-input" placeholder="github_pat_... or ghp_..." autocomplete="off" required />
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:16px;">
+            <button type="submit" class="btn btn-dark" id="owner-auth-submit-btn">Verify &amp; Unlock Editor</button>
+            <button type="button" class="btn btn-outline-dark" id="owner-auth-cancel-btn">Cancel</button>
+          </div>
+        </form>
       </div>
-      <input type="checkbox" id="inline-edit-toggle" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;" />
-    </div>
-    <div class="studio-tabs" id="studio-tabs">
-      <button type="button" class="studio-tab active" data-tab="general">Style &amp; Hero</button>
-      <button type="button" class="studio-tab" data-tab="projects">Projects</button>
-      <button type="button" class="studio-tab" data-tab="facts">Fun Facts</button>
-      <button type="button" class="studio-tab" data-tab="about">About &amp; Focus</button>
-    </div>
-    <div class="studio-body" id="studio-body"></div>
-    <div class="studio-footer">
-      <div style="display:flex;gap:6px;flex-wrap:wrap;">
-        <button type="button" class="btn btn-dark" id="studio-download-btn" style="padding:7px 12px;font-size:0.78rem;">Download data.json ↓</button>
-        <button type="button" class="btn btn-outline-dark" id="studio-copy-btn" style="padding:7px 12px;font-size:0.78rem;">Copy JSON</button>
-      </div>
-      <button type="button" class="tool-btn" id="studio-reset-btn" title="Restore original defaults">Reset</button>
-    </div>
-  `;
-  document.body.appendChild(drawer);
+    `;
+    document.body.appendChild(authBackdrop);
 
-  document.getElementById("close-studio-btn").addEventListener("click", () => {
-    drawer.classList.remove("open");
-  });
+    const closeAuthModal = () => {
+      authBackdrop.classList.remove("open");
+      const openBtn = document.getElementById("open-studio-btn");
+      if (openBtn) openBtn.setAttribute("aria-expanded", "false");
+    };
 
-  const openBtn = document.getElementById("open-studio-btn");
-  if (openBtn) {
-    openBtn.addEventListener("click", openStudioDrawer);
+    document.getElementById("close-auth-modal-btn").addEventListener("click", closeAuthModal);
+    document.getElementById("owner-auth-cancel-btn").addEventListener("click", closeAuthModal);
+    authBackdrop.addEventListener("click", (e) => {
+      if (e.target === authBackdrop) closeAuthModal();
+    });
+
+    const authForm = document.getElementById("owner-auth-form");
+    const tokenInput = document.getElementById("owner-gh-token-input");
+    const errorEl = document.getElementById("auth-error-msg");
+    const submitBtn = document.getElementById("owner-auth-submit-btn");
+
+    authForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorEl.classList.remove("visible");
+      errorEl.textContent = "";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Verifying with GitHub...";
+
+      try {
+        const session = await verifyOwnerGitHubToken(tokenInput.value);
+        setOwnerSession(session);
+        tokenInput.value = "";
+        closeAuthModal();
+        openStudioDrawer();
+        showToast(`Authenticated as @${session.login}`);
+      } catch (err) {
+        errorEl.textContent = err.message || "Authentication failed.";
+        errorEl.classList.add("visible");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Verify & Unlock Editor";
+      }
+    });
   }
 
-  const inlineToggle = document.getElementById("inline-edit-toggle");
-  inlineToggle.addEventListener("change", (e) => {
-    enableInlineEditing(e.target.checked);
-    showToast(e.target.checked ? "Click any outlined text on the page to edit!" : "Inline editing turned off");
-  });
+  if (!document.getElementById("studio-drawer")) {
+    const drawer = document.createElement("aside");
+    drawer.id = "studio-drawer";
+    drawer.className = "studio-drawer";
+    drawer.setAttribute("aria-label", "Owner Portfolio Editor");
+    drawer.innerHTML = `
+      <div class="studio-header">
+        <h3><span style="color:var(--accent)">✎</span> Owner Portfolio Editor</h3>
+        <button type="button" class="tool-btn" id="close-studio-btn">Close ✕</button>
+      </div>
+      <div class="studio-auth-bar">
+        <span id="studio-auth-status">Signed in as @${EXPECTED_OWNER}</span>
+        <button type="button" class="tool-btn" id="studio-signout-btn" style="padding:2px 8px;font-size:0.72rem;">Sign Out</button>
+      </div>
+      <div class="studio-mode-bar">
+        <div>
+          <strong>Click-to-Edit on Page</strong>
+          <div style="font-size:0.72rem;color:var(--muted);">Click any outlined text on the page to edit directly</div>
+        </div>
+        <input type="checkbox" id="inline-edit-toggle" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;" />
+      </div>
+      <div class="studio-tabs" id="studio-tabs">
+        <button type="button" class="studio-tab active" data-tab="general">Home &amp; Style</button>
+        <button type="button" class="studio-tab" data-tab="projects">Projects</button>
+        <button type="button" class="studio-tab" data-tab="about">About &amp; Links</button>
+        <button type="button" class="studio-tab" data-tab="facts">Fun Facts</button>
+      </div>
+      <div class="studio-status-banner" id="studio-status-banner" role="status"></div>
+      <div class="studio-body" id="studio-body"></div>
+      <div class="studio-footer">
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <button type="button" class="btn btn-dark" id="studio-publish-btn" style="padding:7px 12px;font-size:0.78rem;">Publish to GitHub ↑</button>
+          <button type="button" class="btn btn-outline-dark" id="studio-download-btn" style="padding:7px 12px;font-size:0.78rem;">Download JSON ↓</button>
+        </div>
+        <button type="button" class="tool-btn" id="studio-reset-btn" title="Discard local draft">Reset Draft</button>
+      </div>
+    `;
+    document.body.appendChild(drawer);
 
-  drawer.querySelectorAll(".studio-tab").forEach((tab) => {
-    tab.addEventListener("click", () => {
-      drawer.querySelectorAll(".studio-tab").forEach((t) => t.classList.remove("active"));
-      tab.classList.add("active");
-      activeStudioTab = tab.getAttribute("data-tab");
-      renderStudioBody();
+    const closeDrawer = () => {
+      drawer.classList.remove("open");
+      const openBtn = document.getElementById("open-studio-btn");
+      if (openBtn) openBtn.setAttribute("aria-expanded", "false");
+    };
+
+    document.getElementById("close-studio-btn").addEventListener("click", closeDrawer);
+
+    document.getElementById("studio-signout-btn").addEventListener("click", () => {
+      setOwnerSession(null);
+      enableInlineEditing(false);
+      const inlineToggle = document.getElementById("inline-edit-toggle");
+      if (inlineToggle) inlineToggle.checked = false;
+      closeDrawer();
+      showToast("Signed out of owner session.");
     });
-  });
 
-  document.getElementById("studio-download-btn").addEventListener("click", () => {
-    const blob = new Blob([JSON.stringify(siteData, null, 2)], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "data.json";
-    a.click();
-    URL.revokeObjectURL(url);
-    showToast("Downloaded updated data.json!");
-  });
+    const inlineToggle = document.getElementById("inline-edit-toggle");
+    inlineToggle.addEventListener("change", (e) => {
+      if (!isOwnerAuthenticated()) {
+        e.target.checked = false;
+        closeDrawer();
+        openOwnerEditFlow();
+        return;
+      }
+      enableInlineEditing(e.target.checked);
+      showToast(e.target.checked ? "Inline page editing enabled" : "Inline page editing disabled");
+    });
 
-  document.getElementById("studio-copy-btn").addEventListener("click", () => {
-    navigator.clipboard?.writeText(JSON.stringify(siteData, null, 2));
-    showToast("Copied data.json to clipboard!");
-  });
+    drawer.querySelectorAll(".studio-tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        drawer.querySelectorAll(".studio-tab").forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+        activeStudioTab = tab.getAttribute("data-tab");
+        renderStudioBody();
+      });
+    });
 
-  document.getElementById("studio-reset-btn").addEventListener("click", () => {
-    localStorage.removeItem(STORAGE_KEY);
-    siteData = structuredClone(DEFAULT_DATA);
-    renderActivePage();
-    renderStudioBody();
-    showToast("Restored default site content");
-  });
+    const statusBanner = document.getElementById("studio-status-banner");
+    const setStatusBanner = (msg, type) => {
+      if (!statusBanner) return;
+      statusBanner.className = "studio-status-banner";
+      if (!msg) {
+        statusBanner.textContent = "";
+        return;
+      }
+      statusBanner.textContent = msg;
+      statusBanner.classList.add(type === "error" ? "error" : "success");
+    };
 
-  renderStudioBody();
+    const publishBtn = document.getElementById("studio-publish-btn");
+    publishBtn.addEventListener("click", async () => {
+      setStatusBanner("", "");
+      const validationErr = validateSiteData(siteData);
+      if (validationErr) {
+        setStatusBanner(validationErr, "error");
+        return;
+      }
+      publishBtn.disabled = true;
+      publishBtn.textContent = "Publishing...";
+      try {
+        const shortSha = await publishSiteDataToGitHub();
+        setStatusBanner(`Published to GitHub (commit ${shortSha})! Changes are saved to data.json.`, "success");
+        showToast("Published changes to GitHub!");
+      } catch (err) {
+        setStatusBanner(err.message || "Failed to publish to GitHub.", "error");
+      } finally {
+        publishBtn.disabled = false;
+        publishBtn.textContent = "Publish to GitHub ↑";
+      }
+    });
+
+    document.getElementById("studio-download-btn").addEventListener("click", () => {
+      const validationErr = validateSiteData(siteData);
+      if (validationErr) {
+        setStatusBanner(validationErr, "error");
+        return;
+      }
+      setStatusBanner("", "");
+      const blob = new Blob([JSON.stringify(siteData, null, 2) + "\n"], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "data.json";
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast("Downloaded updated data.json!");
+    });
+
+    document.getElementById("studio-reset-btn").addEventListener("click", () => {
+      localStorage.removeItem(STORAGE_KEY);
+      siteData = cloneData(DEFAULT_DATA);
+      setStatusBanner("Restored default portfolio data.", "success");
+      renderActivePage();
+      renderStudioBody();
+      showToast("Restored default site content");
+    });
+  }
+
+  const openBtn = document.getElementById("open-studio-btn");
+  if (openBtn && !openBtn.dataset.bound) {
+    openBtn.dataset.bound = "true";
+    openBtn.addEventListener("click", openOwnerEditFlow);
+  }
+}
+
+function openOwnerEditFlow() {
+  if (isOwnerAuthenticated()) {
+    openStudioDrawer();
+  } else {
+    const authModal = document.getElementById("owner-auth-modal");
+    const openBtn = document.getElementById("open-studio-btn");
+    if (authModal) {
+      authModal.classList.add("open");
+      if (openBtn) openBtn.setAttribute("aria-expanded", "true");
+      setTimeout(() => document.getElementById("owner-gh-token-input")?.focus(), 50);
+    }
+  }
 }
 
 function openStudioDrawer() {
+  if (!isOwnerAuthenticated()) {
+    openOwnerEditFlow();
+    return;
+  }
   const drawer = document.getElementById("studio-drawer");
+  const openBtn = document.getElementById("open-studio-btn");
+  const session = getOwnerSession();
+  const statusEl = document.getElementById("studio-auth-status");
+  if (statusEl && session) {
+    statusEl.textContent = `✓ Authenticated as @${session.login}`;
+  }
   if (drawer) {
     drawer.classList.add("open");
+    if (openBtn) openBtn.setAttribute("aria-expanded", "true");
     renderStudioBody();
   }
 }
 
 function renderStudioBody() {
   const container = document.getElementById("studio-body");
-  if (!container) return;
+  if (!container || !isOwnerAuthenticated()) return;
 
   const swatches = [
     { name: "Forest Green", color: "#39745a" },
@@ -1123,7 +1680,7 @@ function renderStudioBody() {
     container.querySelectorAll(".color-swatch").forEach((btn) => {
       btn.addEventListener("click", () => {
         siteData.meta.accentColor = btn.getAttribute("data-color");
-        saveSiteData(false);
+        saveSiteDataDraft(false);
         renderActivePage();
         renderStudioBody();
       });
@@ -1153,7 +1710,11 @@ function renderStudioBody() {
             <div class="studio-field">
               <label>Status &amp; Category</label>
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-                <input type="text" data-bind="projects.items.${idx}.status" value="${escapeHtml(p.status)}" placeholder="Built / In Progress / Planned" />
+                <select data-bind="projects.items.${idx}.status">
+                  <option value="Built" ${p.status === "Built" ? "selected" : ""}>Built</option>
+                  <option value="In Progress" ${p.status === "In Progress" ? "selected" : ""}>In Progress</option>
+                  <option value="Planned" ${p.status === "Planned" ? "selected" : ""}>Planned</option>
+                </select>
                 <select data-bind="projects.items.${idx}.category">
                   <option value="systems" ${p.category === "systems" ? "selected" : ""}>Systems &amp; C</option>
                   <option value="backend" ${p.category === "backend" ? "selected" : ""}>Backend &amp; Java</option>
@@ -1169,8 +1730,8 @@ function renderStudioBody() {
               <input type="text" data-bind="projects.items.${idx}.learning" value="${escapeHtml(p.learning)}" />
             </div>
             <div class="studio-field" style="margin-bottom:0;">
-              <label>GitHub URL</label>
-              <input type="text" data-bind="projects.items.${idx}.repoUrl" value="${escapeHtml(p.repoUrl)}" placeholder="https://github.com/..." />
+              <label>GitHub URL (optional for Planned)</label>
+              <input type="url" data-bind="projects.items.${idx}.repoUrl" value="${escapeHtml(p.repoUrl)}" placeholder="https://github.com/..." />
             </div>
           </div>`
         )
@@ -1181,64 +1742,31 @@ function renderStudioBody() {
       const nextNum = String(siteData.projects.items.length + 1).padStart(2, "0");
       siteData.projects.items.unshift({
         index: `PROJECT ${nextNum}`,
-        title: "New Experiment",
+        title: "New Project",
         badge: "Java · Spring Boot",
         category: "backend",
         status: "In Progress",
         featured: true,
-        description: "Describe what this project does and why you built it.",
-        learning: "Key takeaway or system concept explored in this project.",
-        underTheHood: ["Implemented core architecture and tests"],
+        description: "Describe what this project does and how it is architected.",
+        learning: "Key engineering concept explored in this project.",
+        underTheHood: ["Core implementation and architecture details"],
         repoUrl: "https://github.com/shiva-kar",
         buttonStyle: "dark"
       });
-      saveSiteData(true);
+      saveSiteDataDraft(true);
       renderActivePage();
       renderStudioBody();
     });
 
     container.querySelectorAll(".delete-project-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
+        if (siteData.projects.items.length <= 1) {
+          showToast("At least one project must remain.");
+          return;
+        }
         const idx = Number(btn.getAttribute("data-index"));
         siteData.projects.items.splice(idx, 1);
-        saveSiteData(true);
-        renderActivePage();
-        renderStudioBody();
-      });
-    });
-  } else if (activeStudioTab === "facts") {
-    container.innerHTML = `
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-        <span style="font-size:0.78rem;color:var(--muted);">Interactive "One more thing…" facts</span>
-        <button type="button" class="btn btn-dark" id="add-fact-btn" style="padding:5px 11px;font-size:0.76rem;">+ Add Fact</button>
-      </div>
-      ${siteData.facts
-        .map(
-          (fact, idx) => `
-          <div class="studio-card-item">
-            <div class="studio-card-item-header">
-              <span>Fact #${idx + 1}</span>
-              <button type="button" class="tool-btn delete-fact-btn" data-index="${idx}" style="padding:2px 7px;font-size:0.7rem;">Remove</button>
-            </div>
-            <textarea data-bind="facts.${idx}" style="width:100%;min-height:58px;">${escapeHtml(fact)}</textarea>
-          </div>`
-        )
-        .join("")}
-    `;
-
-    document.getElementById("add-fact-btn").addEventListener("click", () => {
-      siteData.facts.push("A new fun fact about what I’m building or learning right now.");
-      saveSiteData(true);
-      renderActivePage();
-      renderStudioBody();
-    });
-
-    container.querySelectorAll(".delete-fact-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const idx = Number(btn.getAttribute("data-index"));
-        if (siteData.facts.length <= 1) return;
-        siteData.facts.splice(idx, 1);
-        saveSiteData(true);
+        saveSiteDataDraft(true);
         renderActivePage();
         renderStudioBody();
       });
@@ -1263,17 +1791,63 @@ function renderStudioBody() {
       </div>
       <div class="studio-field">
         <label>Contact Email</label>
-        <input type="text" data-bind="contact.email" value="${escapeHtml(siteData.contact.email)}" />
+        <input type="email" data-bind="contact.email" value="${escapeHtml(siteData.contact.email)}" />
+      </div>
+      <div class="studio-field">
+        <label>GitHub Profile URL</label>
+        <input type="url" data-bind="contact.github" value="${escapeHtml(siteData.contact.github)}" />
+      </div>
+      <div class="studio-field">
+        <label>LinkedIn Profile URL</label>
+        <input type="url" data-bind="contact.linkedin" value="${escapeHtml(siteData.contact.linkedin)}" />
       </div>
     `;
+  } else if (activeStudioTab === "facts") {
+    container.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <span style="font-size:0.78rem;color:var(--muted);">Interactive "One more thing…" facts</span>
+        <button type="button" class="btn btn-dark" id="add-fact-btn" style="padding:5px 11px;font-size:0.76rem;">+ Add Fact</button>
+      </div>
+      ${siteData.facts
+        .map(
+          (fact, idx) => `
+          <div class="studio-card-item">
+            <div class="studio-card-item-header">
+              <span>Fact #${idx + 1}</span>
+              <button type="button" class="tool-btn delete-fact-btn" data-index="${idx}" style="padding:2px 7px;font-size:0.7rem;">Remove</button>
+            </div>
+            <textarea data-bind="facts.${idx}" style="width:100%;min-height:58px;">${escapeHtml(fact)}</textarea>
+          </div>`
+        )
+        .join("")}
+    `;
+
+    document.getElementById("add-fact-btn").addEventListener("click", () => {
+      siteData.facts.push("A new fun fact about what I’m building or learning right now.");
+      saveSiteDataDraft(true);
+      renderActivePage();
+      renderStudioBody();
+    });
+
+    container.querySelectorAll(".delete-fact-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const idx = Number(btn.getAttribute("data-index"));
+        if (siteData.facts.length <= 1) return;
+        siteData.facts.splice(idx, 1);
+        saveSiteDataDraft(true);
+        renderActivePage();
+        renderStudioBody();
+      });
+    });
   }
 
   // Bind live input changes
   container.querySelectorAll("[data-bind]").forEach((input) => {
     input.addEventListener("input", () => {
+      if (!isOwnerAuthenticated()) return;
       const path = input.getAttribute("data-bind");
       setByPath(siteData, path, input.value);
-      saveSiteData(false);
+      saveSiteDataDraft(false);
       renderActivePage();
     });
   });
@@ -1281,57 +1855,74 @@ function renderStudioBody() {
 
 /* ===== Global Keyboard Shortcuts ===== */
 function initKeyboardShortcuts() {
+  if (window.__skShortcutsBound) return;
+  window.__skShortcutsBound = true;
+
   window.addEventListener("keydown", (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
       e.preventDefault();
       const modal = document.getElementById("sxshell-modal");
       if (modal) {
-        modal.classList.toggle("open");
-        if (modal.classList.contains("open")) {
+        const nextOpen = !modal.classList.contains("open");
+        modal.classList.toggle("open", nextOpen);
+        document.getElementById("open-terminal-btn")?.setAttribute("aria-expanded", String(nextOpen));
+        if (nextOpen) {
           setTimeout(() => document.getElementById("term-input")?.focus(), 50);
         }
       }
     } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "e") {
       e.preventDefault();
-      const drawer = document.getElementById("studio-drawer");
-      if (drawer) drawer.classList.toggle("open");
+      openOwnerEditFlow();
     } else if (e.key === "Escape") {
       document.getElementById("sxshell-modal")?.classList.remove("open");
+      document.getElementById("owner-auth-modal")?.classList.remove("open");
       document.getElementById("studio-drawer")?.classList.remove("open");
+      document.getElementById("open-terminal-btn")?.setAttribute("aria-expanded", "false");
+      document.getElementById("open-studio-btn")?.setAttribute("aria-expanded", "false");
     }
   });
 }
 
-/* ===== Bootstrap & Initialization ===== */
-async function bootstrapSite() {
+/* ===== Synchronous Bootstrap + Async Data Hydration ===== */
+function bootstrapSite() {
+  // 1. Apply theme & bind header controls immediately (synchronously)
   initTheme();
+  injectTerminalModal();
+  injectAuthAndStudioModals();
+  initKeyboardShortcuts();
 
-  try {
-    const res = await fetch("data.json", { cache: "no-store" });
-    if (res.ok) {
-      const json = await res.json();
-      if (json && json.home && json.projects) {
-        siteData = json;
-      }
-    }
-  } catch (_) {
-    // Fallback to DEFAULT_DATA when opened via file://
-  }
-
-  const savedCustom = localStorage.getItem(STORAGE_KEY);
-  if (savedCustom) {
+  // 2. If owner has an active authenticated session and a local draft, load draft
+  if (isOwnerAuthenticated()) {
     try {
-      const parsed = JSON.parse(savedCustom);
-      if (parsed && parsed.home && parsed.projects) {
-        siteData = parsed;
+      const savedDraft = localStorage.getItem(STORAGE_KEY);
+      if (savedDraft) {
+        const parsed = JSON.parse(savedDraft);
+        if (parsed && parsed.home && parsed.projects) {
+          siteData = parsed;
+        }
       }
     } catch (_) {}
   }
 
+  // 3. Render active page and bind all page interactions immediately
   renderActivePage();
-  injectTerminalModal();
-  injectStudioDrawer();
-  initKeyboardShortcuts();
+
+  // 4. Fetch latest published data.json in background
+  fetch("data.json?v=2.2.0", { cache: "no-store" })
+    .then((res) => (res.ok ? res.json() : null))
+    .then((json) => {
+      if (json && json.home && json.projects && !isOwnerAuthenticated()) {
+        siteData = json;
+        renderActivePage();
+      }
+    })
+    .catch(() => {
+      // Uses DEFAULT_DATA when offline or on file:// protocol
+    });
 }
 
-document.addEventListener("DOMContentLoaded", bootstrapSite);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", bootstrapSite);
+} else {
+  bootstrapSite();
+}
