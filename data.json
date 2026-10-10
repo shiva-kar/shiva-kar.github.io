@@ -75,7 +75,15 @@
         "title": "Java backend development",
         "description": "I’m focused on how backend applications are structured, how REST APIs communicate, and how data moves reliably between an application and relational databases like MySQL and PostgreSQL using Java and Spring Boot.",
         "Highlight": "Focusing on clean REST API design, Object-Oriented Programming (OOP), relational data modeling, and shipping reliable server-side services.",
-        "skills": ["Java", "Spring Boot", "REST APIs", "SQL", "MySQL", "PostgreSQL", "Docker"]
+        "skills": [
+          "Java",
+          "Spring Boot",
+          "REST APIs",
+          "SQL",
+          "MySQL",
+          "PostgreSQL",
+          "Docker"
+        ]
       },
       {
         "id": "systems",
@@ -84,7 +92,15 @@
         "title": "Systems programming",
         "description": "Writing a POSIX shell in C made operating-system concepts feel much more concrete. I enjoy exploring process creation, file descriptors, pipes, raw TCP sockets, memory management, and what actually happens when a command runs.",
         "Highlight": "Building tools from scratch—like SXSHELL (7 modules, 7 built-ins, 4 redirection operators), an HTTP server, and a garbage collector—to demystify OS internals.",
-        "skills": ["C", "POSIX", "Linux", "Networking", "Memory Management", "CMake", "Git"]
+        "skills": [
+          "C",
+          "POSIX",
+          "Linux",
+          "Networking",
+          "Memory Management",
+          "CMake",
+          "Git"
+        ]
       },
       {
         "id": "gamedev",
@@ -93,25 +109,50 @@
         "title": "Open source & game development",
         "description": "I’m an active open-source contributor to the Godot Engine (3 merged pull requests in Godot 4.8 out of 11 submitted) and enjoy exploring game development and graphics programming in Unity and C#.",
         "Highlight": "Navigating large C++ engine codebases, fixing editor regressions in Godot 4.8, and prototyping gameplay systems in Unity.",
-        "skills": ["Godot", "Unity", "C#", "Open Source", "Git"]
+        "skills": [
+          "Godot",
+          "Unity",
+          "C#",
+          "Open Source",
+          "Git"
+        ]
       }
     ],
     "skillEvidence": [
       {
         "name": "Java & Backend Engineering",
-        "evidence": ["Spring Boot & REST APIs", "Object-Oriented Programming (OOP)", "E-commerce & Expense Tracker APIs", "IntelliJ IDEA & Docker"]
+        "evidence": [
+          "Spring Boot & REST APIs",
+          "Object-Oriented Programming (OOP)",
+          "E-commerce & Expense Tracker APIs",
+          "IntelliJ IDEA & Docker"
+        ]
       },
       {
         "name": "C & Systems Internals",
-        "evidence": ["SXSHELL (7 modules, 4 redirection ops)", "Custom HTTP Server (Raw TCP Sockets)", "Mark-and-Sweep Garbage Collector", "Git Implementation in C"]
+        "evidence": [
+          "SXSHELL (7 modules, 4 redirection ops)",
+          "Custom HTTP Server (Raw TCP Sockets)",
+          "Mark-and-Sweep Garbage Collector",
+          "Git Implementation in C"
+        ]
       },
       {
         "name": "SQL & Databases",
-        "evidence": ["Harvard CS50 SQL Certified", "MySQL & PostgreSQL", "Relational Schema & Query Design"]
+        "evidence": [
+          "Harvard CS50 SQL Certified",
+          "MySQL & PostgreSQL",
+          "Relational Schema & Query Design"
+        ]
       },
       {
         "name": "Open Source & Tooling",
-        "evidence": ["Godot Engine 4.8 (3 Merged PRs)", "Resume Builder (16 ★, 8 Forks)", "Catppuccin Obsidian Theme PR", "Linux, Git, CMake & VS Code"]
+        "evidence": [
+          "Godot Engine 4.8 (3 Merged PRs)",
+          "Resume Builder (16 ★, 8 Forks)",
+          "Catppuccin Obsidian Theme PR",
+          "Linux, Git, CMake & VS Code"
+        ]
       }
     ]
   },
@@ -159,7 +200,7 @@
         "title": "Custom HTTP Server",
         "badge": "C · Raw TCP Sockets · HTTP",
         "category": "systems",
-        "status": "In Progress",
+        "status": "Planned",
         "featured": true,
         "description": "A lightweight HTTP server in C built over raw TCP sockets, focused on request parsing, header inspection, and HTTP response handling from the ground up.",
         "learning": "The goal is to master networking fundamentals by implementing the TCP socket and HTTP request-response lifecycle directly.",
@@ -176,7 +217,7 @@
         "title": "Custom Garbage Collector",
         "badge": "C · Memory · Mark & Sweep",
         "category": "systems",
-        "status": "In Progress",
+        "status": "Planned",
         "featured": true,
         "description": "A custom garbage collector in C built to understand manual memory management, heap allocation internals, and automatic object reachability tracking.",
         "learning": "Explores mark-and-sweep collection, root pointer tracing, and allocation metadata at the pointer level.",
@@ -185,7 +226,7 @@
           "Mark phase traverses reachable object graphs from registered stack/root pointers",
           "Sweep phase reclaims unmarked heap blocks and prevents memory leaks"
         ],
-        "repoUrl": "https://github.com/shiva-kar/garbage-collector",
+        "repoUrl": "",
         "buttonStyle": "outline"
       },
       {
@@ -193,7 +234,7 @@
         "title": "Git Implementation in C",
         "badge": "C · Hashing · File I/O",
         "category": "systems",
-        "status": "In Progress",
+        "status": "Planned",
         "featured": true,
         "description": "A simplified Git clone written in C to understand content-addressable storage, blob and tree objects, and commit history DAGs.",
         "learning": "Covers binary file I/O, cryptographic hashing, compression, and version control internals from scratch.",
@@ -202,7 +243,7 @@
           "Reads and writes blob, tree, and commit objects with header framing",
           "Demystifies how Git snapshots file trees rather than storing simple line diffs"
         ],
-        "repoUrl": "https://github.com/shiva-kar/git-implementation",
+        "repoUrl": "",
         "buttonStyle": "outline"
       },
       {
