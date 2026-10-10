@@ -1,4 +1,4 @@
-const STORAGE_KEY = "sk_site_data_v2";
+const STORAGE_KEY = "sk_site_data_v3";
 const THEME_KEY = "sk_site_theme";
 const AUTH_SESSION_KEY = "sk_owner_gh_session";
 const EXPECTED_OWNER = "shiva-kar";
@@ -8,23 +8,23 @@ const DEFAULT_DATA = {
   "meta": {
     "brand": "SK",
     "name": "Shiva Kar",
-    "eyebrow": "BCA student · Assam, India",
+    "eyebrow": "Java & Backend Developer · BCA Student",
     "location": "Hojai, Assam, India",
     "accentColor": "#39745a",
-    "resumeUrl": "Shiva_Kar_Resume.pdf",
+    "resumeUrl": "Shiva_Kar_Resume.pdf?v=2.3.0",
     "githubRepo": "shiva-kar/shiva-kar.github.io"
   },
   "contact": {
-    "email": "sksmarttech48+protfolio@gmail.com",
+    "email": "sksmarttech48@gmail.com",
     "github": "https://github.com/shiva-kar",
-    "linkedin": "https://www.linkedin.com/in/shiva-kar/",
+    "linkedin": "https://www.linkedin.com/in/shiva-kar",
     "twitter": "https://x.com/sk_shivakar",
     "portfolio": "https://shivakar.me"
   },
   "home": {
     "headlinePrefix": "Hey, I’m Shiva.",
     "headlineAccent": "Curious about how things work.",
-    "intro": "I study computer applications and spend a lot of my free time building things with code. Lately, that means Java backend development, C, and learning what happens under the hood.",
+    "intro": "I’m a backend-focused Java developer and BCA student who pairs Spring Boot, REST API, and SQL (MySQL, PostgreSQL) skills with systems-level C experience and open-source contributions to Godot Engine.",
     "primaryCta": {
       "label": "See what I’m building",
       "href": "projects.html"
@@ -40,34 +40,34 @@ const DEFAULT_DATA = {
       {
         "number": "01 / BUILD",
         "title": "Backend things",
-        "text": "Java, APIs, databases, and learning to build software that behaves well beyond the happy path.",
+        "text": "Java, Spring Boot, REST APIs, MySQL & PostgreSQL, and building software that behaves well beyond the happy path.",
         "linkText": "More on this ↗",
         "href": "interests.html#backend"
       },
       {
         "number": "02 / UNPACK",
         "title": "Under the hood",
-        "text": "C, processes, memory, file descriptors, and the details that make computers work.",
+        "text": "C, processes, raw TCP sockets, memory management, file descriptors, and the details that make computers work.",
         "linkText": "More on this ↗",
         "href": "interests.html#systems"
       },
       {
         "number": "03 / PLAY",
-        "title": "Game development",
-        "text": "Making small game ideas in Godot and Unity, and experimenting with how they feel to play.",
+        "title": "Open source & games",
+        "text": "Contributing bug fixes to Godot Engine 4.8 (3 merged PRs) and experimenting with game mechanics in Unity and C#.",
         "linkText": "More on this ↗",
         "href": "interests.html#gamedev"
       }
     ]
   },
   "facts": [
-    "I built a Unix-like shell (SXSHELL) in C to understand more about the terminal I use every day.",
-    "I enjoy game development and experimenting with gameplay ideas in Godot and Unity.",
-    "I’m fascinated by the connection between high-level backend engineering and low-level systems programming.",
-    "A good debugging session with GDB or Valgrind teaches me more than a dozen pages of notes.",
-    "I like projects that make me ask what the operating system is doing behind the scenes.",
-    "I’m currently building a custom HTTP/1.1 server using raw TCP sockets in C.",
-    "Switching between Java Spring Boot, C systems code, and game engines gives me fresh perspectives on software design."
+    "I’ve merged 3 bug-fix pull requests into Godot Engine 4.8 (#124054, #124170, #123035) out of 11 submitted, with 6 more under review.",
+    "I built a POSIX-compliant shell (SXSHELL) in C across 7 modules (~550 lines) with 7 built-ins, 4 redirection operators, and pipelines.",
+    "My open-source Next.js Resume Builder has earned 16 GitHub stars and 8 forks.",
+    "One of my Godot Engine regression fixes (#124170, fixing script editor tooltips) was merged 33 hours after submission.",
+    "I’m currently building a lightweight HTTP/1.1 server using raw TCP sockets in C.",
+    "I maintain an 8.84 CGPA (9.33 SGPA in Semester 3) in my BCA degree alongside Harvard CS50x and CS50 SQL certifications.",
+    "Switching between Java Spring Boot, low-level C systems code, and open-source game engine contributions gives me fresh perspectives on software design."
   ],
   "interests": {
     "eyebrow": "WHAT KEEPS ME CURIOUS",
@@ -79,89 +79,106 @@ const DEFAULT_DATA = {
         "number": "01",
         "kicker": "BUILDING APPLICATIONS",
         "title": "Java backend development",
-        "description": "I’m learning how backend applications are structured, how APIs communicate, and how data moves reliably between an application and a database. My current direction is Core Java, SQL, and Spring Boot.",
-        "Highlight": "Focusing on clean REST API design, relational data modeling, authentication, and writing maintainable server-side logic.",
-        "skills": ["Java", "REST APIs", "SQL", "Spring Boot", "PostgreSQL", "Docker"]
+        "description": "I’m focused on how backend applications are structured, how REST APIs communicate, and how data moves reliably between an application and relational databases like MySQL and PostgreSQL using Java and Spring Boot.",
+        "Highlight": "Focusing on clean REST API design, Object-Oriented Programming (OOP), relational data modeling, and shipping reliable server-side services.",
+        "skills": ["Java", "Spring Boot", "REST APIs", "SQL", "MySQL", "PostgreSQL", "Docker"]
       },
       {
         "id": "systems",
         "number": "02",
         "kicker": "UNDER THE HOOD",
         "title": "Systems programming",
-        "description": "Writing a shell in C made operating-system concepts feel much more concrete. I enjoy exploring process creation, file descriptors, pipes, memory management, system calls, and what actually happens when a command runs.",
-        "Highlight": "Building tools from scratch—like a POSIX shell, an HTTP server, and a mark-and-sweep garbage collector—to demystify OS internals.",
+        "description": "Writing a POSIX shell in C made operating-system concepts feel much more concrete. I enjoy exploring process creation, file descriptors, pipes, raw TCP sockets, memory management, and what actually happens when a command runs.",
+        "Highlight": "Building tools from scratch—like SXSHELL (7 modules, 7 built-ins, 4 redirection operators), an HTTP server, and a garbage collector—to demystify OS internals.",
         "skills": ["C", "POSIX", "Linux", "Networking", "Memory Management", "CMake", "Git"]
       },
       {
         "id": "gamedev",
         "number": "03",
-        "kicker": "EXPERIMENTING AND PLAYING",
-        "title": "Game development",
-        "description": "I also enjoy building games and exploring how code, visuals, sound, and player feedback come together. I’ve worked with Godot for 2D projects and Unity for 3D experiments.",
-        "Highlight": "Game loops, state machines, physics tuning, and rapid prototyping for pure creative fun.",
-        "skills": ["Godot", "Unity", "Blender", "Game Loops", "2D / 3D"]
+        "kicker": "OPEN SOURCE & GAME ENGINE INTERNALS",
+        "title": "Open source & game development",
+        "description": "I’m an active open-source contributor to the Godot Engine (3 merged pull requests in Godot 4.8 out of 11 submitted) and enjoy exploring game development and graphics programming in Unity and C#.",
+        "Highlight": "Navigating large C++ engine codebases, fixing editor regressions in Godot 4.8, and prototyping gameplay systems in Unity.",
+        "skills": ["Godot", "Unity", "C#", "Open Source", "Git"]
       }
     ],
     "skillEvidence": [
       {
-        "name": "C & Systems Internals",
-        "evidence": ["SXSHELL (Unix Shell)", "Custom HTTP Server", "Mark-and-Sweep Garbage Collector", "Git Clone in C"]
+        "name": "Java & Backend Engineering",
+        "evidence": ["Spring Boot & REST APIs", "Object-Oriented Programming (OOP)", "E-commerce & Expense Tracker APIs", "IntelliJ IDEA & Docker"]
       },
       {
-        "name": "Java & Spring Boot",
-        "evidence": ["Object-Oriented Design", "E-commerce Backend", "Expense Tracker REST API", "URL Shortener"]
+        "name": "C & Systems Internals",
+        "evidence": ["SXSHELL (7 modules, 4 redirection ops)", "Custom HTTP Server (Raw TCP Sockets)", "Mark-and-Sweep Garbage Collector", "Git Implementation in C"]
       },
       {
         "name": "SQL & Databases",
-        "evidence": ["HarvardX CS50 SQL", "PostgreSQL Schema Design", "Query Optimization"]
+        "evidence": ["Harvard CS50 SQL Certified", "MySQL & PostgreSQL", "Relational Schema & Query Design"]
       },
       {
-        "name": "Linux & Developer Tooling",
-        "evidence": ["POSIX APIs & Signals", "CMake & Make", "Git Internals", "Docker Containers"]
+        "name": "Open Source & Tooling",
+        "evidence": ["Godot Engine 4.8 (3 Merged PRs)", "Resume Builder (16 ★, 8 Forks)", "Catppuccin Obsidian Theme PR", "Linux, Git, CMake & VS Code"]
       }
     ]
   },
   "projects": {
     "eyebrow": "LEARNING BY BUILDING",
     "title": "Projects and experiments",
-    "intro": "I learn best by making things, testing them, and figuring out the parts I don’t understand yet. Here are the projects and experiments from that process.",
+    "intro": "I learn best by making things, testing them, and figuring out the parts I don’t understand yet. Here are my open-source projects, systems tools, and backend builds.",
     "items": [
       {
         "index": "PROJECT 01",
-        "title": "SXSHELL",
+        "title": "SXSHELL — Unix-like Shell",
         "badge": "C · POSIX · CMake",
         "category": "systems",
         "status": "Built",
         "featured": true,
-        "description": "A Unix-like shell written from scratch in C. It supports built-in commands, PATH-based command lookup, quoting and escaping, I/O redirection, multi-command pipelines, persistent history, and shell variable expansion.",
-        "learning": "Built to understand process management, file descriptors, and the system calls behind terminal commands.",
+        "description": "A POSIX-compliant Unix-like shell written in C across 7 modules (~550 lines) with 7 built-ins, $PATH resolution, quote and escape parsing, 4 redirection operators, multi-command pipelines, persistent history, and $VAR expansion.",
+        "learning": "Built to understand process creation, file descriptors, and the POSIX system calls behind terminal execution.",
         "underTheHood": [
-          "Uses fork(), execvp(), waitpid(), pipe(), and dup2() for process execution and multi-stage pipelines",
-          "Custom tokenizer handling single/double quotes, backslash escaping, and environment variable expansion",
-          "Persistent command history and signal handling (SIGINT) so Ctrl+C interrupts child processes without killing the shell"
+          "Implemented 4 redirection operators and multi-command pipelines using fork(), execv(), and dup2()",
+          "Built 7 modular C components (~550 lines) supporting 7 built-in commands, $PATH lookup, and quote/escape parsing",
+          "Added persistent history with arrow-key navigation, $VAR expansion, and architecture documentation in DOCS.md"
         ],
         "repoUrl": "https://github.com/shiva-kar/SXSHELL-unix-like-shell",
         "buttonStyle": "dark"
       },
       {
         "index": "PROJECT 02",
+        "title": "Resume Builder",
+        "badge": "TypeScript · Next.js 14",
+        "category": "backend",
+        "status": "Built",
+        "featured": true,
+        "description": "An open-source resume builder web application featuring live PDF preview and multiple customizable templates, earning 16 GitHub stars and 8 forks from the developer community.",
+        "learning": "Focused on clean document state management, real-time PDF rendering, and shipping a polished tool used by other developers.",
+        "underTheHood": [
+          "Built with TypeScript and Next.js 14 with instant live PDF preview and multi-template switching",
+          "Earned 16 GitHub stars and 8 forks through clean UX and structured resume schema state",
+          "Supports ATS-friendly formatting, section customization, and one-click PDF export"
+        ],
+        "repoUrl": "https://github.com/shiva-kar/resume-builder",
+        "buttonStyle": "dark"
+      },
+      {
+        "index": "PROJECT 03",
         "title": "Custom HTTP Server",
-        "badge": "C · Raw sockets · HTTP",
+        "badge": "C · Raw TCP Sockets · HTTP",
         "category": "systems",
         "status": "In Progress",
         "featured": true,
-        "description": "A lightweight HTTP/1.1 server in C, currently in progress, focused on using raw TCP sockets and learning how requests are received, parsed, and answered.",
-        "learning": "The goal is to learn more about networking fundamentals by implementing the request-response flow directly.",
+        "description": "A lightweight HTTP server in C built over raw TCP sockets, focused on request parsing, header inspection, and HTTP response handling from the ground up.",
+        "learning": "The goal is to master networking fundamentals by implementing the TCP socket and HTTP request-response lifecycle directly.",
         "underTheHood": [
           "POSIX socket lifecycle: socket(), bind(), listen(), accept(), recv(), and send()",
           "Zero-dependency HTTP request line, header parser, and status-code response builder",
-          "Static file serving with MIME type detection and concurrent client connection handling"
+          "Static file serving with MIME type detection and client connection handling"
         ],
         "repoUrl": "https://github.com/shiva-kar/Custom-HTTP-Server-in-C",
         "buttonStyle": "outline"
       },
       {
-        "index": "PROJECT 03",
+        "index": "PROJECT 04",
         "title": "Custom Garbage Collector",
         "badge": "C · Memory · Mark & Sweep",
         "category": "systems",
@@ -178,7 +195,7 @@ const DEFAULT_DATA = {
         "buttonStyle": "outline"
       },
       {
-        "index": "PROJECT 04",
+        "index": "PROJECT 05",
         "title": "Git Implementation in C",
         "badge": "C · Hashing · File I/O",
         "category": "systems",
@@ -195,7 +212,7 @@ const DEFAULT_DATA = {
         "buttonStyle": "outline"
       },
       {
-        "index": "PROJECT 05",
+        "index": "PROJECT 06",
         "title": "E-commerce Backend API",
         "badge": "Java · Spring Boot · PostgreSQL",
         "category": "backend",
@@ -212,7 +229,7 @@ const DEFAULT_DATA = {
         "buttonStyle": "outline"
       },
       {
-        "index": "PROJECT 06",
+        "index": "PROJECT 07",
         "title": "Expense Tracker API",
         "badge": "Java · Spring Security · Docker",
         "category": "backend",
@@ -233,74 +250,74 @@ const DEFAULT_DATA = {
   "about": {
     "eyebrow": "A LITTLE CONTEXT",
     "title": "Learning by making things",
-    "intro": "I’m Shiva, a Bachelor of Computer Applications student at Amity University Online. This page is a small introduction, along with my academic background and current focus.",
+    "intro": "I’m Shiva Kar, a backend-focused Java developer, open-source contributor to Godot Engine, and BCA student at Amity University Online (CGPA 8.84). This page covers my open-source experience, academic background, and certifications.",
     "approachKicker": "HOW I LIKE TO LEARN",
     "approachTitle": "Build first. Understand deeply.",
     "approachParagraphs": [
-      "I enjoy projects that force me to look beyond the surface. Building SXSHELL made me think carefully about parsing input, launching processes, handling file descriptors, and dealing with errors.",
-      "My current professional direction is Java backend development. Alongside it, systems programming helps me strengthen my understanding of what software depends on underneath.",
-      "I also make games as a creative outlet. Switching between backend code, low-level systems work, and game development gives me different ways to solve problems."
+      "I enjoy projects that force me to look beyond the surface. Building SXSHELL (a 7-module POSIX shell in C) made me think carefully about parsing input, launching processes with fork() and execv(), wiring pipelines with dup2(), and handling edge cases.",
+      "My primary professional focus is Java backend development—building and shipping REST APIs with Spring Boot, MySQL, and PostgreSQL while grounding my engineering decisions in strong CS fundamentals.",
+      "I’m also an active open-source contributor to the Godot Engine (with 3 merged bug-fix pull requests in Godot 4.8 out of 11 submitted), which has taught me how to read large codebases, collaborate with maintainers, and ship production fixes fast."
     ],
-    "currentlyKicker": "RIGHT NOW",
-    "currentlyTitle": "What I’m spending time on",
+    "currentlyKicker": "EXPERIENCE & FOCUS",
+    "currentlyTitle": "Open source & what I’m working on",
     "currentlyItems": [
       {
-        "label": "Java backend",
-        "text": "strengthening Java, SQL, and Spring Boot fundamentals."
+        "label": "Open Source Contributor — Godot Engine (Aug 2026 – Present)",
+        "text": "Merged 3 bug-fix PRs into Godot 4.8 (#124054, #124170, #123035) out of 11 submitted (6 under review), including a script tooltip regression fix merged in 33 hours and a Web Editor file-deletion fix."
       },
       {
-        "label": "Systems programming",
-        "text": "building with C and exploring POSIX interfaces, memory, and networking."
+        "label": "Java & Spring Boot Backend",
+        "text": "Building REST APIs with Java, Spring Boot, MySQL, and PostgreSQL, targeting a Java Developer intern or trainee role."
       },
       {
-        "label": "Data structures & algorithms",
-        "text": "practicing problem-solving and algorithmic thinking in C++ and Java."
+        "label": "Systems Programming in C",
+        "text": "Developing a lightweight HTTP server over raw TCP sockets and exploring OS internals, processes, and memory management."
       },
       {
-        "label": "Learning in public",
-        "text": "keeping projects, experiments, and source code available on GitHub."
+        "label": "Open Source Community & Tooling",
+        "text": "Maintaining Resume Builder (16 GitHub stars, 8 forks) and contributing fixes to projects like the Catppuccin Obsidian theme."
       }
     ],
     "education": [
       {
-        "degree": "Bachelor of Computer Applications (BCA) — Software Engineering",
-        "school": "Amity University Online",
-        "date": "2025 – 2028 (Expected)",
-        "detail": "SGPA: 8.36 (Sem I)",
+        "degree": "Bachelor of Computer Applications (BCA), Computer Science",
+        "school": "Amity University Online, Noida, Uttar Pradesh",
+        "date": "Jul 2025 – Nov 2028 (Expected)",
+        "detail": "CGPA: 8.84 · SGPA: 9.33 (Semester 3)",
         "coursework": [
-          "Data Structures & Algorithms",
+          "Data Structures",
+          "Java OOP",
           "Operating Systems",
-          "Database Management Systems",
+          "DBMS",
           "Computer Networks",
-          "Object-Oriented Programming",
-          "Software Engineering"
+          "Unix Programming"
         ]
       },
       {
-        "degree": "Higher Secondary (Class XII) — Science (PCM & CS)",
-        "school": "Deshabandhu Bidyapeeth HS School (SEBA/AHSEC, Assam)",
-        "date": "Completed 2025",
-        "detail": "Physics, Chemistry, Mathematics & Computer Science",
+        "degree": "Higher Secondary Education (Class XII), Science (PCM & Computer Science)",
+        "school": "Deshabandhu Bidyapeeth HS School, Hojai, Assam",
+        "date": "Mar 2025",
+        "detail": "68% · Physics, Chemistry, Mathematics & Computer Science",
         "coursework": []
       },
       {
-        "degree": "Secondary (Class X)",
-        "school": "Rabindra Bidyalaya High School, Hojai",
-        "date": "Completed 2022",
-        "detail": "Board of Secondary Education, Assam",
+        "degree": "Secondary Education (Class X), Elective IT-ITeS",
+        "school": "Rabindra Bidyalaya HS School, Hojai, Assam",
+        "date": "Mar 2022",
+        "detail": "80% · Board of Secondary Education, Assam",
         "coursework": []
       }
     ],
     "certifications": [
       {
-        "name": "CS50x: Introduction to Computer Science",
-        "issuer": "HarvardX",
+        "name": "Harvard CS50x: Introduction to Computer Science",
+        "issuer": "Harvard University (CS50)",
         "status": "Completed",
         "url": ""
       },
       {
-        "name": "CS50 SQL: Databases with SQL",
-        "issuer": "HarvardX",
+        "name": "Harvard CS50 SQL: Databases with SQL",
+        "issuer": "Harvard University (CS50)",
         "status": "Completed",
         "url": ""
       },
@@ -322,23 +339,23 @@ const DEFAULT_DATA = {
 
 const SKILL_NOTES = {
   "Java": "Core language for my backend path — OOP design, collections, streams, and server-side services.",
-  "REST APIs": "Designing predictable endpoints, status codes, pagination, and request validation.",
-  "SQL": "Relational schema modeling, joins, indexing, and queries (certified via HarvardX CS50 SQL).",
   "Spring Boot": "Building layered enterprise backends with dependency injection, JPA, and Spring Security.",
+  "REST APIs": "Designing predictable endpoints, status codes, pagination, and request validation.",
+  "SQL": "Relational schema modeling, joins, indexing, and queries (certified via Harvard CS50 SQL).",
+  "MySQL": "Relational database used alongside Spring Boot for backend persistence and schema modeling.",
   "PostgreSQL": "Primary relational database for my Spring Boot backend projects.",
   "Docker": "Containerizing backend services and databases for consistent development environments.",
-  "C": "Used to build SXSHELL, a custom HTTP server, a mark-and-sweep garbage collector, and a Git clone.",
-  "POSIX": "Direct experience with fork(), execvp(), pipe(), dup2(), waitpid(), signals, and raw sockets.",
+  "C": "Used to build SXSHELL (7 modules, ~550 lines), a custom HTTP server, a garbage collector, and a Git clone.",
+  "POSIX": "Direct experience with fork(), execv(), pipe(), dup2(), waitpid(), signals, and raw TCP sockets.",
   "Linux": "Daily environment for systems programming, shell scripting, and process debugging.",
-  "Networking": "Implementing TCP socket servers and HTTP/1.1 request/response parsing from scratch.",
+  "Networking": "Implementing raw TCP socket servers and HTTP/1.1 request/response parsing from scratch.",
   "Memory Management": "Manual heap management, pointer arithmetic, and building a custom mark-and-sweep GC in C.",
-  "CMake": "Structuring multi-file C builds cleanly across platforms.",
-  "Git": "Version control for all public projects + building a Git clone in C to understand .git/objects.",
-  "Godot": "Building 2D games, node-based scenes, and responsive player mechanics.",
-  "Unity": "Experimenting with 3D gameplay systems and C# scripting.",
-  "Blender": "Creating low-poly 3D assets and props for game experiments.",
-  "Game Loops": "Implementing frame-independent update/render loops and responsive input handling.",
-  "2D / 3D": "Prototyping 2D gameplay in Godot and 3D mechanics in Unity."
+  "CMake": "Structuring multi-module C builds cleanly across platforms.",
+  "Git": "Version control for open-source contributions (Godot Engine) + building a Git clone in C.",
+  "Godot": "Open Source Contributor to Godot Engine 4.8 — 3 merged bug-fix PRs (#124054, #124170, #123035) out of 11 submitted.",
+  "Unity": "Experimenting with 3D gameplay systems, graphics programming, and C# scripting.",
+  "C#": "Used for game development and gameplay scripting in Unity.",
+  "Open Source": "3 merged PRs in Godot Engine 4.8, 1 merged PR in Catppuccin Obsidian theme, and creator of Resume Builder (16 ★, 8 forks)."
 };
 
 function cloneData(obj) {
@@ -1222,6 +1239,7 @@ function injectTerminalModal() {
           <span class="term-cmd-chip" data-cmd="whoami">whoami</span>
           <span class="term-cmd-chip" data-cmd="projects">projects</span>
           <span class="term-cmd-chip" data-cmd="skills">skills</span>
+          <span class="term-cmd-chip" data-cmd="resume">resume</span>
           <span class="term-cmd-chip" data-cmd="fact">fact</span>
           <span class="term-cmd-chip" data-cmd="contact">contact</span>
           <span class="term-cmd-chip" data-cmd="theme">theme</span>
@@ -1229,7 +1247,7 @@ function injectTerminalModal() {
       </div>
       <form class="terminal-input-row" id="term-form">
         <span class="term-prompt">shiva@sxshell:~$</span>
-        <input type="text" class="terminal-input" id="term-input" placeholder="Type a command (e.g. help, ls, projects, cd about)..." autocomplete="off" />
+        <input type="text" class="terminal-input" id="term-input" placeholder="Type a command (e.g. help, resume, projects, cd about)..." autocomplete="off" />
       </form>
     </div>
   `;
@@ -1277,7 +1295,8 @@ function injectTerminalModal() {
           "Available commands:\n" +
             "  whoami          — Short bio & direction\n" +
             "  ls / pages      — List pages on this website\n" +
-            "  cd <page>       — Navigate to home, interests, projects, or about\n" +
+            "  cd <page>       — Navigate to home, interests, projects, about, or resume\n" +
+            "  resume          — Open Shiva_Kar_Resume.pdf in a new tab\n" +
             "  projects        — List my software projects\n" +
             "  skills          — Print evidence-based skill tree\n" +
             "  fact            — Print a random fun fact\n" +
@@ -1294,6 +1313,12 @@ function injectTerminalModal() {
       case "pages":
         printLine("index.html (Home)   interests.html (Interests)   projects.html (Projects)   about.html (About)   Shiva_Kar_Resume.pdf");
         break;
+      case "resume": {
+        const resumeUrl = siteData.meta?.resumeUrl || "Shiva_Kar_Resume.pdf?v=2.3.0";
+        printLine(`Opening ${resumeUrl}...`);
+        window.open(resumeUrl, "_blank", "noopener,noreferrer");
+        break;
+      }
       case "cd":
       case "open": {
         const target = (args[0] || "").replace(".html", "");
@@ -1304,7 +1329,7 @@ function injectTerminalModal() {
           interests: "interests.html",
           projects: "projects.html",
           about: "about.html",
-          resume: "Shiva_Kar_Resume.pdf"
+          resume: siteData.meta?.resumeUrl || "Shiva_Kar_Resume.pdf?v=2.3.0"
         };
         if (map[target]) {
           printLine(`Navigating to ${map[target]}...`);
@@ -1312,7 +1337,7 @@ function injectTerminalModal() {
             window.location.href = map[target];
           }, 200);
         } else {
-          printLine(`cd: no such page '${args[0] || ""}'. Try: cd home | cd interests | cd projects | cd about`);
+          printLine(`cd: no such page '${args[0] || ""}'. Try: cd home | cd interests | cd projects | cd about | cd resume`);
         }
         break;
       }
@@ -1919,7 +1944,7 @@ function bootstrapSite() {
   renderActivePage();
 
   // 4. Fetch latest published data.json in background
-  fetch("data.json?v=2.2.0", { cache: "no-store" })
+  fetch("data.json?v=2.3.0", { cache: "no-store" })
     .then((res) => (res.ok ? res.json() : null))
     .then((json) => {
       if (json && json.home && json.projects && !isOwnerAuthenticated()) {

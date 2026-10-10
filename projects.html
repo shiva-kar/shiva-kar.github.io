@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Software projects by Shiva Kar, including SXSHELL (a Unix-like shell in C), a custom HTTP server, garbage collector, and backend APIs.">
+    <meta name="description" content="Software projects by Shiva Kar, including SXSHELL (a POSIX shell in C), Resume Builder (16 GitHub stars, 8 forks), a custom HTTP server, and backend APIs.">
     <meta name="author" content="Shiva Kar">
     <title>Shiva Kar — Projects</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23242923'/><text x='50' y='67' font-family='Arial,sans-serif' font-weight='800' font-size='48' text-anchor='middle' fill='%23fffefa'>SK<tspan fill='%2339745a'>.</tspan></text></svg>">
@@ -18,8 +18,8 @@
         })();
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link href="styles.css?v=2.2.0" rel="stylesheet">
-    <script src="script.js?v=2.2.0" defer></script>
+    <link href="styles.css?v=2.3.0" rel="stylesheet">
+    <script src="script.js?v=2.3.0" defer></script>
 </head>
 <body data-page="projects">
     <header class="site-header">
@@ -31,6 +31,7 @@
                     <a href="interests.html">Interests</a>
                     <a class="active" href="projects.html" aria-current="page">Projects</a>
                     <a href="about.html">About</a>
+                    <a href="Shiva_Kar_Resume.pdf?v=2.3.0" target="_blank" rel="noopener noreferrer">Resume ↗</a>
                 </nav>
                 <div class="header-tools" aria-label="Interactive tools">
                     <button type="button" class="tool-btn" id="open-terminal-btn" aria-haspopup="dialog" aria-expanded="false" title="Open interactive SXSHELL terminal (Ctrl+K)">
@@ -51,7 +52,7 @@
         <section class="page-intro">
             <p class="eyebrow" id="projects-eyebrow" data-editable="projects.eyebrow">LEARNING BY BUILDING</p>
             <h1><span id="projects-title" data-editable="projects.title">Projects and experiments</span><span class="accent-text">.</span></h1>
-            <p class="intro" id="projects-intro" data-editable="projects.intro">I learn best by making things, testing them, and figuring out the parts I don’t understand yet. Here are the projects and experiments from that process.</p>
+            <p class="intro" id="projects-intro" data-editable="projects.intro">I learn best by making things, testing them, and figuring out the parts I don’t understand yet. Here are my open-source projects, systems tools, and backend builds.</p>
         </section>
 
         <section class="section-block" aria-label="Project list">
@@ -65,7 +66,7 @@
                 </div>
                 <div class="filter-controls-right">
                     <input type="search" id="project-search-input" class="project-search-input" placeholder="Search projects..." aria-label="Search projects by title, technology, or description">
-                    <span class="project-count" id="project-count-label" aria-live="polite">Showing 6 of 6 projects</span>
+                    <span class="project-count" id="project-count-label" aria-live="polite">Showing 7 of 7 projects</span>
                 </div>
             </div>
 
@@ -80,15 +81,15 @@
                                     <span class="project-index">PROJECT 01</span>
                                 </div>
                             </div>
-                            <h2 class="card-title">SXSHELL</h2>
-                            <p class="card-text">A Unix-like shell written from scratch in C. It supports built-in commands, PATH-based command lookup, quoting and escaping, I/O redirection, multi-command pipelines, persistent history, and shell variable expansion.</p>
-                            <p class="project-learning">Built to understand process management, file descriptors, and the system calls behind terminal commands.</p>
+                            <h2 class="card-title">SXSHELL — Unix-like Shell</h2>
+                            <p class="card-text">A POSIX-compliant Unix-like shell written in C across 7 modules (~550 lines) with 7 built-ins, $PATH resolution, quote and escape parsing, 4 redirection operators, multi-command pipelines, persistent history, and $VAR expansion.</p>
+                            <p class="project-learning">Built to understand process creation, file descriptors, and the POSIX system calls behind terminal execution.</p>
                             <button type="button" class="hood-toggle" aria-expanded="false"><span>+ Under the hood</span></button>
                             <div class="hood-panel">
                                 <ul>
-                                    <li>Uses fork(), execvp(), waitpid(), pipe(), and dup2() for process execution and multi-stage pipelines</li>
-                                    <li>Custom tokenizer handling single/double quotes, backslash escaping, and environment variable expansion</li>
-                                    <li>Persistent command history and signal handling (SIGINT) so Ctrl+C interrupts child processes without killing the shell</li>
+                                    <li>Implemented 4 redirection operators and multi-command pipelines using fork(), execv(), and dup2()</li>
+                                    <li>Built 7 modular C components (~550 lines) supporting 7 built-in commands, $PATH lookup, and quote/escape parsing</li>
+                                    <li>Added persistent history with arrow-key navigation, $VAR expansion, and architecture documentation in DOCS.md</li>
                                 </ul>
                             </div>
                             <div class="project-actions">
@@ -98,25 +99,53 @@
                     </article>
                 </div>
 
+                <div class="col-lg-6 project-col" data-category="backend" data-status="Built">
+                    <article class="card project-card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="project-card-top">
+                                <span class="badge rounded-pill text-bg-light">TypeScript · Next.js 14</span>
+                                <div class="project-meta-right">
+                                    <span class="status-pill">Built</span>
+                                    <span class="project-index">PROJECT 02</span>
+                                </div>
+                            </div>
+                            <h2 class="card-title">Resume Builder</h2>
+                            <p class="card-text">An open-source resume builder web application featuring live PDF preview and multiple customizable templates, earning 16 GitHub stars and 8 forks from the developer community.</p>
+                            <p class="project-learning">Focused on clean document state management, real-time PDF rendering, and shipping a polished tool used by other developers.</p>
+                            <button type="button" class="hood-toggle" aria-expanded="false"><span>+ Under the hood</span></button>
+                            <div class="hood-panel">
+                                <ul>
+                                    <li>Built with TypeScript and Next.js 14 with instant live PDF preview and multi-template switching</li>
+                                    <li>Earned 16 GitHub stars and 8 forks through clean UX and structured resume schema state</li>
+                                    <li>Supports ATS-friendly formatting, section customization, and one-click PDF export</li>
+                                </ul>
+                            </div>
+                            <div class="project-actions">
+                                <a class="btn btn-dark" href="https://github.com/shiva-kar/resume-builder" target="_blank" rel="noopener noreferrer">View repository ↗</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
                 <div class="col-lg-6 project-col" data-category="systems" data-status="In Progress">
                     <article class="card project-card h-100">
                         <div class="card-body d-flex flex-column">
                             <div class="project-card-top">
-                                <span class="badge rounded-pill text-bg-light">C · Raw sockets · HTTP</span>
+                                <span class="badge rounded-pill text-bg-light">C · Raw TCP Sockets · HTTP</span>
                                 <div class="project-meta-right">
                                     <span class="status-pill">In Progress</span>
-                                    <span class="project-index">PROJECT 02</span>
+                                    <span class="project-index">PROJECT 03</span>
                                 </div>
                             </div>
                             <h2 class="card-title">Custom HTTP Server</h2>
-                            <p class="card-text">A lightweight HTTP/1.1 server in C, currently in progress, focused on using raw TCP sockets and learning how requests are received, parsed, and answered.</p>
-                            <p class="project-learning">The goal is to learn more about networking fundamentals by implementing the request-response flow directly.</p>
+                            <p class="card-text">A lightweight HTTP server in C built over raw TCP sockets, focused on request parsing, header inspection, and HTTP response handling from the ground up.</p>
+                            <p class="project-learning">The goal is to master networking fundamentals by implementing the TCP socket and HTTP request-response lifecycle directly.</p>
                             <button type="button" class="hood-toggle" aria-expanded="false"><span>+ Under the hood</span></button>
                             <div class="hood-panel">
                                 <ul>
                                     <li>POSIX socket lifecycle: socket(), bind(), listen(), accept(), recv(), and send()</li>
                                     <li>Zero-dependency HTTP request line, header parser, and status-code response builder</li>
-                                    <li>Static file serving with MIME type detection and concurrent client connection handling</li>
+                                    <li>Static file serving with MIME type detection and client connection handling</li>
                                 </ul>
                             </div>
                             <div class="project-actions">
@@ -133,7 +162,7 @@
                                 <span class="badge rounded-pill text-bg-light">C · Memory · Mark &amp; Sweep</span>
                                 <div class="project-meta-right">
                                     <span class="status-pill">In Progress</span>
-                                    <span class="project-index">PROJECT 03</span>
+                                    <span class="project-index">PROJECT 04</span>
                                 </div>
                             </div>
                             <h2 class="card-title">Custom Garbage Collector</h2>
@@ -161,7 +190,7 @@
                                 <span class="badge rounded-pill text-bg-light">C · Hashing · File I/O</span>
                                 <div class="project-meta-right">
                                     <span class="status-pill">In Progress</span>
-                                    <span class="project-index">PROJECT 04</span>
+                                    <span class="project-index">PROJECT 05</span>
                                 </div>
                             </div>
                             <h2 class="card-title">Git Implementation in C</h2>
@@ -189,7 +218,7 @@
                                 <span class="badge rounded-pill text-bg-light">Java · Spring Boot · PostgreSQL</span>
                                 <div class="project-meta-right">
                                     <span class="status-pill status-planned">Planned</span>
-                                    <span class="project-index">PROJECT 05</span>
+                                    <span class="project-index">PROJECT 06</span>
                                 </div>
                             </div>
                             <h2 class="card-title">E-commerce Backend API</h2>
@@ -217,7 +246,7 @@
                                 <span class="badge rounded-pill text-bg-light">Java · Spring Security · Docker</span>
                                 <div class="project-meta-right">
                                     <span class="status-pill status-planned">Planned</span>
-                                    <span class="project-index">PROJECT 06</span>
+                                    <span class="project-index">PROJECT 07</span>
                                 </div>
                             </div>
                             <h2 class="card-title">Expense Tracker API</h2>
@@ -242,9 +271,10 @@
 
         <section class="simple-cta">
             <h2>More experiments live on GitHub.</h2>
-            <p>Code, notes, and updates are easiest to find there.</p>
+            <p>Code, open-source pull requests, and notes are easiest to find there.</p>
             <div class="cta-links">
                 <a class="btn btn-dark" href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">Open GitHub profile ↗</a>
+                <a class="btn btn-outline-dark" href="Shiva_Kar_Resume.pdf?v=2.3.0" target="_blank" rel="noopener noreferrer">Resume PDF ↗</a>
             </div>
         </section>
     </main>
@@ -256,6 +286,7 @@
                 <a href="index.html">Home</a>
                 <a href="interests.html">Interests</a>
                 <a href="about.html">About</a>
+                <a href="Shiva_Kar_Resume.pdf?v=2.3.0" target="_blank" rel="noopener noreferrer">Resume</a>
                 <a href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
         </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A personal homepage for Shiva Kar: backend development, systems programming, games, and side projects.">
+    <meta name="description" content="Personal portfolio of Shiva Kar — Java & Backend Developer, Open Source Contributor (Godot Engine), and Systems Programmer in C.">
     <meta name="author" content="Shiva Kar">
     <title>Shiva Kar — Home</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23242923'/><text x='50' y='67' font-family='Arial,sans-serif' font-weight='800' font-size='48' text-anchor='middle' fill='%23fffefa'>SK<tspan fill='%2339745a'>.</tspan></text></svg>">
@@ -18,8 +18,8 @@
         })();
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link href="styles.css?v=2.2.0" rel="stylesheet">
-    <script src="script.js?v=2.2.0" defer></script>
+    <link href="styles.css?v=2.3.0" rel="stylesheet">
+    <script src="script.js?v=2.3.0" defer></script>
 </head>
 <body data-page="home">
     <header class="site-header">
@@ -31,6 +31,7 @@
                     <a href="interests.html">Interests</a>
                     <a href="projects.html">Projects</a>
                     <a href="about.html">About</a>
+                    <a href="Shiva_Kar_Resume.pdf?v=2.3.0" target="_blank" rel="noopener noreferrer">Resume ↗</a>
                 </nav>
                 <div class="header-tools" aria-label="Interactive tools">
                     <button type="button" class="tool-btn" id="open-terminal-btn" aria-haspopup="dialog" aria-expanded="false" title="Open interactive SXSHELL terminal (Ctrl+K)">
@@ -51,16 +52,16 @@
         <section class="hero" aria-labelledby="intro-title">
             <p class="eyebrow">
                 <span class="status-dot" aria-hidden="true"></span>
-                <span id="hero-eyebrow" data-editable="meta.eyebrow">BCA student · Assam, India</span>
+                <span id="hero-eyebrow" data-editable="meta.eyebrow">Java &amp; Backend Developer · BCA Student</span>
             </p>
             <h1 id="intro-title">
                 <span id="hero-headline-prefix" data-editable="home.headlinePrefix">Hey, I’m Shiva.</span><br>
                 <span class="accent-text" id="hero-headline-accent" data-editable="home.headlineAccent">Curious about how things work.</span>
             </h1>
-            <p class="intro" id="hero-intro" data-editable="home.intro">I study computer applications and spend a lot of my free time building things with code. Lately, that means Java backend development, C, and learning what happens under the hood.</p>
+            <p class="intro" id="hero-intro" data-editable="home.intro">I’m a backend-focused Java developer and BCA student who pairs Spring Boot, REST API, and SQL (MySQL, PostgreSQL) skills with systems-level C experience and open-source contributions to Godot Engine.</p>
             <div class="hero-actions">
                 <a class="btn btn-dark" id="hero-primary-cta" href="projects.html">See what I’m building</a>
-                <a class="btn btn-outline-dark" id="hero-resume-cta" href="Shiva_Kar_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume PDF <span aria-hidden="true">↗</span></a>
+                <a class="btn btn-outline-dark" id="hero-resume-cta" href="Shiva_Kar_Resume.pdf?v=2.3.0" target="_blank" rel="noopener noreferrer">Resume PDF <span aria-hidden="true">↗</span></a>
                 <a class="text-link" id="hero-secondary-cta" href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">Find me on GitHub <span aria-hidden="true">↗</span></a>
             </div>
             <div class="note">
@@ -80,7 +81,7 @@
                         <div class="card-body">
                             <span class="card-number" data-editable="home.cards.0.number">01 / BUILD</span>
                             <h3 class="card-title" data-editable="home.cards.0.title">Backend things</h3>
-                            <p class="card-text" data-editable="home.cards.0.text">Java, APIs, databases, and learning to build software that behaves well beyond the happy path.</p>
+                            <p class="card-text" data-editable="home.cards.0.text">Java, Spring Boot, REST APIs, MySQL &amp; PostgreSQL, and building software that behaves well beyond the happy path.</p>
                             <a href="interests.html#backend" class="card-link">More on this ↗</a>
                         </div>
                     </article>
@@ -90,7 +91,7 @@
                         <div class="card-body">
                             <span class="card-number" data-editable="home.cards.1.number">02 / UNPACK</span>
                             <h3 class="card-title" data-editable="home.cards.1.title">Under the hood</h3>
-                            <p class="card-text" data-editable="home.cards.1.text">C, processes, memory, file descriptors, and the details that make computers work.</p>
+                            <p class="card-text" data-editable="home.cards.1.text">C, processes, raw TCP sockets, memory management, file descriptors, and the details that make computers work.</p>
                             <a href="interests.html#systems" class="card-link">More on this ↗</a>
                         </div>
                     </article>
@@ -99,8 +100,8 @@
                     <article class="card interest-card h-100">
                         <div class="card-body">
                             <span class="card-number" data-editable="home.cards.2.number">03 / PLAY</span>
-                            <h3 class="card-title" data-editable="home.cards.2.title">Game development</h3>
-                            <p class="card-text" data-editable="home.cards.2.text">Making small game ideas in Godot and Unity, and experimenting with how they feel to play.</p>
+                            <h3 class="card-title" data-editable="home.cards.2.title">Open source &amp; games</h3>
+                            <p class="card-text" data-editable="home.cards.2.text">Contributing bug fixes to Godot Engine 4.8 (3 merged PRs) and experimenting with game mechanics in Unity and C#.</p>
                             <a href="interests.html#gamedev" class="card-link">More on this ↗</a>
                         </div>
                     </article>
@@ -115,7 +116,7 @@
                     <span class="fact-counter" id="fact-counter">01 / 07</span>
                 </div>
                 <h2 id="fact-title">One more thing…</h2>
-                <p id="fact-text" aria-live="polite">I built a Unix-like shell (SXSHELL) in C to understand more about the terminal I use every day.</p>
+                <p id="fact-text" aria-live="polite">I’ve merged 3 bug-fix pull requests into Godot Engine 4.8 (#124054, #124170, #123035) out of 11 submitted, with 6 more under review.</p>
             </div>
             <div class="fact-actions">
                 <button id="fact-button" class="btn btn-outline-dark" type="button">Another fact ↻</button>
@@ -128,8 +129,8 @@
             <p>Made by Shiva, with HTML, CSS, JavaScript, and a little curiosity.</p>
             <div class="footer-links">
                 <a href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/in/shiva-kar/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="Shiva_Kar_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                <a href="https://www.linkedin.com/in/shiva-kar" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="Shiva_Kar_Resume.pdf?v=2.3.0" target="_blank" rel="noopener noreferrer">Resume</a>
                 <a href="about.html">About</a>
             </div>
         </div>
