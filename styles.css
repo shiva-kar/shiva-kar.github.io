@@ -745,6 +745,24 @@ h2 {
     border-color: var(--accent);
 }
 
+.project-sort-select {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 99px;
+    padding: 5px 13px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: border-color var(--transition);
+}
+
+.project-sort-select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
 .project-count {
     font-family: var(--font-mono);
     font-size: 0.76rem;
@@ -772,6 +790,10 @@ h2 {
     font-size: 0.9rem;
 }
 
+.project-card.pinned-card {
+    border-color: color-mix(in srgb, var(--accent) 42%, var(--line));
+}
+
 .project-card .card-body {
     padding: 25px;
 }
@@ -788,7 +810,22 @@ h2 {
 .project-meta-right {
     display: flex;
     align-items: center;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.pinned-pill {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 99px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line));
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .status-pill {
@@ -812,6 +849,13 @@ h2 {
     font-size: 0.66rem;
     font-weight: 700;
     letter-spacing: 0.09em;
+}
+
+.project-updated-tag {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
 }
 
 .project-card .card-title {
@@ -1297,7 +1341,7 @@ h2 {
     right: 0;
     bottom: 0;
     width: 100%;
-    max-width: 450px;
+    max-width: 480px;
     background: var(--surface);
     color: var(--text);
     border-left: 1px solid var(--line);
@@ -1356,10 +1400,10 @@ h2 {
 
 .studio-tabs {
     display: flex;
-    gap: 4px;
+    gap: 6px;
     padding: 10px 20px;
     border-bottom: 1px solid var(--line);
-    overflow-x: auto;
+    flex-wrap: wrap;
 }
 
 .studio-tab {
@@ -1369,9 +1413,15 @@ h2 {
     font-size: 0.75rem;
     font-weight: 700;
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     white-space: nowrap;
+    transition: all var(--transition);
+}
+
+.studio-tab:hover {
+    color: var(--text);
+    background: var(--surface-subtle);
 }
 
 .studio-tab.active {
@@ -1384,6 +1434,34 @@ h2 {
     flex: 1;
     overflow-y: auto;
     padding: 18px 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+}
+
+.studio-body::-webkit-scrollbar,
+.studio-drawer textarea::-webkit-scrollbar,
+.terminal-body::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.studio-body::-webkit-scrollbar-track,
+.studio-drawer textarea::-webkit-scrollbar-track,
+.terminal-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.studio-body::-webkit-scrollbar-thumb,
+.studio-drawer textarea::-webkit-scrollbar-thumb,
+.terminal-body::-webkit-scrollbar-thumb {
+    background: var(--line);
+    border-radius: 99px;
+}
+
+.studio-body::-webkit-scrollbar-thumb:hover,
+.studio-drawer textarea::-webkit-scrollbar-thumb:hover,
+.terminal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--muted);
 }
 
 .studio-status-banner {
@@ -1413,50 +1491,126 @@ h2 {
     margin-bottom: 14px;
 }
 
+.studio-field:last-child {
+    margin-bottom: 0;
+}
+
 .studio-field label {
     display: block;
-    font-size: 0.73rem;
+    font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--muted);
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     font-family: var(--font-mono);
 }
 
-.studio-field input,
-.studio-field textarea,
-.studio-field select {
+.studio-drawer input:not([type="checkbox"]),
+.studio-drawer textarea,
+.studio-drawer select,
+.auth-modal-card input {
     width: 100%;
-    padding: 8px 11px;
+    padding: 9px 12px;
     border: 1px solid var(--line);
-    border-radius: 6px;
+    border-radius: 7px;
     background: var(--background);
     color: var(--text);
     font-family: var(--font-sans);
     font-size: 0.85rem;
+    line-height: 1.55;
+    transition: border-color var(--transition), box-shadow var(--transition);
 }
 
-.studio-field textarea {
-    min-height: 74px;
+.studio-drawer input:not([type="checkbox"]):focus,
+.studio-drawer textarea:focus,
+.studio-drawer select:focus,
+.auth-modal-card input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.studio-drawer textarea {
+    min-height: 68px;
     resize: vertical;
+    overflow-y: hidden;
+    display: block;
 }
 
 .studio-card-item {
-    padding: 12px;
+    padding: 14px;
     border: 1px solid var(--line);
-    border-radius: 7px;
+    border-radius: 8px;
     background: var(--surface-subtle);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+}
+
+.studio-card-item.pinned-studio-item {
+    border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+    background: color-mix(in srgb, var(--accent) 5%, var(--surface-subtle));
 }
 
 .studio-card-item-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 8px;
-    font-size: 0.8rem;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+    font-size: 0.81rem;
     font-weight: 700;
+}
+
+.studio-project-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.studio-action-btn {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 3px 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.studio-action-btn:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-light);
+}
+
+.studio-action-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.studio-action-btn.pinned-active {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.studio-action-btn.delete-action:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+    background: var(--danger-bg);
+}
+
+.studio-sort-bar {
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface-subtle);
+    margin-bottom: 14px;
 }
 
 .studio-footer {

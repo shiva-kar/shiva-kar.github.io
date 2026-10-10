@@ -1,4 +1,5 @@
-const STORAGE_KEY = "sk_site_data_v3";
+const STORAGE_KEY = "sk_site_data_v4";
+const DRAFT_DIRTY_KEY = "sk_site_draft_dirty_v4";
 const THEME_KEY = "sk_site_theme";
 const AUTH_SESSION_KEY = "sk_owner_gh_session";
 const EXPECTED_OWNER = "shiva-kar";
@@ -11,7 +12,7 @@ const DEFAULT_DATA = {
     "eyebrow": "Java & Backend Developer · BCA Student",
     "location": "Hojai, Assam, India",
     "accentColor": "#39745a",
-    "resumeUrl": "Shiva_Kar_Resume.pdf?v=2.3.0",
+    "resumeUrl": "Shiva_Kar_Resume.pdf?v=2.4.0",
     "githubRepo": "shiva-kar/shiva-kar.github.io"
   },
   "contact": {
@@ -125,6 +126,7 @@ const DEFAULT_DATA = {
     "eyebrow": "LEARNING BY BUILDING",
     "title": "Projects and experiments",
     "intro": "I learn best by making things, testing them, and figuring out the parts I don’t understand yet. Here are my open-source projects, systems tools, and backend builds.",
+    "defaultSort": "pinned",
     "items": [
       {
         "index": "PROJECT 01",
@@ -132,7 +134,9 @@ const DEFAULT_DATA = {
         "badge": "C · POSIX · CMake",
         "category": "systems",
         "status": "Built",
+        "pinned": true,
         "featured": true,
+        "updatedAt": "2026-10-10",
         "description": "A POSIX-compliant Unix-like shell written in C across 7 modules (~550 lines) with 7 built-ins, $PATH resolution, quote and escape parsing, 4 redirection operators, multi-command pipelines, persistent history, and $VAR expansion.",
         "learning": "Built to understand process creation, file descriptors, and the POSIX system calls behind terminal execution.",
         "underTheHood": [
@@ -149,7 +153,9 @@ const DEFAULT_DATA = {
         "badge": "TypeScript · Next.js 14",
         "category": "backend",
         "status": "Built",
+        "pinned": true,
         "featured": true,
+        "updatedAt": "2026-10-08",
         "description": "An open-source resume builder web application featuring live PDF preview and multiple customizable templates, earning 16 GitHub stars and 8 forks from the developer community.",
         "learning": "Focused on clean document state management, real-time PDF rendering, and shipping a polished tool used by other developers.",
         "underTheHood": [
@@ -165,8 +171,10 @@ const DEFAULT_DATA = {
         "title": "Custom HTTP Server",
         "badge": "C · Raw TCP Sockets · HTTP",
         "category": "systems",
-        "status": "In Progress",
+        "status": "Planned",
+        "pinned": false,
         "featured": true,
+        "updatedAt": "2026-10-05",
         "description": "A lightweight HTTP server in C built over raw TCP sockets, focused on request parsing, header inspection, and HTTP response handling from the ground up.",
         "learning": "The goal is to master networking fundamentals by implementing the TCP socket and HTTP request-response lifecycle directly.",
         "underTheHood": [
@@ -182,8 +190,10 @@ const DEFAULT_DATA = {
         "title": "Custom Garbage Collector",
         "badge": "C · Memory · Mark & Sweep",
         "category": "systems",
-        "status": "In Progress",
+        "status": "Planned",
+        "pinned": false,
         "featured": true,
+        "updatedAt": "2026-09-20",
         "description": "A custom garbage collector in C built to understand manual memory management, heap allocation internals, and automatic object reachability tracking.",
         "learning": "Explores mark-and-sweep collection, root pointer tracing, and allocation metadata at the pointer level.",
         "underTheHood": [
@@ -191,7 +201,7 @@ const DEFAULT_DATA = {
           "Mark phase traverses reachable object graphs from registered stack/root pointers",
           "Sweep phase reclaims unmarked heap blocks and prevents memory leaks"
         ],
-        "repoUrl": "https://github.com/shiva-kar/garbage-collector",
+        "repoUrl": "",
         "buttonStyle": "outline"
       },
       {
@@ -199,8 +209,10 @@ const DEFAULT_DATA = {
         "title": "Git Implementation in C",
         "badge": "C · Hashing · File I/O",
         "category": "systems",
-        "status": "In Progress",
+        "status": "Planned",
+        "pinned": false,
         "featured": true,
+        "updatedAt": "2026-09-12",
         "description": "A simplified Git clone written in C to understand content-addressable storage, blob and tree objects, and commit history DAGs.",
         "learning": "Covers binary file I/O, cryptographic hashing, compression, and version control internals from scratch.",
         "underTheHood": [
@@ -208,7 +220,7 @@ const DEFAULT_DATA = {
           "Reads and writes blob, tree, and commit objects with header framing",
           "Demystifies how Git snapshots file trees rather than storing simple line diffs"
         ],
-        "repoUrl": "https://github.com/shiva-kar/git-implementation",
+        "repoUrl": "",
         "buttonStyle": "outline"
       },
       {
@@ -217,7 +229,9 @@ const DEFAULT_DATA = {
         "badge": "Java · Spring Boot · PostgreSQL",
         "category": "backend",
         "status": "Planned",
+        "pinned": false,
         "featured": false,
+        "updatedAt": "2026-08-25",
         "description": "A complete e-commerce REST backend built with Spring Boot, featuring product catalog management, order workflows, JWT authentication, and pagination.",
         "learning": "Focused on enterprise backend architecture, relational database modeling, and clean service-layer separation.",
         "underTheHood": [
@@ -234,7 +248,9 @@ const DEFAULT_DATA = {
         "badge": "Java · Spring Security · Docker",
         "category": "backend",
         "status": "Planned",
+        "pinned": false,
         "featured": false,
+        "updatedAt": "2026-08-15",
         "description": "A secure REST API for personal expense tracking, demonstrating robust CRUD operations, category analytics, Spring Security integration, and Docker containerization.",
         "learning": "Built to practice API security beyond the happy path, error handling, and containerized deployment.",
         "underTheHood": [
@@ -365,8 +381,24 @@ function cloneData(obj) {
 let siteData = cloneData(DEFAULT_DATA);
 let currentFactIndex = 0;
 let activeProjectFilter = "all";
+let activeProjectSort = null;
 let projectSearchQuery = "";
 let activeStudioTab = "general";
+
+function getTodayDateString() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+function reindexProjects() {
+  if (!Array.isArray(siteData.projects?.items)) return;
+  siteData.projects.items.forEach((p, i) => {
+    p.index = `PROJECT ${String(i + 1).padStart(2, "0")}`;
+  });
+}
 
 /* ===== Helper: Deep Get & Set by Dot Path ===== */
 function setByPath(obj, path, value) {
@@ -615,7 +647,10 @@ async function publishSiteDataToGitHub() {
   }
 
   const result = await putRes.json();
-  saveSiteDataDraft(false);
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+    sessionStorage.removeItem(DRAFT_DIRTY_KEY);
+  } catch (_) {}
   return result.commit?.sha ? result.commit.sha.slice(0, 7) : "latest";
 }
 
@@ -623,6 +658,7 @@ function saveSiteDataDraft(notify = false) {
   if (!isOwnerAuthenticated()) return;
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+    sessionStorage.setItem(DRAFT_DIRTY_KEY, "true");
     if (notify) showToast("Draft saved in browser.");
   } catch (e) {
     console.error("Failed to save draft", e);
@@ -833,9 +869,12 @@ function renderInterestsPage() {
 function matchesProjectFilter(item, filter, query) {
   const category = String(item.category || "").toLowerCase().trim();
   const status = String(item.status || "").toLowerCase().trim();
+  const isPinned = Boolean(item.pinned);
 
   let categoryMatch = true;
-  if (filter === "systems") {
+  if (filter === "pinned") {
+    categoryMatch = isPinned;
+  } else if (filter === "systems") {
     categoryMatch = category === "systems";
   } else if (filter === "backend") {
     categoryMatch = category === "backend";
@@ -855,6 +894,8 @@ function matchesProjectFilter(item, filter, query) {
     item.badge,
     item.category,
     item.status,
+    item.updatedAt,
+    isPinned ? "pinned" : "",
     item.description,
     item.learning,
     ...(Array.isArray(item.underTheHood) ? item.underTheHood : [])
@@ -865,6 +906,46 @@ function matchesProjectFilter(item, filter, query) {
   return haystack.includes(q);
 }
 
+function getStatusRank(status) {
+  const s = String(status || "").toLowerCase().trim();
+  if (s === "built") return 0;
+  if (s === "in progress") return 1;
+  return 2;
+}
+
+function sortProjectsList(entries, sortMode) {
+  const mode = sortMode || siteData.projects?.defaultSort || "pinned";
+  return [...entries].sort((a, b) => {
+    // Pinned projects always float to the top
+    const pinA = Boolean(a.item.pinned);
+    const pinB = Boolean(b.item.pinned);
+    if (pinA !== pinB) return pinA ? -1 : 1;
+
+    if (mode === "updated") {
+      const dateA = String(a.item.updatedAt || "");
+      const dateB = String(b.item.updatedAt || "");
+      if (dateA !== dateB) return dateB.localeCompare(dateA);
+      return a.originalIndex - b.originalIndex;
+    }
+
+    if (mode === "status") {
+      const rankDiff = getStatusRank(a.item.status) - getStatusRank(b.item.status);
+      if (rankDiff !== 0) return rankDiff;
+      const dateA = String(a.item.updatedAt || "");
+      const dateB = String(b.item.updatedAt || "");
+      if (dateA !== dateB) return dateB.localeCompare(dateA);
+      return a.originalIndex - b.originalIndex;
+    }
+
+    if (mode === "title") {
+      return String(a.item.title || "").localeCompare(String(b.item.title || ""));
+    }
+
+    // Default ("pinned"): preserve editor list order within pinned and unpinned groups
+    return a.originalIndex - b.originalIndex;
+  });
+}
+
 function renderProjectsPage() {
   const eyebrow = document.getElementById("projects-eyebrow");
   const title = document.getElementById("projects-title");
@@ -872,6 +953,7 @@ function renderProjectsPage() {
   const grid = document.getElementById("projects-grid-container");
   const countLabel = document.getElementById("project-count-label");
   const searchInput = document.getElementById("project-search-input");
+  const sortSelect = document.getElementById("project-sort-select");
 
   if (eyebrow) eyebrow.textContent = siteData.projects.eyebrow;
   if (title) title.textContent = siteData.projects.title;
@@ -879,17 +961,21 @@ function renderProjectsPage() {
 
   if (!grid) return;
 
+  const effectiveSort = activeProjectSort || siteData.projects.defaultSort || "pinned";
+  if (sortSelect && sortSelect.value !== effectiveSort) {
+    sortSelect.value = effectiveSort;
+  }
+
   const allItems = Array.isArray(siteData.projects.items) ? siteData.projects.items : [];
-  const filtered = allItems
-    .map((item, originalIndex) => ({ item, originalIndex }))
-    .filter(({ item }) => matchesProjectFilter(item, activeProjectFilter, projectSearchQuery));
+  const filtered = sortProjectsList(
+    allItems
+      .map((item, originalIndex) => ({ item, originalIndex }))
+      .filter(({ item }) => matchesProjectFilter(item, activeProjectFilter, projectSearchQuery)),
+    effectiveSort
+  );
 
   if (countLabel) {
-    if (activeProjectFilter === "all" && !projectSearchQuery.trim()) {
-      countLabel.textContent = `Showing ${filtered.length} of ${allItems.length} project${allItems.length === 1 ? "" : "s"}`;
-    } else {
-      countLabel.textContent = `Showing ${filtered.length} of ${allItems.length} project${allItems.length === 1 ? "" : "s"}`;
-    }
+    countLabel.textContent = `Showing ${filtered.length} of ${allItems.length} project${allItems.length === 1 ? "" : "s"}`;
   }
 
   if (filtered.length === 0) {
@@ -920,6 +1006,7 @@ function renderProjectsPage() {
     grid.innerHTML = filtered
       .map(({ item, originalIndex }) => {
         const isPlanned = String(item.status || "").toLowerCase() === "planned";
+        const isPinned = Boolean(item.pinned);
         const btnClass = item.buttonStyle === "dark" ? "btn-dark" : "btn-outline-dark";
         const hoodList =
           Array.isArray(item.underTheHood) && item.underTheHood.length > 0
@@ -937,13 +1024,19 @@ function renderProjectsPage() {
             ? `<a class="btn ${btnClass}" href="${escapeHtml(item.repoUrl)}" target="_blank" rel="noopener noreferrer">View repository ↗</a>`
             : `<span class="planned-repo-tag">Planned — repository not yet public</span>`;
 
+        const updatedTag =
+          item.updatedAt && String(item.updatedAt).trim()
+            ? `<span class="project-updated-tag">Updated: ${escapeHtml(item.updatedAt)}</span>`
+            : "";
+
         return `
-          <div class="col-lg-6 project-col" data-category="${escapeHtml(item.category)}" data-status="${escapeHtml(item.status)}">
-            <article class="card project-card h-100">
+          <div class="col-lg-6 project-col" data-category="${escapeHtml(item.category)}" data-status="${escapeHtml(item.status)}" data-pinned="${String(isPinned)}">
+            <article class="card project-card ${isPinned ? "pinned-card" : ""} h-100">
               <div class="card-body d-flex flex-column">
                 <div class="project-card-top">
                   <span class="badge rounded-pill text-bg-light" data-editable="projects.items.${originalIndex}.badge">${escapeHtml(item.badge)}</span>
                   <div class="project-meta-right">
+                    ${isPinned ? `<span class="pinned-pill" title="Pinned project">📌 Pinned</span>` : ""}
                     <span class="status-pill ${isPlanned ? "status-planned" : ""}" data-editable="projects.items.${originalIndex}.status">${escapeHtml(item.status)}</span>
                     <span class="project-index" data-editable="projects.items.${originalIndex}.index">${escapeHtml(item.index)}</span>
                   </div>
@@ -954,6 +1047,7 @@ function renderProjectsPage() {
                 ${hoodList}
                 <div class="project-actions">
                   ${repoAction}
+                  ${updatedTag}
                 </div>
               </div>
             </article>
@@ -991,6 +1085,18 @@ function renderProjectsPage() {
       }
     });
   });
+
+  // Bind sort select
+  if (sortSelect && !sortSelect.dataset.bound) {
+    sortSelect.dataset.bound = "true";
+    sortSelect.addEventListener("change", () => {
+      activeProjectSort = sortSelect.value;
+      renderProjectsPage();
+      if (document.body.classList.contains("inline-edit-active") && isOwnerAuthenticated()) {
+        enableInlineEditing(true);
+      }
+    });
+  }
 
   // Bind search input
   if (searchInput && !searchInput.dataset.bound) {
@@ -1617,7 +1723,10 @@ function injectAuthAndStudioModals() {
     });
 
     document.getElementById("studio-reset-btn")?.addEventListener("click", () => {
-      localStorage.removeItem(STORAGE_KEY);
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+        sessionStorage.removeItem(DRAFT_DIRTY_KEY);
+      } catch (_) {}
       siteData = cloneData(DEFAULT_DATA);
       setStatusBanner("Restored default portfolio data.", "success");
       renderActivePage();
@@ -1722,18 +1831,55 @@ function renderStudioBody() {
       });
     });
   } else if (activeStudioTab === "projects") {
+    const currentDefaultSort = siteData.projects.defaultSort || "pinned";
     container.innerHTML = `
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-        <span style="font-size:0.78rem;color:var(--muted);">${siteData.projects.items.length} projects</span>
-        <button type="button" class="btn btn-dark" id="add-project-btn" style="padding:5px 11px;font-size:0.76rem;">+ Add Project</button>
+      <div class="studio-sort-bar">
+        <div class="studio-field" style="margin-bottom:10px;">
+          <label>Default Sort Order on Page</label>
+          <select data-bind="projects.defaultSort">
+            <option value="pinned" ${currentDefaultSort === "pinned" ? "selected" : ""}>Pinned &amp; Custom List Order</option>
+            <option value="updated" ${currentDefaultSort === "updated" ? "selected" : ""}>Recently Updated (Pinned First)</option>
+            <option value="status" ${currentDefaultSort === "status" ? "selected" : ""}>Status: Built → Planned (Pinned First)</option>
+            <option value="title" ${currentDefaultSort === "title" ? "selected" : ""}>Alphabetical A–Z (Pinned First)</option>
+          </select>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;">
+          <div style="display:flex;gap:5px;flex-wrap:wrap;">
+            <button type="button" class="studio-action-btn" id="studio-sort-date-btn" title="Reorder project list by Pinned + Newest Date">Sort List by Date ↓</button>
+            <button type="button" class="studio-action-btn" id="studio-sort-status-btn" title="Reorder project list by Pinned + Status (Built → Planned)">Sort List by Status</button>
+          </div>
+          <button type="button" class="btn btn-dark" id="add-project-btn" style="padding:5px 11px;font-size:0.75rem;">+ Add Project</button>
+        </div>
+      </div>
+      <div style="margin-bottom:8px;font-size:0.75rem;color:var(--muted);">
+        ${siteData.projects.items.length} projects · Use <strong>📌 Pin</strong>, <strong>⚡ Update &amp; Top</strong>, or <strong>⇈ / ↑ / ↓</strong> to shift order.
       </div>
       ${siteData.projects.items
         .map(
           (p, idx) => `
-          <div class="studio-card-item">
+          <div class="studio-card-item ${p.pinned ? "pinned-studio-item" : ""}">
             <div class="studio-card-item-header">
               <span>${escapeHtml(p.index)} — ${escapeHtml(p.title)}</span>
-              <button type="button" class="tool-btn delete-project-btn" data-index="${idx}" style="padding:2px 7px;font-size:0.7rem;">Delete</button>
+              <div class="studio-project-actions">
+                <button type="button" class="studio-action-btn pin-project-btn ${p.pinned ? "pinned-active" : ""}" data-index="${idx}" title="${p.pinned ? "Unpin project" : "Pin project to top"}">
+                  ${p.pinned ? "📌 Pinned" : "📌 Pin"}
+                </button>
+                <button type="button" class="studio-action-btn bump-project-btn" data-index="${idx}" title="Set updated date to today and move to top">
+                  ⚡ Update &amp; Top
+                </button>
+                <button type="button" class="studio-action-btn top-project-btn" data-index="${idx}" ${idx === 0 ? "disabled" : ""} title="Move to top (#1)">
+                  ⇈ Top
+                </button>
+                <button type="button" class="studio-action-btn up-project-btn" data-index="${idx}" ${idx === 0 ? "disabled" : ""} title="Shift up">
+                  ↑
+                </button>
+                <button type="button" class="studio-action-btn down-project-btn" data-index="${idx}" ${idx === siteData.projects.items.length - 1 ? "disabled" : ""} title="Shift down">
+                  ↓
+                </button>
+                <button type="button" class="studio-action-btn delete-action delete-project-btn" data-index="${idx}" title="Delete project">
+                  Delete
+                </button>
+              </div>
             </div>
             <div class="studio-field">
               <label>Title</label>
@@ -1744,8 +1890,8 @@ function renderStudioBody() {
               <input type="text" data-bind="projects.items.${idx}.badge" value="${escapeHtml(p.badge)}" />
             </div>
             <div class="studio-field">
-              <label>Status &amp; Category</label>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <label>Status, Category &amp; Updated Date</label>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
                 <select data-bind="projects.items.${idx}.status">
                   <option value="Built" ${p.status === "Built" ? "selected" : ""}>Built</option>
                   <option value="In Progress" ${p.status === "In Progress" ? "selected" : ""}>In Progress</option>
@@ -1755,6 +1901,7 @@ function renderStudioBody() {
                   <option value="systems" ${p.category === "systems" ? "selected" : ""}>Systems &amp; C</option>
                   <option value="backend" ${p.category === "backend" ? "selected" : ""}>Backend &amp; Java</option>
                 </select>
+                <input type="date" data-bind="projects.items.${idx}.updatedAt" value="${escapeHtml(p.updatedAt || "")}" title="Last updated date" />
               </div>
             </div>
             <div class="studio-field">
@@ -1765,6 +1912,10 @@ function renderStudioBody() {
               <label>Learning Note</label>
               <input type="text" data-bind="projects.items.${idx}.learning" value="${escapeHtml(p.learning)}" />
             </div>
+            <div class="studio-field">
+              <label>Under the Hood Bullets (one per line)</label>
+              <textarea data-hood-index="${idx}" style="min-height:66px;">${escapeHtml(Array.isArray(p.underTheHood) ? p.underTheHood.join("\n") : "")}</textarea>
+            </div>
             <div class="studio-field" style="margin-bottom:0;">
               <label>GitHub URL (optional for Planned)</label>
               <input type="url" data-bind="projects.items.${idx}.repoUrl" value="${escapeHtml(p.repoUrl)}" placeholder="https://github.com/..." />
@@ -1774,24 +1925,145 @@ function renderStudioBody() {
         .join("")}
     `;
 
-    document.getElementById("add-project-btn").addEventListener("click", () => {
-      const nextNum = String(siteData.projects.items.length + 1).padStart(2, "0");
+    document.getElementById("add-project-btn")?.addEventListener("click", () => {
       siteData.projects.items.unshift({
-        index: `PROJECT ${nextNum}`,
+        index: "PROJECT 01",
         title: "New Project",
         badge: "Java · Spring Boot",
         category: "backend",
         status: "In Progress",
+        pinned: false,
         featured: true,
+        updatedAt: getTodayDateString(),
         description: "Describe what this project does and how it is architected.",
         learning: "Key engineering concept explored in this project.",
         underTheHood: ["Core implementation and architecture details"],
         repoUrl: "https://github.com/shiva-kar",
         buttonStyle: "dark"
       });
+      reindexProjects();
       saveSiteDataDraft(true);
       renderActivePage();
       renderStudioBody();
+    });
+
+    document.getElementById("studio-sort-date-btn")?.addEventListener("click", () => {
+      siteData.projects.items.sort((a, b) => {
+        const pinA = Boolean(a.pinned);
+        const pinB = Boolean(b.pinned);
+        if (pinA !== pinB) return pinA ? -1 : 1;
+        return String(b.updatedAt || "").localeCompare(String(a.updatedAt || ""));
+      });
+      reindexProjects();
+      saveSiteDataDraft(false);
+      renderActivePage();
+      renderStudioBody();
+      showToast("Sorted project list by Pinned + Newest Date!");
+    });
+
+    document.getElementById("studio-sort-status-btn")?.addEventListener("click", () => {
+      siteData.projects.items.sort((a, b) => {
+        const pinA = Boolean(a.pinned);
+        const pinB = Boolean(b.pinned);
+        if (pinA !== pinB) return pinA ? -1 : 1;
+        const rankDiff = getStatusRank(a.status) - getStatusRank(b.status);
+        if (rankDiff !== 0) return rankDiff;
+        return String(b.updatedAt || "").localeCompare(String(a.updatedAt || ""));
+      });
+      reindexProjects();
+      saveSiteDataDraft(false);
+      renderActivePage();
+      renderStudioBody();
+      showToast("Sorted project list by Pinned + Status!");
+    });
+
+    container.querySelectorAll(".pin-project-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const idx = Number(btn.getAttribute("data-index"));
+        const item = siteData.projects.items[idx];
+        if (!item) return;
+        item.pinned = !item.pinned;
+        if (item.pinned) {
+          // Move newly pinned item to the end of the pinned group at the top
+          siteData.projects.items.splice(idx, 1);
+          let insertAt = 0;
+          while (insertAt < siteData.projects.items.length && siteData.projects.items[insertAt].pinned) {
+            insertAt++;
+          }
+          siteData.projects.items.splice(insertAt, 0, item);
+        }
+        reindexProjects();
+        saveSiteDataDraft(false);
+        renderActivePage();
+        renderStudioBody();
+        showToast(item.pinned ? `Pinned "${item.title}" to top` : `Unpinned "${item.title}"`);
+      });
+    });
+
+    container.querySelectorAll(".bump-project-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const idx = Number(btn.getAttribute("data-index"));
+        const item = siteData.projects.items[idx];
+        if (!item) return;
+        item.updatedAt = getTodayDateString();
+        siteData.projects.items.splice(idx, 1);
+        if (item.pinned) {
+          siteData.projects.items.unshift(item);
+        } else {
+          let insertAt = 0;
+          while (insertAt < siteData.projects.items.length && siteData.projects.items[insertAt].pinned) {
+            insertAt++;
+          }
+          siteData.projects.items.splice(insertAt, 0, item);
+        }
+        reindexProjects();
+        saveSiteDataDraft(false);
+        renderActivePage();
+        renderStudioBody();
+        showToast(`Updated "${item.title}" (${item.updatedAt}) & moved to top!`);
+      });
+    });
+
+    container.querySelectorAll(".top-project-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const idx = Number(btn.getAttribute("data-index"));
+        if (idx <= 0 || idx >= siteData.projects.items.length) return;
+        const [item] = siteData.projects.items.splice(idx, 1);
+        siteData.projects.items.unshift(item);
+        reindexProjects();
+        saveSiteDataDraft(false);
+        renderActivePage();
+        renderStudioBody();
+        showToast(`Moved "${item.title}" to #1`);
+      });
+    });
+
+    container.querySelectorAll(".up-project-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const idx = Number(btn.getAttribute("data-index"));
+        if (idx <= 0 || idx >= siteData.projects.items.length) return;
+        const temp = siteData.projects.items[idx - 1];
+        siteData.projects.items[idx - 1] = siteData.projects.items[idx];
+        siteData.projects.items[idx] = temp;
+        reindexProjects();
+        saveSiteDataDraft(false);
+        renderActivePage();
+        renderStudioBody();
+      });
+    });
+
+    container.querySelectorAll(".down-project-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const idx = Number(btn.getAttribute("data-index"));
+        if (idx < 0 || idx >= siteData.projects.items.length - 1) return;
+        const temp = siteData.projects.items[idx + 1];
+        siteData.projects.items[idx + 1] = siteData.projects.items[idx];
+        siteData.projects.items[idx] = temp;
+        reindexProjects();
+        saveSiteDataDraft(false);
+        renderActivePage();
+        renderStudioBody();
+      });
     });
 
     container.querySelectorAll(".delete-project-btn").forEach((btn) => {
@@ -1801,10 +2073,26 @@ function renderStudioBody() {
           return;
         }
         const idx = Number(btn.getAttribute("data-index"));
-        siteData.projects.items.splice(idx, 1);
+        const removed = siteData.projects.items.splice(idx, 1)[0];
+        reindexProjects();
         saveSiteDataDraft(true);
         renderActivePage();
         renderStudioBody();
+        if (removed) showToast(`Deleted "${removed.title}"`);
+      });
+    });
+
+    container.querySelectorAll("[data-hood-index]").forEach((textarea) => {
+      textarea.addEventListener("input", () => {
+        if (!isOwnerAuthenticated()) return;
+        const idx = Number(textarea.getAttribute("data-hood-index"));
+        if (!siteData.projects.items[idx]) return;
+        siteData.projects.items[idx].underTheHood = textarea.value
+          .split("\n")
+          .map((line) => line.trim())
+          .filter(Boolean);
+        saveSiteDataDraft(false);
+        renderActivePage();
       });
     });
   } else if (activeStudioTab === "about") {
@@ -1841,7 +2129,7 @@ function renderStudioBody() {
   } else if (activeStudioTab === "facts") {
     container.innerHTML = `
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-        <span style="font-size:0.78rem;color:var(--muted);">Interactive "One more thing…" facts</span>
+        <span style="font-size:0.78rem;color:var(--muted);">Interactive "One more thing…" facts (${siteData.facts.length})</span>
         <button type="button" class="btn btn-dark" id="add-fact-btn" style="padding:5px 11px;font-size:0.76rem;">+ Add Fact</button>
       </div>
       ${siteData.facts
@@ -1850,19 +2138,51 @@ function renderStudioBody() {
           <div class="studio-card-item">
             <div class="studio-card-item-header">
               <span>Fact #${idx + 1}</span>
-              <button type="button" class="tool-btn delete-fact-btn" data-index="${idx}" style="padding:2px 7px;font-size:0.7rem;">Remove</button>
+              <div class="studio-project-actions">
+                <button type="button" class="studio-action-btn up-fact-btn" data-index="${idx}" ${idx === 0 ? "disabled" : ""} title="Move fact up">↑</button>
+                <button type="button" class="studio-action-btn down-fact-btn" data-index="${idx}" ${idx === siteData.facts.length - 1 ? "disabled" : ""} title="Move fact down">↓</button>
+                <button type="button" class="studio-action-btn delete-action delete-fact-btn" data-index="${idx}">Remove</button>
+              </div>
             </div>
-            <textarea data-bind="facts.${idx}" style="width:100%;min-height:58px;">${escapeHtml(fact)}</textarea>
+            <div class="studio-field" style="margin-bottom:0;">
+              <textarea data-bind="facts.${idx}" rows="3">${escapeHtml(fact)}</textarea>
+            </div>
           </div>`
         )
         .join("")}
     `;
 
-    document.getElementById("add-fact-btn").addEventListener("click", () => {
-      siteData.facts.push("A new fun fact about what I’m building or learning right now.");
+    document.getElementById("add-fact-btn")?.addEventListener("click", () => {
+      siteData.facts.unshift("A new fun fact about what I’m building or learning right now.");
       saveSiteDataDraft(true);
       renderActivePage();
       renderStudioBody();
+    });
+
+    container.querySelectorAll(".up-fact-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const idx = Number(btn.getAttribute("data-index"));
+        if (idx <= 0 || idx >= siteData.facts.length) return;
+        const tmp = siteData.facts[idx - 1];
+        siteData.facts[idx - 1] = siteData.facts[idx];
+        siteData.facts[idx] = tmp;
+        saveSiteDataDraft(false);
+        renderActivePage();
+        renderStudioBody();
+      });
+    });
+
+    container.querySelectorAll(".down-fact-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const idx = Number(btn.getAttribute("data-index"));
+        if (idx < 0 || idx >= siteData.facts.length - 1) return;
+        const tmp = siteData.facts[idx + 1];
+        siteData.facts[idx + 1] = siteData.facts[idx];
+        siteData.facts[idx] = tmp;
+        saveSiteDataDraft(false);
+        renderActivePage();
+        renderStudioBody();
+      });
     });
 
     container.querySelectorAll(".delete-fact-btn").forEach((btn) => {
@@ -1876,6 +2196,16 @@ function renderStudioBody() {
       });
     });
   }
+
+  const autoResizeTextarea = (ta) => {
+    ta.style.height = "auto";
+    ta.style.height = `${Math.max(68, ta.scrollHeight + 2)}px`;
+  };
+
+  container.querySelectorAll("textarea").forEach((ta) => {
+    autoResizeTextarea(ta);
+    ta.addEventListener("input", () => autoResizeTextarea(ta));
+  });
 
   // Bind live input changes
   container.querySelectorAll("[data-bind]").forEach((input) => {
@@ -1927,11 +2257,13 @@ function bootstrapSite() {
   injectAuthAndStudioModals();
   initKeyboardShortcuts();
 
-  // 2. If owner has an active authenticated session and a local draft, load draft
+  // 2. If owner has an active authenticated session and an unsaved local draft, load draft
+  let hasUnsavedDraft = false;
   if (isOwnerAuthenticated()) {
     try {
+      hasUnsavedDraft = sessionStorage.getItem(DRAFT_DIRTY_KEY) === "true";
       const savedDraft = localStorage.getItem(STORAGE_KEY);
-      if (savedDraft) {
+      if (hasUnsavedDraft && savedDraft) {
         const parsed = JSON.parse(savedDraft);
         if (parsed && parsed.home && parsed.projects) {
           siteData = parsed;
@@ -1944,12 +2276,15 @@ function bootstrapSite() {
   renderActivePage();
 
   // 4. Fetch latest published data.json in background
-  fetch("data.json?v=2.3.0", { cache: "no-store" })
+  fetch("data.json?v=2.4.0", { cache: "no-store" })
     .then((res) => (res.ok ? res.json() : null))
     .then((json) => {
-      if (json && json.home && json.projects && !isOwnerAuthenticated()) {
+      if (json && json.home && json.projects && !hasUnsavedDraft) {
         siteData = json;
         renderActivePage();
+        if (document.getElementById("studio-drawer")?.classList.contains("open")) {
+          renderStudioBody();
+        }
       }
     })
     .catch(() => {

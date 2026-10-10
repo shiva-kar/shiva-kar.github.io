@@ -5,7 +5,7 @@
     "eyebrow": "Java & Backend Developer · BCA Student",
     "location": "Hojai, Assam, India",
     "accentColor": "#39745a",
-    "resumeUrl": "Shiva_Kar_Resume.pdf?v=2.3.0",
+    "resumeUrl": "Shiva_Kar_Resume.pdf?v=2.4.0",
     "githubRepo": "shiva-kar/shiva-kar.github.io"
   },
   "contact": {
@@ -160,6 +160,7 @@
     "eyebrow": "LEARNING BY BUILDING",
     "title": "Projects and experiments",
     "intro": "I learn best by making things, testing them, and figuring out the parts I don’t understand yet. Here are my open-source projects, systems tools, and backend builds.",
+    "defaultSort": "pinned",
     "items": [
       {
         "index": "PROJECT 01",
@@ -167,7 +168,9 @@
         "badge": "C · POSIX · CMake",
         "category": "systems",
         "status": "Built",
+        "pinned": true,
         "featured": true,
+        "updatedAt": "2026-10-10",
         "description": "A POSIX-compliant Unix-like shell written in C across 7 modules (~550 lines) with 7 built-ins, $PATH resolution, quote and escape parsing, 4 redirection operators, multi-command pipelines, persistent history, and $VAR expansion.",
         "learning": "Built to understand process creation, file descriptors, and the POSIX system calls behind terminal execution.",
         "underTheHood": [
@@ -184,7 +187,9 @@
         "badge": "TypeScript · Next.js 14",
         "category": "backend",
         "status": "Built",
+        "pinned": true,
         "featured": true,
+        "updatedAt": "2026-10-08",
         "description": "An open-source resume builder web application featuring live PDF preview and multiple customizable templates, earning 16 GitHub stars and 8 forks from the developer community.",
         "learning": "Focused on clean document state management, real-time PDF rendering, and shipping a polished tool used by other developers.",
         "underTheHood": [
@@ -201,7 +206,9 @@
         "badge": "C · Raw TCP Sockets · HTTP",
         "category": "systems",
         "status": "Planned",
+        "pinned": false,
         "featured": true,
+        "updatedAt": "2026-10-05",
         "description": "A lightweight HTTP server in C built over raw TCP sockets, focused on request parsing, header inspection, and HTTP response handling from the ground up.",
         "learning": "The goal is to master networking fundamentals by implementing the TCP socket and HTTP request-response lifecycle directly.",
         "underTheHood": [
@@ -218,7 +225,9 @@
         "badge": "C · Memory · Mark & Sweep",
         "category": "systems",
         "status": "Planned",
+        "pinned": false,
         "featured": true,
+        "updatedAt": "2026-09-20",
         "description": "A custom garbage collector in C built to understand manual memory management, heap allocation internals, and automatic object reachability tracking.",
         "learning": "Explores mark-and-sweep collection, root pointer tracing, and allocation metadata at the pointer level.",
         "underTheHood": [
@@ -235,7 +244,9 @@
         "badge": "C · Hashing · File I/O",
         "category": "systems",
         "status": "Planned",
+        "pinned": false,
         "featured": true,
+        "updatedAt": "2026-09-12",
         "description": "A simplified Git clone written in C to understand content-addressable storage, blob and tree objects, and commit history DAGs.",
         "learning": "Covers binary file I/O, cryptographic hashing, compression, and version control internals from scratch.",
         "underTheHood": [
@@ -252,7 +263,9 @@
         "badge": "Java · Spring Boot · PostgreSQL",
         "category": "backend",
         "status": "Planned",
+        "pinned": false,
         "featured": false,
+        "updatedAt": "2026-08-25",
         "description": "A complete e-commerce REST backend built with Spring Boot, featuring product catalog management, order workflows, JWT authentication, and pagination.",
         "learning": "Focused on enterprise backend architecture, relational database modeling, and clean service-layer separation.",
         "underTheHood": [
@@ -269,7 +282,9 @@
         "badge": "Java · Spring Security · Docker",
         "category": "backend",
         "status": "Planned",
+        "pinned": false,
         "featured": false,
+        "updatedAt": "2026-08-15",
         "description": "A secure REST API for personal expense tracking, demonstrating robust CRUD operations, category analytics, Spring Security integration, and Docker containerization.",
         "learning": "Built to practice API security beyond the happy path, error handling, and containerized deployment.",
         "underTheHood": [
