@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Software projects by Shiva Kar, including SXSHELL (a POSIX shell in C), Resume Builder (16 GitHub stars, 8 forks), a custom HTTP server, and backend APIs.">
+    <meta name="description" content="Software projects by Shiva Kar — E-Commerce Backend API, API Rate Limiter & Usage Metering Service, and SXSHELL Unix-like Shell.">
     <meta name="author" content="Shiva Kar">
     <title>Shiva Kar — Projects</title>
+    <link rel="canonical" href="https://shivakar.me/projects.html">
+    <meta name="theme-color" content="#39745a">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23242923'/><text x='50' y='67' font-family='Arial,sans-serif' font-weight='800' font-size='48' text-anchor='middle' fill='%23fffefa'>SK<tspan fill='%2339745a'>.</tspan></text></svg>">
     <script>
         (function () {
@@ -18,20 +20,23 @@
         })();
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link href="styles.css?v=2.4.0" rel="stylesheet">
-    <script src="script.js?v=2.4.0" defer></script>
+    <link href="styles.css?v=3.0.0" rel="stylesheet">
+    <script src="script.js?v=3.0.0" defer></script>
 </head>
 <body data-page="projects">
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="index.html" aria-label="Shiva Kar homepage"><span id="brand-text" data-editable="meta.brand">SK</span><span>.</span></a>
-            <div class="header-right">
+            <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="nav-hamburger" aria-hidden="true"></span>
+            </button>
+            <div class="header-right" id="header-right">
                 <nav class="site-nav" aria-label="Main navigation">
                     <a href="index.html">Home</a>
-                    <a href="interests.html">Interests</a>
                     <a class="active" href="projects.html" aria-current="page">Projects</a>
+                    <a href="opensource.html">Open Source</a>
                     <a href="about.html">About</a>
-                    <a href="Shiva_Kar_Resume.pdf?v=2.4.0" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+                    <a href="Shiva_Kar_Resume.pdf?v=3.0.0" target="_blank" rel="noopener noreferrer">Resume ↗</a>
                 </nav>
                 <div class="header-tools" aria-label="Interactive tools">
                     <button type="button" class="tool-btn" id="open-terminal-btn" aria-haspopup="dialog" aria-expanded="false" title="Open interactive SXSHELL terminal (Ctrl+K)">
@@ -50,260 +55,213 @@
 
     <main class="container page-content inner-page">
         <section class="page-intro">
-            <p class="eyebrow" id="projects-eyebrow" data-editable="projects.eyebrow">LEARNING BY BUILDING</p>
-            <h1><span id="projects-title" data-editable="projects.title">Projects and experiments</span><span class="accent-text">.</span></h1>
-            <p class="intro" id="projects-intro" data-editable="projects.intro">I learn best by making things, testing them, and figuring out the parts I don’t understand yet. Here are my open-source projects, systems tools, and backend builds.</p>
+            <p class="eyebrow" id="projects-eyebrow">PROJECTS</p>
+            <h1><span id="projects-title">What I've built</span><span class="accent-text">.</span></h1>
+            <p class="intro" id="projects-intro">Two Java backend applications, a systems programming project, and open-source contributions to a large C++ codebase.</p>
+            <div class="project-jump-bar" style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+                <a class="tool-btn" href="#ecommerce">↓ E-Commerce Backend API</a>
+                <a class="tool-btn" href="#ratelimiter">↓ API Rate Limiter &amp; Metering</a>
+                <a class="tool-btn" href="#sxshell">↓ SXSHELL (POSIX Shell)</a>
+            </div>
         </section>
 
-        <section class="section-block" aria-label="Project list">
-            <div class="filter-bar">
-                <div class="filter-pills" role="tablist" aria-label="Filter projects by category">
-                    <button type="button" class="filter-pill active" role="tab" aria-selected="true" data-filter="all">All projects</button>
-                    <button type="button" class="filter-pill" role="tab" aria-selected="false" data-filter="pinned">📌 Pinned</button>
-                    <button type="button" class="filter-pill" role="tab" aria-selected="false" data-filter="systems">Systems &amp; C</button>
-                    <button type="button" class="filter-pill" role="tab" aria-selected="false" data-filter="backend">Backend &amp; Java</button>
-                    <button type="button" class="filter-pill" role="tab" aria-selected="false" data-filter="active">Active &amp; Built</button>
-                    <button type="button" class="filter-pill" role="tab" aria-selected="false" data-filter="planned">Planned</button>
+        <!-- E-Commerce Backend API -->
+        <section class="section-block project-detail" id="ecommerce" aria-labelledby="ecommerce-title">
+            <div class="project-detail-header">
+                <div>
+                    <span class="section-kicker">PROJECT 01 · JAVA BACKEND</span>
+                    <h2 id="ecommerce-title">E-Commerce Backend API</h2>
+                    <div class="skill-chips" style="margin-top:12px;">
+                        <span class="skill-chip">Java</span>
+                        <span class="skill-chip">Spring Boot</span>
+                        <span class="skill-chip">Spring Security</span>
+                        <span class="skill-chip">Spring Data JPA</span>
+                        <span class="skill-chip">Hibernate</span>
+                        <span class="skill-chip">PostgreSQL</span>
+                        <span class="skill-chip">Maven</span>
+                        <span class="skill-chip">JUnit 5</span>
+                        <span class="skill-chip">Mockito</span>
+                        <span class="skill-chip">Docker Compose</span>
+                        <span class="skill-chip">Flyway</span>
+                    </div>
                 </div>
-                <div class="filter-controls-right">
-                    <select id="project-sort-select" class="project-sort-select" aria-label="Sort projects">
-                        <option value="pinned">Sort: Pinned &amp; Custom Order</option>
-                        <option value="updated">Sort: Recently Updated</option>
-                        <option value="status">Sort: Status (Built → Planned)</option>
-                        <option value="title">Sort: Name (A–Z)</option>
-                    </select>
-                    <input type="search" id="project-search-input" class="project-search-input" placeholder="Search projects..." aria-label="Search projects by title, technology, or description">
-                    <span class="project-count" id="project-count-label" aria-live="polite">Showing 7 of 7 projects</span>
+
+            </div>
+
+            <div class="project-detail-body">
+                <p>An e-commerce backend built with Java and Spring Boot, providing REST APIs for product management, shopping carts, orders, and user accounts, with PostgreSQL persistence and secure authentication.</p>
+
+                <div class="arch-diagram" aria-label="E-Commerce Architecture Flow">
+                    <div class="arch-title">Application Architecture Flow</div>
+                    <div class="arch-flow">
+                        <span class="arch-node">Client</span>
+                        <span class="arch-arrow">→</span>
+                        <span class="arch-node arch-node-highlight">Spring Security (JWT)</span>
+                        <span class="arch-arrow">→</span>
+                        <span class="arch-node">REST Controllers</span>
+                        <span class="arch-arrow">→</span>
+                        <span class="arch-node arch-node-highlight">Service Layer (Locking / Tx)</span>
+                        <span class="arch-arrow">→</span>
+                        <span class="arch-node">Repositories (Spring Data JPA)</span>
+                        <span class="arch-arrow">→</span>
+                        <span class="arch-node arch-node-highlight">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <h3>Architecture</h3>
+                <ul>
+                    <li>Layered controller-service-repository architecture with dependency injection</li>
+                    <li>DTO-based request and response handling with separation of API models and persistence entities</li>
+                    <li>Service-layer business logic with centralized exception handling</li>
+                </ul>
+
+                <h3>REST APIs</h3>
+                <ul>
+                    <li>Product management, category management, shopping carts, order processing, and user account operations</li>
+                    <li>Pagination, sorting, filtering, request validation</li>
+                </ul>
+
+                <h3>Authentication &amp; Authorization</h3>
+                <ul>
+                    <li>Spring Security with JWT authentication and password hashing</li>
+                    <li>Role-based authorization with protected endpoints</li>
+                </ul>
+
+                <h3>Database Design</h3>
+                <ul>
+                    <li>PostgreSQL with Spring Data JPA and Hibernate</li>
+                    <li>Relational entity relationships, database constraints, and Flyway migrations</li>
+                </ul>
+
+                <h3>Transaction Management</h3>
+                <p>The application implements transactional order processing and inventory reservation with locking-based concurrency control to prevent overselling. When multiple users attempt to purchase the same limited inventory simultaneously, the application prevents conflicting reservations and maintains consistent stock levels.</p>
+
+                <h3>Testing</h3>
+                <ul>
+                    <li>JUnit 5 and Mockito for service-layer testing and integration tests</li>
+                    <li>Validation and exception scenarios, transaction and inventory consistency tests</li>
+                </ul>
+
+                <h3>Development Environment</h3>
+                <ul>
+                    <li>Maven build, Docker Compose with PostgreSQL service configuration, Flyway migrations</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- API Rate Limiter -->
+        <section class="section-block project-detail" id="ratelimiter" aria-labelledby="ratelimiter-title">
+            <div class="project-detail-header">
+                <div>
+                    <span class="section-kicker">PROJECT 02 · BACKEND INFRASTRUCTURE</span>
+                    <h2 id="ratelimiter-title">API Rate Limiter &amp; Usage Metering Service</h2>
+                    <div class="skill-chips" style="margin-top:12px;">
+                        <span class="skill-chip">Java</span>
+                        <span class="skill-chip">Spring Boot</span>
+                        <span class="skill-chip">Spring Security</span>
+                        <span class="skill-chip">Redis</span>
+                        <span class="skill-chip">Maven</span>
+                        <span class="skill-chip">JUnit 5</span>
+                        <span class="skill-chip">Mockito</span>
+                        <span class="skill-chip">Docker</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="project-detail-body">
+                <p>A Redis-backed API rate-limiting service using the Token Bucket algorithm to enforce configurable per-user and per-API-key request limits, with usage metering and concurrency-safe request handling.</p>
+                <p><strong>This is not another CRUD application.</strong> It is backend infrastructure and algorithmic engineering — focused on algorithms, Redis, atomic operations, concurrency, request control, HTTP behaviour, and usage metering.</p>
+
+                <div class="arch-diagram" aria-label="API Rate Limiter Architecture Flow">
+                    <div class="arch-title">Request Flow &amp; Algorithmic Rate Limiting</div>
+                    <div class="arch-flow">
+                        <span class="arch-node">Client Request</span>
+                        <span class="arch-arrow">→</span>
+                        <span class="arch-node arch-node-highlight">Spring Boot Filter</span>
+                        <span class="arch-arrow">→</span>
+                        <span class="arch-node arch-node-highlight">Token Bucket Engine</span>
+                        <span class="arch-arrow">→</span>
+                        <span class="arch-node arch-node-highlight">Redis (Atomic Lua &amp; TTL)</span>
+                        <span class="arch-arrow">→</span>
+                        <span class="arch-node">HTTP 200 / 429 Response</span>
+                    </div>
+                </div>
+
+                <h3>Rate-Limiting Algorithm</h3>
+                <ul>
+                    <li>Token Bucket algorithm with configurable request limits</li>
+                    <li>Per-user and per-API-key restrictions with controlled burst handling</li>
+                </ul>
+
+                <h3>Redis Implementation</h3>
+                <ul>
+                    <li>Redis-backed rate-limit state with TTL-based expiration</li>
+                    <li>Atomic Lua scripts for concurrent request handling — a rate limiter must not allow simultaneous requests to update shared state incorrectly</li>
+                </ul>
+
+                <h3>HTTP API Behaviour</h3>
+                <ul>
+                    <li>HTTP 429 Too Many Requests with Retry-After headers</li>
+                    <li>Rate-limit headers, API key identification, configurable policies</li>
+                    <li>Usage metering for per-client tracking</li>
+                </ul>
+
+                <h3>Testing</h3>
+                <ul>
+                    <li>JUnit 5 and Mockito for boundary tests, expiration tests, and concurrent-burst test scenarios</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SXSHELL -->
+        <section class="section-block project-detail project-detail-compact" id="sxshell" aria-labelledby="sxshell-title">
+            <div class="project-detail-header">
+                <div>
+                    <span class="section-kicker">PROJECT 03 · SYSTEMS PROGRAMMING</span>
+                    <h2 id="sxshell-title">SXSHELL — Unix-like Shell</h2>
+                    <div class="skill-chips" style="margin-top:12px;">
+                        <span class="skill-chip">C</span>
+                        <span class="skill-chip">POSIX</span>
+                        <span class="skill-chip">CMake</span>
+                    </div>
+                </div>
+                <div class="project-detail-actions">
+                    <a class="btn btn-dark" href="https://github.com/shiva-kar/SXSHELL-unix-like-shell" target="_blank" rel="noopener noreferrer">View Repository ↗</a>
                 </div>
             </div>
 
-            <div class="row g-4" id="projects-grid-container">
-                <div class="col-lg-6 project-col" data-category="systems" data-status="Built" data-pinned="true">
-                    <article class="card project-card pinned-card h-100">
-                        <div class="card-body d-flex flex-column">
-                            <div class="project-card-top">
-                                <span class="badge rounded-pill text-bg-light">C · POSIX · CMake</span>
-                                <div class="project-meta-right">
-                                    <span class="pinned-pill" title="Pinned project">📌 Pinned</span>
-                                    <span class="status-pill">Built</span>
-                                    <span class="project-index">PROJECT 01</span>
-                                </div>
-                            </div>
-                            <h2 class="card-title">SXSHELL — Unix-like Shell</h2>
-                            <p class="card-text">A POSIX-compliant Unix-like shell written in C across 7 modules (~550 lines) with 7 built-ins, $PATH resolution, quote and escape parsing, 4 redirection operators, multi-command pipelines, persistent history, and $VAR expansion.</p>
-                            <p class="project-learning">Built to understand process creation, file descriptors, and the POSIX system calls behind terminal execution.</p>
-                            <button type="button" class="hood-toggle" aria-expanded="false"><span>+ Under the hood</span></button>
-                            <div class="hood-panel">
-                                <ul>
-                                    <li>Implemented 4 redirection operators and multi-command pipelines using fork(), execv(), and dup2()</li>
-                                    <li>Built 7 modular C components (~550 lines) supporting 7 built-in commands, $PATH lookup, and quote/escape parsing</li>
-                                    <li>Added persistent history with arrow-key navigation, $VAR expansion, and architecture documentation in DOCS.md</li>
-                                </ul>
-                            </div>
-                            <div class="project-actions">
-                                <a class="btn btn-dark" href="https://github.com/shiva-kar/SXSHELL-unix-like-shell" target="_blank" rel="noopener noreferrer">View repository ↗</a>
-                                <span class="project-updated-tag">Updated: 2026-10-10</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-lg-6 project-col" data-category="backend" data-status="Built" data-pinned="true">
-                    <article class="card project-card pinned-card h-100">
-                        <div class="card-body d-flex flex-column">
-                            <div class="project-card-top">
-                                <span class="badge rounded-pill text-bg-light">TypeScript · Next.js 14</span>
-                                <div class="project-meta-right">
-                                    <span class="pinned-pill" title="Pinned project">📌 Pinned</span>
-                                    <span class="status-pill">Built</span>
-                                    <span class="project-index">PROJECT 02</span>
-                                </div>
-                            </div>
-                            <h2 class="card-title">Resume Builder</h2>
-                            <p class="card-text">An open-source resume builder web application featuring live PDF preview and multiple customizable templates, earning 16 GitHub stars and 8 forks from the developer community.</p>
-                            <p class="project-learning">Focused on clean document state management, real-time PDF rendering, and shipping a polished tool used by other developers.</p>
-                            <button type="button" class="hood-toggle" aria-expanded="false"><span>+ Under the hood</span></button>
-                            <div class="hood-panel">
-                                <ul>
-                                    <li>Built with TypeScript and Next.js 14 with instant live PDF preview and multi-template switching</li>
-                                    <li>Earned 16 GitHub stars and 8 forks through clean UX and structured resume schema state</li>
-                                    <li>Supports ATS-friendly formatting, section customization, and one-click PDF export</li>
-                                </ul>
-                            </div>
-                            <div class="project-actions">
-                                <a class="btn btn-dark" href="https://github.com/shiva-kar/resume-builder" target="_blank" rel="noopener noreferrer">View repository ↗</a>
-                                <span class="project-updated-tag">Updated: 2026-10-08</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-lg-6 project-col" data-category="systems" data-status="Planned" data-pinned="false">
-                    <article class="card project-card h-100">
-                        <div class="card-body d-flex flex-column">
-                            <div class="project-card-top">
-                                <span class="badge rounded-pill text-bg-light">C · Raw TCP Sockets · HTTP</span>
-                                <div class="project-meta-right">
-                                    <span class="status-pill status-planned">Planned</span>
-                                    <span class="project-index">PROJECT 03</span>
-                                </div>
-                            </div>
-                            <h2 class="card-title">Custom HTTP Server</h2>
-                            <p class="card-text">A lightweight HTTP server in C built over raw TCP sockets, focused on request parsing, header inspection, and HTTP response handling from the ground up.</p>
-                            <p class="project-learning">The goal is to master networking fundamentals by implementing the TCP socket and HTTP request-response lifecycle directly.</p>
-                            <button type="button" class="hood-toggle" aria-expanded="false"><span>+ Under the hood</span></button>
-                            <div class="hood-panel">
-                                <ul>
-                                    <li>POSIX socket lifecycle: socket(), bind(), listen(), accept(), recv(), and send()</li>
-                                    <li>Zero-dependency HTTP request line, header parser, and status-code response builder</li>
-                                    <li>Static file serving with MIME type detection and client connection handling</li>
-                                </ul>
-                            </div>
-                            <div class="project-actions">
-                                <a class="btn btn-outline-dark" href="https://github.com/shiva-kar/Custom-HTTP-Server-in-C" target="_blank" rel="noopener noreferrer">View repository ↗</a>
-                                <span class="project-updated-tag">Updated: 2026-10-05</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-lg-6 project-col" data-category="systems" data-status="Planned" data-pinned="false">
-                    <article class="card project-card h-100">
-                        <div class="card-body d-flex flex-column">
-                            <div class="project-card-top">
-                                <span class="badge rounded-pill text-bg-light">C · Memory · Mark &amp; Sweep</span>
-                                <div class="project-meta-right">
-                                    <span class="status-pill status-planned">Planned</span>
-                                    <span class="project-index">PROJECT 04</span>
-                                </div>
-                            </div>
-                            <h2 class="card-title">Custom Garbage Collector</h2>
-                            <p class="card-text">A custom garbage collector in C built to understand manual memory management, heap allocation internals, and automatic object reachability tracking.</p>
-                            <p class="project-learning">Explores mark-and-sweep collection, root pointer tracing, and allocation metadata at the pointer level.</p>
-                            <button type="button" class="hood-toggle" aria-expanded="false"><span>+ Under the hood</span></button>
-                            <div class="hood-panel">
-                                <ul>
-                                    <li>Tracks dynamically allocated objects via an intrusive metadata header and allocation list</li>
-                                    <li>Mark phase traverses reachable object graphs from registered stack/root pointers</li>
-                                    <li>Sweep phase reclaims unmarked heap blocks and prevents memory leaks</li>
-                                </ul>
-                            </div>
-                            <div class="project-actions">
-                                <span class="planned-repo-tag">Planned — repository not yet public</span>
-                                <span class="project-updated-tag">Updated: 2026-09-20</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-lg-6 project-col" data-category="systems" data-status="Planned" data-pinned="false">
-                    <article class="card project-card h-100">
-                        <div class="card-body d-flex flex-column">
-                            <div class="project-card-top">
-                                <span class="badge rounded-pill text-bg-light">C · Hashing · File I/O</span>
-                                <div class="project-meta-right">
-                                    <span class="status-pill status-planned">Planned</span>
-                                    <span class="project-index">PROJECT 05</span>
-                                </div>
-                            </div>
-                            <h2 class="card-title">Git Implementation in C</h2>
-                            <p class="card-text">A simplified Git clone written in C to understand content-addressable storage, blob and tree objects, and commit history DAGs.</p>
-                            <p class="project-learning">Covers binary file I/O, cryptographic hashing, compression, and version control internals from scratch.</p>
-                            <button type="button" class="hood-toggle" aria-expanded="false"><span>+ Under the hood</span></button>
-                            <div class="hood-panel">
-                                <ul>
-                                    <li>Implements object hashing and content-addressable storage inside .git/objects</li>
-                                    <li>Reads and writes blob, tree, and commit objects with header framing</li>
-                                    <li>Demystifies how Git snapshots file trees rather than storing simple line diffs</li>
-                                </ul>
-                            </div>
-                            <div class="project-actions">
-                                <span class="planned-repo-tag">Planned — repository not yet public</span>
-                                <span class="project-updated-tag">Updated: 2026-09-12</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-lg-6 project-col" data-category="backend" data-status="Planned" data-pinned="false">
-                    <article class="card project-card h-100">
-                        <div class="card-body d-flex flex-column">
-                            <div class="project-card-top">
-                                <span class="badge rounded-pill text-bg-light">Java · Spring Boot · PostgreSQL</span>
-                                <div class="project-meta-right">
-                                    <span class="status-pill status-planned">Planned</span>
-                                    <span class="project-index">PROJECT 06</span>
-                                </div>
-                            </div>
-                            <h2 class="card-title">E-commerce Backend API</h2>
-                            <p class="card-text">A complete e-commerce REST backend built with Spring Boot, featuring product catalog management, order workflows, JWT authentication, and pagination.</p>
-                            <p class="project-learning">Focused on enterprise backend architecture, relational database modeling, and clean service-layer separation.</p>
-                            <button type="button" class="hood-toggle" aria-expanded="false"><span>+ Under the hood</span></button>
-                            <div class="hood-panel">
-                                <ul>
-                                    <li>Layered Spring Boot architecture (Controller → Service → Repository) with Spring Data JPA</li>
-                                    <li>Stateless JWT authentication, role-based access control, and request validation</li>
-                                    <li>PostgreSQL schema with indexed queries and paginated product endpoints</li>
-                                </ul>
-                            </div>
-                            <div class="project-actions">
-                                <span class="planned-repo-tag">Planned — repository not yet public</span>
-                                <span class="project-updated-tag">Updated: 2026-08-25</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-lg-6 project-col" data-category="backend" data-status="Planned" data-pinned="false">
-                    <article class="card project-card h-100">
-                        <div class="card-body d-flex flex-column">
-                            <div class="project-card-top">
-                                <span class="badge rounded-pill text-bg-light">Java · Spring Security · Docker</span>
-                                <div class="project-meta-right">
-                                    <span class="status-pill status-planned">Planned</span>
-                                    <span class="project-index">PROJECT 07</span>
-                                </div>
-                            </div>
-                            <h2 class="card-title">Expense Tracker API</h2>
-                            <p class="card-text">A secure REST API for personal expense tracking, demonstrating robust CRUD operations, category analytics, Spring Security integration, and Docker containerization.</p>
-                            <p class="project-learning">Built to practice API security beyond the happy path, error handling, and containerized deployment.</p>
-                            <button type="button" class="hood-toggle" aria-expanded="false"><span>+ Under the hood</span></button>
-                            <div class="hood-panel">
-                                <ul>
-                                    <li>Spring Security filter chain with BCrypt password hashing and user-scoped data isolation</li>
-                                    <li>Normalized SQL schema for transactions, recurring budgets, and monthly aggregations</li>
-                                    <li>Docker Compose setup bundling the Spring Boot service and PostgreSQL database</li>
-                                </ul>
-                            </div>
-                            <div class="project-actions">
-                                <span class="planned-repo-tag">Planned — repository not yet public</span>
-                                <span class="project-updated-tag">Updated: 2026-08-15</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
+            <div class="project-detail-body">
+                <p>A modular Unix-like shell implemented in C, with command parsing, process execution, pipelines, and I/O redirection using POSIX system calls.</p>
+                <ul>
+                    <li>Seven modules (~550 lines) with separation of command parsing and process execution</li>
+                    <li>Pipelines and I/O redirection using fork(), execv(), and dup2()</li>
+                    <li>Built-in commands, executable lookup, $PATH resolution, and quote/escape parsing</li>
+                </ul>
+                <p style="color:var(--muted);font-size:0.88rem;">This project demonstrates systems programming fundamentals and general computer science knowledge — process management, file descriptors, and low-level command execution.</p>
             </div>
         </section>
 
         <section class="simple-cta">
-            <h2>More experiments live on GitHub.</h2>
-            <p>Code, open-source pull requests, and notes are easiest to find there.</p>
+            <h2>Explore my open-source work or get in touch.</h2>
+            <p>I also contribute to the Godot Engine open-source project with 15 submitted pull requests.</p>
             <div class="cta-links">
-                <a class="btn btn-dark" href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">Open GitHub profile ↗</a>
-                <a class="btn btn-outline-dark" href="Shiva_Kar_Resume.pdf?v=2.4.0" target="_blank" rel="noopener noreferrer">Resume PDF ↗</a>
+                <a class="btn btn-dark" href="opensource.html">Open Source Contributions</a>
+                <a class="btn btn-outline-dark" href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub Profile ↗</a>
+                <a class="btn btn-outline-dark" href="mailto:sksmarttech48@gmail.com">Email Me ↗</a>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
         <div class="container footer-inner">
-            <p>Made by Shiva, with HTML, CSS, JavaScript, and a little curiosity.</p>
+            <p>Shiva Kar · Java Backend Developer · BCA Student</p>
             <div class="footer-links">
                 <a href="index.html">Home</a>
-                <a href="interests.html">Interests</a>
+                <a href="opensource.html">Open Source</a>
                 <a href="about.html">About</a>
-                <a href="Shiva_Kar_Resume.pdf?v=2.4.0" target="_blank" rel="noopener noreferrer">Resume</a>
                 <a href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="Shiva_Kar_Resume.pdf?v=3.0.0" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
         </div>
     </footer>

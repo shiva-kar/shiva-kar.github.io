@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shiva Kar's open-source contributions to Godot Engine — 15 PRs submitted, 6 merged, 7 open, 2 closed across editor, GUI, GDScript, and web platform.">
+    <meta name="author" content="Shiva Kar">
+    <title>Shiva Kar — Open Source Contributions</title>
+    <link rel="canonical" href="https://shivakar.me/opensource.html">
+    <meta property="og:title" content="Shiva Kar — Open Source Contributions">
+    <meta property="og:description" content="Open-source contributions to Godot Engine by Shiva Kar — 15 pull requests submitted across editor, GUI, GDScript, and web platform.">
+    <meta property="og:url" content="https://shivakar.me/opensource.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Shiva Kar">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Shiva Kar — Open Source Contributions">
+    <meta name="twitter:description" content="Open-source contributions to Godot Engine by Shiva Kar — 15 pull requests submitted across editor, GUI, GDScript, and web platform.">
+    <meta name="theme-color" content="#39745a">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23242923'/><text x='50' y='67' font-family='Arial,sans-serif' font-weight='800' font-size='48' text-anchor='middle' fill='%23fffefa'>SK<tspan fill='%2339745a'>.</tspan></text></svg>">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("sk_site_theme") || localStorage.getItem("theme");
+                var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+                var theme = saved ? saved : (prefersDark ? "dark" : "light");
+                if (theme === "dark") document.documentElement.setAttribute("data-theme", "dark");
+            } catch (e) {}
+        })();
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="styles.css?v=3.0.0" rel="stylesheet">
+    <script src="script.js?v=3.0.0" defer></script>
+</head>
+<body data-page="opensource">
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Shiva Kar homepage"><span id="brand-text" data-editable="meta.brand">SK</span><span>.</span></a>
+            <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="nav-hamburger" aria-hidden="true"></span>
+            </button>
+            <div class="header-right" id="header-right">
+                <nav class="site-nav" aria-label="Main navigation">
+                    <a href="index.html">Home</a>
+                    <a href="projects.html">Projects</a>
+                    <a class="active" href="opensource.html" aria-current="page">Open Source</a>
+                    <a href="about.html">About</a>
+                    <a href="Shiva_Kar_Resume.pdf?v=3.0.0" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+                </nav>
+                <div class="header-tools" aria-label="Interactive tools">
+                    <button type="button" class="tool-btn" id="open-terminal-btn" aria-haspopup="dialog" aria-expanded="false" title="Open interactive SXSHELL terminal (Ctrl+K)">
+                        <span class="mono-icon" aria-hidden="true">&gt;_</span> <span>Shell</span>
+                    </button>
+                    <button type="button" class="tool-btn" id="open-studio-btn" aria-haspopup="dialog" aria-expanded="false" title="Owner Portfolio Editor (Ctrl+E)">
+                        <span class="mono-icon" aria-hidden="true">✎</span> <span>Edit</span>
+                    </button>
+                    <button type="button" class="tool-btn" id="theme-toggle-btn" aria-label="Toggle color theme" aria-pressed="false" title="Switch light/dark theme">
+                        <span id="theme-icon" aria-hidden="true">☾</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container page-content inner-page">
+        <section class="page-intro">
+            <p class="eyebrow">OPEN-SOURCE CONTRIBUTIONS</p>
+            <h1>Godot Engine<span class="accent-text">.</span></h1>
+            <p class="intro">I contribute to the <a href="https://github.com/godotengine/godot" target="_blank" rel="noopener noreferrer">Godot Engine</a> open-source project, working on editor, GUI, GDScript, and web platform issues. This involves reading and modifying a large C++ codebase, debugging regressions, and responding to maintainer code review.</p>
+        </section>
+
+        <!-- Contribution Stats -->
+        <section class="section-block" aria-labelledby="oss-stats-title">
+            <div class="section-heading">
+                <p class="section-kicker">CONTRIBUTION STATISTICS</p>
+                <h2 id="oss-stats-title">Pull request summary</h2>
+            </div>
+            <div class="oss-stats-bar oss-stats-bar-large">
+                <div class="oss-stat">
+                    <span class="oss-stat-number">15</span>
+                    <span class="oss-stat-label">PRs Submitted</span>
+                </div>
+                <div class="oss-stat oss-stat-merged">
+                    <span class="oss-stat-number">6</span>
+                    <span class="oss-stat-label">Merged</span>
+                </div>
+                <div class="oss-stat">
+                    <span class="oss-stat-number">7</span>
+                    <span class="oss-stat-label">Open</span>
+                </div>
+                <div class="oss-stat">
+                    <span class="oss-stat-number">2</span>
+                    <span class="oss-stat-label">Closed</span>
+                </div>
+            </div>
+            <p style="margin-top:16px;font-size:0.88rem;color:var(--muted);">
+                Contributor since August 2026 ·
+                <a href="https://github.com/godotengine/godot/pulls?q=is%3Apr+author%3Ashiva-kar" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:600;">View all PRs on GitHub ↗</a>
+            </p>
+        </section>
+
+        <!-- Selected Contributions -->
+        <section class="section-block" aria-labelledby="selected-prs-title">
+            <div class="section-heading">
+                <p class="section-kicker">SELECTED CONTRIBUTIONS</p>
+                <h2 id="selected-prs-title">Representative pull requests</h2>
+            </div>
+
+            <div class="pr-list">
+                <article class="pr-card pr-merged">
+                    <div class="pr-card-header">
+                        <span class="pr-status-badge pr-badge-merged">Merged</span>
+                        <a href="https://github.com/godotengine/godot/pull/124942" target="_blank" rel="noopener noreferrer" class="pr-number">#124942</a>
+                    </div>
+                    <h3 class="pr-title">Integer zoom and fractional display scaling</h3>
+                    <p class="pr-desc">Fixed zoom behaviour involving integer zoom and fractional display scales.</p>
+                </article>
+
+                <article class="pr-card pr-merged">
+                    <div class="pr-card-header">
+                        <span class="pr-status-badge pr-badge-merged">Merged</span>
+                        <a href="https://github.com/godotengine/godot/pull/124931" target="_blank" rel="noopener noreferrer" class="pr-number">#124931</a>
+                    </div>
+                    <h3 class="pr-title">Save on Focus Loss — deleted scene recreation</h3>
+                    <p class="pr-desc">Fixed an issue where the Save on Focus Loss setting recreated deleted open scenes.</p>
+                </article>
+
+                <article class="pr-card pr-merged">
+                    <div class="pr-card-header">
+                        <span class="pr-status-badge pr-badge-merged">Merged</span>
+                        <a href="https://github.com/godotengine/godot/pull/124789" target="_blank" rel="noopener noreferrer" class="pr-number">#124789</a>
+                    </div>
+                    <h3 class="pr-title">Resource reference count management</h3>
+                    <p class="pr-desc">Fixed resource reference counts not updating when resetting a property.</p>
+                </article>
+
+                <article class="pr-card pr-merged">
+                    <div class="pr-card-header">
+                        <span class="pr-status-badge pr-badge-merged">Merged</span>
+                        <a href="https://github.com/godotengine/godot/pull/124170" target="_blank" rel="noopener noreferrer" class="pr-number">#124170</a>
+                    </div>
+                    <h3 class="pr-title">Script editor tooltip positioning</h3>
+                    <p class="pr-desc">Fixed script tooltips appearing outside the script editor boundaries.</p>
+                </article>
+
+                <article class="pr-card pr-merged">
+                    <div class="pr-card-header">
+                        <span class="pr-status-badge pr-badge-merged">Merged</span>
+                        <a href="https://github.com/godotengine/godot/pull/124054" target="_blank" rel="noopener noreferrer" class="pr-number">#124054</a>
+                    </div>
+                    <h3 class="pr-title">Tooltip text interaction</h3>
+                    <p class="pr-desc">Disabled text selection in diagnostic tooltips to prevent unintended interaction.</p>
+                </article>
+
+                <article class="pr-card pr-merged">
+                    <div class="pr-card-header">
+                        <span class="pr-status-badge pr-badge-merged">Merged</span>
+                        <a href="https://github.com/godotengine/godot/pull/123035" target="_blank" rel="noopener noreferrer" class="pr-number">#123035</a>
+                    </div>
+                    <h3 class="pr-title">Web Editor file deletion</h3>
+                    <p class="pr-desc">Fixed a file-deletion error in the Web Editor.</p>
+                </article>
+
+                <article class="pr-card pr-open">
+                    <div class="pr-card-header">
+                        <span class="pr-status-badge pr-badge-open">Open</span>
+                        <a href="https://github.com/godotengine/godot/pull/123310" target="_blank" rel="noopener noreferrer" class="pr-number">#123310</a>
+                    </div>
+                    <h3 class="pr-title">Diagnostic tooltip restructuring</h3>
+                    <p class="pr-desc">Proposed a revision for a diagnostic tooltip feature following review from four maintainers: moved row construction into a dedicated class and fixed hover-state bugs.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Why This Matters -->
+        <section class="section-block" aria-labelledby="oss-why-title">
+            <div class="section-heading">
+                <p class="section-kicker">WHY THIS MATTERS</p>
+                <h2 id="oss-why-title">Working in an existing codebase</h2>
+            </div>
+            <div class="about-copy">
+                <p>Contributing to Godot Engine means working inside an existing software project with established conventions, understanding its code structure, reproducing and debugging issues, implementing fixes that align with the project's architecture, and responding to maintainer code review.</p>
+                <p>This is a different skill from building applications from scratch. It demonstrates the ability to read, navigate, and modify a large codebase — something that is directly relevant to professional software engineering work.</p>
+            </div>
+        </section>
+
+        <section class="simple-cta">
+            <h2>Explore my projects or get in touch.</h2>
+            <p>See the Java backend applications I've built, or reach out directly.</p>
+            <div class="cta-links">
+                <a class="btn btn-dark" href="projects.html">View Projects</a>
+                <a class="btn btn-outline-dark" href="mailto:sksmarttech48@gmail.com">Email Me ↗</a>
+                <a class="btn btn-outline-dark" href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>Shiva Kar · Java Backend Developer · BCA Student</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="Shiva_Kar_Resume.pdf?v=3.0.0" target="_blank" rel="noopener noreferrer">Resume</a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

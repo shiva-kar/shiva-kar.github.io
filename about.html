@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About Shiva Kar — Java & Backend Developer, Open Source Contributor to Godot Engine, and BCA student (CGPA 8.84).">
+    <meta name="description" content="About Shiva Kar — Java Backend Developer, Open Source Contributor to Godot Engine, and BCA student (CGPA 8.84).">
     <meta name="author" content="Shiva Kar">
     <title>Shiva Kar — About</title>
+    <link rel="canonical" href="https://shivakar.me/about.html">
+    <meta name="theme-color" content="#39745a">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23242923'/><text x='50' y='67' font-family='Arial,sans-serif' font-weight='800' font-size='48' text-anchor='middle' fill='%23fffefa'>SK<tspan fill='%2339745a'>.</tspan></text></svg>">
     <script>
         (function () {
@@ -18,20 +20,23 @@
         })();
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link href="styles.css?v=2.4.0" rel="stylesheet">
-    <script src="script.js?v=2.4.0" defer></script>
+    <link href="styles.css?v=3.0.0" rel="stylesheet">
+    <script src="script.js?v=3.0.0" defer></script>
 </head>
 <body data-page="about">
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="index.html" aria-label="Shiva Kar homepage"><span id="brand-text" data-editable="meta.brand">SK</span><span>.</span></a>
-            <div class="header-right">
+            <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="nav-hamburger" aria-hidden="true"></span>
+            </button>
+            <div class="header-right" id="header-right">
                 <nav class="site-nav" aria-label="Main navigation">
                     <a href="index.html">Home</a>
-                    <a href="interests.html">Interests</a>
                     <a href="projects.html">Projects</a>
+                    <a href="opensource.html">Open Source</a>
                     <a class="active" href="about.html" aria-current="page">About</a>
-                    <a href="Shiva_Kar_Resume.pdf?v=2.4.0" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+                    <a href="Shiva_Kar_Resume.pdf?v=3.0.0" target="_blank" rel="noopener noreferrer">Resume ↗</a>
                 </nav>
                 <div class="header-tools" aria-label="Interactive tools">
                     <button type="button" class="tool-btn" id="open-terminal-btn" aria-haspopup="dialog" aria-expanded="false" title="Open interactive SXSHELL terminal (Ctrl+K)">
@@ -50,160 +55,148 @@
 
     <main class="container page-content inner-page">
         <section class="page-intro">
-            <p class="eyebrow" id="about-eyebrow" data-editable="about.eyebrow">A LITTLE CONTEXT</p>
-            <h1><span id="about-title" data-editable="about.title">Learning by making things</span><span class="accent-text">.</span></h1>
-            <p class="intro" id="about-intro" data-editable="about.intro">I’m Shiva Kar, a backend-focused Java developer, open-source contributor to Godot Engine, and BCA student at Amity University Online (CGPA 8.84). This page covers my open-source experience, academic background, and certifications.</p>
+            <p class="eyebrow" id="about-eyebrow">ABOUT</p>
+            <h1><span id="about-title">About me</span><span class="accent-text">.</span></h1>
+            <p class="intro" id="about-intro">I'm a BCA Computer Science student at Amity University Online with a focus on Java backend development.</p>
         </section>
 
+        <!-- Background -->
         <section class="section-block about-layout" aria-labelledby="approach-title">
             <div>
-                <p class="section-kicker" data-editable="about.approachKicker">HOW I LIKE TO LEARN</p>
-                <h2 id="approach-title" data-editable="about.approachTitle">Build first. Understand deeply.</h2>
+                <p class="section-kicker">BACKGROUND</p>
+                <h2 id="approach-title">What I work on</h2>
             </div>
             <div class="about-copy" id="about-paragraphs">
-                <p data-editable="about.approachParagraphs.0">I enjoy projects that force me to look beyond the surface. Building SXSHELL (a 7-module POSIX shell in C) made me think carefully about parsing input, launching processes with fork() and execv(), wiring pipelines with dup2(), and handling edge cases.</p>
-                <p data-editable="about.approachParagraphs.1">My primary professional focus is Java backend development—building and shipping REST APIs with Spring Boot, MySQL, and PostgreSQL while grounding my engineering decisions in strong CS fundamentals.</p>
-                <p data-editable="about.approachParagraphs.2">I’m also an active open-source contributor to the Godot Engine (with 3 merged bug-fix pull requests in Godot 4.8 out of 11 submitted), which has taught me how to read large codebases, collaborate with maintainers, and ship production fixes fast.</p>
+                <p>My work includes building Spring Boot applications, working with PostgreSQL and Redis, and implementing backend functionality involving authentication, data persistence, transactions, and concurrency.</p>
+                <p>Alongside application development, I contribute to the Godot Engine open-source project, where I have worked on editor, GUI, and web-platform issues. I have also built SXSHELL, a Unix-like shell in C using POSIX system calls.</p>
+                <p>I'm particularly interested in backend engineering, software design, debugging, and understanding how applications behave beyond their frameworks.</p>
             </div>
         </section>
 
+        <!-- Career Direction -->
         <section class="section-block" aria-labelledby="currently-title">
             <div class="section-heading">
-                <p class="section-kicker" data-editable="about.currentlyKicker">EXPERIENCE &amp; FOCUS</p>
-                <h2 id="currently-title" data-editable="about.currentlyTitle">Open source &amp; what I’m working on</h2>
+                <p class="section-kicker">CAREER DIRECTION</p>
+                <h2 id="currently-title">What I'm looking for</h2>
             </div>
             <ul class="list-group simple-list" id="about-currently-list">
-                <li class="list-group-item"><strong>Open Source Contributor — Godot Engine (Aug 2026 – Present):</strong> Merged 3 bug-fix PRs into Godot 4.8 (#124054, #124170, #123035) out of 11 submitted (6 under review), including a script tooltip regression fix merged in 33 hours and a Web Editor file-deletion fix.</li>
-                <li class="list-group-item"><strong>Java &amp; Spring Boot Backend:</strong> Building REST APIs with Java, Spring Boot, MySQL, and PostgreSQL, targeting a Java Developer intern or trainee role.</li>
-                <li class="list-group-item"><strong>Systems Programming in C:</strong> Developing a lightweight HTTP server over raw TCP sockets and exploring OS internals, processes, and memory management.</li>
-                <li class="list-group-item"><strong>Open Source Community &amp; Tooling:</strong> Maintaining Resume Builder (16 GitHub stars, 8 forks) and contributing fixes to projects like the Catppuccin Obsidian theme.</li>
+                <li class="list-group-item"><strong>Target roles:</strong> Java Developer Intern, Java Backend Developer Intern, Spring Boot Developer Intern, or Backend Software Engineer Intern.</li>
+                <li class="list-group-item"><strong>Primary focus:</strong> Java backend engineering — Spring Boot, REST APIs, PostgreSQL, Redis, authentication, and automated testing.</li>
+                <li class="list-group-item"><strong>Open-source experience:</strong> Contributor to Godot Engine with 15 submitted PRs (6 merged, 7 open, 2 closed) across editor, GUI, GDScript, and web platform.</li>
+                <li class="list-group-item"><strong>Systems programming:</strong> SXSHELL (Unix-like shell in C), POSIX system calls, process management, and operating systems fundamentals.</li>
             </ul>
         </section>
 
-        <section class="section-block" id="background-section" aria-labelledby="background-title">
-            <div class="section-heading-row">
-                <div>
-                    <p class="section-kicker">BACKGROUND &amp; CREDENTIALS</p>
-                    <h2 id="background-title">Education, certifications &amp; contact</h2>
-                </div>
-                <div class="about-tabs" role="tablist" aria-label="Background and contact tabs">
-                    <button type="button" class="about-tab-btn active" id="tab-btn-edu" data-tab="edu-pane" data-hash="education" role="tab" aria-controls="edu-pane" aria-selected="true">Education</button>
-                    <button type="button" class="about-tab-btn" id="tab-btn-cert" data-tab="cert-pane" data-hash="certifications" role="tab" aria-controls="cert-pane" aria-selected="false">Certifications</button>
-                    <button type="button" class="about-tab-btn" id="tab-btn-contact" data-tab="contact-pane" data-hash="contact" role="tab" aria-controls="contact-pane" aria-selected="false">Direct Contact</button>
-                </div>
+        <!-- Education & Certifications -->
+        <section class="section-block" id="education" aria-labelledby="education-title">
+            <div class="section-heading">
+                <p class="section-kicker">EDUCATION</p>
+                <h2 id="education-title">Academic background</h2>
             </div>
 
-            <div class="about-tab-pane active" id="edu-pane" role="tabpanel" aria-labelledby="tab-btn-edu">
-                <div id="about-edu-list">
-                    <div class="edu-item">
-                        <div class="edu-top">
-                            <h3 class="edu-degree">Bachelor of Computer Applications (BCA), Computer Science</h3>
-                            <span class="edu-date">Jul 2025 – Nov 2028 (Expected)</span>
-                        </div>
-                        <p class="edu-school">Amity University Online, Noida, Uttar Pradesh · CGPA: 8.84 · SGPA: 9.33 (Semester 3)</p>
-                        <div class="edu-coursework">
-                            <span>Data Structures</span>
-                            <span>Java OOP</span>
-                            <span>Operating Systems</span>
-                            <span>DBMS</span>
-                            <span>Computer Networks</span>
-                            <span>Unix Programming</span>
-                        </div>
-                    </div>
-                    <div class="edu-item">
-                        <div class="edu-top">
-                            <h3 class="edu-degree">Higher Secondary Education (Class XII), Science (PCM &amp; Computer Science)</h3>
-                            <span class="edu-date">Mar 2025</span>
-                        </div>
-                        <p class="edu-school">Deshabandhu Bidyapeeth HS School, Hojai, Assam · 68% · Physics, Chemistry, Mathematics &amp; Computer Science</p>
-                    </div>
-                    <div class="edu-item">
-                        <div class="edu-top">
-                            <h3 class="edu-degree">Secondary Education (Class X), Elective IT-ITeS</h3>
-                            <span class="edu-date">Mar 2022</span>
-                        </div>
-                        <p class="edu-school">Rabindra Bidyalaya HS School, Hojai, Assam · 80% · Board of Secondary Education, Assam</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="about-tab-pane" id="cert-pane" role="tabpanel" aria-labelledby="tab-btn-cert">
-                <div class="cert-grid" id="about-cert-list">
-                    <div class="cert-box">
-                        <h3>Harvard CS50x: Introduction to Computer Science</h3>
-                        <p class="cert-issuer">Harvard University (CS50)</p>
-                        <div class="cert-meta">
-                            <span>Completed</span>
-                        </div>
-                    </div>
-                    <div class="cert-box">
-                        <h3>Harvard CS50 SQL: Databases with SQL</h3>
-                        <p class="cert-issuer">Harvard University (CS50)</p>
-                        <div class="cert-meta">
-                            <span>Completed</span>
-                        </div>
-                    </div>
-                    <div class="cert-box">
-                        <h3>Learn C — Skill Path</h3>
-                        <p class="cert-issuer">Codecademy</p>
-                        <div class="cert-meta">
-                            <span>Completed</span>
-                        </div>
-                    </div>
-                    <div class="cert-box">
-                        <h3>Programming in C and C++</h3>
-                        <p class="cert-issuer">Internshala</p>
-                        <div class="cert-meta">
-                            <span>Completed</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="about-tab-pane" id="contact-pane" role="tabpanel" aria-labelledby="tab-btn-contact">
+            <div id="about-edu-list">
                 <div class="edu-item">
                     <div class="edu-top">
-                        <h3 class="edu-degree">Reach out directly</h3>
-                        <span class="edu-date">Hojai, Assam, India</span>
+                        <h3 class="edu-degree">Bachelor of Computer Applications (BCA), Computer Science</h3>
+                        <span class="edu-date">Jul 2025 – Nov 2028 (Expected)</span>
                     </div>
-                    <p class="edu-school">Goal: Join a backend team as a Java Developer intern or trainee to build and ship REST APIs with Spring Boot.</p>
-                    <p style="font-family:var(--font-mono);font-size:0.84rem;margin-bottom:14px;">
-                        Email: <a href="mailto:sksmarttech48@gmail.com" id="direct-email-link" style="color:var(--accent);font-weight:700;">sksmarttech48@gmail.com</a>
-                    </p>
-                    <div class="cta-links">
-                        <a class="btn btn-dark" id="send-email-btn" href="mailto:sksmarttech48@gmail.com">Send Email ↗</a>
-                        <button type="button" class="btn btn-outline-dark" id="copy-email-btn" data-email="sksmarttech48@gmail.com">Copy Email Address</button>
-                        <a class="btn btn-outline-dark" href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-                        <a class="btn btn-outline-dark" href="https://github.com/godotengine/godot/pulls?q=is%3Apr+author%3Ashiva-kar" target="_blank" rel="noopener noreferrer">Godot PRs ↗</a>
-                        <a class="btn btn-outline-dark" href="https://www.linkedin.com/in/shiva-kar" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-                        <a class="btn btn-outline-dark" href="https://x.com/sk_shivakar" target="_blank" rel="noopener noreferrer">X (Twitter) ↗</a>
-                        <a class="btn btn-outline-dark" href="Shiva_Kar_Resume.pdf?v=2.4.0" target="_blank" rel="noopener noreferrer">Download Resume PDF ↗</a>
+                    <p class="edu-school">Amity University Online · CGPA: 8.84/10</p>
+                    <div class="edu-coursework">
+                        <span>Object-Oriented Programming (Java)</span>
+                        <span>Data Structures using C</span>
+                        <span>Operating Systems</span>
+                        <span>Database Management Systems</span>
+                        <span>Computer Networks</span>
+                        <span>Unix and Shell Programming</span>
                     </div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-top">
+                        <h3 class="edu-degree">Class XII, Science</h3>
+                        <span class="edu-date">2022–2025</span>
+                    </div>
+                    <p class="edu-school">Deshabandhu Bidyapith H.S. School, Hojai, Assam · 68%</p>
                 </div>
             </div>
         </section>
 
-        <section class="simple-cta">
-            <h2>Say hello or browse the code.</h2>
-            <p>I’m easiest to find through my public profiles, resume, or direct email.</p>
+        <!-- Certifications -->
+        <section class="section-block" id="certifications" aria-labelledby="cert-title">
+            <div class="section-heading">
+                <p class="section-kicker">CERTIFICATIONS</p>
+                <h2 id="cert-title">Credentials</h2>
+            </div>
+            <div class="cert-grid" id="about-cert-list">
+                <div class="cert-box">
+                    <h3>CS50x: Introduction to Computer Science</h3>
+                    <p class="cert-issuer">Harvard University (CS50)</p>
+                    <div class="cert-meta"><span>Completed</span></div>
+                </div>
+                <div class="cert-box">
+                    <h3>CS50 SQL: Introduction to Databases with SQL</h3>
+                    <p class="cert-issuer">Harvard University (CS50)</p>
+                    <div class="cert-meta"><span>Completed</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages -->
+        <section class="section-block" aria-labelledby="languages-title">
+            <div class="section-heading">
+                <p class="section-kicker">LANGUAGES</p>
+                <h2 id="languages-title">Language proficiency</h2>
+            </div>
+            <div class="languages-list">
+                <span class="language-item"><strong>Bengali</strong> — Native</span>
+                <span class="language-item"><strong>Hindi</strong> — Professional</span>
+                <span class="language-item"><strong>English</strong> — Professional</span>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="simple-cta" id="contact">
+            <h2>Get in Touch</h2>
+            <p>I'm interested in Java backend development opportunities, particularly internships and early-career software engineering roles.</p>
+            <div class="contact-grid" style="margin-bottom:18px;">
+                <div class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <a href="mailto:sksmarttech48@gmail.com" id="direct-email-link">sksmarttech48@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Phone</span>
+                    <span>+91 9101488645</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">LinkedIn</span>
+                    <a href="https://linkedin.com/in/shiva-kar" target="_blank" rel="noopener noreferrer">linkedin.com/in/shiva-kar</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">GitHub</span>
+                    <a href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">github.com/shiva-kar</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Location</span>
+                    <span>Hojai, Assam, India</span>
+                </div>
+            </div>
             <div class="cta-links">
-                <a class="btn btn-dark" href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-                <a class="btn btn-outline-dark" href="https://www.linkedin.com/in/shiva-kar" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-                <a class="btn btn-outline-dark" href="mailto:sksmarttech48@gmail.com">Email Me ↗</a>
-                <a class="btn btn-outline-dark" href="Shiva_Kar_Resume.pdf?v=2.4.0" target="_blank" rel="noopener noreferrer">Resume PDF ↗</a>
+                <a class="btn btn-dark" id="send-email-btn" href="mailto:sksmarttech48@gmail.com">Send Email ↗</a>
+                <a class="btn btn-outline-dark" href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                <a class="btn btn-outline-dark" href="https://linkedin.com/in/shiva-kar" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                <a class="btn btn-outline-dark" href="Shiva_Kar_Resume.pdf?v=3.0.0" target="_blank" rel="noopener noreferrer">Resume PDF ↗</a>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
         <div class="container footer-inner">
-            <p>Made by Shiva, with HTML, CSS, JavaScript, and a little curiosity.</p>
+            <p>Shiva Kar · Java Backend Developer · BCA Student</p>
             <div class="footer-links">
                 <a href="index.html">Home</a>
-                <a href="interests.html">Interests</a>
                 <a href="projects.html">Projects</a>
-                <a href="Shiva_Kar_Resume.pdf?v=2.4.0" target="_blank" rel="noopener noreferrer">Resume</a>
+                <a href="opensource.html">Open Source</a>
                 <a href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="Shiva_Kar_Resume.pdf?v=3.0.0" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
         </div>
     </footer>

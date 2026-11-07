@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal portfolio of Shiva Kar — Java & Backend Developer, Open Source Contributor (Godot Engine), and Systems Programmer in C.">
+    <title>Shiva Kar | Java Backend Developer</title>
+    <meta name="description" content="Shiva Kar is a BCA Computer Science student focused on Java backend development, Spring Boot, PostgreSQL, Redis, and open-source software engineering.">
     <meta name="author" content="Shiva Kar">
-    <title>Shiva Kar — Home</title>
+    <link rel="canonical" href="https://shivakar.me">
+    <meta property="og:title" content="Shiva Kar | Java Backend Developer">
+    <meta property="og:description" content="Shiva Kar is a BCA Computer Science student focused on Java backend development, Spring Boot, PostgreSQL, Redis, and open-source software engineering.">
+    <meta property="og:url" content="https://shivakar.me">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Shiva Kar">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Shiva Kar | Java Backend Developer">
+    <meta name="twitter:description" content="Shiva Kar is a BCA Computer Science student focused on Java backend development, Spring Boot, PostgreSQL, Redis, and open-source software engineering.">
+    <meta name="theme-color" content="#39745a">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23242923'/><text x='50' y='67' font-family='Arial,sans-serif' font-weight='800' font-size='48' text-anchor='middle' fill='%23fffefa'>SK<tspan fill='%2339745a'>.</tspan></text></svg>">
     <script>
         (function () {
@@ -18,20 +28,23 @@
         })();
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link href="styles.css?v=2.4.0" rel="stylesheet">
-    <script src="script.js?v=2.4.0" defer></script>
+    <link href="styles.css?v=3.0.0" rel="stylesheet">
+    <script src="script.js?v=3.0.0" defer></script>
 </head>
 <body data-page="home">
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="index.html" aria-label="Shiva Kar homepage"><span id="brand-text" data-editable="meta.brand">SK</span><span>.</span></a>
-            <div class="header-right">
+            <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="nav-hamburger" aria-hidden="true"></span>
+            </button>
+            <div class="header-right" id="header-right">
                 <nav class="site-nav" aria-label="Main navigation">
                     <a class="active" href="index.html" aria-current="page">Home</a>
-                    <a href="interests.html">Interests</a>
                     <a href="projects.html">Projects</a>
+                    <a href="opensource.html">Open Source</a>
                     <a href="about.html">About</a>
-                    <a href="Shiva_Kar_Resume.pdf?v=2.4.0" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+                    <a href="Shiva_Kar_Resume.pdf?v=3.0.0" target="_blank" rel="noopener noreferrer">Resume ↗</a>
                 </nav>
                 <div class="header-tools" aria-label="Interactive tools">
                     <button type="button" class="tool-btn" id="open-terminal-btn" aria-haspopup="dialog" aria-expanded="false" title="Open interactive SXSHELL terminal (Ctrl+K)">
@@ -49,89 +62,315 @@
     </header>
 
     <main class="container page-content">
+        <!-- Hero Section -->
         <section class="hero" aria-labelledby="intro-title">
             <p class="eyebrow">
                 <span class="status-dot" aria-hidden="true"></span>
-                <span id="hero-eyebrow" data-editable="meta.eyebrow">Java &amp; Backend Developer · BCA Student</span>
+                <span id="hero-eyebrow" data-editable="meta.eyebrow">Java Backend Developer · BCA Student</span>
             </p>
             <h1 id="intro-title">
-                <span id="hero-headline-prefix" data-editable="home.headlinePrefix">Hey, I’m Shiva.</span><br>
-                <span class="accent-text" id="hero-headline-accent" data-editable="home.headlineAccent">Curious about how things work.</span>
+                <span id="hero-headline-prefix" data-editable="home.headlinePrefix">Hi, I'm Shiva Kar.</span><br>
+                <span class="accent-text" id="hero-headline-accent" data-editable="home.headlineAccent">Building backend applications with Java and Spring Boot.</span>
             </h1>
-            <p class="intro" id="hero-intro" data-editable="home.intro">I’m a backend-focused Java developer and BCA student who pairs Spring Boot, REST API, and SQL (MySQL, PostgreSQL) skills with systems-level C experience and open-source contributions to Godot Engine.</p>
+            <p class="intro" id="hero-intro" data-editable="home.intro">I'm a Computer Science undergraduate at Amity University Online, focused on Java backend engineering. I build REST-based applications, work with databases and backend infrastructure, and contribute to the Godot Engine open-source project.</p>
             <div class="hero-actions">
-                <a class="btn btn-dark" id="hero-primary-cta" href="projects.html">See what I’m building</a>
-                <a class="btn btn-outline-dark" id="hero-resume-cta" href="Shiva_Kar_Resume.pdf?v=2.4.0" target="_blank" rel="noopener noreferrer">Resume PDF <span aria-hidden="true">↗</span></a>
-                <a class="text-link" id="hero-secondary-cta" href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">Find me on GitHub <span aria-hidden="true">↗</span></a>
-            </div>
-            <div class="note">
-                <span class="note-mark" aria-hidden="true">✳</span>
-                <p id="hero-note" data-editable="home.note">My favourite kind of learning is building something, hitting a bug, and figuring out <em>why</em>.</p>
+                <a class="btn btn-dark" id="hero-primary-cta" href="projects.html">View Projects</a>
+                <a class="btn btn-outline-dark" href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub Profile <span aria-hidden="true">↗</span></a>
+                <a class="btn btn-outline-dark" href="mailto:sksmarttech48@gmail.com">Contact Me</a>
+                <a class="text-link" id="hero-resume-cta" href="Shiva_Kar_Resume.pdf?v=3.0.0" target="_blank" rel="noopener noreferrer">Download Resume <span aria-hidden="true">↗</span></a>
             </div>
         </section>
 
-        <section class="section-block" aria-labelledby="interests-title">
+        <!-- Quick Highlights -->
+        <section class="highlights-bar" aria-label="Key facts">
+            <div class="highlights-grid" id="hero-highlights">
+                <div class="highlight-item">
+                    <span class="highlight-label">BCA Computer Science</span>
+                    <span class="highlight-detail">CGPA 8.84/10</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-label">6 Merged PRs</span>
+                    <span class="highlight-detail">Godot Engine</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-label">Java Backend</span>
+                    <span class="highlight-detail">Spring Boot · PostgreSQL</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-label">Based in</span>
+                    <span class="highlight-detail">Hojai, Assam, India</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three Engineering Areas -->
+        <section class="section-block" aria-labelledby="areas-title">
             <div class="section-heading">
-                <p class="section-kicker" id="home-cards-kicker" data-editable="home.cardsKicker">A FEW THINGS I LIKE</p>
-                <h2 id="interests-title" data-editable="home.cardsTitle">Curiosity, in a few directions</h2>
+                <p class="section-kicker" id="home-cards-kicker" data-editable="home.cardsKicker">THREE ENGINEERING AREAS</p>
+                <h2 id="areas-title" data-editable="home.cardsTitle">What I work on</h2>
             </div>
             <div class="row g-3" id="home-cards-grid">
                 <div class="col-md-4">
                     <article class="card interest-card h-100">
                         <div class="card-body">
-                            <span class="card-number" data-editable="home.cards.0.number">01 / BUILD</span>
-                            <h3 class="card-title" data-editable="home.cards.0.title">Backend things</h3>
-                            <p class="card-text" data-editable="home.cards.0.text">Java, Spring Boot, REST APIs, MySQL &amp; PostgreSQL, and building software that behaves well beyond the happy path.</p>
-                            <a href="interests.html#backend" class="card-link">More on this ↗</a>
+                            <span class="card-number" data-editable="home.cards.0.number">01 / BACKEND</span>
+                            <h3 class="card-title" data-editable="home.cards.0.title">Java Backend Engineering</h3>
+                            <p class="card-text" data-editable="home.cards.0.text">Spring Boot REST APIs, PostgreSQL, Redis, JPA/Hibernate, authentication, transaction management, and automated testing.</p>
+                            <a href="projects.html" class="card-link">View projects →</a>
                         </div>
                     </article>
                 </div>
                 <div class="col-md-4">
                     <article class="card interest-card h-100">
                         <div class="card-body">
-                            <span class="card-number" data-editable="home.cards.1.number">02 / UNPACK</span>
-                            <h3 class="card-title" data-editable="home.cards.1.title">Under the hood</h3>
-                            <p class="card-text" data-editable="home.cards.1.text">C, processes, raw TCP sockets, memory management, file descriptors, and the details that make computers work.</p>
-                            <a href="interests.html#systems" class="card-link">More on this ↗</a>
+                            <span class="card-number" data-editable="home.cards.1.number">02 / SYSTEMS</span>
+                            <h3 class="card-title" data-editable="home.cards.1.title">Systems Programming</h3>
+                            <p class="card-text" data-editable="home.cards.1.text">C, POSIX system calls, process management, pipelines, I/O redirection, and operating systems fundamentals.</p>
+                            <a href="https://github.com/shiva-kar/SXSHELL-unix-like-shell" target="_blank" rel="noopener noreferrer" class="card-link">View SXSHELL →</a>
                         </div>
                     </article>
                 </div>
                 <div class="col-md-4">
                     <article class="card interest-card h-100">
                         <div class="card-body">
-                            <span class="card-number" data-editable="home.cards.2.number">03 / PLAY</span>
-                            <h3 class="card-title" data-editable="home.cards.2.title">Open source &amp; games</h3>
-                            <p class="card-text" data-editable="home.cards.2.text">Contributing bug fixes to Godot Engine 4.8 (3 merged PRs) and experimenting with game mechanics in Unity and C#.</p>
-                            <a href="interests.html#gamedev" class="card-link">More on this ↗</a>
+                            <span class="card-number" data-editable="home.cards.2.number">03 / OPEN SOURCE</span>
+                            <h3 class="card-title" data-editable="home.cards.2.title">Open-Source Development</h3>
+                            <p class="card-text" data-editable="home.cards.2.text">15 pull requests submitted to Godot Engine — 6 merged, 7 open, 2 closed. Contributions span the editor, GUI, GDScript, and web platform.</p>
+                            <a href="opensource.html" class="card-link">Open source →</a>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="fun-fact" aria-labelledby="fact-title">
-            <div>
-                <div class="fun-fact-header">
-                    <p class="section-kicker">A SMALL SIDE NOTE</p>
-                    <span class="fact-counter" id="fact-counter">01 / 07</span>
-                </div>
-                <h2 id="fact-title">One more thing…</h2>
-                <p id="fact-text" aria-live="polite">I’ve merged 3 bug-fix pull requests into Godot Engine 4.8 (#124054, #124170, #123035) out of 11 submitted, with 6 more under review.</p>
+        <!-- Skills Overview -->
+        <section class="section-block" aria-labelledby="skills-title">
+            <div class="section-heading">
+                <p class="section-kicker">TECHNICAL SKILLS</p>
+                <h2 id="skills-title">Technologies and tools</h2>
             </div>
-            <div class="fact-actions">
-                <button id="fact-button" class="btn btn-outline-dark" type="button">Another fact ↻</button>
+            <div class="skills-grid" id="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-name">Languages</h3>
+                    <div class="skill-chips">
+                        <span class="skill-chip">Java</span>
+                        <span class="skill-chip">C</span>
+                        <span class="skill-chip">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-name">Java &amp; Backend Development</h3>
+                    <div class="skill-chips">
+                        <span class="skill-chip">Core Java</span>
+                        <span class="skill-chip">OOP</span>
+                        <span class="skill-chip">Collections</span>
+                        <span class="skill-chip">Multithreading</span>
+                        <span class="skill-chip">Spring Boot</span>
+                        <span class="skill-chip">Spring MVC</span>
+                        <span class="skill-chip">Spring Data JPA</span>
+                        <span class="skill-chip">Hibernate</span>
+                        <span class="skill-chip">Spring Security</span>
+                        <span class="skill-chip">REST APIs</span>
+                        <span class="skill-chip">JWT</span>
+                        <span class="skill-chip">Transaction Management</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-name">Databases</h3>
+                    <div class="skill-chips">
+                        <span class="skill-chip">PostgreSQL</span>
+                        <span class="skill-chip">MySQL</span>
+                        <span class="skill-chip">Redis</span>
+                        <span class="skill-chip">Database Design</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-name">Testing &amp; Tools</h3>
+                    <div class="skill-chips">
+                        <span class="skill-chip">JUnit 5</span>
+                        <span class="skill-chip">Mockito</span>
+                        <span class="skill-chip">Maven</span>
+                        <span class="skill-chip">Git</span>
+                        <span class="skill-chip">Docker</span>
+                        <span class="skill-chip">Docker Compose</span>
+                        <span class="skill-chip">Flyway</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-name">CS &amp; Systems</h3>
+                    <div class="skill-chips">
+                        <span class="skill-chip">Data Structures</span>
+                        <span class="skill-chip">Operating Systems</span>
+                        <span class="skill-chip">Computer Networks</span>
+                        <span class="skill-chip">Linux</span>
+                        <span class="skill-chip">POSIX</span>
+                        <span class="skill-chip">Concurrency</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Preview -->
+        <section class="section-block" aria-labelledby="featured-projects-title">
+            <div class="section-heading">
+                <p class="section-kicker">FEATURED PROJECTS</p>
+                <h2 id="featured-projects-title">Main engineering work</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <article class="card project-card pinned-card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="project-card-top">
+                                <span class="badge rounded-pill text-bg-light">Java · Spring Boot · PostgreSQL</span>
+                            </div>
+                            <h3 class="card-title" style="font-size:1.35rem;">E-Commerce Backend API</h3>
+                            <p class="card-text">Java Spring Boot backend for product management, shopping carts, and order processing, with JWT authentication, PostgreSQL persistence, and concurrency-safe inventory reservation.</p>
+                            <ul class="project-highlights-list">
+                                <li>Layered REST API architecture with validation and centralized error handling</li>
+                                <li>Spring Security, JWT, and relational persistence using Spring Data JPA</li>
+                                <li>Transactional inventory reservation with locking-based concurrency control</li>
+                            </ul>
+                            <div class="project-actions">
+                                <a class="btn btn-dark" href="projects.html#ecommerce">View Details →</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-6">
+                    <article class="card project-card pinned-card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="project-card-top">
+                                <span class="badge rounded-pill text-bg-light">Java · Spring Boot · Redis</span>
+                            </div>
+                            <h3 class="card-title" style="font-size:1.35rem;">API Rate Limiter &amp; Usage Metering</h3>
+                            <p class="card-text">A Spring Boot service using Redis and the Token Bucket algorithm to enforce configurable API limits, manage concurrent requests, and track per-client usage.</p>
+                            <ul class="project-highlights-list">
+                                <li>Configurable per-user and per-API-key rate limits with Token Bucket</li>
+                                <li>Redis TTL and atomic Lua scripts for concurrent request handling</li>
+                                <li>HTTP 429 responses, Retry-After headers, and usage metering</li>
+                            </ul>
+                            <div class="project-actions">
+                                <a class="btn btn-dark" href="projects.html#ratelimiter">View Details →</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top:24px;">
+                <a class="btn btn-outline-dark" href="projects.html">All Projects →</a>
+            </div>
+        </section>
+
+        <!-- Open Source Preview -->
+        <section class="section-block" aria-labelledby="oss-preview-title">
+            <div class="section-heading">
+                <p class="section-kicker">OPEN-SOURCE CONTRIBUTIONS</p>
+                <h2 id="oss-preview-title">Godot Engine</h2>
+            </div>
+            <div class="oss-preview">
+                <p class="intro" style="margin-bottom:20px;">Contributor to <a href="https://github.com/godotengine/godot" target="_blank" rel="noopener noreferrer">Godot Engine</a> since August 2026. I work on editor, GUI, GDScript, and web platform issues — reading and modifying a large C++ codebase, debugging regressions, and responding to maintainer code review.</p>
+                <div class="oss-stats-bar">
+                    <div class="oss-stat">
+                        <span class="oss-stat-number">15</span>
+                        <span class="oss-stat-label">PRs Submitted</span>
+                    </div>
+                    <div class="oss-stat oss-stat-merged">
+                        <span class="oss-stat-number">6</span>
+                        <span class="oss-stat-label">Merged</span>
+                    </div>
+                    <div class="oss-stat">
+                        <span class="oss-stat-number">7</span>
+                        <span class="oss-stat-label">Open</span>
+                    </div>
+                    <div class="oss-stat">
+                        <span class="oss-stat-number">2</span>
+                        <span class="oss-stat-label">Closed</span>
+                    </div>
+                </div>
+                <div style="margin-top:20px;">
+                    <a class="btn btn-dark" href="opensource.html">View Contributions →</a>
+                    <a class="btn btn-outline-dark" href="https://github.com/godotengine/godot/pulls?q=is%3Apr+author%3Ashiva-kar" target="_blank" rel="noopener noreferrer">GitHub PRs ↗</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Preview -->
+        <section class="section-block" aria-labelledby="edu-preview-title">
+            <div class="section-heading">
+                <p class="section-kicker">EDUCATION</p>
+                <h2 id="edu-preview-title">Academic background</h2>
+            </div>
+            <div class="edu-item">
+                <div class="edu-top">
+                    <h3 class="edu-degree">Bachelor of Computer Applications (BCA), Computer Science</h3>
+                    <span class="edu-date">Jul 2025 – Nov 2028 (Expected)</span>
+                </div>
+                <p class="edu-school">Amity University Online · CGPA: 8.84/10</p>
+                <div class="edu-coursework">
+                    <span>OOP (Java)</span>
+                    <span>Data Structures</span>
+                    <span>Operating Systems</span>
+                    <span>DBMS</span>
+                    <span>Computer Networks</span>
+                    <span>Unix Programming</span>
+                </div>
+            </div>
+            <div class="cert-grid" style="margin-top:16px;">
+                <div class="cert-box">
+                    <h3>CS50x: Introduction to Computer Science</h3>
+                    <p class="cert-issuer">Harvard University (CS50)</p>
+                    <div class="cert-meta"><span>Completed</span></div>
+                </div>
+                <div class="cert-box">
+                    <h3>CS50 SQL: Introduction to Databases with SQL</h3>
+                    <p class="cert-issuer">Harvard University (CS50)</p>
+                    <div class="cert-meta"><span>Completed</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section-block" id="contact" aria-labelledby="contact-title">
+            <div class="section-heading">
+                <p class="section-kicker">CONTACT</p>
+                <h2 id="contact-title">Get in Touch</h2>
+            </div>
+            <p class="intro" style="max-width:620px;">I'm interested in Java backend development opportunities, particularly internships and early-career software engineering roles.</p>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <a href="mailto:sksmarttech48@gmail.com">sksmarttech48@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">LinkedIn</span>
+                    <a href="https://linkedin.com/in/shiva-kar" target="_blank" rel="noopener noreferrer">linkedin.com/in/shiva-kar</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">GitHub</span>
+                    <a href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">github.com/shiva-kar</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Location</span>
+                    <span>Hojai, Assam, India</span>
+                </div>
+            </div>
+            <div class="cta-links" style="margin-top:20px;">
+                <a class="btn btn-dark" href="mailto:sksmarttech48@gmail.com">Send Email ↗</a>
+                <a class="btn btn-outline-dark" href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                <a class="btn btn-outline-dark" href="https://linkedin.com/in/shiva-kar" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                <a class="btn btn-outline-dark" href="Shiva_Kar_Resume.pdf?v=3.0.0" target="_blank" rel="noopener noreferrer">Resume PDF ↗</a>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
         <div class="container footer-inner">
-            <p>Made by Shiva, with HTML, CSS, JavaScript, and a little curiosity.</p>
+            <p>Shiva Kar · Java Backend Developer · BCA Student</p>
             <div class="footer-links">
                 <a href="https://github.com/shiva-kar" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/in/shiva-kar" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="Shiva_Kar_Resume.pdf?v=2.4.0" target="_blank" rel="noopener noreferrer">Resume</a>
-                <a href="about.html">About</a>
+                <a href="https://linkedin.com/in/shiva-kar" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:sksmarttech48@gmail.com">Email</a>
+                <a href="Shiva_Kar_Resume.pdf?v=3.0.0" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
         </div>
     </footer>

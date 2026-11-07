@@ -1,5 +1,5 @@
-const STORAGE_KEY = "sk_site_data_v4";
-const DRAFT_DIRTY_KEY = "sk_site_draft_dirty_v4";
+const STORAGE_KEY = "sk_site_data_v5";
+const DRAFT_DIRTY_KEY = "sk_site_draft_dirty_v5";
 const THEME_KEY = "sk_site_theme";
 const AUTH_SESSION_KEY = "sk_owner_gh_session";
 const EXPECTED_OWNER = "shiva-kar";
@@ -9,369 +9,319 @@ const DEFAULT_DATA = {
   "meta": {
     "brand": "SK",
     "name": "Shiva Kar",
-    "eyebrow": "Java & Backend Developer · BCA Student",
+    "eyebrow": "Java Backend Developer · BCA Student",
     "location": "Hojai, Assam, India",
     "accentColor": "#39745a",
-    "resumeUrl": "Shiva_Kar_Resume.pdf?v=2.4.0",
+    "resumeUrl": "Shiva_Kar_Resume.pdf?v=3.0.0",
     "githubRepo": "shiva-kar/shiva-kar.github.io"
   },
   "contact": {
     "email": "sksmarttech48@gmail.com",
+    "phone": "+91 9101488645",
     "github": "https://github.com/shiva-kar",
-    "linkedin": "https://www.linkedin.com/in/shiva-kar",
-    "twitter": "https://x.com/sk_shivakar",
+    "linkedin": "https://linkedin.com/in/shiva-kar",
     "portfolio": "https://shivakar.me"
   },
   "home": {
-    "headlinePrefix": "Hey, I’m Shiva.",
-    "headlineAccent": "Curious about how things work.",
-    "intro": "I’m a backend-focused Java developer and BCA student who pairs Spring Boot, REST API, and SQL (MySQL, PostgreSQL) skills with systems-level C experience and open-source contributions to Godot Engine.",
+    "headlinePrefix": "Hi, I'm Shiva Kar.",
+    "headlineAccent": "Building backend applications with Java and Spring Boot.",
+    "intro": "I'm a Computer Science undergraduate at Amity University Online, focused on Java backend engineering. I build REST-based applications, work with databases and backend infrastructure, and contribute to the Godot Engine open-source project.",
     "primaryCta": {
-      "label": "See what I’m building",
+      "label": "View Projects",
       "href": "projects.html"
     },
     "secondaryCta": {
-      "label": "Find me on GitHub",
+      "label": "GitHub Profile",
       "href": "https://github.com/shiva-kar"
     },
-    "note": "My favourite kind of learning is building something, hitting a bug, and figuring out why.",
-    "cardsKicker": "A FEW THINGS I LIKE",
-    "cardsTitle": "Curiosity, in a few directions",
+    "note": "I'm interested in Java backend development opportunities, particularly internships and early-career software engineering roles.",
+    "highlights": [
+      { "label": "BCA Computer Science", "detail": "CGPA 8.84/10" },
+      { "label": "6 Merged PRs", "detail": "Godot Engine" },
+      { "label": "Java Backend", "detail": "Spring Boot · PostgreSQL" },
+      { "label": "Based in", "detail": "Hojai, Assam, India" }
+    ],
+    "cardsKicker": "THREE ENGINEERING AREAS",
+    "cardsTitle": "What I work on",
     "cards": [
       {
-        "number": "01 / BUILD",
-        "title": "Backend things",
-        "text": "Java, Spring Boot, REST APIs, MySQL & PostgreSQL, and building software that behaves well beyond the happy path.",
-        "linkText": "More on this ↗",
-        "href": "interests.html#backend"
+        "number": "01 / BACKEND",
+        "title": "Java Backend Engineering",
+        "text": "Spring Boot REST APIs, PostgreSQL, Redis, JPA/Hibernate, authentication, transaction management, and automated testing.",
+        "linkText": "View projects →",
+        "href": "projects.html"
       },
       {
-        "number": "02 / UNPACK",
-        "title": "Under the hood",
-        "text": "C, processes, raw TCP sockets, memory management, file descriptors, and the details that make computers work.",
-        "linkText": "More on this ↗",
-        "href": "interests.html#systems"
+        "number": "02 / SYSTEMS",
+        "title": "Systems Programming",
+        "text": "C, POSIX system calls, process management, pipelines, I/O redirection, and operating systems fundamentals.",
+        "linkText": "View SXSHELL →",
+        "href": "https://github.com/shiva-kar/SXSHELL-unix-like-shell"
       },
       {
-        "number": "03 / PLAY",
-        "title": "Open source & games",
-        "text": "Contributing bug fixes to Godot Engine 4.8 (3 merged PRs) and experimenting with game mechanics in Unity and C#.",
-        "linkText": "More on this ↗",
-        "href": "interests.html#gamedev"
+        "number": "03 / OPEN SOURCE",
+        "title": "Open-Source Development",
+        "text": "15 pull requests submitted to Godot Engine — 6 merged, 7 open, 2 closed. Contributions span the editor, GUI, GDScript, and web platform.",
+        "linkText": "Open source →",
+        "href": "opensource.html"
       }
     ]
   },
   "facts": [
-    "I’ve merged 3 bug-fix pull requests into Godot Engine 4.8 (#124054, #124170, #123035) out of 11 submitted, with 6 more under review.",
-    "I built a POSIX-compliant shell (SXSHELL) in C across 7 modules (~550 lines) with 7 built-ins, 4 redirection operators, and pipelines.",
-    "My open-source Next.js Resume Builder has earned 16 GitHub stars and 8 forks.",
-    "One of my Godot Engine regression fixes (#124170, fixing script editor tooltips) was merged 33 hours after submission.",
-    "I’m currently building a lightweight HTTP/1.1 server using raw TCP sockets in C.",
-    "I maintain an 8.84 CGPA (9.33 SGPA in Semester 3) in my BCA degree alongside Harvard CS50x and CS50 SQL certifications.",
-    "Switching between Java Spring Boot, low-level C systems code, and open-source game engine contributions gives me fresh perspectives on software design."
+    "I've submitted 15 pull requests to Godot Engine — 6 merged, 7 open, and 2 closed — across editor, GUI, GDScript, and web platform areas.",
+    "I built SXSHELL, a modular Unix-like shell in C with 7 modules (~550 lines), pipelines, I/O redirection, and POSIX system calls.",
+    "My E-Commerce Backend API implements transactional order processing with concurrency-safe inventory reservation.",
+    "The API Rate Limiter uses Redis-backed Token Bucket algorithm with atomic Lua scripts for concurrent request handling.",
+    "I maintain an 8.84 CGPA in my BCA degree at Amity University Online alongside Harvard CS50x and CS50 SQL certifications.",
+    "One of my Godot Engine regression fixes (#124170, script editor tooltip positioning) was merged 33 hours after submission.",
+    "Working across Java Spring Boot, C systems programming, and open-source engine internals gives me different perspectives on software design."
   ],
-  "interests": {
-    "eyebrow": "WHAT KEEPS ME CURIOUS",
-    "title": "Things I like learning about",
-    "intro": "I like understanding how a thing works, not just learning how to use it. These are the areas I keep coming back to.",
-    "items": [
+  "skills": {
+    "eyebrow": "TECHNICAL SKILLS",
+    "title": "Technologies and tools",
+    "intro": "Working primarily with Java and Spring Boot, with additional experience in C, SQL, and POSIX systems programming.",
+    "categories": [
       {
-        "id": "backend",
-        "number": "01",
-        "kicker": "BUILDING APPLICATIONS",
-        "title": "Java backend development",
-        "description": "I’m focused on how backend applications are structured, how REST APIs communicate, and how data moves reliably between an application and relational databases like MySQL and PostgreSQL using Java and Spring Boot.",
-        "Highlight": "Focusing on clean REST API design, Object-Oriented Programming (OOP), relational data modeling, and shipping reliable server-side services.",
-        "skills": ["Java", "Spring Boot", "REST APIs", "SQL", "MySQL", "PostgreSQL", "Docker"]
+        "name": "Languages",
+        "items": ["Java", "C", "SQL"]
       },
       {
-        "id": "systems",
-        "number": "02",
-        "kicker": "UNDER THE HOOD",
-        "title": "Systems programming",
-        "description": "Writing a POSIX shell in C made operating-system concepts feel much more concrete. I enjoy exploring process creation, file descriptors, pipes, raw TCP sockets, memory management, and what actually happens when a command runs.",
-        "Highlight": "Building tools from scratch—like SXSHELL (7 modules, 7 built-ins, 4 redirection operators), an HTTP server, and a garbage collector—to demystify OS internals.",
-        "skills": ["C", "POSIX", "Linux", "Networking", "Memory Management", "CMake", "Git"]
+        "name": "Java & Backend Development",
+        "items": ["Core Java", "Object-Oriented Programming", "Collections", "Generics", "Multithreading", "Spring Boot", "Spring Framework", "Spring MVC", "Spring Data JPA", "Hibernate", "Spring Security", "REST APIs", "JWT", "Dependency Injection", "Transaction Management", "Exception Handling"]
       },
       {
-        "id": "gamedev",
-        "number": "03",
-        "kicker": "OPEN SOURCE & GAME ENGINE INTERNALS",
-        "title": "Open source & game development",
-        "description": "I’m an active open-source contributor to the Godot Engine (3 merged pull requests in Godot 4.8 out of 11 submitted) and enjoy exploring game development and graphics programming in Unity and C#.",
-        "Highlight": "Navigating large C++ engine codebases, fixing editor regressions in Godot 4.8, and prototyping gameplay systems in Unity.",
-        "skills": ["Godot", "Unity", "C#", "Open Source", "Git"]
-      }
-    ],
-    "skillEvidence": [
-      {
-        "name": "Java & Backend Engineering",
-        "evidence": ["Spring Boot & REST APIs", "Object-Oriented Programming (OOP)", "E-commerce & Expense Tracker APIs", "IntelliJ IDEA & Docker"]
+        "name": "Databases",
+        "items": ["PostgreSQL", "MySQL", "Redis", "Database Design"]
       },
       {
-        "name": "C & Systems Internals",
-        "evidence": ["SXSHELL (7 modules, 4 redirection ops)", "Custom HTTP Server (Raw TCP Sockets)", "Mark-and-Sweep Garbage Collector", "Git Implementation in C"]
+        "name": "Testing & Development Tools",
+        "items": ["JUnit 5", "Mockito", "Spring Boot Test", "Integration Testing", "Maven", "Git", "GitHub", "Docker", "Docker Compose", "Flyway", "OpenAPI"]
       },
       {
-        "name": "SQL & Databases",
-        "evidence": ["Harvard CS50 SQL Certified", "MySQL & PostgreSQL", "Relational Schema & Query Design"]
-      },
-      {
-        "name": "Open Source & Tooling",
-        "evidence": ["Godot Engine 4.8 (3 Merged PRs)", "Resume Builder (16 ★, 8 Forks)", "Catppuccin Obsidian Theme PR", "Linux, Git, CMake & VS Code"]
+        "name": "Computer Science & Systems",
+        "items": ["Data Structures & Algorithms", "Operating Systems", "Computer Networks", "Linux", "POSIX System Calls", "Sockets", "Memory Management", "Concurrency"]
       }
     ]
   },
   "projects": {
-    "eyebrow": "LEARNING BY BUILDING",
-    "title": "Projects and experiments",
-    "intro": "I learn best by making things, testing them, and figuring out the parts I don’t understand yet. Here are my open-source projects, systems tools, and backend builds.",
+    "eyebrow": "PROJECTS",
+    "title": "What I've built",
+    "intro": "Two Java backend applications, a systems programming project, and open-source contributions to a large C++ codebase.",
     "defaultSort": "pinned",
     "items": [
       {
         "index": "PROJECT 01",
-        "title": "SXSHELL — Unix-like Shell",
-        "badge": "C · POSIX · CMake",
-        "category": "systems",
+        "title": "E-Commerce Backend API",
+        "badge": "Java · Spring Boot · PostgreSQL",
+        "category": "backend",
         "status": "Built",
         "pinned": true,
         "featured": true,
-        "updatedAt": "2026-10-10",
-        "description": "A POSIX-compliant Unix-like shell written in C across 7 modules (~550 lines) with 7 built-ins, $PATH resolution, quote and escape parsing, 4 redirection operators, multi-command pipelines, persistent history, and $VAR expansion.",
-        "learning": "Built to understand process creation, file descriptors, and the POSIX system calls behind terminal execution.",
+        "updatedAt": "",
+        "description": "An e-commerce backend built with Java and Spring Boot, providing REST APIs for product management, shopping carts, orders, and user accounts, with PostgreSQL persistence and secure authentication.",
+        "learning": "Layered controller-service-repository architecture with transactional order processing and concurrency-safe inventory reservation.",
         "underTheHood": [
-          "Implemented 4 redirection operators and multi-command pipelines using fork(), execv(), and dup2()",
-          "Built 7 modular C components (~550 lines) supporting 7 built-in commands, $PATH lookup, and quote/escape parsing",
-          "Added persistent history with arrow-key navigation, $VAR expansion, and architecture documentation in DOCS.md"
+          "Layered REST API architecture with DTO-based request/response handling, validation, and centralized exception handling",
+          "Spring Security with JWT authentication, password hashing, and role-based authorization for protected endpoints",
+          "Spring Data JPA with Hibernate, Flyway migrations, relational entity relationships, and database constraints",
+          "Transactional inventory reservation with locking-based concurrency control to prevent overselling under simultaneous requests",
+          "JUnit 5 and Mockito for service-layer testing, integration tests, and transaction consistency verification"
         ],
-        "repoUrl": "https://github.com/shiva-kar/SXSHELL-unix-like-shell",
+        "repoUrl": "",
+        "docsUrl": "",
         "buttonStyle": "dark"
       },
       {
         "index": "PROJECT 02",
-        "title": "Resume Builder",
-        "badge": "TypeScript · Next.js 14",
+        "title": "API Rate Limiter & Usage Metering Service",
+        "badge": "Java · Spring Boot · Redis",
         "category": "backend",
         "status": "Built",
         "pinned": true,
         "featured": true,
-        "updatedAt": "2026-10-08",
-        "description": "An open-source resume builder web application featuring live PDF preview and multiple customizable templates, earning 16 GitHub stars and 8 forks from the developer community.",
-        "learning": "Focused on clean document state management, real-time PDF rendering, and shipping a polished tool used by other developers.",
+        "updatedAt": "",
+        "description": "A Redis-backed API rate-limiting service using the Token Bucket algorithm to enforce configurable per-user and per-API-key request limits, with usage metering and concurrency-safe request handling.",
+        "learning": "Backend infrastructure and algorithmic engineering — not a CRUD application, but a service focused on algorithms, atomic operations, concurrency, and HTTP behaviour.",
         "underTheHood": [
-          "Built with TypeScript and Next.js 14 with instant live PDF preview and multi-template switching",
-          "Earned 16 GitHub stars and 8 forks through clean UX and structured resume schema state",
-          "Supports ATS-friendly formatting, section customization, and one-click PDF export"
+          "Token Bucket algorithm with configurable request limits, per-user and per-API-key restrictions, and controlled burst handling",
+          "Redis-backed rate-limit state with TTL-based expiration and atomic Lua scripts for concurrent request handling",
+          "HTTP 429 Too Many Requests responses, Retry-After headers, rate-limit headers, and usage metering",
+          "JUnit 5 and Mockito for boundary tests, expiration tests, and concurrent-burst test scenarios"
         ],
-        "repoUrl": "https://github.com/shiva-kar/resume-builder",
+        "repoUrl": "",
+        "docsUrl": "",
         "buttonStyle": "dark"
       },
       {
         "index": "PROJECT 03",
-        "title": "Custom HTTP Server",
-        "badge": "C · Raw TCP Sockets · HTTP",
+        "title": "SXSHELL — Unix-like Shell",
+        "badge": "C · POSIX · CMake",
         "category": "systems",
-        "status": "Planned",
+        "status": "Built",
         "pinned": false,
         "featured": true,
-        "updatedAt": "2026-10-05",
-        "description": "A lightweight HTTP server in C built over raw TCP sockets, focused on request parsing, header inspection, and HTTP response handling from the ground up.",
-        "learning": "The goal is to master networking fundamentals by implementing the TCP socket and HTTP request-response lifecycle directly.",
+        "updatedAt": "",
+        "description": "A modular Unix-like shell implemented in C, with command parsing, process execution, pipelines, and I/O redirection using POSIX system calls.",
+        "learning": "Demonstrates systems programming fundamentals — process management, file descriptors, and low-level command execution.",
         "underTheHood": [
-          "POSIX socket lifecycle: socket(), bind(), listen(), accept(), recv(), and send()",
-          "Zero-dependency HTTP request line, header parser, and status-code response builder",
-          "Static file serving with MIME type detection and client connection handling"
+          "Seven modules (~550 lines) with separation of command parsing and process execution",
+          "Pipelines and I/O redirection using fork(), execv(), and dup2()",
+          "Built-in commands, executable lookup, $PATH resolution, and quote/escape parsing"
         ],
-        "repoUrl": "https://github.com/shiva-kar/Custom-HTTP-Server-in-C",
-        "buttonStyle": "outline"
-      },
-      {
-        "index": "PROJECT 04",
-        "title": "Custom Garbage Collector",
-        "badge": "C · Memory · Mark & Sweep",
-        "category": "systems",
-        "status": "Planned",
-        "pinned": false,
-        "featured": true,
-        "updatedAt": "2026-09-20",
-        "description": "A custom garbage collector in C built to understand manual memory management, heap allocation internals, and automatic object reachability tracking.",
-        "learning": "Explores mark-and-sweep collection, root pointer tracing, and allocation metadata at the pointer level.",
-        "underTheHood": [
-          "Tracks dynamically allocated objects via an intrusive metadata header and allocation list",
-          "Mark phase traverses reachable object graphs from registered stack/root pointers",
-          "Sweep phase reclaims unmarked heap blocks and prevents memory leaks"
-        ],
-        "repoUrl": "",
-        "buttonStyle": "outline"
-      },
-      {
-        "index": "PROJECT 05",
-        "title": "Git Implementation in C",
-        "badge": "C · Hashing · File I/O",
-        "category": "systems",
-        "status": "Planned",
-        "pinned": false,
-        "featured": true,
-        "updatedAt": "2026-09-12",
-        "description": "A simplified Git clone written in C to understand content-addressable storage, blob and tree objects, and commit history DAGs.",
-        "learning": "Covers binary file I/O, cryptographic hashing, compression, and version control internals from scratch.",
-        "underTheHood": [
-          "Implements object hashing and content-addressable storage inside .git/objects",
-          "Reads and writes blob, tree, and commit objects with header framing",
-          "Demystifies how Git snapshots file trees rather than storing simple line diffs"
-        ],
-        "repoUrl": "",
-        "buttonStyle": "outline"
-      },
-      {
-        "index": "PROJECT 06",
-        "title": "E-commerce Backend API",
-        "badge": "Java · Spring Boot · PostgreSQL",
-        "category": "backend",
-        "status": "Planned",
-        "pinned": false,
-        "featured": false,
-        "updatedAt": "2026-08-25",
-        "description": "A complete e-commerce REST backend built with Spring Boot, featuring product catalog management, order workflows, JWT authentication, and pagination.",
-        "learning": "Focused on enterprise backend architecture, relational database modeling, and clean service-layer separation.",
-        "underTheHood": [
-          "Layered Spring Boot architecture (Controller → Service → Repository) with Spring Data JPA",
-          "Stateless JWT authentication, role-based access control, and request validation",
-          "PostgreSQL schema with indexed queries and paginated product endpoints"
-        ],
-        "repoUrl": "",
-        "buttonStyle": "outline"
-      },
-      {
-        "index": "PROJECT 07",
-        "title": "Expense Tracker API",
-        "badge": "Java · Spring Security · Docker",
-        "category": "backend",
-        "status": "Planned",
-        "pinned": false,
-        "featured": false,
-        "updatedAt": "2026-08-15",
-        "description": "A secure REST API for personal expense tracking, demonstrating robust CRUD operations, category analytics, Spring Security integration, and Docker containerization.",
-        "learning": "Built to practice API security beyond the happy path, error handling, and containerized deployment.",
-        "underTheHood": [
-          "Spring Security filter chain with BCrypt password hashing and user-scoped data isolation",
-          "Normalized SQL schema for transactions, recurring budgets, and monthly aggregations",
-          "Docker Compose setup bundling the Spring Boot service and PostgreSQL database"
-        ],
-        "repoUrl": "",
+        "repoUrl": "https://github.com/shiva-kar/SXSHELL-unix-like-shell",
         "buttonStyle": "outline"
       }
     ]
   },
+  "opensource": {
+    "eyebrow": "OPEN-SOURCE CONTRIBUTIONS",
+    "title": "Godot Engine",
+    "intro": "I contribute to the Godot Engine open-source project, working on editor, GUI, GDScript, and web platform issues. This involves reading and modifying a large C++ codebase, debugging regressions, and responding to maintainer code review.",
+    "repo": "https://github.com/godotengine/godot",
+    "prsUrl": "https://github.com/godotengine/godot/pulls?q=is%3Apr+author%3Ashiva-kar",
+    "dates": "August 2026 – Present",
+    "stats": {
+      "submitted": 15,
+      "merged": 6,
+      "open": 7,
+      "closed": 2
+    },
+    "selectedPRs": [
+      {
+        "title": "Integer zoom and fractional display scaling",
+        "description": "Fixed zoom behaviour involving integer zoom and fractional display scales.",
+        "pr": 124942,
+        "status": "merged"
+      },
+      {
+        "title": "Save on Focus Loss — deleted scene recreation",
+        "description": "Fixed an issue where the Save on Focus Loss setting recreated deleted open scenes.",
+        "pr": 124931,
+        "status": "merged"
+      },
+      {
+        "title": "Resource reference count management",
+        "description": "Fixed resource reference counts not updating when resetting a property.",
+        "pr": 124789,
+        "status": "merged"
+      },
+      {
+        "title": "Script editor tooltip positioning",
+        "description": "Fixed script tooltips appearing outside the script editor boundaries.",
+        "pr": 124170,
+        "status": "merged"
+      },
+      {
+        "title": "Tooltip text interaction",
+        "description": "Disabled text selection in diagnostic tooltips to prevent unintended interaction.",
+        "pr": 124054,
+        "status": "merged"
+      },
+      {
+        "title": "Web Editor file deletion",
+        "description": "Fixed a file-deletion error in the Web Editor.",
+        "pr": 123035,
+        "status": "merged"
+      },
+      {
+        "title": "Diagnostic tooltip restructuring",
+        "description": "Proposed a revision for a diagnostic tooltip feature following review from four maintainers: moved row construction into a dedicated class and fixed hover-state bugs.",
+        "pr": 123310,
+        "status": "open"
+      }
+    ]
+  },
   "about": {
-    "eyebrow": "A LITTLE CONTEXT",
-    "title": "Learning by making things",
-    "intro": "I’m Shiva Kar, a backend-focused Java developer, open-source contributor to Godot Engine, and BCA student at Amity University Online (CGPA 8.84). This page covers my open-source experience, academic background, and certifications.",
-    "approachKicker": "HOW I LIKE TO LEARN",
-    "approachTitle": "Build first. Understand deeply.",
+    "eyebrow": "ABOUT",
+    "title": "About me",
+    "intro": "I'm a BCA Computer Science student at Amity University Online with a focus on Java backend development.",
+    "approachKicker": "BACKGROUND",
+    "approachTitle": "What I work on",
     "approachParagraphs": [
-      "I enjoy projects that force me to look beyond the surface. Building SXSHELL (a 7-module POSIX shell in C) made me think carefully about parsing input, launching processes with fork() and execv(), wiring pipelines with dup2(), and handling edge cases.",
-      "My primary professional focus is Java backend development—building and shipping REST APIs with Spring Boot, MySQL, and PostgreSQL while grounding my engineering decisions in strong CS fundamentals.",
-      "I’m also an active open-source contributor to the Godot Engine (with 3 merged bug-fix pull requests in Godot 4.8 out of 11 submitted), which has taught me how to read large codebases, collaborate with maintainers, and ship production fixes fast."
+      "My work includes building Spring Boot applications, working with PostgreSQL and Redis, and implementing backend functionality involving authentication, data persistence, transactions, and concurrency.",
+      "Alongside application development, I contribute to the Godot Engine open-source project, where I have worked on editor, GUI, and web-platform issues. I have also built SXSHELL, a Unix-like shell in C using POSIX system calls.",
+      "I'm particularly interested in backend engineering, software design, debugging, and understanding how applications behave beyond their frameworks."
     ],
-    "currentlyKicker": "EXPERIENCE & FOCUS",
-    "currentlyTitle": "Open source & what I’m working on",
+    "currentlyKicker": "CAREER DIRECTION",
+    "currentlyTitle": "What I'm looking for",
     "currentlyItems": [
       {
-        "label": "Open Source Contributor — Godot Engine (Aug 2026 – Present)",
-        "text": "Merged 3 bug-fix PRs into Godot 4.8 (#124054, #124170, #123035) out of 11 submitted (6 under review), including a script tooltip regression fix merged in 33 hours and a Web Editor file-deletion fix."
+        "label": "Target roles",
+        "text": "Java Developer Intern, Java Backend Developer Intern, Spring Boot Developer Intern, or Backend Software Engineer Intern."
       },
       {
-        "label": "Java & Spring Boot Backend",
-        "text": "Building REST APIs with Java, Spring Boot, MySQL, and PostgreSQL, targeting a Java Developer intern or trainee role."
+        "label": "Primary focus",
+        "text": "Java backend engineering — Spring Boot, REST APIs, PostgreSQL, Redis, authentication, and automated testing."
       },
       {
-        "label": "Systems Programming in C",
-        "text": "Developing a lightweight HTTP server over raw TCP sockets and exploring OS internals, processes, and memory management."
+        "label": "Open-source experience",
+        "text": "Contributor to Godot Engine with 15 submitted PRs (6 merged, 7 open, 2 closed) across editor, GUI, GDScript, and web platform."
       },
       {
-        "label": "Open Source Community & Tooling",
-        "text": "Maintaining Resume Builder (16 GitHub stars, 8 forks) and contributing fixes to projects like the Catppuccin Obsidian theme."
+        "label": "Systems programming",
+        "text": "SXSHELL (Unix-like shell in C), POSIX system calls, process management, and operating systems fundamentals."
       }
     ],
     "education": [
       {
         "degree": "Bachelor of Computer Applications (BCA), Computer Science",
-        "school": "Amity University Online, Noida, Uttar Pradesh",
+        "school": "Amity University Online",
         "date": "Jul 2025 – Nov 2028 (Expected)",
-        "detail": "CGPA: 8.84 · SGPA: 9.33 (Semester 3)",
+        "detail": "CGPA: 8.84/10",
         "coursework": [
-          "Data Structures",
-          "Java OOP",
+          "Object-Oriented Programming (Java)",
+          "Data Structures using C",
           "Operating Systems",
-          "DBMS",
+          "Database Management Systems",
           "Computer Networks",
-          "Unix Programming"
+          "Unix and Shell Programming"
         ]
       },
       {
-        "degree": "Higher Secondary Education (Class XII), Science (PCM & Computer Science)",
-        "school": "Deshabandhu Bidyapeeth HS School, Hojai, Assam",
-        "date": "Mar 2025",
-        "detail": "68% · Physics, Chemistry, Mathematics & Computer Science",
-        "coursework": []
-      },
-      {
-        "degree": "Secondary Education (Class X), Elective IT-ITeS",
-        "school": "Rabindra Bidyalaya HS School, Hojai, Assam",
-        "date": "Mar 2022",
-        "detail": "80% · Board of Secondary Education, Assam",
+        "degree": "Class XII, Science",
+        "school": "Deshabandhu Bidyapith H.S. School, Hojai, Assam",
+        "date": "2022–2025",
+        "detail": "68%",
         "coursework": []
       }
     ],
     "certifications": [
       {
-        "name": "Harvard CS50x: Introduction to Computer Science",
+        "name": "CS50x: Introduction to Computer Science",
         "issuer": "Harvard University (CS50)",
         "status": "Completed",
         "url": ""
       },
       {
-        "name": "Harvard CS50 SQL: Databases with SQL",
+        "name": "CS50 SQL: Introduction to Databases with SQL",
         "issuer": "Harvard University (CS50)",
-        "status": "Completed",
-        "url": ""
-      },
-      {
-        "name": "Learn C — Skill Path",
-        "issuer": "Codecademy",
-        "status": "Completed",
-        "url": ""
-      },
-      {
-        "name": "Programming in C and C++",
-        "issuer": "Internshala",
         "status": "Completed",
         "url": ""
       }
+    ],
+    "languages": [
+      { "language": "Bengali", "proficiency": "Native" },
+      { "language": "Hindi", "proficiency": "Professional" },
+      { "language": "English", "proficiency": "Professional" }
     ]
   }
 };
 
 const SKILL_NOTES = {
-  "Java": "Core language for my backend path — OOP design, collections, streams, and server-side services.",
-  "Spring Boot": "Building layered enterprise backends with dependency injection, JPA, and Spring Security.",
-  "REST APIs": "Designing predictable endpoints, status codes, pagination, and request validation.",
+  "Java": "Core language for my backend path — OOP design, collections, multithreading, and Spring Boot services.",
+  "Spring Boot": "Building layered enterprise backends with dependency injection, Spring Data JPA, and Spring Security.",
+  "REST APIs": "Designing predictable endpoints, HTTP status codes, pagination, and request validation.",
   "SQL": "Relational schema modeling, joins, indexing, and queries (certified via Harvard CS50 SQL).",
-  "MySQL": "Relational database used alongside Spring Boot for backend persistence and schema modeling.",
-  "PostgreSQL": "Primary relational database for my Spring Boot backend projects.",
-  "Docker": "Containerizing backend services and databases for consistent development environments.",
-  "C": "Used to build SXSHELL (7 modules, ~550 lines), a custom HTTP server, a garbage collector, and a Git clone.",
-  "POSIX": "Direct experience with fork(), execv(), pipe(), dup2(), waitpid(), signals, and raw TCP sockets.",
-  "Linux": "Daily environment for systems programming, shell scripting, and process debugging.",
-  "Networking": "Implementing raw TCP socket servers and HTTP/1.1 request/response parsing from scratch.",
-  "Memory Management": "Manual heap management, pointer arithmetic, and building a custom mark-and-sweep GC in C.",
-  "CMake": "Structuring multi-module C builds cleanly across platforms.",
-  "Git": "Version control for open-source contributions (Godot Engine) + building a Git clone in C.",
-  "Godot": "Open Source Contributor to Godot Engine 4.8 — 3 merged bug-fix PRs (#124054, #124170, #123035) out of 11 submitted.",
-  "Unity": "Experimenting with 3D gameplay systems, graphics programming, and C# scripting.",
-  "C#": "Used for game development and gameplay scripting in Unity.",
-  "Open Source": "3 merged PRs in Godot Engine 4.8, 1 merged PR in Catppuccin Obsidian theme, and creator of Resume Builder (16 ★, 8 forks)."
+  "MySQL": "Relational database used for backend persistence, constraints, and relational queries.",
+  "PostgreSQL": "Primary relational database for my Spring Boot backend projects, with Flyway migrations.",
+  "Redis": "In-memory caching and distributed rate limiting with TTL-based expiration and atomic Lua scripts.",
+  "Docker": "Containerizing backend services and PostgreSQL databases with Docker Compose.",
+  "C": "Used to build SXSHELL (7 modules, ~550 lines) with process management, pipes, and I/O redirection.",
+  "POSIX": "Direct experience with fork(), execv(), dup2(), pipes, signals, and system calls.",
+  "Linux": "Development environment for systems programming, shell scripting, and process debugging.",
+  "Git": "Version control for open-source contributions (Godot Engine) and personal projects.",
+  "Godot": "Open Source Contributor to Godot Engine — 6 merged pull requests out of 15 submitted.",
+  "Open Source": "15 submitted pull requests to Godot Engine (6 merged, 7 open, 2 closed) across editor, GUI, GDScript, and web platform."
 };
 
 function cloneData(obj) {
@@ -681,18 +631,18 @@ function renderHomePage() {
   const intro = document.getElementById("hero-intro");
   const note = document.getElementById("hero-note");
   const kicker = document.getElementById("home-cards-kicker");
-  const cardsTitle = document.getElementById("interests-title");
+  const cardsTitle = document.getElementById("areas-title") || document.getElementById("interests-title");
   const grid = document.getElementById("home-cards-grid");
 
-  if (eyebrow) eyebrow.textContent = siteData.meta.eyebrow;
-  if (prefix) prefix.textContent = siteData.home.headlinePrefix;
-  if (accent) accent.textContent = siteData.home.headlineAccent;
-  if (intro) intro.textContent = siteData.home.intro;
-  if (note) note.textContent = siteData.home.note;
-  if (kicker) kicker.textContent = siteData.home.cardsKicker;
-  if (cardsTitle) cardsTitle.textContent = siteData.home.cardsTitle;
+  if (eyebrow && siteData.meta?.eyebrow) eyebrow.textContent = siteData.meta.eyebrow;
+  if (prefix && siteData.home?.headlinePrefix) prefix.textContent = siteData.home.headlinePrefix;
+  if (accent && siteData.home?.headlineAccent) accent.textContent = siteData.home.headlineAccent;
+  if (intro && siteData.home?.intro) intro.textContent = siteData.home.intro;
+  if (note && siteData.home?.note) note.textContent = siteData.home.note;
+  if (kicker && siteData.home?.cardsKicker) kicker.textContent = siteData.home.cardsKicker;
+  if (cardsTitle && siteData.home?.cardsTitle) cardsTitle.textContent = siteData.home.cardsTitle;
 
-  if (grid && Array.isArray(siteData.home.cards)) {
+  if (grid && Array.isArray(siteData.home?.cards)) {
     grid.innerHTML = siteData.home.cards
       .map(
         (c, idx) => `
@@ -702,7 +652,7 @@ function renderHomePage() {
               <span class="card-number" data-editable="home.cards.${idx}.number">${escapeHtml(c.number)}</span>
               <h3 class="card-title" data-editable="home.cards.${idx}.title">${escapeHtml(c.title)}</h3>
               <p class="card-text" data-editable="home.cards.${idx}.text">${escapeHtml(c.text)}</p>
-              <a href="${escapeHtml(c.href)}" class="card-link">${escapeHtml(c.linkText || "More on this ↗")}</a>
+              <a href="${escapeHtml(c.href)}" class="card-link">${escapeHtml(c.linkText || "View details →")}</a>
             </div>
           </article>
         </div>`
@@ -1022,7 +972,7 @@ function renderProjectsPage() {
         const repoAction =
           item.repoUrl && item.repoUrl.trim()
             ? `<a class="btn ${btnClass}" href="${escapeHtml(item.repoUrl)}" target="_blank" rel="noopener noreferrer">View repository ↗</a>`
-            : `<span class="planned-repo-tag">Planned — repository not yet public</span>`;
+            : "";
 
         const updatedTag =
           item.updatedAt && String(item.updatedAt).trim()
@@ -1277,12 +1227,17 @@ function renderAboutPage() {
   }
 }
 
+function renderOpensourcePage() {
+  // Static content is maintained in opensource.html
+}
+
 function renderActivePage() {
   renderCommon();
   const page = document.body.getAttribute("data-page");
   if (page === "home") renderHomePage();
   else if (page === "interests") renderInterestsPage();
   else if (page === "projects") renderProjectsPage();
+  else if (page === "opensource") renderOpensourcePage();
   else if (page === "about") renderAboutPage();
 
   if (document.body.classList.contains("inline-edit-active") && isOwnerAuthenticated()) {
@@ -1399,13 +1354,13 @@ function injectTerminalModal() {
       case "help":
         printLine(
           "Available commands:\n" +
-            "  whoami          — Short bio & direction\n" +
+            "  whoami          — Short bio & specialization\n" +
             "  ls / pages      — List pages on this website\n" +
-            "  cd <page>       — Navigate to home, interests, projects, about, or resume\n" +
+            "  cd <page>       — Navigate to home, projects, opensource, about, or resume\n" +
             "  resume          — Open Shiva_Kar_Resume.pdf in a new tab\n" +
-            "  projects        — List my software projects\n" +
-            "  skills          — Print evidence-based skill tree\n" +
-            "  fact            — Print a random fun fact\n" +
+            "  projects        — List engineering projects\n" +
+            "  skills          — Print technical skills summary\n" +
+            "  fact            — Print a random engineering fact\n" +
             "  contact         — Show email & GitHub/LinkedIn links\n" +
             "  theme           — Toggle light / dark theme\n" +
             "  edit            — Open Owner Portfolio Editor (requires owner sign-in)\n" +
@@ -1413,14 +1368,14 @@ function injectTerminalModal() {
         );
         break;
       case "whoami":
-        printLine(`${siteData.meta.name} (${siteData.meta.eyebrow})\n${siteData.home.intro}`);
+        printLine(`${siteData.meta?.name || "Shiva Kar"} (${siteData.meta?.eyebrow || "Java Backend Developer | BCA Student"})\n${siteData.home?.intro || ""}`);
         break;
       case "ls":
       case "pages":
-        printLine("index.html (Home)   interests.html (Interests)   projects.html (Projects)   about.html (About)   Shiva_Kar_Resume.pdf");
+        printLine("index.html (Home)   projects.html (Projects)   opensource.html (Open Source)   about.html (About)   Shiva_Kar_Resume.pdf");
         break;
       case "resume": {
-        const resumeUrl = siteData.meta?.resumeUrl || "Shiva_Kar_Resume.pdf?v=2.3.0";
+        const resumeUrl = siteData.meta?.resumeUrl || "Shiva_Kar_Resume.pdf?v=3.0.0";
         printLine(`Opening ${resumeUrl}...`);
         window.open(resumeUrl, "_blank", "noopener,noreferrer");
         break;
@@ -1432,10 +1387,11 @@ function injectTerminalModal() {
           home: "index.html",
           index: "index.html",
           "~": "index.html",
-          interests: "interests.html",
           projects: "projects.html",
+          opensource: "opensource.html",
+          godot: "opensource.html",
           about: "about.html",
-          resume: siteData.meta?.resumeUrl || "Shiva_Kar_Resume.pdf?v=2.3.0"
+          resume: siteData.meta?.resumeUrl || "Shiva_Kar_Resume.pdf?v=3.0.0"
         };
         if (map[target]) {
           printLine(`Navigating to ${map[target]}...`);
@@ -1443,23 +1399,31 @@ function injectTerminalModal() {
             window.location.href = map[target];
           }, 200);
         } else {
-          printLine(`cd: no such page '${args[0] || ""}'. Try: cd home | cd interests | cd projects | cd about | cd resume`);
+          printLine(`cd: no such page '${args[0] || ""}'. Try: cd home | cd projects | cd opensource | cd about | cd resume`);
         }
         break;
       }
       case "projects":
         printLine(
-          siteData.projects.items
-            .map((p) => `• [${p.status}] ${p.title} (${p.badge}) — ${p.description}`)
+          (siteData.projects?.items || [])
+            .map((p) => `• [${p.status || "Built"}] ${p.title} (${p.badge}) — ${p.description}`)
             .join("\n")
         );
         break;
       case "skills":
-        printLine(
-          siteData.interests.skillEvidence
-            .map((s) => `${s.name}\n  └── ${s.evidence.join(", ")}`)
-            .join("\n")
-        );
+        if (siteData.skills?.categories) {
+          printLine(
+            siteData.skills.categories
+              .map((s) => `${s.name}\n  └── ${s.items.join(", ")}`)
+              .join("\n")
+          );
+        } else if (siteData.interests?.skillEvidence) {
+          printLine(
+            siteData.interests.skillEvidence
+              .map((s) => `${s.name}\n  └── ${s.evidence.join(", ")}`)
+              .join("\n")
+          );
+        }
         break;
       case "fact": {
         const facts = getActiveFacts();
@@ -2249,10 +2213,50 @@ function initKeyboardShortcuts() {
   });
 }
 
+function initMobileNav() {
+  const toggleBtn = document.getElementById("mobile-nav-toggle");
+  const headerRight = document.getElementById("header-right");
+  if (!toggleBtn || !headerRight || toggleBtn.dataset.bound) return;
+  toggleBtn.dataset.bound = "true";
+  toggleBtn.addEventListener("click", () => {
+    const isOpen = headerRight.classList.toggle("nav-open");
+    toggleBtn.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!headerRight.contains(e.target) && !toggleBtn.contains(e.target) && headerRight.classList.contains("nav-open")) {
+      headerRight.classList.remove("nav-open");
+      toggleBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+}
+
+function migrateStorageV4ToV5() {
+  try {
+    const v5Data = localStorage.getItem(STORAGE_KEY);
+    const v4Data = localStorage.getItem("sk_site_data_v4");
+    if (!v5Data && v4Data) {
+      localStorage.setItem(STORAGE_KEY, v4Data);
+    }
+    const v5Dirty = sessionStorage.getItem(DRAFT_DIRTY_KEY);
+    const v4Dirty = sessionStorage.getItem("sk_site_draft_dirty_v4");
+    if (!v5Dirty && v4Dirty) {
+      sessionStorage.setItem(DRAFT_DIRTY_KEY, v4Dirty);
+    }
+  } catch (err) {
+    console.warn("Storage migration warning:", err);
+  }
+}
+
 /* ===== Synchronous Bootstrap + Async Data Hydration ===== */
 function bootstrapSite() {
+  // Migrate legacy v4 localStorage draft data to v5 safely
+  migrateStorageV4ToV5();
+
   // 1. Apply theme & bind header controls immediately (synchronously)
   initTheme();
+  initMobileNav();
   injectTerminalModal();
   injectAuthAndStudioModals();
   initKeyboardShortcuts();
@@ -2276,7 +2280,7 @@ function bootstrapSite() {
   renderActivePage();
 
   // 4. Fetch latest published data.json in background
-  fetch("data.json?v=2.4.0", { cache: "no-store" })
+  fetch("data.json?v=3.0.0", { cache: "no-store" })
     .then((res) => (res.ok ? res.json() : null))
     .then((json) => {
       if (json && json.home && json.projects && !hasUnsavedDraft) {
