@@ -55,7 +55,6 @@
 
     <main class="container page-content inner-page">
         <section class="page-intro">
-            <p class="eyebrow" id="projects-eyebrow">PROJECTS</p>
             <h1><span id="projects-title">What I've built</span><span class="accent-text">.</span></h1>
             <p class="intro" id="projects-intro">Two Java backend applications, a systems programming project, and open-source contributions to a large C++ codebase.</p>
             <div class="project-jump-bar" style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
@@ -69,44 +68,13 @@
         <section class="section-block project-detail" id="ecommerce" aria-labelledby="ecommerce-title">
             <div class="project-detail-header">
                 <div>
-                    <span class="section-kicker">PROJECT 01 · JAVA BACKEND</span>
                     <h2 id="ecommerce-title">E-Commerce Backend API</h2>
-                    <div class="skill-chips" style="margin-top:12px;">
-                        <span class="skill-chip">Java</span>
-                        <span class="skill-chip">Spring Boot</span>
-                        <span class="skill-chip">Spring Security</span>
-                        <span class="skill-chip">Spring Data JPA</span>
-                        <span class="skill-chip">Hibernate</span>
-                        <span class="skill-chip">PostgreSQL</span>
-                        <span class="skill-chip">Maven</span>
-                        <span class="skill-chip">JUnit 5</span>
-                        <span class="skill-chip">Mockito</span>
-                        <span class="skill-chip">Docker Compose</span>
-                        <span class="skill-chip">Flyway</span>
-                    </div>
+                    <p class="project-tech-line">Java · Spring Boot · Spring Security · Spring Data JPA · Hibernate · PostgreSQL · Docker Compose · Flyway · Maven · JUnit 5 · Mockito</p>
                 </div>
-
             </div>
 
             <div class="project-detail-body">
                 <p>An e-commerce backend built with Java and Spring Boot, providing REST APIs for product management, shopping carts, orders, and user accounts, with PostgreSQL persistence and secure authentication.</p>
-
-                <div class="arch-diagram" aria-label="E-Commerce Architecture Flow">
-                    <div class="arch-title">Application Architecture Flow</div>
-                    <div class="arch-flow">
-                        <span class="arch-node">Client</span>
-                        <span class="arch-arrow">→</span>
-                        <span class="arch-node arch-node-highlight">Spring Security (JWT)</span>
-                        <span class="arch-arrow">→</span>
-                        <span class="arch-node">REST Controllers</span>
-                        <span class="arch-arrow">→</span>
-                        <span class="arch-node arch-node-highlight">Service Layer (Locking / Tx)</span>
-                        <span class="arch-arrow">→</span>
-                        <span class="arch-node">Repositories (Spring Data JPA)</span>
-                        <span class="arch-arrow">→</span>
-                        <span class="arch-node arch-node-highlight">PostgreSQL</span>
-                    </div>
-                </div>
 
                 <h3>Architecture</h3>
                 <ul>
@@ -153,40 +121,14 @@
         <section class="section-block project-detail" id="ratelimiter" aria-labelledby="ratelimiter-title">
             <div class="project-detail-header">
                 <div>
-                    <span class="section-kicker">PROJECT 02 · BACKEND INFRASTRUCTURE</span>
                     <h2 id="ratelimiter-title">API Rate Limiter &amp; Usage Metering Service</h2>
-                    <div class="skill-chips" style="margin-top:12px;">
-                        <span class="skill-chip">Java</span>
-                        <span class="skill-chip">Spring Boot</span>
-                        <span class="skill-chip">Spring Security</span>
-                        <span class="skill-chip">Redis</span>
-                        <span class="skill-chip">Maven</span>
-                        <span class="skill-chip">JUnit 5</span>
-                        <span class="skill-chip">Mockito</span>
-                        <span class="skill-chip">Docker</span>
-                    </div>
+                    <p class="project-tech-line">Java · Spring Boot · Spring Security · Redis · Docker · Maven · JUnit 5 · Mockito</p>
                 </div>
-
             </div>
 
             <div class="project-detail-body">
                 <p>A Redis-backed API rate-limiting service using the Token Bucket algorithm to enforce configurable per-user and per-API-key request limits, with usage metering and concurrency-safe request handling.</p>
-                <p><strong>This is not another CRUD application.</strong> It is backend infrastructure and algorithmic engineering — focused on algorithms, Redis, atomic operations, concurrency, request control, HTTP behaviour, and usage metering.</p>
-
-                <div class="arch-diagram" aria-label="API Rate Limiter Architecture Flow">
-                    <div class="arch-title">Request Flow &amp; Algorithmic Rate Limiting</div>
-                    <div class="arch-flow">
-                        <span class="arch-node">Client Request</span>
-                        <span class="arch-arrow">→</span>
-                        <span class="arch-node arch-node-highlight">Spring Boot Filter</span>
-                        <span class="arch-arrow">→</span>
-                        <span class="arch-node arch-node-highlight">Token Bucket Engine</span>
-                        <span class="arch-arrow">→</span>
-                        <span class="arch-node arch-node-highlight">Redis (Atomic Lua &amp; TTL)</span>
-                        <span class="arch-arrow">→</span>
-                        <span class="arch-node">HTTP 200 / 429 Response</span>
-                    </div>
-                </div>
+                <p><strong>This is backend infrastructure and algorithmic engineering</strong> — focused on algorithms, Redis, atomic operations, concurrency, request control, HTTP behaviour, and usage metering.</p>
 
                 <h3>Rate-Limiting Algorithm</h3>
                 <ul>
@@ -197,7 +139,7 @@
                 <h3>Redis Implementation</h3>
                 <ul>
                     <li>Redis-backed rate-limit state with TTL-based expiration</li>
-                    <li>Atomic Lua scripts for concurrent request handling — a rate limiter must not allow simultaneous requests to update shared state incorrectly</li>
+                    <li>Atomic Lua scripts for concurrent request handling — ensuring simultaneous requests cannot update shared state incorrectly</li>
                 </ul>
 
                 <h3>HTTP API Behaviour</h3>
@@ -218,13 +160,8 @@
         <section class="section-block project-detail project-detail-compact" id="sxshell" aria-labelledby="sxshell-title">
             <div class="project-detail-header">
                 <div>
-                    <span class="section-kicker">PROJECT 03 · SYSTEMS PROGRAMMING</span>
                     <h2 id="sxshell-title">SXSHELL — Unix-like Shell</h2>
-                    <div class="skill-chips" style="margin-top:12px;">
-                        <span class="skill-chip">C</span>
-                        <span class="skill-chip">POSIX</span>
-                        <span class="skill-chip">CMake</span>
-                    </div>
+                    <p class="project-tech-line">C · POSIX System Calls · CMake · Linux</p>
                 </div>
                 <div class="project-detail-actions">
                     <a class="btn btn-dark" href="https://github.com/shiva-kar/SXSHELL-unix-like-shell" target="_blank" rel="noopener noreferrer">View Repository ↗</a>
@@ -238,7 +175,7 @@
                     <li>Pipelines and I/O redirection using fork(), execv(), and dup2()</li>
                     <li>Built-in commands, executable lookup, $PATH resolution, and quote/escape parsing</li>
                 </ul>
-                <p style="color:var(--muted);font-size:0.88rem;">This project demonstrates systems programming fundamentals and general computer science knowledge — process management, file descriptors, and low-level command execution.</p>
+                <p style="color:var(--muted);font-size:0.88rem;">This project demonstrates systems programming fundamentals — process management, file descriptors, and low-level command execution.</p>
             </div>
         </section>
 
