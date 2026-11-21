@@ -2343,6 +2343,14 @@ body.inline-edit-active [data-editable]:focus {
     scroll-margin-top: 90px;
 }
 
+.project-tech-line {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: 6px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
 .project-detail-header {
     display: flex;
     align-items: flex-start;
