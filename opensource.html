@@ -102,9 +102,19 @@
                 <h2 id="selected-prs-title">Contributions by Repository</h2>
             </div>
 
+            <div class="oss-filter-bar" id="oss-filter-bar" role="toolbar" aria-label="Filter pull requests">
+                <button type="button" class="oss-filter-btn active" data-filter="all">All (20)</button>
+                <button type="button" class="oss-filter-btn" data-filter="merged">Merged (7)</button>
+                <button type="button" class="oss-filter-btn" data-filter="open">Open (11)</button>
+                <button type="button" class="oss-filter-btn" data-filter="repo:godotengine/godot">godotengine/godot (13)</button>
+                <button type="button" class="oss-filter-btn" data-filter="repo:catppuccin/visual-studio">catppuccin/visual-studio (3)</button>
+                <button type="button" class="oss-filter-btn" data-filter="repo:excalidraw/excalidraw">excalidraw/excalidraw (1)</button>
+                <button type="button" class="oss-filter-btn" data-filter="repo:wwwillgunnn/catppuccin-obsidian-colored-sidebar">catppuccin-obsidian-colored-sidebar (1)</button>
+            </div>
+
             <div id="oss-repos-container">
                 <!-- Repository 1: godotengine/godot -->
-                <div class="oss-repo-group">
+                <div class="oss-repo-group" data-repo="godotengine/godot">
                     <div class="oss-repo-header">
                         <div class="oss-repo-title-row">
                             <h3 class="oss-repo-name">
@@ -165,82 +175,90 @@
                             <p class="pr-desc">Disabled text selection in diagnostic tooltips to prevent unintended interaction.</p>
                         </article>
 
-                        <article class="pr-card pr-merged">
-                            <div class="pr-card-header">
-                                <span class="pr-status-badge pr-badge-merged">Merged</span>
-                                <a href="https://github.com/godotengine/godot/pull/123035" target="_blank" rel="noopener noreferrer" class="pr-number">#123035</a>
-                            </div>
-                            <h3 class="pr-title">Web Editor file deletion</h3>
-                            <p class="pr-desc">Fixed a file-deletion error in the Web Editor.</p>
-                        </article>
+                        <div class="oss-collapsed-prs" id="collapse-godot" hidden>
+                            <article class="pr-card pr-merged">
+                                <div class="pr-card-header">
+                                    <span class="pr-status-badge pr-badge-merged">Merged</span>
+                                    <a href="https://github.com/godotengine/godot/pull/123035" target="_blank" rel="noopener noreferrer" class="pr-number">#123035</a>
+                                </div>
+                                <h3 class="pr-title">Web Editor file deletion</h3>
+                                <p class="pr-desc">Fixed a file-deletion error in the Web Editor.</p>
+                            </article>
 
-                        <article class="pr-card pr-open">
-                            <div class="pr-card-header">
-                                <span class="pr-status-badge pr-badge-open">Open</span>
-                                <a href="https://github.com/godotengine/godot/pull/123310" target="_blank" rel="noopener noreferrer" class="pr-number">#123310</a>
-                            </div>
-                            <h3 class="pr-title">Diagnostic tooltip restructuring and severity icons</h3>
-                            <p class="pr-desc">Proposed a revision for diagnostic tooltips: moved row construction into a dedicated class and added severity hover icons.</p>
-                        </article>
+                            <article class="pr-card pr-open">
+                                <div class="pr-card-header">
+                                    <span class="pr-status-badge pr-badge-open">Open</span>
+                                    <a href="https://github.com/godotengine/godot/pull/123310" target="_blank" rel="noopener noreferrer" class="pr-number">#123310</a>
+                                </div>
+                                <h3 class="pr-title">Diagnostic tooltip restructuring and severity icons</h3>
+                                <p class="pr-desc">Proposed a revision for diagnostic tooltips: moved row construction into a dedicated class and added severity hover icons.</p>
+                            </article>
 
-                        <article class="pr-card pr-open">
-                            <div class="pr-card-header">
-                                <span class="pr-status-badge pr-badge-open">Open</span>
-                                <a href="https://github.com/godotengine/godot/pull/123621" target="_blank" rel="noopener noreferrer" class="pr-number">#123621</a>
-                            </div>
-                            <h3 class="pr-title">Always-on-top propagation for transient windows</h3>
-                            <p class="pr-desc">Ensured window flag propagation correctly applies to non-exclusive transient child windows.</p>
-                        </article>
+                            <article class="pr-card pr-open">
+                                <div class="pr-card-header">
+                                    <span class="pr-status-badge pr-badge-open">Open</span>
+                                    <a href="https://github.com/godotengine/godot/pull/123621" target="_blank" rel="noopener noreferrer" class="pr-number">#123621</a>
+                                </div>
+                                <h3 class="pr-title">Always-on-top propagation for transient windows</h3>
+                                <p class="pr-desc">Ensured window flag propagation correctly applies to non-exclusive transient child windows.</p>
+                            </article>
 
-                        <article class="pr-card pr-open">
-                            <div class="pr-card-header">
-                                <span class="pr-status-badge pr-badge-open">Open</span>
-                                <a href="https://github.com/godotengine/godot/pull/124788" target="_blank" rel="noopener noreferrer" class="pr-number">#124788</a>
-                            </div>
-                            <h3 class="pr-title">Theme override inspector link icon drag state</h3>
-                            <p class="pr-desc">Fixed editor theme override inspector UI to restore proper link icon state during drag operations.</p>
-                        </article>
+                            <article class="pr-card pr-open">
+                                <div class="pr-card-header">
+                                    <span class="pr-status-badge pr-badge-open">Open</span>
+                                    <a href="https://github.com/godotengine/godot/pull/124788" target="_blank" rel="noopener noreferrer" class="pr-number">#124788</a>
+                                </div>
+                                <h3 class="pr-title">Theme override inspector link icon drag state</h3>
+                                <p class="pr-desc">Fixed editor theme override inspector UI to restore proper link icon state during drag operations.</p>
+                            </article>
 
-                        <article class="pr-card pr-open">
-                            <div class="pr-card-header">
-                                <span class="pr-status-badge pr-badge-open">Open</span>
-                                <a href="https://github.com/godotengine/godot/pull/124071" target="_blank" rel="noopener noreferrer" class="pr-number">#124071</a>
-                            </div>
-                            <h3 class="pr-title">Tree multi-selection Ctrl+click deselect fix</h3>
-                            <p class="pr-desc">Corrected multi-selection behavior in Tree UI nodes to prevent unwanted item deselection on drag.</p>
-                        </article>
+                            <article class="pr-card pr-open">
+                                <div class="pr-card-header">
+                                    <span class="pr-status-badge pr-badge-open">Open</span>
+                                    <a href="https://github.com/godotengine/godot/pull/124071" target="_blank" rel="noopener noreferrer" class="pr-number">#124071</a>
+                                </div>
+                                <h3 class="pr-title">Tree multi-selection Ctrl+click deselect fix</h3>
+                                <p class="pr-desc">Corrected multi-selection behavior in Tree UI nodes to prevent unwanted item deselection on drag.</p>
+                            </article>
 
-                        <article class="pr-card pr-open">
-                            <div class="pr-card-header">
-                                <span class="pr-status-badge pr-badge-open">Open</span>
-                                <a href="https://github.com/godotengine/godot/pull/124060" target="_blank" rel="noopener noreferrer" class="pr-number">#124060</a>
-                            </div>
-                            <h3 class="pr-title">GDScript autocomplete after func and static keywords</h3>
-                            <p class="pr-desc">Resolved autocomplete suggestion issues in the GDScript parser following function and static definitions.</p>
-                        </article>
+                            <article class="pr-card pr-open">
+                                <div class="pr-card-header">
+                                    <span class="pr-status-badge pr-badge-open">Open</span>
+                                    <a href="https://github.com/godotengine/godot/pull/124060" target="_blank" rel="noopener noreferrer" class="pr-number">#124060</a>
+                                </div>
+                                <h3 class="pr-title">GDScript autocomplete after func and static keywords</h3>
+                                <p class="pr-desc">Resolved autocomplete suggestion issues in the GDScript parser following function and static definitions.</p>
+                            </article>
 
-                        <article class="pr-card pr-open">
-                            <div class="pr-card-header">
-                                <span class="pr-status-badge pr-badge-open">Open</span>
-                                <a href="https://github.com/godotengine/godot/pull/123105" target="_blank" rel="noopener noreferrer" class="pr-number">#123105</a>
-                            </div>
-                            <h3 class="pr-title">Awaited coroutines during embedded game suspension</h3>
-                            <p class="pr-desc">Prevented coroutine execution leaks when suspending an embedded game instance in editor.</p>
-                        </article>
+                            <article class="pr-card pr-open">
+                                <div class="pr-card-header">
+                                    <span class="pr-status-badge pr-badge-open">Open</span>
+                                    <a href="https://github.com/godotengine/godot/pull/123105" target="_blank" rel="noopener noreferrer" class="pr-number">#123105</a>
+                                </div>
+                                <h3 class="pr-title">Awaited coroutines during embedded game suspension</h3>
+                                <p class="pr-desc">Prevented coroutine execution leaks when suspending an embedded game instance in editor.</p>
+                            </article>
 
-                        <article class="pr-card pr-open">
-                            <div class="pr-card-header">
-                                <span class="pr-status-badge pr-badge-open">Open</span>
-                                <a href="https://github.com/godotengine/godot/pull/123045" target="_blank" rel="noopener noreferrer" class="pr-number">#123045</a>
-                            </div>
-                            <h3 class="pr-title">Script state cache sync on global class changes</h3>
-                            <p class="pr-desc">Fixed cache synchronization in the script editor when modifying global script classes.</p>
-                        </article>
+                            <article class="pr-card pr-open">
+                                <div class="pr-card-header">
+                                    <span class="pr-status-badge pr-badge-open">Open</span>
+                                    <a href="https://github.com/godotengine/godot/pull/123045" target="_blank" rel="noopener noreferrer" class="pr-number">#123045</a>
+                                </div>
+                                <h3 class="pr-title">Script state cache sync on global class changes</h3>
+                                <p class="pr-desc">Fixed cache synchronization in the script editor when modifying global script classes.</p>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="oss-expand-wrapper">
+                        <button type="button" class="oss-expand-btn" data-target="collapse-godot" data-count="8" aria-expanded="false">
+                            <span>Show 8 more Godot Engine PRs</span>
+                            <span class="oss-expand-icon">↓</span>
+                        </button>
                     </div>
                 </div>
 
                 <!-- Repository 2: catppuccin/visual-studio -->
-                <div class="oss-repo-group">
+                <div class="oss-repo-group" data-repo="catppuccin/visual-studio">
                     <div class="oss-repo-header">
                         <div class="oss-repo-title-row">
                             <h3 class="oss-repo-name">
@@ -286,7 +304,7 @@
                 </div>
 
                 <!-- Repository 3: excalidraw/excalidraw -->
-                <div class="oss-repo-group">
+                <div class="oss-repo-group" data-repo="excalidraw/excalidraw">
                     <div class="oss-repo-header">
                         <div class="oss-repo-title-row">
                             <h3 class="oss-repo-name">
@@ -314,7 +332,7 @@
                 </div>
 
                 <!-- Repository 4: wwwillgunnn/catppuccin-obsidian-colored-sidebar -->
-                <div class="oss-repo-group">
+                <div class="oss-repo-group" data-repo="wwwillgunnn/catppuccin-obsidian-colored-sidebar">
                     <div class="oss-repo-header">
                         <div class="oss-repo-title-row">
                             <h3 class="oss-repo-name">

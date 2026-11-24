@@ -2017,14 +2017,18 @@ function renderOpensourcePage() {
     statNumbers[3].textContent = stats.repositories || 4;
   }
 
+  const MAX_PRS_PER_REPO = 5;
   const reposContainer = document.getElementById("oss-repos-container");
+  const filterBar = document.getElementById("oss-filter-bar");
+
   if (reposContainer && Array.isArray(siteData.opensource?.selectedPRs)) {
+    const allPRs = siteData.opensource.selectedPRs;
     const reposMeta = siteData.opensource.repositories || [];
     const metaMap = {};
     reposMeta.forEach((r) => { metaMap[r.name] = r; });
 
     const grouped = new Map();
-    siteData.opensource.selectedPRs.forEach((pr) => {
+    allPRs.forEach((pr) => {
       const repo = pr.repo || "godotengine/godot";
       if (!grouped.has(repo)) grouped.set(repo, []);
       grouped.get(repo).push(pr);
@@ -2034,7 +2038,26 @@ function renderOpensourcePage() {
       if (!grouped.has(r.name)) grouped.set(r.name, []);
     });
 
-    reposContainer.innerHTML = Array.from(grouped.entries()).map(([repoName, prs]) => {
+    // Populate filter bar if element exists
+    if (filterBar) {
+      const totalCount = allPRs.length;
+      const mergedCount = allPRs.filter((p) => p.status === "merged").length;
+      const openCount = allPRs.filter((p) => p.status === "open").length;
+
+      let filterHtml = `
+        <button type="button" class="oss-filter-btn active" data-filter="all">All (${totalCount})</button>
+        <button type="button" class="oss-filter-btn" data-filter="merged">Merged (${mergedCount})</button>
+        <button type="button" class="oss-filter-btn" data-filter="open">Open (${openCount})</button>
+      `;
+
+      grouped.forEach((prs, repoName) => {
+        filterHtml += `<button type="button" class="oss-filter-btn" data-filter="repo:${escapeHtml(repoName)}">${escapeHtml(repoName)} (${prs.length})</button>`;
+      });
+
+      filterBar.innerHTML = filterHtml;
+    }
+
+    reposContainer.innerHTML = Array.from(grouped.entries()).map(([repoName, prs], groupIdx) => {
       const meta = metaMap[repoName] || {
         name: repoName,
         url: `https://github.com/${repoName}`,
@@ -2063,7 +2086,7 @@ function renderOpensourcePage() {
         ? `<a href="${escapeHtml(meta.prsUrl)}" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>`
         : "";
 
-      const prsHtml = prs.map((pr) => {
+      const renderPrCard = (pr) => {
         const isMerged = pr.status === "merged";
         const isOpen = pr.status === "open";
         const cardClass = isMerged ? "pr-merged" : isOpen ? "pr-open" : "pr-closed";
@@ -2072,7 +2095,7 @@ function renderOpensourcePage() {
         const prUrl = pr.url || `https://github.com/${repoName}/pull/${pr.pr}`;
 
         return `
-          <article class="pr-card ${cardClass}">
+          <article class="pr-card ${cardClass}" data-status="${pr.status || "open"}">
             <div class="pr-card-header">
               <span class="pr-status-badge ${badgeClass}">${statusLabel}</span>
               <a href="${escapeHtml(prUrl)}" target="_blank" rel="noopener noreferrer" class="pr-number">#${pr.pr}</a>
@@ -2081,10 +2104,33 @@ function renderOpensourcePage() {
             <p class="pr-desc">${escapeHtml(pr.description)}</p>
           </article>
         `;
-      }).join("");
+      };
+
+      const visiblePRs = prs.slice(0, MAX_PRS_PER_REPO);
+      const collapsedPRs = prs.slice(MAX_PRS_PER_REPO);
+      const collapseId = `collapse-repo-${groupIdx}`;
+
+      let cardsHtml = visiblePRs.map(renderPrCard).join("");
+      let expandHtml = "";
+
+      if (collapsedPRs.length > 0) {
+        cardsHtml += `
+          <div class="oss-collapsed-prs" id="${collapseId}" hidden>
+            ${collapsedPRs.map(renderPrCard).join("")}
+          </div>
+        `;
+        expandHtml = `
+          <div class="oss-expand-wrapper">
+            <button type="button" class="oss-expand-btn" data-target="${collapseId}" data-count="${collapsedPRs.length}" aria-expanded="false">
+              <span>Show ${collapsedPRs.length} more PRs</span>
+              <span class="oss-expand-icon">↓</span>
+            </button>
+          </div>
+        `;
+      }
 
       return `
-        <div class="oss-repo-group">
+        <div class="oss-repo-group" data-repo="${escapeHtml(repoName)}">
           <div class="oss-repo-header">
             <div class="oss-repo-title-row">
               <h3 class="oss-repo-name">
@@ -2098,8 +2144,9 @@ function renderOpensourcePage() {
             </div>
           </div>
           <div class="pr-list">
-            ${prsHtml}
+            ${cardsHtml}
           </div>
+          ${expandHtml}
         </div>
       `;
     }).join("");
@@ -2117,7 +2164,7 @@ function renderOpensourcePage() {
           const prUrl = pr.url || `https://github.com/${repo}/pull/${pr.pr}`;
 
           return `
-          <article class="pr-card ${cardClass}">
+          <article class="pr-card ${cardClass}" data-status="${pr.status || "open"}">
             <div class="pr-card-header">
               <span class="pr-status-badge ${badgeClass}">${statusLabel}</span>
               <a href="${escapeHtml(prUrl)}" target="_blank" rel="noopener noreferrer" class="pr-number">#${pr.pr}</a>
@@ -2129,6 +2176,104 @@ function renderOpensourcePage() {
         .join("");
     }
   }
+
+  initOssInteractivity();
+}
+
+function initOssInteractivity() {
+  const expandBtns = document.querySelectorAll(".oss-expand-btn");
+  expandBtns.forEach((btn) => {
+    if (btn.dataset.bound) return;
+    btn.dataset.bound = "true";
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-target");
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      const isHidden = target.hasAttribute("hidden");
+      const count = btn.getAttribute("data-count") || "";
+      const labelSpan = btn.querySelector("span:first-child");
+      const iconSpan = btn.querySelector(".oss-expand-icon");
+      if (isHidden) {
+        target.removeAttribute("hidden");
+        btn.setAttribute("aria-expanded", "true");
+        if (labelSpan) labelSpan.textContent = "Show fewer";
+        if (iconSpan) iconSpan.textContent = "↑";
+      } else {
+        target.setAttribute("hidden", "");
+        btn.setAttribute("aria-expanded", "false");
+        if (labelSpan) labelSpan.textContent = count ? `Show ${count} more PRs` : "Show more PRs";
+        if (iconSpan) iconSpan.textContent = "↓";
+      }
+    });
+  });
+
+  const filterBar = document.getElementById("oss-filter-bar");
+  if (filterBar) {
+    const filterBtns = filterBar.querySelectorAll(".oss-filter-btn");
+    filterBtns.forEach((btn) => {
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = "true";
+      btn.addEventListener("click", () => {
+        filterBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const filter = btn.getAttribute("data-filter") || "all";
+        applyOssFilter(filter);
+      });
+    });
+  }
+}
+
+function applyOssFilter(filter) {
+  const repoGroups = document.querySelectorAll(".oss-repo-group");
+
+  repoGroups.forEach((group) => {
+    const repoName = group.getAttribute("data-repo");
+    const cards = group.querySelectorAll(".pr-card");
+    const expandWrapper = group.querySelector(".oss-expand-wrapper");
+    const collapsedContainer = group.querySelector(".oss-collapsed-prs");
+
+    if (filter === "all") {
+      group.style.display = "";
+      cards.forEach((c) => (c.style.display = ""));
+      if (expandWrapper) expandWrapper.style.display = "";
+      if (collapsedContainer) {
+        const expandBtn = group.querySelector(".oss-expand-btn");
+        const isExpanded = expandBtn && expandBtn.getAttribute("aria-expanded") === "true";
+        if (!isExpanded) {
+          collapsedContainer.setAttribute("hidden", "");
+        }
+      }
+    } else if (filter === "merged" || filter === "open" || filter === "closed") {
+      let visibleInGroup = 0;
+      cards.forEach((card) => {
+        const isMatch = card.classList.contains(`pr-${filter}`);
+        card.style.display = isMatch ? "" : "none";
+        if (isMatch) visibleInGroup++;
+      });
+
+      if (collapsedContainer && visibleInGroup > 0) {
+        collapsedContainer.removeAttribute("hidden");
+      }
+      if (expandWrapper) {
+        expandWrapper.style.display = "none";
+      }
+
+      group.style.display = visibleInGroup > 0 ? "" : "none";
+    } else if (filter.startsWith("repo:")) {
+      const targetRepo = filter.replace("repo:", "");
+      const isMatch = repoName === targetRepo;
+      group.style.display = isMatch ? "" : "none";
+      cards.forEach((c) => (c.style.display = ""));
+      if (expandWrapper) expandWrapper.style.display = "";
+      if (collapsedContainer) {
+        const expandBtn = group.querySelector(".oss-expand-btn");
+        const isExpanded = expandBtn && expandBtn.getAttribute("aria-expanded") === "true";
+        if (!isExpanded) {
+          collapsedContainer.setAttribute("hidden", "");
+        }
+      }
+    }
+  });
 }
 
 function renderActivePage() {

@@ -2288,6 +2288,74 @@ body.inline-edit-active [data-editable]:focus {
     text-decoration: underline;
 }
 
+/* OSS Filter Bar */
+.oss-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.oss-filter-btn {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.oss-filter-btn:hover {
+    color: var(--text);
+    border-color: var(--text);
+}
+
+.oss-filter-btn.active {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+    font-weight: 600;
+}
+
+/* OSS Expand/Collapse */
+.oss-collapsed-prs {
+    display: flex;
+    flex-direction: column;
+}
+
+.oss-collapsed-prs[hidden] {
+    display: none !important;
+}
+
+.oss-expand-wrapper {
+    margin-top: 14px;
+}
+
+.oss-expand-btn {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 7px 16px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--accent);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all var(--transition);
+}
+
+.oss-expand-btn:hover {
+    border-color: var(--accent);
+    background: rgba(57, 116, 90, 0.08);
+}
+
 /* PR Cards */
 .pr-list {
     display: flex;
