@@ -19,7 +19,7 @@
   "home": {
     "headlinePrefix": "Hi, I'm Shiva Kar.",
     "headlineAccent": "Building backend applications with Java and Spring Boot.",
-    "intro": "I'm a Computer Science undergraduate at Amity University Online, focused on Java backend engineering. I build REST-based applications, work with databases and backend infrastructure, and contribute to the Godot Engine open-source project.",
+    "intro": "I'm a Computer Science undergraduate at Amity University Online, focused on Java backend engineering. I build REST-based applications, work with databases and backend infrastructure, and contribute to open-source software projects across different ecosystems.",
     "primaryCta": {
       "label": "View Projects",
       "href": "projects.html"
@@ -35,8 +35,8 @@
         "detail": "CGPA 8.84/10"
       },
       {
-        "label": "6 Merged PRs",
-        "detail": "Godot Engine"
+        "label": "7 Merged PRs",
+        "detail": "Open Source"
       },
       {
         "label": "Java Backend",
@@ -67,7 +67,7 @@
       {
         "number": "03 / OPEN SOURCE",
         "title": "Open-Source Development",
-        "text": "15 pull requests submitted to Godot Engine — 6 merged, 7 open, 2 closed. Contributions span the editor, GUI, GDScript, and web platform.",
+        "text": "Pull requests across Godot Engine (C++), developer tools, and community software — debugging issues, improving interfaces, and collaborating upstream.",
         "linkText": "Open source →",
         "href": "opensource.html"
       }
@@ -84,7 +84,7 @@
   },
   "facts": [
     {
-      "text": "I've submitted 15 pull requests to Godot Engine — 6 merged, 7 open, and 2 closed — across editor, GUI, GDScript, and web platform areas.",
+      "text": "I've submitted 20 pull requests across 4 open-source projects (including Godot Engine, developer tooling, and community themes), with 7 merged upstream.",
       "enabled": true
     },
     {
@@ -108,7 +108,7 @@
       "enabled": true
     },
     {
-      "text": "Working across Java Spring Boot, C systems programming, and open-source engine internals gives me different perspectives on software design.",
+      "text": "Working across Java Spring Boot, C systems programming, and upstream open-source internals gives me different perspectives on software design.",
       "enabled": true
     }
   ],
@@ -288,19 +288,85 @@
   },
   "opensource": {
     "eyebrow": "OPEN-SOURCE CONTRIBUTIONS",
-    "title": "Godot Engine",
-    "intro": "I contribute to the Godot Engine open-source project, working on editor, GUI, GDScript, and web platform issues. This involves reading and modifying a large C++ codebase, debugging regressions, and responding to maintainer code review.",
-    "repo": "https://github.com/godotengine/godot",
-    "prsUrl": "https://github.com/godotengine/godot/pulls?q=is%3Apr+author%3Ashiva-kar",
-    "dates": "August 2026 – Present",
+    "title": "Open Source Contributions",
+    "intro": "I contribute to open-source software projects across different ecosystems, ranging from game engine internals in C++ to developer tools and community styling. I focus on diagnosing bugs, improving user and editor experiences, and collaborating upstream with project maintainers.",
+    "repo": "https://github.com/shiva-kar",
+    "prsUrl": "https://github.com/shiva-kar",
+    "dates": "2026 – Present",
     "stats": {
-      "submitted": 15,
-      "merged": 6,
-      "open": 7,
-      "closed": 2
+      "submitted": 20,
+      "merged": 7,
+      "open": 11,
+      "closed": 2,
+      "repositories": 4
     },
+    "repositories": [
+      {
+        "name": "godotengine/godot",
+        "url": "https://github.com/godotengine/godot",
+        "tags": [
+          "C++",
+          "Game Engine",
+          "Editor GUI"
+        ],
+        "description": "Multi-platform 2D and 3D game engine. Contributed bug fixes across editor GUI, display scaling, window management, and GDScript.",
+        "stats": {
+          "merged": 6,
+          "open": 7,
+          "closed": 2
+        },
+        "prsUrl": "https://github.com/godotengine/godot/pulls?q=is%3Apr+author%3Ashiva-kar"
+      },
+      {
+        "name": "catppuccin/visual-studio",
+        "url": "https://github.com/catppuccin/visual-studio",
+        "tags": [
+          "Editor Tooling",
+          "Theme"
+        ],
+        "description": "Soothing pastel theme and extension integration for Microsoft Visual Studio. Contributed UI color consistency, Code Definition window styling, and dark theme fixes.",
+        "stats": {
+          "merged": 0,
+          "open": 3,
+          "closed": 0
+        },
+        "prsUrl": "https://github.com/catppuccin/visual-studio/pulls?q=is%3Apr+author%3Ashiva-kar"
+      },
+      {
+        "name": "excalidraw/excalidraw",
+        "url": "https://github.com/excalidraw/excalidraw",
+        "tags": [
+          "TypeScript",
+          "React",
+          "Canvas Tool"
+        ],
+        "description": "Virtual whiteboard for sketching hand-drawn diagrams and diagrams-as-code. Contributed a syntax-highlighted code block element with light and dark palette support.",
+        "stats": {
+          "merged": 0,
+          "open": 1,
+          "closed": 0
+        },
+        "prsUrl": "https://github.com/excalidraw/excalidraw/pulls?q=is%3Apr+author%3Ashiva-kar"
+      },
+      {
+        "name": "wwwillgunnn/catppuccin-obsidian-colored-sidebar",
+        "url": "https://github.com/wwwillgunnn/catppuccin-obsidian-colored-sidebar",
+        "tags": [
+          "CSS",
+          "Obsidian"
+        ],
+        "description": "Community style for Obsidian colored folder navigation. Fixed active and hover folder background contrast to ensure readable text.",
+        "stats": {
+          "merged": 1,
+          "open": 0,
+          "closed": 0
+        },
+        "prsUrl": "https://github.com/wwwillgunnn/catppuccin-obsidian-colored-sidebar/pulls?q=is%3Apr+author%3Ashiva-kar"
+      }
+    ],
     "selectedPRs": [
       {
+        "repo": "godotengine/godot",
         "title": "Integer zoom and fractional display scaling",
         "description": "Fixed zoom behaviour involving integer zoom and fractional display scales.",
         "pr": 124942,
@@ -309,6 +375,7 @@
         "featured": true
       },
       {
+        "repo": "godotengine/godot",
         "title": "Save on Focus Loss — deleted scene recreation",
         "description": "Fixed an issue where the Save on Focus Loss setting recreated deleted open scenes.",
         "pr": 124931,
@@ -317,6 +384,7 @@
         "featured": true
       },
       {
+        "repo": "godotengine/godot",
         "title": "Resource reference count management",
         "description": "Fixed resource reference counts not updating when resetting a property.",
         "pr": 124789,
@@ -325,6 +393,7 @@
         "featured": true
       },
       {
+        "repo": "godotengine/godot",
         "title": "Script editor tooltip positioning",
         "description": "Fixed script tooltips appearing outside the script editor boundaries.",
         "pr": 124170,
@@ -333,6 +402,7 @@
         "featured": true
       },
       {
+        "repo": "godotengine/godot",
         "title": "Tooltip text interaction",
         "description": "Disabled text selection in diagnostic tooltips to prevent unintended interaction.",
         "pr": 124054,
@@ -341,6 +411,7 @@
         "featured": true
       },
       {
+        "repo": "godotengine/godot",
         "title": "Web Editor file deletion",
         "description": "Fixed a file-deletion error in the Web Editor.",
         "pr": 123035,
@@ -349,16 +420,116 @@
         "featured": true
       },
       {
-        "title": "Diagnostic tooltip restructuring",
-        "description": "Proposed a revision for a diagnostic tooltip feature following review from four maintainers: moved row construction into a dedicated class and fixed hover-state bugs.",
+        "repo": "godotengine/godot",
+        "title": "Diagnostic tooltip restructuring and severity icons",
+        "description": "Proposed a revision for diagnostic tooltips: moved row construction into a dedicated class and added severity hover icons.",
         "pr": 123310,
         "status": "open",
         "url": "https://github.com/godotengine/godot/pull/123310",
         "featured": true
+      },
+      {
+        "repo": "godotengine/godot",
+        "title": "Fix always_on_top propagation for non-exclusive transient windows",
+        "description": "Ensured window flag propagation correctly applies to transient child windows.",
+        "pr": 123621,
+        "status": "open",
+        "url": "https://github.com/godotengine/godot/pull/123621",
+        "featured": true
+      },
+      {
+        "repo": "godotengine/godot",
+        "title": "Fix missing link icon when dragging unchecked theme override",
+        "description": "Fixed editor theme override inspector UI to restore proper link icon state during drag operations.",
+        "pr": 124788,
+        "status": "open",
+        "url": "https://github.com/godotengine/godot/pull/124788",
+        "featured": true
+      },
+      {
+        "repo": "godotengine/godot",
+        "title": "Fix Tree Ctrl+click deselect on drag",
+        "description": "Corrected multi-selection behavior in Tree UI nodes to prevent unwanted item deselection.",
+        "pr": 124071,
+        "status": "open",
+        "url": "https://github.com/godotengine/godot/pull/124071",
+        "featured": true
+      },
+      {
+        "repo": "godotengine/godot",
+        "title": "GDScript autocomplete after func and static keywords",
+        "description": "Resolved autocomplete suggestion issues in the GDScript parser following function and static definitions.",
+        "pr": 124060,
+        "status": "open",
+        "url": "https://github.com/godotengine/godot/pull/124060",
+        "featured": true
+      },
+      {
+        "repo": "godotengine/godot",
+        "title": "Fix awaited coroutines during embedded game suspension",
+        "description": "Prevented coroutine execution leaks when suspending an embedded game instance.",
+        "pr": 123105,
+        "status": "open",
+        "url": "https://github.com/godotengine/godot/pull/123105",
+        "featured": true
+      },
+      {
+        "repo": "godotengine/godot",
+        "title": "Fix script state not updating when global classes change",
+        "description": "Fixed cache synchronization in the script editor when modifying global script classes.",
+        "pr": 123045,
+        "status": "open",
+        "url": "https://github.com/godotengine/godot/pull/123045",
+        "featured": true
+      },
+      {
+        "repo": "catppuccin/visual-studio",
+        "title": "Match Code Definition window background to selected theme",
+        "description": "Corrected background color inconsistency in the Code Definition window to match active Catppuccin palette.",
+        "pr": 107,
+        "status": "open",
+        "url": "https://github.com/catppuccin/visual-studio/pull/107",
+        "featured": true
+      },
+      {
+        "repo": "catppuccin/visual-studio",
+        "title": "Fix tooltip pop-up colors to match selected theme",
+        "description": "Corrected hover tooltip foreground and background styles for theme fidelity.",
+        "pr": 104,
+        "status": "open",
+        "url": "https://github.com/catppuccin/visual-studio/pull/104",
+        "featured": true
+      },
+      {
+        "repo": "catppuccin/visual-studio",
+        "title": "Restore toolbar icon colours in dark themes",
+        "description": "Fixed icon color rendering regressions in dark theme variants.",
+        "pr": 105,
+        "status": "open",
+        "url": "https://github.com/catppuccin/visual-studio/pull/105",
+        "featured": true
+      },
+      {
+        "repo": "excalidraw/excalidraw",
+        "title": "Syntax-highlighted code block element and theme support",
+        "description": "Added syntax-highlighted code block element with light and dark palette support.",
+        "pr": 12297,
+        "status": "open",
+        "url": "https://github.com/excalidraw/excalidraw/pull/12297",
+        "featured": true
+      },
+      {
+        "repo": "wwwillgunnn/catppuccin-obsidian-colored-sidebar",
+        "title": "Solid background and dark text on active/hovered folders",
+        "description": "Fixed style contrast by applying solid background and dark text to active and hovered colored folders.",
+        "pr": 1,
+        "status": "merged",
+        "url": "https://github.com/wwwillgunnn/catppuccin-obsidian-colored-sidebar/pull/1",
+        "featured": true
       }
     ],
-    "orgName": "Godot Engine",
-    "areas": "Editor, GUI, GDScript, Web Platform",
+    "orgName": "Open Source",
+    "areas": "C++ Game Engine, Developer Tools, Themes",
     "visible": true
   },
   "about": {
@@ -369,7 +540,7 @@
     "approachTitle": "What I work on",
     "approachParagraphs": [
       "My work includes building Spring Boot applications, working with PostgreSQL and Redis, and implementing backend functionality involving authentication, data persistence, transactions, and concurrency.",
-      "Alongside application development, I contribute to the Godot Engine open-source project, where I have worked on editor, GUI, and web-platform issues. I have also built SXSHELL, a Unix-like shell in C using POSIX system calls.",
+      "Alongside application development, I contribute to open-source software projects across different ecosystems, including C++ engine development in Godot Engine, developer tools, and community themes. I have also built SXSHELL, a Unix-like shell in C using POSIX system calls.",
       "I'm particularly interested in backend engineering, software design, debugging, and understanding how applications behave beyond their frameworks."
     ],
     "currentlyKicker": "CAREER DIRECTION",
@@ -385,7 +556,7 @@
       },
       {
         "label": "Open-source experience",
-        "text": "Contributor to Godot Engine with 15 submitted PRs (6 merged, 7 open, 2 closed) across editor, GUI, GDScript, and web platform."
+        "text": "Multi-project open-source contributor with 20 submitted PRs (7 merged, 11 open, 2 closed) across Godot Engine (C++), developer tools, and community extensions."
       },
       {
         "label": "Systems programming",

@@ -26,7 +26,7 @@ const DEFAULT_DATA = {
   "home": {
     "headlinePrefix": "Hi, I'm Shiva Kar.",
     "headlineAccent": "Building backend applications with Java and Spring Boot.",
-    "intro": "I'm a Computer Science undergraduate at Amity University Online, focused on Java backend engineering. I build REST-based applications, work with databases and backend infrastructure, and contribute to the Godot Engine open-source project.",
+    "intro": "I'm a Computer Science undergraduate at Amity University Online, focused on Java backend engineering. I build REST-based applications, work with databases and backend infrastructure, and contribute to open-source software projects across different ecosystems.",
     "primaryCta": {
       "label": "View Projects",
       "href": "projects.html"
@@ -42,8 +42,8 @@ const DEFAULT_DATA = {
         "detail": "CGPA 8.84/10"
       },
       {
-        "label": "6 Merged PRs",
-        "detail": "Godot Engine"
+        "label": "7 Merged PRs",
+        "detail": "Open Source"
       },
       {
         "label": "Java Backend",
@@ -74,7 +74,7 @@ const DEFAULT_DATA = {
       {
         "number": "03 / OPEN SOURCE",
         "title": "Open-Source Development",
-        "text": "15 pull requests submitted to Godot Engine — 6 merged, 7 open, 2 closed. Contributions span the editor, GUI, GDScript, and web platform.",
+        "text": "Pull requests across Godot Engine (C++), developer tools, and community software — debugging issues, improving interfaces, and collaborating upstream.",
         "linkText": "Open source →",
         "href": "opensource.html"
       }
@@ -91,7 +91,7 @@ const DEFAULT_DATA = {
   },
   "facts": [
     {
-      "text": "I've submitted 15 pull requests to Godot Engine — 6 merged, 7 open, and 2 closed — across editor, GUI, GDScript, and web platform areas.",
+      "text": "I've submitted 20 pull requests across 4 open-source projects (including Godot Engine, developer tooling, and community themes), with 7 merged upstream.",
       "enabled": true
     },
     {
@@ -294,79 +294,250 @@ const DEFAULT_DATA = {
     ]
   },
   "opensource": {
-    "eyebrow": "OPEN-SOURCE CONTRIBUTIONS",
-    "title": "Godot Engine",
-    "intro": "I contribute to the Godot Engine open-source project, working on editor, GUI, GDScript, and web platform issues. This involves reading and modifying a large C++ codebase, debugging regressions, and responding to maintainer code review.",
-    "repo": "https://github.com/godotengine/godot",
-    "prsUrl": "https://github.com/godotengine/godot/pulls?q=is%3Apr+author%3Ashiva-kar",
-    "dates": "August 2026 – Present",
-    "stats": {
-      "submitted": 15,
-      "merged": 6,
-      "open": 7,
-      "closed": 2
-    },
-    "selectedPRs": [
-      {
-        "title": "Integer zoom and fractional display scaling",
-        "description": "Fixed zoom behaviour involving integer zoom and fractional display scales.",
-        "pr": 124942,
-        "status": "merged",
-        "url": "https://github.com/godotengine/godot/pull/124942",
-        "featured": true
+      "eyebrow": "OPEN-SOURCE CONTRIBUTIONS",
+      "title": "Open Source Contributions",
+      "intro": "I contribute to open-source software projects across different ecosystems, ranging from game engine internals in C++ to developer tools and community styling. I focus on diagnosing bugs, improving user and editor experiences, and collaborating upstream with project maintainers.",
+      "repo": "https://github.com/shiva-kar",
+      "prsUrl": "https://github.com/shiva-kar",
+      "dates": "2026 \u2013 Present",
+      "stats": {
+          "submitted": 20,
+          "merged": 7,
+          "open": 11,
+          "closed": 2,
+          "repositories": 4
       },
-      {
-        "title": "Save on Focus Loss — deleted scene recreation",
-        "description": "Fixed an issue where the Save on Focus Loss setting recreated deleted open scenes.",
-        "pr": 124931,
-        "status": "merged",
-        "url": "https://github.com/godotengine/godot/pull/124931",
-        "featured": true
-      },
-      {
-        "title": "Resource reference count management",
-        "description": "Fixed resource reference counts not updating when resetting a property.",
-        "pr": 124789,
-        "status": "merged",
-        "url": "https://github.com/godotengine/godot/pull/124789",
-        "featured": true
-      },
-      {
-        "title": "Script editor tooltip positioning",
-        "description": "Fixed script tooltips appearing outside the script editor boundaries.",
-        "pr": 124170,
-        "status": "merged",
-        "url": "https://github.com/godotengine/godot/pull/124170",
-        "featured": true
-      },
-      {
-        "title": "Tooltip text interaction",
-        "description": "Disabled text selection in diagnostic tooltips to prevent unintended interaction.",
-        "pr": 124054,
-        "status": "merged",
-        "url": "https://github.com/godotengine/godot/pull/124054",
-        "featured": true
-      },
-      {
-        "title": "Web Editor file deletion",
-        "description": "Fixed a file-deletion error in the Web Editor.",
-        "pr": 123035,
-        "status": "merged",
-        "url": "https://github.com/godotengine/godot/pull/123035",
-        "featured": true
-      },
-      {
-        "title": "Diagnostic tooltip restructuring",
-        "description": "Proposed a revision for a diagnostic tooltip feature following review from four maintainers: moved row construction into a dedicated class and fixed hover-state bugs.",
-        "pr": 123310,
-        "status": "open",
-        "url": "https://github.com/godotengine/godot/pull/123310",
-        "featured": true
-      }
-    ],
-    "orgName": "Godot Engine",
-    "areas": "Editor, GUI, GDScript, Web Platform",
-    "visible": true
+      "repositories": [
+          {
+              "name": "godotengine/godot",
+              "url": "https://github.com/godotengine/godot",
+              "tags": [
+                  "C++",
+                  "Game Engine",
+                  "Editor GUI"
+              ],
+              "description": "Multi-platform 2D and 3D game engine. Contributed bug fixes across editor GUI, display scaling, window management, and GDScript.",
+              "stats": {
+                  "merged": 6,
+                  "open": 7,
+                  "closed": 2
+              },
+              "prsUrl": "https://github.com/godotengine/godot/pulls?q=is%3Apr+author%3Ashiva-kar"
+          },
+          {
+              "name": "catppuccin/visual-studio",
+              "url": "https://github.com/catppuccin/visual-studio",
+              "tags": [
+                  "Editor Tooling",
+                  "Theme"
+              ],
+              "description": "Soothing pastel theme and extension integration for Microsoft Visual Studio. Contributed UI color consistency, Code Definition window styling, and dark theme fixes.",
+              "stats": {
+                  "merged": 0,
+                  "open": 3,
+                  "closed": 0
+              },
+              "prsUrl": "https://github.com/catppuccin/visual-studio/pulls?q=is%3Apr+author%3Ashiva-kar"
+          },
+          {
+              "name": "excalidraw/excalidraw",
+              "url": "https://github.com/excalidraw/excalidraw",
+              "tags": [
+                  "TypeScript",
+                  "React",
+                  "Canvas Tool"
+              ],
+              "description": "Virtual whiteboard for sketching hand-drawn diagrams and diagrams-as-code. Contributed a syntax-highlighted code block element with light and dark palette support.",
+              "stats": {
+                  "merged": 0,
+                  "open": 1,
+                  "closed": 0
+              },
+              "prsUrl": "https://github.com/excalidraw/excalidraw/pulls?q=is%3Apr+author%3Ashiva-kar"
+          },
+          {
+              "name": "wwwillgunnn/catppuccin-obsidian-colored-sidebar",
+              "url": "https://github.com/wwwillgunnn/catppuccin-obsidian-colored-sidebar",
+              "tags": [
+                  "CSS",
+                  "Obsidian"
+              ],
+              "description": "Community style for Obsidian colored folder navigation. Fixed active and hover folder background contrast to ensure readable text.",
+              "stats": {
+                  "merged": 1,
+                  "open": 0,
+                  "closed": 0
+              },
+              "prsUrl": "https://github.com/wwwillgunnn/catppuccin-obsidian-colored-sidebar/pulls?q=is%3Apr+author%3Ashiva-kar"
+          }
+      ],
+      "selectedPRs": [
+          {
+              "repo": "godotengine/godot",
+              "title": "Integer zoom and fractional display scaling",
+              "description": "Fixed zoom behaviour involving integer zoom and fractional display scales.",
+              "pr": 124942,
+              "status": "merged",
+              "url": "https://github.com/godotengine/godot/pull/124942",
+              "featured": true
+          },
+          {
+              "repo": "godotengine/godot",
+              "title": "Save on Focus Loss \u2014 deleted scene recreation",
+              "description": "Fixed an issue where the Save on Focus Loss setting recreated deleted open scenes.",
+              "pr": 124931,
+              "status": "merged",
+              "url": "https://github.com/godotengine/godot/pull/124931",
+              "featured": true
+          },
+          {
+              "repo": "godotengine/godot",
+              "title": "Resource reference count management",
+              "description": "Fixed resource reference counts not updating when resetting a property.",
+              "pr": 124789,
+              "status": "merged",
+              "url": "https://github.com/godotengine/godot/pull/124789",
+              "featured": true
+          },
+          {
+              "repo": "godotengine/godot",
+              "title": "Script editor tooltip positioning",
+              "description": "Fixed script tooltips appearing outside the script editor boundaries.",
+              "pr": 124170,
+              "status": "merged",
+              "url": "https://github.com/godotengine/godot/pull/124170",
+              "featured": true
+          },
+          {
+              "repo": "godotengine/godot",
+              "title": "Tooltip text interaction",
+              "description": "Disabled text selection in diagnostic tooltips to prevent unintended interaction.",
+              "pr": 124054,
+              "status": "merged",
+              "url": "https://github.com/godotengine/godot/pull/124054",
+              "featured": true
+          },
+          {
+              "repo": "godotengine/godot",
+              "title": "Web Editor file deletion",
+              "description": "Fixed a file-deletion error in the Web Editor.",
+              "pr": 123035,
+              "status": "merged",
+              "url": "https://github.com/godotengine/godot/pull/123035",
+              "featured": true
+          },
+          {
+              "repo": "godotengine/godot",
+              "title": "Diagnostic tooltip restructuring and severity icons",
+              "description": "Proposed a revision for diagnostic tooltips: moved row construction into a dedicated class and added severity hover icons.",
+              "pr": 123310,
+              "status": "open",
+              "url": "https://github.com/godotengine/godot/pull/123310",
+              "featured": true
+          },
+          {
+              "repo": "godotengine/godot",
+              "title": "Fix always_on_top propagation for non-exclusive transient windows",
+              "description": "Ensured window flag propagation correctly applies to transient child windows.",
+              "pr": 123621,
+              "status": "open",
+              "url": "https://github.com/godotengine/godot/pull/123621",
+              "featured": true
+          },
+          {
+              "repo": "godotengine/godot",
+              "title": "Fix missing link icon when dragging unchecked theme override",
+              "description": "Fixed editor theme override inspector UI to restore proper link icon state during drag operations.",
+              "pr": 124788,
+              "status": "open",
+              "url": "https://github.com/godotengine/godot/pull/124788",
+              "featured": true
+          },
+          {
+              "repo": "godotengine/godot",
+              "title": "Fix Tree Ctrl+click deselect on drag",
+              "description": "Corrected multi-selection behavior in Tree UI nodes to prevent unwanted item deselection.",
+              "pr": 124071,
+              "status": "open",
+              "url": "https://github.com/godotengine/godot/pull/124071",
+              "featured": true
+          },
+          {
+              "repo": "godotengine/godot",
+              "title": "GDScript autocomplete after func and static keywords",
+              "description": "Resolved autocomplete suggestion issues in the GDScript parser following function and static definitions.",
+              "pr": 124060,
+              "status": "open",
+              "url": "https://github.com/godotengine/godot/pull/124060",
+              "featured": true
+          },
+          {
+              "repo": "godotengine/godot",
+              "title": "Fix awaited coroutines during embedded game suspension",
+              "description": "Prevented coroutine execution leaks when suspending an embedded game instance.",
+              "pr": 123105,
+              "status": "open",
+              "url": "https://github.com/godotengine/godot/pull/123105",
+              "featured": true
+          },
+          {
+              "repo": "godotengine/godot",
+              "title": "Fix script state not updating when global classes change",
+              "description": "Fixed cache synchronization in the script editor when modifying global script classes.",
+              "pr": 123045,
+              "status": "open",
+              "url": "https://github.com/godotengine/godot/pull/123045",
+              "featured": true
+          },
+          {
+              "repo": "catppuccin/visual-studio",
+              "title": "Match Code Definition window background to selected theme",
+              "description": "Corrected background color inconsistency in the Code Definition window to match active Catppuccin palette.",
+              "pr": 107,
+              "status": "open",
+              "url": "https://github.com/catppuccin/visual-studio/pull/107",
+              "featured": true
+          },
+          {
+              "repo": "catppuccin/visual-studio",
+              "title": "Fix tooltip pop-up colors to match selected theme",
+              "description": "Corrected hover tooltip foreground and background styles for theme fidelity.",
+              "pr": 104,
+              "status": "open",
+              "url": "https://github.com/catppuccin/visual-studio/pull/104",
+              "featured": true
+          },
+          {
+              "repo": "catppuccin/visual-studio",
+              "title": "Restore toolbar icon colours in dark themes",
+              "description": "Fixed icon color rendering regressions in dark theme variants.",
+              "pr": 105,
+              "status": "open",
+              "url": "https://github.com/catppuccin/visual-studio/pull/105",
+              "featured": true
+          },
+          {
+              "repo": "excalidraw/excalidraw",
+              "title": "Syntax-highlighted code block element and theme support",
+              "description": "Added syntax-highlighted code block element with light and dark palette support.",
+              "pr": 12297,
+              "status": "open",
+              "url": "https://github.com/excalidraw/excalidraw/pull/12297",
+              "featured": true
+          },
+          {
+              "repo": "wwwillgunnn/catppuccin-obsidian-colored-sidebar",
+              "title": "Solid background and dark text on active/hovered folders",
+              "description": "Fixed style contrast by applying solid background and dark text to active and hovered colored folders.",
+              "pr": 1,
+              "status": "merged",
+              "url": "https://github.com/wwwillgunnn/catppuccin-obsidian-colored-sidebar/pull/1",
+              "featured": true
+          }
+      ],
+      "orgName": "Open Source",
+      "areas": "C++ Game Engine, Developer Tools, Themes",
+      "visible": true
   },
   "about": {
     "eyebrow": "ABOUT",
@@ -376,7 +547,7 @@ const DEFAULT_DATA = {
     "approachTitle": "What I work on",
     "approachParagraphs": [
       "My work includes building Spring Boot applications, working with PostgreSQL and Redis, and implementing backend functionality involving authentication, data persistence, transactions, and concurrency.",
-      "Alongside application development, I contribute to the Godot Engine open-source project, where I have worked on editor, GUI, and web-platform issues. I have also built SXSHELL, a Unix-like shell in C using POSIX system calls.",
+      "Alongside application development, I contribute to open-source software projects across different ecosystems, including C++ engine development in Godot Engine, developer tools, and community themes. I have also built SXSHELL, a Unix-like shell in C using POSIX system calls.",
       "I'm particularly interested in backend engineering, software design, debugging, and understanding how applications behave beyond their frameworks."
     ],
     "currentlyKicker": "CAREER DIRECTION",
@@ -392,7 +563,7 @@ const DEFAULT_DATA = {
       },
       {
         "label": "Open-source experience",
-        "text": "Contributor to Godot Engine with 15 submitted PRs (6 merged, 7 open, 2 closed) across editor, GUI, GDScript, and web platform."
+        "text": "Multi-project open-source contributor with 20 submitted PRs (7 merged, 11 open, 2 closed) across Godot Engine (C++), developer tools, and community extensions."
       },
       {
         "label": "Systems programming",
@@ -591,31 +762,35 @@ function normalizeAndMigrateSiteData(raw) {
   // opensource
   d.opensource = d.opensource || {};
   d.opensource.eyebrow = d.opensource.eyebrow || "OPEN-SOURCE CONTRIBUTIONS";
-  d.opensource.title = d.opensource.title || "Godot Engine";
-  d.opensource.orgName = d.opensource.orgName || "Godot Engine";
-  d.opensource.areas = d.opensource.areas || "Editor, GUI, GDScript, Web Platform";
-  d.opensource.intro = d.opensource.intro || "I contribute to the Godot Engine open-source project, working on editor, GUI, GDScript, and web platform issues. This involves reading and modifying a large C++ codebase, debugging regressions, and responding to maintainer code review.";
-  d.opensource.repo = d.opensource.repo || "https://github.com/godotengine/godot";
-  d.opensource.prsUrl = d.opensource.prsUrl || "https://github.com/godotengine/godot/pulls?q=is%3Apr+author%3Ashiva-kar";
-  d.opensource.dates = d.opensource.dates || "August 2026 – Present";
+  d.opensource.title = d.opensource.title || "Open Source Contributions";
+  d.opensource.orgName = d.opensource.orgName || "Open Source";
+  d.opensource.areas = d.opensource.areas || "C++ Game Engine, Developer Tools, Themes";
+  d.opensource.intro = d.opensource.intro || "I contribute to open-source software projects across different ecosystems, ranging from game engine internals in C++ to developer tools and community styling. I focus on diagnosing bugs, improving user and editor experiences, and collaborating upstream with project maintainers.";
+  d.opensource.repo = d.opensource.repo || "https://github.com/shiva-kar";
+  d.opensource.prsUrl = d.opensource.prsUrl || "https://github.com/shiva-kar";
+  d.opensource.dates = d.opensource.dates || "2026 – Present";
   d.opensource.visible = d.opensource.visible !== false;
   d.opensource.stats = Object.assign({
-    submitted: 15,
-    merged: 6,
-    open: 7,
-    closed: 2
+    submitted: 20,
+    merged: 7,
+    open: 11,
+    closed: 2,
+    repositories: 4
   }, d.opensource.stats || {});
+  d.opensource.repositories = Array.isArray(d.opensource.repositories) ? d.opensource.repositories : cloneData(DEFAULT_DATA.opensource.repositories || []);
   if (!Array.isArray(d.opensource.selectedPRs)) {
     d.opensource.selectedPRs = cloneData(DEFAULT_DATA.opensource.selectedPRs);
   } else {
     d.opensource.selectedPRs = d.opensource.selectedPRs.map((pr) => {
       const num = Number(pr.pr) || 0;
+      const repo = pr.repo || "godotengine/godot";
       return {
+        repo: String(repo).trim(),
         pr: num,
         title: String(pr.title || "").trim(),
         description: String(pr.description || "").trim(),
         status: String(pr.status || "merged").toLowerCase(),
-        url: pr.url || (num ? `https://github.com/godotengine/godot/pull/${num}` : ""),
+        url: pr.url || (num ? `https://github.com/${repo}/pull/${num}` : ""),
         featured: pr.featured !== false
       };
     });
@@ -1833,37 +2008,126 @@ function renderAboutPage() {
 }
 
 function renderOpensourcePage() {
-  const stats = siteData.opensource?.stats || { submitted: 15, merged: 6, open: 7, closed: 2 };
+  const stats = siteData.opensource?.stats || { submitted: 20, merged: 7, open: 11, closed: 2, repositories: 4 };
   const statNumbers = document.querySelectorAll(".oss-stats-bar .oss-stat-number");
   if (statNumbers.length >= 4) {
     statNumbers[0].textContent = stats.submitted;
     statNumbers[1].textContent = stats.merged;
     statNumbers[2].textContent = stats.open;
-    statNumbers[3].textContent = stats.closed;
+    statNumbers[3].textContent = stats.repositories || 4;
   }
 
-  const prList = document.querySelector(".pr-list");
-  if (prList && Array.isArray(siteData.opensource?.selectedPRs)) {
-    prList.innerHTML = siteData.opensource.selectedPRs
-      .map((pr) => {
+  const reposContainer = document.getElementById("oss-repos-container");
+  if (reposContainer && Array.isArray(siteData.opensource?.selectedPRs)) {
+    const reposMeta = siteData.opensource.repositories || [];
+    const metaMap = {};
+    reposMeta.forEach((r) => { metaMap[r.name] = r; });
+
+    const grouped = new Map();
+    siteData.opensource.selectedPRs.forEach((pr) => {
+      const repo = pr.repo || "godotengine/godot";
+      if (!grouped.has(repo)) grouped.set(repo, []);
+      grouped.get(repo).push(pr);
+    });
+
+    reposMeta.forEach((r) => {
+      if (!grouped.has(r.name)) grouped.set(r.name, []);
+    });
+
+    reposContainer.innerHTML = Array.from(grouped.entries()).map(([repoName, prs]) => {
+      const meta = metaMap[repoName] || {
+        name: repoName,
+        url: `https://github.com/${repoName}`,
+        tags: ["Open Source"],
+        description: `Contributions to ${repoName}`,
+        stats: {
+          merged: prs.filter((p) => p.status === "merged").length,
+          open: prs.filter((p) => p.status === "open").length,
+          closed: prs.filter((p) => p.status === "closed").length
+        },
+        prsUrl: `https://github.com/${repoName}/pulls?q=is%3Apr+author%3Ashiva-kar`
+      };
+
+      const techStr = Array.isArray(meta.tags) ? meta.tags.join(" · ") : (meta.areas || "");
+      const mergedCount = meta.stats?.merged ?? prs.filter((p) => p.status === "merged").length;
+      const openCount = meta.stats?.open ?? prs.filter((p) => p.status === "open").length;
+      const closedCount = meta.stats?.closed ?? prs.filter((p) => p.status === "closed").length;
+
+      const statParts = [];
+      if (mergedCount > 0) statParts.push(`<span><strong>${mergedCount}</strong> Merged</span>`);
+      if (openCount > 0) statParts.push(`<span><strong>${openCount}</strong> Open</span>`);
+      if (closedCount > 0) statParts.push(`<span><strong>${closedCount}</strong> Closed</span>`);
+
+      const statsHtml = statParts.length ? statParts.join(" · ") + " · " : "";
+      const prsLinkHtml = meta.prsUrl
+        ? `<a href="${escapeHtml(meta.prsUrl)}" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>`
+        : "";
+
+      const prsHtml = prs.map((pr) => {
         const isMerged = pr.status === "merged";
         const isOpen = pr.status === "open";
         const cardClass = isMerged ? "pr-merged" : isOpen ? "pr-open" : "pr-closed";
         const badgeClass = isMerged ? "pr-badge-merged" : isOpen ? "pr-badge-open" : "pr-badge-closed";
         const statusLabel = isMerged ? "Merged" : isOpen ? "Open" : "Closed";
-        const prUrl = pr.url || `https://github.com/godotengine/godot/pull/${pr.pr}`;
+        const prUrl = pr.url || `https://github.com/${repoName}/pull/${pr.pr}`;
 
         return `
-        <article class="pr-card ${cardClass}">
-          <div class="pr-card-header">
-            <span class="pr-status-badge ${badgeClass}">${statusLabel}</span>
-            <a href="${escapeHtml(prUrl)}" target="_blank" rel="noopener noreferrer" class="pr-number">#${pr.pr}</a>
+          <article class="pr-card ${cardClass}">
+            <div class="pr-card-header">
+              <span class="pr-status-badge ${badgeClass}">${statusLabel}</span>
+              <a href="${escapeHtml(prUrl)}" target="_blank" rel="noopener noreferrer" class="pr-number">#${pr.pr}</a>
+            </div>
+            <h3 class="pr-title">${escapeHtml(pr.title)}</h3>
+            <p class="pr-desc">${escapeHtml(pr.description)}</p>
+          </article>
+        `;
+      }).join("");
+
+      return `
+        <div class="oss-repo-group">
+          <div class="oss-repo-header">
+            <div class="oss-repo-title-row">
+              <h3 class="oss-repo-name">
+                <a href="${escapeHtml(meta.url || `https://github.com/${repoName}`)}" target="_blank" rel="noopener noreferrer">${escapeHtml(repoName)} ↗</a>
+              </h3>
+              ${techStr ? `<span class="oss-repo-tech">${escapeHtml(techStr)}</span>` : ""}
+            </div>
+            ${meta.description ? `<p class="oss-repo-desc">${escapeHtml(meta.description)}</p>` : ""}
+            <div class="oss-repo-stats">
+              ${statsHtml}${prsLinkHtml}
+            </div>
           </div>
-          <h3 class="pr-title">${escapeHtml(pr.title)}</h3>
-          <p class="pr-desc">${escapeHtml(pr.description)}</p>
-        </article>`;
-      })
-      .join("");
+          <div class="pr-list">
+            ${prsHtml}
+          </div>
+        </div>
+      `;
+    }).join("");
+  } else {
+    const prList = document.querySelector(".pr-list");
+    if (prList && Array.isArray(siteData.opensource?.selectedPRs)) {
+      prList.innerHTML = siteData.opensource.selectedPRs
+        .map((pr) => {
+          const isMerged = pr.status === "merged";
+          const isOpen = pr.status === "open";
+          const cardClass = isMerged ? "pr-merged" : isOpen ? "pr-open" : "pr-closed";
+          const badgeClass = isMerged ? "pr-badge-merged" : isOpen ? "pr-badge-open" : "pr-badge-closed";
+          const statusLabel = isMerged ? "Merged" : isOpen ? "Open" : "Closed";
+          const repo = pr.repo || "godotengine/godot";
+          const prUrl = pr.url || `https://github.com/${repo}/pull/${pr.pr}`;
+
+          return `
+          <article class="pr-card ${cardClass}">
+            <div class="pr-card-header">
+              <span class="pr-status-badge ${badgeClass}">${statusLabel}</span>
+              <a href="${escapeHtml(prUrl)}" target="_blank" rel="noopener noreferrer" class="pr-number">#${pr.pr}</a>
+            </div>
+            <h3 class="pr-title">${escapeHtml(pr.title)}</h3>
+            <p class="pr-desc">${escapeHtml(pr.description)}</p>
+          </article>`;
+        })
+        .join("");
+    }
   }
 }
 
