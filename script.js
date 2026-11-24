@@ -301,9 +301,9 @@ const DEFAULT_DATA = {
       "prsUrl": "https://github.com/shiva-kar",
       "dates": "2026 \u2013 Present",
       "stats": {
-          "submitted": 20,
-          "merged": 7,
-          "open": 11,
+          "submitted": 22,
+          "merged": 12,
+          "open": 8,
           "closed": 2,
           "repositories": 4
       },
@@ -333,8 +333,8 @@ const DEFAULT_DATA = {
               ],
               "description": "Soothing pastel theme and extension integration for Microsoft Visual Studio. Contributed UI color consistency, Code Definition window styling, and dark theme fixes.",
               "stats": {
-                  "merged": 0,
-                  "open": 3,
+                  "merged": 5,
+                  "open": 0,
                   "closed": 0
               },
               "prsUrl": "https://github.com/catppuccin/visual-studio/pulls?q=is%3Apr+author%3Ashiva-kar"
@@ -491,20 +491,29 @@ const DEFAULT_DATA = {
           },
           {
               "repo": "catppuccin/visual-studio",
-              "title": "Match Code Definition window background to selected theme",
-              "description": "Corrected background color inconsistency in the Code Definition window to match active Catppuccin palette.",
-              "pr": 107,
-              "status": "open",
-              "url": "https://github.com/catppuccin/visual-studio/pull/107",
+              "title": "Fix C# documentation comment syntax highlighting",
+              "description": "Corrected documentation comment token styling and XML doc comment tag highlight fidelity.",
+              "pr": 110,
+              "status": "merged",
+              "url": "https://github.com/catppuccin/visual-studio/pull/110",
               "featured": true
           },
           {
               "repo": "catppuccin/visual-studio",
-              "title": "Fix tooltip pop-up colors to match selected theme",
-              "description": "Corrected hover tooltip foreground and background styles for theme fidelity.",
-              "pr": 104,
-              "status": "open",
-              "url": "https://github.com/catppuccin/visual-studio/pull/104",
+              "title": "Fix selected tab visibility in Manage NuGet Packages",
+              "description": "Ensured tab indicator and active border remain clearly legible across all Catppuccin theme flavors.",
+              "pr": 108,
+              "status": "merged",
+              "url": "https://github.com/catppuccin/visual-studio/pull/108",
+              "featured": true
+          },
+          {
+              "repo": "catppuccin/visual-studio",
+              "title": "Match Code Definition window background to selected theme",
+              "description": "Corrected background color inconsistency in the Code Definition window to match active Catppuccin palette.",
+              "pr": 107,
+              "status": "merged",
+              "url": "https://github.com/catppuccin/visual-studio/pull/107",
               "featured": true
           },
           {
@@ -512,8 +521,17 @@ const DEFAULT_DATA = {
               "title": "Restore toolbar icon colours in dark themes",
               "description": "Fixed icon color rendering regressions in dark theme variants.",
               "pr": 105,
-              "status": "open",
+              "status": "merged",
               "url": "https://github.com/catppuccin/visual-studio/pull/105",
+              "featured": true
+          },
+          {
+              "repo": "catppuccin/visual-studio",
+              "title": "Fix tooltip pop-up colors to match selected theme",
+              "description": "Corrected hover tooltip foreground and background styles for theme fidelity.",
+              "pr": 104,
+              "status": "merged",
+              "url": "https://github.com/catppuccin/visual-studio/pull/104",
               "featured": true
           },
           {
@@ -2058,6 +2076,9 @@ function renderOpensourcePage() {
     }
 
     reposContainer.innerHTML = Array.from(grouped.entries()).map(([repoName, prs], groupIdx) => {
+      // Sort PRs within each repository group from newest to oldest by PR number
+      prs.sort((a, b) => (Number(b.pr) || 0) - (Number(a.pr) || 0));
+
       const meta = metaMap[repoName] || {
         name: repoName,
         url: `https://github.com/${repoName}`,
